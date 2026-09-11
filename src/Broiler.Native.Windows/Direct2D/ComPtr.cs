@@ -43,8 +43,10 @@ public sealed class ComPtr : IDisposable
     {
         if (_ptr == ptr)
             return;
+
         if (_ptr != IntPtr.Zero)
             Release();
+        
         _ptr = ptr;
     }
 

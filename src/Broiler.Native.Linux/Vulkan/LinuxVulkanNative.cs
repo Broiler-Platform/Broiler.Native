@@ -1,10 +1,11 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Broiler.Native.Linux.Vulkan;
 
-public static class LinuxVulkanNative
+public static partial class LinuxVulkanNative
 {
     public const int VK_SUCCESS = 0;
     public const int VK_INCOMPLETE = 5;
@@ -20,8 +21,10 @@ public static class LinuxVulkanNative
     {
         if (major < 0 || major > 127)
             throw new ArgumentOutOfRangeException(nameof(major));
+
         if (minor < 0 || minor > 1023)
             throw new ArgumentOutOfRangeException(nameof(minor));
+
         if (patch < 0 || patch > 4095)
             throw new ArgumentOutOfRangeException(nameof(patch));
 
@@ -67,9 +70,11 @@ public static class LinuxVulkanNative
         const int deviceNameOffset = 20;
         const int deviceNameLength = 256;
         IntPtr buffer = Marshal.AllocHGlobal(bufferSize);
+
         try
         {
             GetPhysicalDeviceProperties(physicalDevice, buffer);
+
             uint apiVersion = ReadUInt32(buffer, 0);
             uint driverVersion = ReadUInt32(buffer, 4);
             uint vendorId = ReadUInt32(buffer, 8);
@@ -78,6 +83,7 @@ public static class LinuxVulkanNative
 
             byte[] nameBytes = new byte[deviceNameLength];
             Marshal.Copy(IntPtr.Add(buffer, deviceNameOffset), nameBytes, 0, nameBytes.Length);
+
             int nameLength = Array.IndexOf(nameBytes, (byte)0);
             if (nameLength < 0)
                 nameLength = nameBytes.Length;
@@ -86,13 +92,9 @@ public static class LinuxVulkanNative
             if (string.IsNullOrWhiteSpace(name))
                 name = "unknown";
 
-            return new LinuxVulkanDeviceInfo(
-                name,
+            return new LinuxVulkanDeviceInfo(name,
                 FormatPhysicalDeviceType(deviceType),
-                FormatApiVersion(apiVersion),
-                "0x" + driverVersion.ToString("X8"),
-                vendorId,
-                deviceId);
+                FormatApiVersion(apiVersion), "0x" + driverVersion.ToString("X8"), vendorId, deviceId);
         }
         finally
         {
@@ -100,52 +102,46 @@ public static class LinuxVulkanNative
         }
     }
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkEnumerateInstanceVersion", CallingConvention = CallingConvention.Cdecl)]
-    private static extern int EnumerateInstanceVersion(out uint apiVersion);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkEnumerateInstanceVersion")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    private static partial int EnumerateInstanceVersion(out uint apiVersion);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkCreateInstance", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int CreateInstance(
-        ref VkInstanceCreateInfo createInfo,
-        IntPtr allocator,
-        out IntPtr instance);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkCreateInstance")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial int CreateInstance(ref VkInstanceCreateInfo createInfo, IntPtr allocator, out IntPtr instance);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkDestroyInstance", CallingConvention = CallingConvention.Cdecl)]
-    public static extern void DestroyInstance(IntPtr instance, IntPtr allocator);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkDestroyInstance")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial void DestroyInstance(IntPtr instance, IntPtr allocator);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkEnumeratePhysicalDevices", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int EnumeratePhysicalDevices(
-        IntPtr instance,
-        ref uint physicalDeviceCount,
-        [Out] IntPtr[]? physicalDevices);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkEnumeratePhysicalDevices")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial int EnumeratePhysicalDevices(IntPtr instance, ref uint physicalDeviceCount, [Out] IntPtr[]? physicalDevices);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceQueueFamilyProperties", CallingConvention = CallingConvention.Cdecl)]
-    public static extern void GetPhysicalDeviceQueueFamilyProperties(
-        IntPtr physicalDevice,
-        ref uint queueFamilyPropertyCount,
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceQueueFamilyProperties")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial void GetPhysicalDeviceQueueFamilyProperties(IntPtr physicalDevice, ref uint queueFamilyPropertyCount,
         [Out] VkQueueFamilyProperties[]? queueFamilyProperties);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceProperties", CallingConvention = CallingConvention.Cdecl)]
-    private static extern void GetPhysicalDeviceProperties(IntPtr physicalDevice, IntPtr properties);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceProperties")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    private static partial void GetPhysicalDeviceProperties(IntPtr physicalDevice, IntPtr properties);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkCreateDevice", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int CreateDevice(
-        IntPtr physicalDevice,
-        ref VkDeviceCreateInfo createInfo,
-        IntPtr allocator,
-        out IntPtr device);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkCreateDevice")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial int CreateDevice(IntPtr physicalDevice, ref VkDeviceCreateInfo createInfo, IntPtr allocator, out IntPtr device);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkDestroyDevice", CallingConvention = CallingConvention.Cdecl)]
-    public static extern void DestroyDevice(IntPtr device, IntPtr allocator);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkDestroyDevice")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial void DestroyDevice(IntPtr device, IntPtr allocator);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkGetDeviceQueue", CallingConvention = CallingConvention.Cdecl)]
-    public static extern void GetDeviceQueue(
-        IntPtr device,
-        uint queueFamilyIndex,
-        uint queueIndex,
-        out IntPtr queue);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetDeviceQueue")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial void GetDeviceQueue(IntPtr device, uint queueFamilyIndex, uint queueIndex, out IntPtr queue);
 
-    [DllImport("libvulkan.so.1", EntryPoint = "vkDeviceWaitIdle", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int DeviceWaitIdle(IntPtr device);
+    [LibraryImport("libvulkan.so.1", EntryPoint = "vkDeviceWaitIdle")]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    public static partial int DeviceWaitIdle(IntPtr device);
 
     [StructLayout(LayoutKind.Sequential)]
     public struct VkApplicationInfo

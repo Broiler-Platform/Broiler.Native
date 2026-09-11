@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Linux.OpenGL;
 
-public static class LinuxEglNative
+public static partial class LinuxEglNative
 {
     public const int EGL_FALSE = 0;
     public const int EGL_TRUE = 1;
@@ -29,65 +29,45 @@ public static class LinuxEglNative
     public const int EGL_OPENGL_API = 0x30A2;
     public const int EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT = 0x00000001;
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglGetDisplay")]
-    public static extern IntPtr GetDisplay(IntPtr displayId);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglGetDisplay")]
+    public static partial IntPtr GetDisplay(IntPtr displayId);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglInitialize")]
-    public static extern int Initialize(IntPtr display, out int major, out int minor);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglInitialize")]
+    public static partial int Initialize(IntPtr display, out int major, out int minor);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglTerminate")]
-    public static extern int Terminate(IntPtr display);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglTerminate")]
+    public static partial int Terminate(IntPtr display);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglBindAPI")]
-    public static extern int BindApi(int api);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglBindAPI")]
+    public static partial int BindApi(int api);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglChooseConfig")]
-    public static extern int ChooseConfig(
-        IntPtr display,
-        int[] attribList,
-        IntPtr[] configs,
-        int configSize,
-        out int numConfig);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglChooseConfig")]
+    public static partial int ChooseConfig(IntPtr display, int[] attribList, IntPtr[] configs, int configSize, out int numConfig);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglCreateContext")]
-    public static extern IntPtr CreateContext(
-        IntPtr display,
-        IntPtr config,
-        IntPtr shareContext,
-        int[] attribList);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglCreateContext")]
+    public static partial IntPtr CreateContext(IntPtr display, IntPtr config, IntPtr shareContext, int[] attribList);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglDestroyContext")]
-    public static extern int DestroyContext(IntPtr display, IntPtr context);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglDestroyContext")]
+    public static partial int DestroyContext(IntPtr display, IntPtr context);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglCreatePbufferSurface")]
-    public static extern IntPtr CreatePbufferSurface(
-        IntPtr display,
-        IntPtr config,
-        int[] attribList);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglCreatePbufferSurface")]
+    public static partial IntPtr CreatePbufferSurface(IntPtr display, IntPtr config, int[] attribList);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglCreateWindowSurface")]
-    public static extern IntPtr CreateWindowSurface(
-        IntPtr display,
-        IntPtr config,
-        IntPtr nativeWindow,
-        int[] attribList);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglCreateWindowSurface")]
+    public static partial IntPtr CreateWindowSurface(IntPtr display, IntPtr config, IntPtr nativeWindow, int[] attribList);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglDestroySurface")]
-    public static extern int DestroySurface(IntPtr display, IntPtr surface);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglDestroySurface")]
+    public static partial int DestroySurface(IntPtr display, IntPtr surface);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglMakeCurrent")]
-    public static extern int MakeCurrent(
-        IntPtr display,
-        IntPtr draw,
-        IntPtr read,
-        IntPtr context);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglMakeCurrent")]
+    public static partial int MakeCurrent(IntPtr display, IntPtr draw, IntPtr read, IntPtr context);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglSwapBuffers")]
-    public static extern int SwapBuffers(IntPtr display, IntPtr surface);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglSwapBuffers")]
+    public static partial int SwapBuffers(IntPtr display, IntPtr surface);
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglGetError")]
-    public static extern int GetError();
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglGetError")]
+    public static partial int GetError();
 
-    [DllImport("libEGL.so.1", EntryPoint = "eglGetProcAddress")]
-    public static extern IntPtr GetProcAddress([MarshalAs(UnmanagedType.LPUTF8Str)] string procName);
+    [LibraryImport("libEGL.so.1", EntryPoint = "eglGetProcAddress")]
+    public static partial IntPtr GetProcAddress([MarshalAs(UnmanagedType.LPUTF8Str)] string procName);
 }

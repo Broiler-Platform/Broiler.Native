@@ -10,11 +10,11 @@ public static partial class WicNative
     public static extern int CoCreateInstance(ref Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, ref Guid riid,
         [MarshalAs(UnmanagedType.Interface)] out IWICImagingFactory ppv);
 
-    [DllImport("ole32.dll")]
-    public static extern int CoInitializeEx(IntPtr pvReserved, uint dwCoInit);
+    [LibraryImport("ole32.dll")]
+    public static partial int CoInitializeEx(IntPtr pvReserved, uint dwCoInit);
 
-    [DllImport("ole32.dll")]
-    public static extern void CoUninitialize();
+    [LibraryImport("ole32.dll")]
+    public static partial void CoUninitialize();
 
     [DllImport("ole32.dll")]
     public static extern int CreateStreamOnHGlobal(IntPtr hGlobal, bool fDeleteOnRelease, out IStream ppstm);

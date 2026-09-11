@@ -6,7 +6,8 @@ namespace Broiler.Native.Windows.Direct2D;
 public static class DirectWriteFontFamiliesApi
 {
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate int GetSystemFontCollectionProc(IntPtr self, out IntPtr collection, [MarshalAs(UnmanagedType.Bool)] bool checkForUpdates);
+    public delegate int GetSystemFontCollectionProc(IntPtr self,
+        out IntPtr collection, [MarshalAs(UnmanagedType.Bool)] bool checkForUpdates);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate uint GetFontFamilyCountProc(IntPtr self);
@@ -18,11 +19,8 @@ public static class DirectWriteFontFamiliesApi
     public delegate int GetFamilyNamesProc(IntPtr self, out IntPtr names);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
-    public delegate int FindLocaleNameProc(
-        IntPtr self,
-        [MarshalAs(UnmanagedType.LPWStr)] string localeName,
-        out uint index,
-        [MarshalAs(UnmanagedType.Bool)] out bool exists);
+    public delegate int FindLocaleNameProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string localeName, 
+        out uint index, [MarshalAs(UnmanagedType.Bool)] out bool exists);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetStringLengthProc(IntPtr self, uint index, out uint length);

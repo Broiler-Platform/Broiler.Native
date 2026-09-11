@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace Broiler.Native.Windows.Wasapi;
 
-public static class WindowsWasapiNative
+public static partial class WindowsWasapiNative
 {
     public const int S_OK = 0;
     public const int S_FALSE = 1;
@@ -31,36 +31,36 @@ public static class WindowsWasapiNative
     public static readonly Guid PcmSubFormat = new("00000001-0000-0010-8000-00aa00389b71");
     public static readonly Guid IeeeFloatSubFormat = new("00000003-0000-0010-8000-00aa00389b71");
 
-    [DllImport("ole32.dll")]
-    public static extern int CoInitializeEx(IntPtr reserved, uint coInit);
+    [LibraryImport("ole32.dll")]
+    public static partial int CoInitializeEx(IntPtr reserved, uint coInit);
 
-    [DllImport("ole32.dll")]
-    public static extern void CoUninitialize();
+    [LibraryImport("ole32.dll")]
+    public static partial void CoUninitialize();
 
     [DllImport("ole32.dll")]
     public static extern int CoCreateInstance(ref Guid classId, IntPtr outerUnknown, uint classContext,
         ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? instance);
 
-    [DllImport("ole32.dll")]
-    public static extern void CoTaskMemFree(IntPtr value);
+    [LibraryImport("ole32.dll")]
+    public static partial void CoTaskMemFree(IntPtr value);
 
-    [DllImport("ole32.dll")]
-    public static extern int PropVariantClear(ref PropVariant value);
+    [LibraryImport("ole32.dll")]
+    public static partial int PropVariantClear(ref PropVariant value);
 
-    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-    public static extern IntPtr CreateEventW(IntPtr eventAttributes, [MarshalAs(UnmanagedType.Bool)] bool manualReset,
+    [LibraryImport("kernel32.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
+    public static partial IntPtr CreateEventW(IntPtr eventAttributes, [MarshalAs(UnmanagedType.Bool)] bool manualReset,
         [MarshalAs(UnmanagedType.Bool)] bool initialState, string? name);
 
-    [DllImport("kernel32.dll", SetLastError = true)]
+    [LibraryImport("kernel32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool SetEvent(IntPtr handle);
+    public static partial bool SetEvent(IntPtr handle);
 
-    [DllImport("kernel32.dll", SetLastError = true)]
+    [LibraryImport("kernel32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool CloseHandle(IntPtr handle);
+    public static partial bool CloseHandle(IntPtr handle);
 
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern uint WaitForSingleObject(IntPtr handle, uint milliseconds);
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    public static partial uint WaitForSingleObject(IntPtr handle, uint milliseconds);
 }
 
 public enum EDataFlow

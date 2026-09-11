@@ -106,19 +106,8 @@ public static partial class WindowNative
     public static extern ushort RegisterClassEx(ref WNDCLASSEX windowClass);
 
     [LibraryImport("user32.dll", EntryPoint = "CreateWindowExW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
-    public static partial IntPtr CreateWindowEx(
-        uint exStyle,
-        string className,
-        string windowName,
-        uint style,
-        int x,
-        int y,
-        int width,
-        int height,
-        IntPtr hwndParent,
-        IntPtr menu,
-        IntPtr instance,
-        IntPtr param);
+    public static partial IntPtr CreateWindowEx(uint exStyle, string className, string windowName, uint style,
+        int x, int y, int width, int height, IntPtr hwndParent, IntPtr menu, IntPtr instance, IntPtr param);
 
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
@@ -271,13 +260,8 @@ public static partial class WindowNative
     public static partial IntPtr CreateIconIndirect(ref ICONINFO iconInfo);
 
     [LibraryImport("gdi32.dll", SetLastError = true)]
-    public static partial IntPtr CreateDIBSection(
-        IntPtr hdc,
-        ref BITMAPINFOHEADER header,
-        uint usage,
-        out IntPtr bits,
-        IntPtr section,
-        uint offset);
+    public static partial IntPtr CreateDIBSection(IntPtr hdc, ref BITMAPINFOHEADER header, uint usage, 
+        out IntPtr bits, IntPtr section, uint offset);
 
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial IntPtr CreateBitmap(int width, int height, uint planes, uint bitsPerPixel, IntPtr bits);
@@ -320,9 +304,9 @@ public static partial class WindowNative
         public uint BiClrUsed;
         public uint BiClrImportant;
     }
-    [DllImport("user32.dll", SetLastError = true)]
+    [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool SetProcessDpiAwarenessContext(IntPtr dpiContext);
+    public static partial bool SetProcessDpiAwarenessContext(IntPtr dpiContext);
     [DllImport("user32.dll", EntryPoint = "GetWindowTextW", CharSet = CharSet.Unicode, SetLastError = true)]
     public static extern int GetWindowText(IntPtr hwnd, StringBuilder text, int maxCount);
     public const int ErrorClassAlreadyExists = 1410;

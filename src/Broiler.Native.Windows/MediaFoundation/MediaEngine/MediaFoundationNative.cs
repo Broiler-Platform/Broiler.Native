@@ -4,7 +4,7 @@ using System.Runtime.Versioning;
 
 namespace Broiler.Native.Windows.MediaFoundation.MediaEngine;
 
-public static class MediaFoundationNative
+public static partial class MediaFoundationNative
 {
     public const int S_OK = 0;
     public const int S_FALSE = 1;
@@ -34,23 +34,23 @@ public static class MediaFoundationNative
     public static readonly Guid MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE = new("4E0212E2-E18F-41E1-95E5-C0E7E9235BC3");
     public static readonly Guid MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE = new("A6F3E465-3ACA-442C-A3F0-AD6DDAD839AE");
 
-    [DllImport("mfplat.dll", ExactSpelling = true)]
-    public static extern int MFStartup(int version, int flags);
+    [LibraryImport("mfplat.dll")]
+    public static partial int MFStartup(int version, int flags);
 
-    [DllImport("mfplat.dll", ExactSpelling = true)]
-    public static extern int MFShutdown();
+    [LibraryImport("mfplat.dll")]
+    public static partial int MFShutdown();
 
-    [DllImport("mfplat.dll", ExactSpelling = true)]
-    public static extern int MFCreateAttributes(out IntPtr attributes, uint initialSize);
+    [LibraryImport("mfplat.dll")]
+    public static partial int MFCreateAttributes(out IntPtr attributes, uint initialSize);
 
-    [DllImport("ole32.dll", ExactSpelling = true)]
-    public static extern int CoInitializeEx(IntPtr reserved, uint coInit);
+    [LibraryImport("ole32.dll")]
+    public static partial int CoInitializeEx(IntPtr reserved, uint coInit);
 
-    [DllImport("ole32.dll", ExactSpelling = true)]
-    public static extern void CoUninitialize();
+    [LibraryImport("ole32.dll")]
+    public static partial void CoUninitialize();
 
-    [DllImport("ole32.dll", ExactSpelling = true)]
-    public static extern int CoCreateInstance(ref Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, ref Guid riid, out IntPtr ppv);
+    [LibraryImport("ole32.dll")]
+    public static partial int CoCreateInstance(ref Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, ref Guid riid, out IntPtr ppv);
 
     public static void ReleaseIUnknown(IntPtr value)
     {

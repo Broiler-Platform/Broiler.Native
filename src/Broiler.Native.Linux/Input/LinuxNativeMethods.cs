@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Linux.Input;
 
-public static class LinuxNativeMethods
+public static partial class LinuxNativeMethods
 {
     public const int O_RDONLY = 0;
     public const int O_NONBLOCK = 0x800;
@@ -27,20 +27,20 @@ public static class LinuxNativeMethods
     private const nuint EVIOCSCLOCKID = 0x400445a0;
     private const int CLOCK_MONOTONIC = 1;
 
-    [DllImport("libc", EntryPoint = "open", SetLastError = true)]
-    public static extern int Open([MarshalAs(UnmanagedType.LPUTF8Str)] string pathname, int flags);
+    [LibraryImport("libc", EntryPoint = "open", SetLastError = true)]
+    public static partial int Open([MarshalAs(UnmanagedType.LPUTF8Str)] string pathname, int flags);
 
-    [DllImport("libc", EntryPoint = "read", SetLastError = true)]
-    public static extern nint Read(int fd, byte[] buffer, nuint count);
+    [LibraryImport("libc", EntryPoint = "read", SetLastError = true)]
+    public static partial nint Read(int fd, byte[] buffer, nuint count);
 
-    [DllImport("libc", EntryPoint = "poll", SetLastError = true)]
-    public static extern int Poll([In, Out] PollFd[] fds, nuint nfds, int timeout);
+    [LibraryImport("libc", EntryPoint = "poll", SetLastError = true)]
+    public static partial int Poll([In, Out] PollFd[] fds, nuint nfds, int timeout);
 
-    [DllImport("libc", EntryPoint = "ioctl", SetLastError = true)]
-    private static extern int IoctlClockId(int fd, nuint request, ref int clockId);
+    [LibraryImport("libc", EntryPoint = "ioctl", SetLastError = true)]
+    private static partial int IoctlClockId(int fd, nuint request, ref int clockId);
 
-    [DllImport("libc", EntryPoint = "ioctl", SetLastError = true)]
-    private static extern int IoctlAbsInfo(int fd, nuint request, byte[] absInfo);
+    [LibraryImport("libc", EntryPoint = "ioctl", SetLastError = true)]
+    private static partial int IoctlAbsInfo(int fd, nuint request, byte[] absInfo);
 
     public static bool TrySetMonotonicClock(int fd)
     {

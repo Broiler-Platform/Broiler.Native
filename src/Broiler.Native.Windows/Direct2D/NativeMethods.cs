@@ -18,25 +18,15 @@ public static partial class NativeMethods
     /// hardware/WARP capabilities for the installed Direct3D runtime.
     /// </summary>
     [LibraryImport("d3d11.dll")]
-    public static partial int D3D11CreateDevice(
-        IntPtr pAdapter,
-        D3D11Native.D3D_DRIVER_TYPE driverType,
-        IntPtr software,
-        uint flags,
-        IntPtr pFeatureLevels,
-        uint featureLevels,
-        uint sdkVersion,
-        out IntPtr ppDevice,
-        out D3D11Native.D3D_FEATURE_LEVEL pFeatureLevel,
-        out IntPtr ppImmediateContext);
+    public static partial int D3D11CreateDevice(IntPtr pAdapter, D3D11Native.D3D_DRIVER_TYPE driverType, IntPtr software,
+        uint flags, IntPtr pFeatureLevels, uint featureLevels, uint sdkVersion, out IntPtr ppDevice,
+        out D3D11Native.D3D_FEATURE_LEVEL pFeatureLevel, out IntPtr ppImmediateContext);
 
     // ---- dxgi.dll --------------------------------------------------------------------------------
 
     /// <summary>Creates a DXGI 1.1 factory. <paramref name="riid"/> is typically IID_IDXGIFactory1.</summary>
     [LibraryImport("dxgi.dll")]
-    public static partial int CreateDXGIFactory1(
-        in Guid riid,
-        out IntPtr ppFactory);
+    public static partial int CreateDXGIFactory1(in Guid riid, out IntPtr ppFactory);
 
     // ---- d2d1.dll --------------------------------------------------------------------------------
 
@@ -44,20 +34,14 @@ public static partial class NativeMethods
     /// Creates a Direct2D factory. The options blob is optional (pass <see cref="IntPtr.Zero"/>).
     /// </summary>
     [LibraryImport("d2d1.dll")]
-    public static partial int D2D1CreateFactory(
-        D2DNative.D2D1_FACTORY_TYPE factoryType,
-        in Guid riid,
-        IntPtr pFactoryOptions,
+    public static partial int D2D1CreateFactory(D2DNative.D2D1_FACTORY_TYPE factoryType, in Guid riid, IntPtr pFactoryOptions,
         out IntPtr ppIFactory);
 
     // ---- dwrite.dll ------------------------------------------------------------------------------
 
     /// <summary>Creates a DirectWrite factory. <paramref name="iid"/> is IID_IDWriteFactory.</summary>
     [LibraryImport("dwrite.dll")]
-    public static partial int DWriteCreateFactory(
-        DWriteNative.DWRITE_FACTORY_TYPE factoryType,
-        in Guid iid,
-        out IntPtr factory);
+    public static partial int DWriteCreateFactory(DWriteNative.DWRITE_FACTORY_TYPE factoryType, in Guid iid, out IntPtr factory);
 
     /// <summary>Returns <c>true</c> for a successful HRESULT (S_OK and other non-negative codes).</summary>
     public static bool Succeeded(int hr) => hr >= 0;

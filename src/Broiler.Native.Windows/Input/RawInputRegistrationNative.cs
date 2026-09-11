@@ -14,9 +14,9 @@ public static partial class RawInputRegistrationNative
         public IntPtr TargetWindow;
     }
 
-    [DllImport("user32.dll", SetLastError = true)]
+    [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool RegisterRawInputDevices([In] RawInputDevice[] rawInputDevices, uint deviceCount, uint rawInputDeviceSize);
+    public static partial bool RegisterRawInputDevices([In] RawInputDevice[] rawInputDevices, uint deviceCount, uint rawInputDeviceSize);
     public const ushort GenericDesktopUsagePage = 0x01;
     public const ushort MouseUsage = 0x02;
     public const ushort KeyboardUsage = 0x06;

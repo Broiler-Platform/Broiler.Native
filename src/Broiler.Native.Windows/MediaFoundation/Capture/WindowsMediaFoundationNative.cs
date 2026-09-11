@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace Broiler.Native.Windows.MediaFoundation.Capture;
 
-public static class WindowsMediaFoundationNative
+public static partial class WindowsMediaFoundationNative
 {
     public const int S_OK = 0;
     public const int S_FALSE = 1;
@@ -57,11 +57,11 @@ public static class WindowsMediaFoundationNative
     public static readonly Guid MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING = new("0F81DA2C-B537-4672-A8B2-A681B17307A3");
     public static readonly Guid MF_SOURCE_READER_DISCONNECT_MEDIASOURCE_ON_SHUTDOWN = new("56B67165-219E-456D-A22E-2D3004C7FE56");
 
-    [DllImport("mfplat.dll", ExactSpelling = true)]
-    public static extern int MFStartup(int version, int flags);
+    [LibraryImport("mfplat.dll")]
+    public static partial int MFStartup(int version, int flags);
 
-    [DllImport("mfplat.dll", ExactSpelling = true)]
-    public static extern int MFShutdown();
+    [LibraryImport("mfplat.dll")]
+    public static partial int MFShutdown();
 
     [DllImport("mfplat.dll", ExactSpelling = true)]
     public static extern int MFCreateAttributes(out IMFAttributes attributes, uint initialSize);
@@ -76,14 +76,14 @@ public static class WindowsMediaFoundationNative
     public static extern int MFCreateSourceReaderFromMediaSource(IMFMediaSource mediaSource, IMFAttributes? attributes,
         out IMFSourceReader sourceReader);
 
-    [DllImport("ole32.dll")]
-    public static extern void CoTaskMemFree(IntPtr value);
+    [LibraryImport("ole32.dll")]
+    public static partial void CoTaskMemFree(IntPtr value);
 
-    [DllImport("ole32.dll")]
-    public static extern int CoInitializeEx(IntPtr reserved, uint coInit);
+    [LibraryImport("ole32.dll")]
+    public static partial int CoInitializeEx(IntPtr reserved, uint coInit);
 
-    [DllImport("ole32.dll")]
-    public static extern void CoUninitialize();
+    [LibraryImport("ole32.dll")]
+    public static partial void CoUninitialize();
 }
 
 [Flags]

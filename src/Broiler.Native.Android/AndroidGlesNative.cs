@@ -17,7 +17,7 @@ namespace Broiler.Native.Android;
 /// An ES 2 fallback would have to draw a textured quad instead, which needs the shader pipeline this
 /// backend otherwise avoids.
 /// </remarks>
-public static class AndroidGlesNative
+public static partial class AndroidGlesNative
 {
     public const int GL_NO_ERROR = 0;
     public const int GL_TEXTURE_2D = 0x0DE1;
@@ -45,77 +45,77 @@ public static class AndroidGlesNative
     public const uint GL_VERSION = 0x1F02;
     public const uint GL_SHADING_LANGUAGE_VERSION = 0x8B8C;
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glGenTextures")]
-    public static extern void GenTextures(int count, out uint textures);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGenTextures")]
+    public static partial void GenTextures(int count, out uint textures);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glDeleteTextures")]
-    public static extern void DeleteTextures(int count, ref uint textures);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glDeleteTextures")]
+    public static partial void DeleteTextures(int count, ref uint textures);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glBindTexture")]
-    public static extern void BindTexture(int target, uint texture);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glBindTexture")]
+    public static partial void BindTexture(int target, uint texture);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexParameteri")]
-    public static extern void TexParameteri(int target, int name, int value);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexParameteri")]
+    public static partial void TexParameteri(int target, int name, int value);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexImage2D")]
-    public static extern void TexImage2D(int target, int level, int internalFormat,
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexImage2D")]
+    public static partial void TexImage2D(int target, int level, int internalFormat,
         int width, int height, int border, int format, int type, IntPtr pixels);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glGenFramebuffers")]
-    public static extern void GenFramebuffers(int count, out uint framebuffers);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGenFramebuffers")]
+    public static partial void GenFramebuffers(int count, out uint framebuffers);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glDeleteFramebuffers")]
-    public static extern void DeleteFramebuffers(int count, ref uint framebuffers);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glDeleteFramebuffers")]
+    public static partial void DeleteFramebuffers(int count, ref uint framebuffers);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glBindFramebuffer")]
-    public static extern void BindFramebuffer(int target, uint framebuffer);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glBindFramebuffer")]
+    public static partial void BindFramebuffer(int target, uint framebuffer);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glFramebufferTexture2D")]
-    public static extern void FramebufferTexture2D(int target, int attachment, int textureTarget, uint texture, int level);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glFramebufferTexture2D")]
+    public static partial void FramebufferTexture2D(int target, int attachment, int textureTarget, uint texture, int level);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glCheckFramebufferStatus")]
-    public static extern uint CheckFramebufferStatus(int target);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glCheckFramebufferStatus")]
+    public static partial uint CheckFramebufferStatus(int target);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glViewport")]
-    public static extern void Viewport(int x, int y, int width, int height);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glViewport")]
+    public static partial void Viewport(int x, int y, int width, int height);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glClearColor")]
-    public static extern void ClearColor(float red, float green, float blue, float alpha);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glClearColor")]
+    public static partial void ClearColor(float red, float green, float blue, float alpha);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glClear")]
-    public static extern void Clear(int mask);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glClear")]
+    public static partial void Clear(int mask);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glReadPixels")]
-    public static extern void ReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glReadPixels")]
+    public static partial void ReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels);
 
     /// <summary>OpenGL ES 3.0 and later only.</summary>
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glBlitFramebuffer")]
-    public static extern void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, 
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glBlitFramebuffer")]
+    public static partial void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, 
         int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glPixelStorei")]
-    public static extern void PixelStorei(int name, int value);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glPixelStorei")]
+    public static partial void PixelStorei(int name, int value);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glEnable")]
-    public static extern void Enable(int capability);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glEnable")]
+    public static partial void Enable(int capability);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glDisable")]
-    public static extern void Disable(int capability);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glDisable")]
+    public static partial void Disable(int capability);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glScissor")]
-    public static extern void Scissor(int x, int y, int width, int height);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glScissor")]
+    public static partial void Scissor(int x, int y, int width, int height);
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glFlush")]
-    public static extern void Flush();
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glFlush")]
+    public static partial void Flush();
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glFinish")]
-    public static extern void Finish();
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glFinish")]
+    public static partial void Finish();
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glGetError")]
-    public static extern int GetError();
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGetError")]
+    public static partial int GetError();
 
-    [DllImport(AndroidNativeLibraries.Gles, EntryPoint = "glGetString")]
-    public static extern IntPtr GetString(uint name);
+    [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGetString")]
+    public static partial IntPtr GetString(uint name);
 
     public static string GetStringValue(uint name)
     {

@@ -113,17 +113,7 @@ public sealed class LinuxOpenGlFunctions
     public void ReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels) =>
         _readPixels(x, y, width, height, format, type, pixels);
 
-    public void BlitFramebuffer(
-        int srcX0,
-        int srcY0,
-        int srcX1,
-        int srcY1,
-        int dstX0,
-        int dstY0,
-        int dstX1,
-        int dstY1,
-        int mask,
-        int filter) =>
+    public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) =>
         _blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 
     public void PixelStorei(int pname, int param) => _pixelStorei(pname, param);
@@ -145,11 +135,7 @@ public sealed class LinuxOpenGlFunctions
     }
 
     public LinuxOpenGlDriverInfo GetDriverInfo() =>
-        new(
-            GetString(GL_VENDOR),
-            GetString(GL_RENDERER),
-            GetString(GL_VERSION),
-            GetString(GL_SHADING_LANGUAGE_VERSION));
+        new(GetString(GL_VENDOR), GetString(GL_RENDERER), GetString(GL_VERSION), GetString(GL_SHADING_LANGUAGE_VERSION));
 
     public void ThrowIfError(string operation)
     {
@@ -158,8 +144,7 @@ public sealed class LinuxOpenGlFunctions
             throw new LinuxOpenGlException($"{operation} failed with OpenGL error 0x{error:X}.");
     }
 
-    private static TDelegate Load<TDelegate>(string name)
-        where TDelegate : Delegate
+    private static TDelegate Load<TDelegate>(string name) where TDelegate : Delegate
     {
         IntPtr address = LinuxEglNative.GetProcAddress(name);
         if (address == IntPtr.Zero)

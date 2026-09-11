@@ -27,13 +27,12 @@ public static class ComVtable
     /// Returns the method at <paramref name="slot"/> in <paramref name="comObject"/>'s vtable as a
     /// <typeparamref name="TDelegate"/>. <paramref name="comObject"/> must be non-null.
     /// </summary>
-    public static TDelegate Method<TDelegate>(IntPtr comObject, int slot)
-        where TDelegate : Delegate
+    public static TDelegate Method<TDelegate>(IntPtr comObject, int slot) where TDelegate : Delegate
     {
         IntPtr vtable = Marshal.ReadIntPtr(comObject);
         IntPtr function = Marshal.ReadIntPtr(vtable, slot * IntPtr.Size);
-        return (TDelegate)Delegates.GetOrAdd(
-            (function, typeof(TDelegate)),
+
+        return (TDelegate)Delegates.GetOrAdd((function, typeof(TDelegate)), 
             static key => Marshal.GetDelegateForFunctionPointer<TDelegate>(key.Function));
     }
 }

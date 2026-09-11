@@ -37,8 +37,8 @@ public static partial class RawInputReaderNative
         public uint ExtraInformation;
     }
 
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern uint GetRawInputData(IntPtr rawInput, uint command, IntPtr data, ref uint size, uint headerSize);
+    [LibraryImport("user32.dll", SetLastError = true)]
+    public static partial uint GetRawInputData(IntPtr rawInput, uint command, IntPtr data, ref uint size, uint headerSize);
     public const uint RidInput = 0x10000003;
     public const uint RimTypeMouse = 0;
     public const uint RimTypeKeyboard = 1;

@@ -18,7 +18,7 @@ namespace Broiler.Native.Android;
 /// <see cref="Release"/>. A graphics window surface does not take ownership of a
 /// window handed to it, because the host's surface lifecycle already owns it.
 /// </remarks>
-public static class AndroidNativeWindowNative
+public static partial class AndroidNativeWindowNative
 {
     /// <summary>Matches <c>WINDOW_FORMAT_RGBA_8888</c>.</summary>
     public const int WindowFormatRgba8888 = 1;
@@ -26,24 +26,24 @@ public static class AndroidNativeWindowNative
     /// <summary>Matches <c>WINDOW_FORMAT_RGBX_8888</c>.</summary>
     public const int WindowFormatRgbx8888 = 2;
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_fromSurface")]
-    public static extern IntPtr FromSurface(IntPtr jniEnvironment, IntPtr surface);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_fromSurface")]
+    public static partial IntPtr FromSurface(IntPtr jniEnvironment, IntPtr surface);
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_acquire")]
-    public static extern void Acquire(IntPtr window);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_acquire")]
+    public static partial void Acquire(IntPtr window);
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_release")]
-    public static extern void Release(IntPtr window);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_release")]
+    public static partial void Release(IntPtr window);
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getWidth")]
-    public static extern int GetWidth(IntPtr window);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getWidth")]
+    public static partial int GetWidth(IntPtr window);
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getHeight")]
-    public static extern int GetHeight(IntPtr window);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getHeight")]
+    public static partial int GetHeight(IntPtr window);
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getFormat")]
-    public static extern int GetFormat(IntPtr window);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getFormat")]
+    public static partial int GetFormat(IntPtr window);
 
-    [DllImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_setBuffersGeometry")]
-    public static extern int SetBuffersGeometry(IntPtr window, int width, int height, int format);
+    [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_setBuffersGeometry")]
+    public static partial int SetBuffersGeometry(IntPtr window, int width, int height, int format);
 }
