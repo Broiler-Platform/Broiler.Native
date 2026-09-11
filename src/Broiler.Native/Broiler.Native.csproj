@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Shared native library loading utilities.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+
+  </ItemGroup>
+</Project>

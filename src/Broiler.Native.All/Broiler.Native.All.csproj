@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Convenience package referencing all Broiler native API bindings.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Broiler.Native/Broiler.Native.csproj" />
+    <ProjectReference Include="../Broiler.Native.Windows/Broiler.Native.Windows.csproj" />
+    <ProjectReference Include="../Broiler.Native.Linux/Broiler.Native.Linux.csproj" />
+    <ProjectReference Include="../Broiler.Native.Android/Broiler.Native.Android.csproj" />
+  </ItemGroup>
+</Project>

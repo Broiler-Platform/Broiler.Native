@@ -1,0 +1,31 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="Debug-Linux" />
+    <BuildType Name="Release-Linux" />
+    <BuildType Name="Debug-Windows" />
+    <BuildType Name="Release-Windows" />
+  </Configurations>
+  <Folder Name="/solution items/">
+    <File Path="Directory.Build.props" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+    <File Path="LICENSE" />
+  </Folder>
+  <Folder Name="/solution items/docs/">
+    <File Path="docs/native-api-inventory.md" />
+    <File Path="docs/roadmap.md" />
+    <File Path="docs/adr/0001-native-api-ownership.md" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="src/tests/Broiler.Native.Tests/Broiler.Native.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Broiler.Native.All/Broiler.Native.All.csproj" />
+    <Project Path="src/Broiler.Native.Android/Broiler.Native.Android.csproj" />
+    <Project Path="src/Broiler.Native.Linux/Broiler.Native.Linux.csproj" />
+    <Project Path="src/Broiler.Native.Windows/Broiler.Native.Windows.csproj" />
+    <Project Path="src/Broiler.Native/Broiler.Native.csproj" />
+  </Folder>
+</Solution>

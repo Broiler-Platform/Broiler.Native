@@ -1,0 +1,10 @@
+bin/
+obj/
+artifacts/
+.vs/
+*.user
+*.nupkg
+*.snupkg
+
+.migration/
+artifacts/
