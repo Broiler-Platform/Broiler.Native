@@ -5,8 +5,6 @@ namespace Broiler.Native.Windows.Direct2D;
 
 public static class Direct2DOffscreenSurfaceApi
 {
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate int CreateDeviceContextProc(IntPtr self, D2DNative.D2D1_DEVICE_CONTEXT_OPTIONS options, out IntPtr deviceContext);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateBitmap1Proc(IntPtr self, D2DNative.D2D1_SIZE_U size, IntPtr sourceData, uint pitch,
@@ -21,6 +19,4 @@ public static class Direct2DOffscreenSurfaceApi
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int UnmapProc(IntPtr self);
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void SetTargetProc(IntPtr self, IntPtr image);
 }

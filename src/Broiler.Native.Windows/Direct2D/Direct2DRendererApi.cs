@@ -70,11 +70,6 @@ public static class Direct2DRendererApi
         float strokeWidth, IntPtr strokeStyle);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
-    public delegate int CreateTextFormatProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string fontFamilyName, IntPtr fontCollection,
-        DWriteNative.DWRITE_FONT_WEIGHT fontWeight, DWriteNative.DWRITE_FONT_STYLE fontStyle, DWriteNative.DWRITE_FONT_STRETCH fontStretch,
-        float fontSize, [MarshalAs(UnmanagedType.LPWStr)] string localeName, out IntPtr textFormat);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
     public delegate void DrawTextProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string text, uint textLength, IntPtr textFormat,
         in D2DNative.D2D1_RECT_F layoutRect, IntPtr brush, D2DNative.D2D1_DRAW_TEXT_OPTIONS options, DWriteNative.DWRITE_MEASURING_MODE measuringMode);
 

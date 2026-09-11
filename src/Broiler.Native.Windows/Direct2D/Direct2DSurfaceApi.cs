@@ -14,9 +14,6 @@ public static class Direct2DSurfaceApi
         IntPtr fullscreenDesc, IntPtr restrictToOutput, out IntPtr swapChain);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate int CreateDeviceContextProc(IntPtr self, D2DNative.D2D1_DEVICE_CONTEXT_OPTIONS options, out IntPtr deviceContext);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetBufferProc(IntPtr self, uint buffer, ref Guid riid, out IntPtr surface);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
@@ -25,9 +22,6 @@ public static class Direct2DSurfaceApi
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateBitmapFromDxgiSurfaceProc(IntPtr self, IntPtr dxgiSurface, 
         ref D2DNative.D2D1_BITMAP_PROPERTIES1 bitmapProperties, out IntPtr bitmap);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void SetTargetProc(IntPtr self, IntPtr image);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void SetDpiProc(IntPtr self, float dpiX, float dpiY);

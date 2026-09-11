@@ -314,4 +314,10 @@ public static class D2DNative
         public float Dx;
         public float Dy;
     }
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    public delegate int CreateDeviceContextProc(IntPtr self, D2DNative.D2D1_DEVICE_CONTEXT_OPTIONS options, out IntPtr deviceContext);
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    public delegate void SetTargetProc(IntPtr self, IntPtr image);
 }

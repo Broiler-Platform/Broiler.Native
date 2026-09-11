@@ -10,8 +10,10 @@ public static class NativeLibraryProbe
     {
         if (string.IsNullOrWhiteSpace(libraryName))
             return false;
+
         if (!NativeLibrary.TryLoad(libraryName, out IntPtr handle))
             return false;
+        
         NativeLibrary.Free(handle);
         return true;
     }

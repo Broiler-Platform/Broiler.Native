@@ -2,10 +2,6 @@
   <Configurations>
     <BuildType Name="Debug" />
     <BuildType Name="Release" />
-    <BuildType Name="Debug-Linux" />
-    <BuildType Name="Release-Linux" />
-    <BuildType Name="Debug-Windows" />
-    <BuildType Name="Release-Windows" />
   </Configurations>
   <Folder Name="/solution items/">
     <File Path="Directory.Build.props" />

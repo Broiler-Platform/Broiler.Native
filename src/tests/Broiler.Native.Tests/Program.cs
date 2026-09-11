@@ -10,9 +10,82 @@ using Broiler.Native.Windows.Direct2D;
 using Broiler.Native.Windows.Wasapi;
 using Broiler.Native.Windows.Input;
 using Broiler.Native.Windows.MediaFoundation.MediaEngine;
+using Broiler.Native.Windows.MediaFoundation;
+using Broiler.Native.Windows.MediaFoundation.Capture;
+using static Broiler.Native.Windows.Wic.WicNative;
 
 var tests = new (string Name, Action Run)[]
 {
+    ("Windows COM interface IDs have one public contract", () =>
+    {
+        var duplicateIds = typeof(ComNative).Assembly.GetExportedTypes()
+            .Where(type => type.IsInterface && type.GetCustomAttribute<GuidAttribute>() is not null)
+            .GroupBy(type => type.GUID).Where(group => group.Count() > 1);
+        Check(!duplicateIds.Any(), "Duplicate COM interface declarations: " +
+            string.Join(", ", duplicateIds.SelectMany(group => group.Select(type => type.FullName))));
+        Check(typeof(IMFActivate).GetInterfaces().Contains(typeof(IMFAttributes)), "Capture must use shared attributes.");
+        Check(typeof(IMFMediaEngineClassFactory).GetMethod("CreateInstance")!.GetParameters()[1].ParameterType == typeof(IMFAttributes),
+            "Playback must use the same attribute contract as capture.");
+    }),
+    ("Shared Windows imports have one owner", () =>
+    {
+        var methods = typeof(ComNative).Assembly.GetExportedTypes()
+            .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly))
+            .Where(method => method.GetCustomAttribute<LibraryImportAttribute>() is not null ||
+                method.GetCustomAttribute<DllImportAttribute>() is not null).ToArray();
+        foreach (string name in new[] { "CoInitializeEx", "CoUninitialize", "CoTaskMemFree", "MFStartup", "MFShutdown",
+            "GetKeyState", "ScreenToClient", "TrackMouseEvent" })
+            Check(methods.Count(method => method.Name == name) == 1, name + " must have one import.");
+        Check(methods.Count(method => method.Name == "CoCreateInstance") == 3, "Keep all three COM activation marshalling overloads.");
+        Check(methods.Count(method => method.Name == "MFCreateAttributes") == 2, "Keep raw and typed attribute creation overloads.");
+        foreach (string name in new[] { "CreateDeviceContextProc", "SetTargetProc", "CreateTextFormatProc", "POINT", "TRACKMOUSEEVENT" })
+            Check(typeof(ComNative).Assembly.GetExportedTypes().Count(type => type.Name == name) == 1, name + " must have one declaration.");
+    }),
+    ("Shared COM and Media Foundation overloads preserve runtime marshalling", () =>
+    {
+        if (!OperatingSystem.IsWindows()) return;
+        int initialized = ComNative.CoInitializeEx(IntPtr.Zero, ComNative.COINIT_MULTITHREADED);
+        Check(initialized >= 0 || initialized == ComNative.RPC_E_CHANGED_MODE, "COM initialization failed.");
+        try
+        {
+            Guid clsid = ClsidWicImagingFactory;
+            Guid iid = IidWicImagingFactory;
+            Marshal.ThrowExceptionForHR(ComNative.CoCreateInstance(ref clsid, IntPtr.Zero, ComNative.CLSCTX_INPROC_SERVER, ref iid, out IntPtr rawFactory));
+            ComNative.ReleaseIUnknown(rawFactory);
+            Marshal.ThrowExceptionForHR(ComNative.CoCreateInstance(ref clsid, IntPtr.Zero, ComNative.CLSCTX_INPROC_SERVER, ref iid, out object? objectFactory));
+            ComNative.ReleaseComObject(objectFactory);
+            Marshal.ThrowExceptionForHR(ComNative.CoCreateInstance(ref clsid, IntPtr.Zero, ComNative.CLSCTX_INPROC_SERVER, ref iid, out IWICImagingFactory typedFactory));
+            ComNative.ReleaseComObject(typedFactory);
+
+            Marshal.ThrowExceptionForHR(MediaFoundationPlatformNative.MFStartup(MediaFoundationPlatformNative.MF_VERSION, MediaFoundationPlatformNative.MFSTARTUP_NOSOCKET));
+            try
+            {
+                Marshal.ThrowExceptionForHR(MediaFoundationPlatformNative.MFCreateAttributes(out IMFAttributes typed, 1));
+                try
+                {
+                    Guid key = Guid.NewGuid();
+                    Marshal.ThrowExceptionForHR(typed.SetUINT32(ref key, 42));
+                    Marshal.ThrowExceptionForHR(typed.GetUINT32(ref key, out int value));
+                    Check(value == 42, "Shared attribute vtable failed to round-trip a value.");
+                }
+                finally { ComNative.ReleaseComObject(typed); }
+                Marshal.ThrowExceptionForHR(MediaFoundationPlatformNative.MFCreateAttributes(out IntPtr raw, 1));
+                try
+                {
+                    var attributes = (IMFAttributes)Marshal.GetObjectForIUnknown(raw);
+                    try
+                    {
+                        Marshal.ThrowExceptionForHR(attributes.GetCount(out int count));
+                        Check(count == 0, "Raw attribute creation should return an empty shared contract.");
+                    }
+                    finally { ComNative.ReleaseComObject(attributes); }
+                }
+                finally { ComNative.ReleaseIUnknown(raw); }
+            }
+            finally { Marshal.ThrowExceptionForHR(MediaFoundationPlatformNative.MFShutdown()); }
+        }
+        finally { if (initialized >= 0) ComNative.CoUninitialize(); }
+    }),
     ("Native assemblies have no component dependencies", () =>
     {
         Assembly[] assemblies = [typeof(NativeLibraryProbe).Assembly, typeof(WindowNative).Assembly,

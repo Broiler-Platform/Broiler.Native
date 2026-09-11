@@ -6,7 +6,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Configurations>Debug;Release;Debug-Linux;Release-Linux;Debug-Windows;Release-Windows</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <Optimize Condition="$(Configuration.StartsWith('Release'))">true</Optimize>
     <PackageProjectUrl>https://github.com/Broiler-Platform/Broiler.Native</PackageProjectUrl>
     <PackageTags>broiler;native;interop</PackageTags>

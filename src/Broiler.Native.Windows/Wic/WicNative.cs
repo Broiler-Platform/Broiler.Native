@@ -6,18 +6,6 @@ namespace Broiler.Native.Windows.Wic;
 
 public static partial class WicNative
 {
-    [DllImport("ole32.dll")]
-    public static extern int CoCreateInstance(ref Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, ref Guid riid,
-        [MarshalAs(UnmanagedType.Interface)] out IWICImagingFactory ppv);
-
-    [LibraryImport("ole32.dll")]
-    public static partial int CoInitializeEx(IntPtr pvReserved, uint dwCoInit);
-
-    [LibraryImport("ole32.dll")]
-    public static partial void CoUninitialize();
-
-    [DllImport("ole32.dll")]
-    public static extern int CreateStreamOnHGlobal(IntPtr hGlobal, bool fDeleteOnRelease, out IStream ppstm);
 
     [ComImport]
     [Guid("3b16811b-6a43-4ec9-a813-3d930c13b940")]
@@ -146,9 +134,6 @@ public static partial class WicNative
         [PreserveSig]
         int CreateFormatConverter(out IWICFormatConverter ppIFormatConverter);
     }
-    public const uint ClsctxInprocServer = 0x1;
-    public const uint CoInitMultithreaded = 0x0;
-    public const int RpcEChangedMode = unchecked((int)0x80010106);
     public const int WinCodecErrUnknownImageFormat = unchecked((int)0x88982F07);
     public const int WinCodecErrComponentNotFound = unchecked((int)0x88982F50);
     public const int WinCodecErrInvalidRegistration = unchecked((int)0x88982F8A);

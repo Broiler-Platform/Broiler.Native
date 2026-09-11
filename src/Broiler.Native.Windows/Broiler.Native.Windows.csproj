@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Windows, COM, Direct2D, DirectWrite, WIC, WASAPI, and Media Foundation bindings.</Description>
   </PropertyGroup>

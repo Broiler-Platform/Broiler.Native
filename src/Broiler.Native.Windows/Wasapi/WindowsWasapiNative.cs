@@ -6,19 +6,11 @@ namespace Broiler.Native.Windows.Wasapi;
 
 public static partial class WindowsWasapiNative
 {
-    public const int S_OK = 0;
-    public const int S_FALSE = 1;
-    public const int E_ACCESSDENIED = unchecked((int)0x80070005);
-    public const int E_NOINTERFACE = unchecked((int)0x80004002);
-    public const int E_NOTFOUND = unchecked((int)0x80070490);
-    public const int RPC_E_CHANGED_MODE = unchecked((int)0x80010106);
     public const int AUDCLNT_E_DEVICE_INVALIDATED = unchecked((int)0x88890004);
     public const int AUDCLNT_E_UNSUPPORTED_FORMAT = unchecked((int)0x88890008);
     public const int AUDCLNT_E_DEVICE_IN_USE = unchecked((int)0x8889000A);
     public const int AUDCLNT_E_SERVICE_NOT_RUNNING = unchecked((int)0x88890010);
 
-    public const uint CLSCTX_INPROC_SERVER = 0x1;
-    public const uint COINIT_MULTITHREADED = 0x0;
     public const uint WAIT_OBJECT_0 = 0;
     public const uint WAIT_TIMEOUT = 258;
     public const uint WAIT_FAILED = 0xFFFFFFFF;
@@ -30,19 +22,6 @@ public static partial class WindowsWasapiNative
 
     public static readonly Guid PcmSubFormat = new("00000001-0000-0010-8000-00aa00389b71");
     public static readonly Guid IeeeFloatSubFormat = new("00000003-0000-0010-8000-00aa00389b71");
-
-    [LibraryImport("ole32.dll")]
-    public static partial int CoInitializeEx(IntPtr reserved, uint coInit);
-
-    [LibraryImport("ole32.dll")]
-    public static partial void CoUninitialize();
-
-    [DllImport("ole32.dll")]
-    public static extern int CoCreateInstance(ref Guid classId, IntPtr outerUnknown, uint classContext,
-        ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? instance);
-
-    [LibraryImport("ole32.dll")]
-    public static partial void CoTaskMemFree(IntPtr value);
 
     [LibraryImport("ole32.dll")]
     public static partial int PropVariantClear(ref PropVariant value);
