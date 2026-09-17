@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
-using System.Runtime.Versioning;
+using System.Runtime.InteropServices.Marshalling;
+using System.ComponentModel;
 
 namespace Broiler.Native.Windows.MediaFoundation.MediaEngine;
 
@@ -22,45 +23,41 @@ public static partial class MediaFoundationNative
 }
 
 /// <summary>Native Media Engine callback contract. Public visibility is required for COM QueryInterface.</summary>
-[ComVisible(true)]
+[GeneratedComInterface]
 [Guid("FEE7C112-E776-42B5-9BBF-0048524E2BD5")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-// COM requires a public interface for QueryInterface, even with ComVisible(true).
-[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-public interface IMFMediaEngineNotify
+[EditorBrowsable(EditorBrowsableState.Never)]
+public partial interface IMFMediaEngineNotify
 {
     [PreserveSig]
     int EventNotify(uint @event, UIntPtr param1, uint param2);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("4D645ACE-26AA-4688-9BE1-DF3516990B93")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFMediaEngineClassFactory
+public partial interface IMFMediaEngineClassFactory
 {
     [PreserveSig]
     int CreateInstance(uint createFlags, IMFAttributes attributes, out IMFMediaEngine mediaEngine);
 
     [PreserveSig]
-    int CreateTimeRange([MarshalAs(UnmanagedType.IUnknown)] out object? timeRange);
+    int CreateTimeRange(out IntPtr timeRange);
 
     [PreserveSig]
-    int CreateError([MarshalAs(UnmanagedType.IUnknown)] out object? error);
+    int CreateError(out IntPtr error);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("98A1B0BB-03EB-4935-AE7C-93C1FA0E1C93")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFMediaEngine
+public partial interface IMFMediaEngine
 {
     [PreserveSig]
-    int GetError([MarshalAs(UnmanagedType.IUnknown)] out object? error);
+    int GetError(out IntPtr error);
 
     [PreserveSig]
     int SetErrorCode(int error);
 
     [PreserveSig]
-    int SetSourceElements([MarshalAs(UnmanagedType.IUnknown)] object? sourceElements);
+    int SetSourceElements(IntPtr sourceElements);
 
     [PreserveSig]
     int SetSource([MarshalAs(UnmanagedType.BStr)] string url);
@@ -78,7 +75,7 @@ public interface IMFMediaEngine
     int SetPreload(int preload);
 
     [PreserveSig]
-    int GetBuffered([MarshalAs(UnmanagedType.IUnknown)] out object? buffered);
+    int GetBuffered(out IntPtr buffered);
 
     [PreserveSig]
     int Load();
@@ -120,10 +117,10 @@ public interface IMFMediaEngine
     int SetPlaybackRate(double rate);
 
     [PreserveSig]
-    int GetPlayed([MarshalAs(UnmanagedType.IUnknown)] out object? played);
+    int GetPlayed(out IntPtr played);
 
     [PreserveSig]
-    int GetSeekable([MarshalAs(UnmanagedType.IUnknown)] out object? seekable);
+    int GetSeekable(out IntPtr seekable);
 
     [PreserveSig]
     int IsEnded();

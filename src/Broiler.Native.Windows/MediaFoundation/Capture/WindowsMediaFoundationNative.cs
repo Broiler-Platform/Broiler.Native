@@ -33,14 +33,14 @@ public static partial class WindowsMediaFoundationNative
     public static readonly Guid MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING = new("0F81DA2C-B537-4672-A8B2-A681B17307A3");
     public static readonly Guid MF_SOURCE_READER_DISCONNECT_MEDIASOURCE_ON_SHUTDOWN = new("56B67165-219E-456D-A22E-2D3004C7FE56");
 
-    [DllImport("mf.dll", ExactSpelling = true)]
-    public static extern int MFEnumDeviceSources(IMFAttributes attributes, out IntPtr devices, out uint count);
+    [LibraryImport("mf.dll")]
+    public static partial int MFEnumDeviceSources(IMFAttributes attributes, out IntPtr devices, out uint count);
 
-    [DllImport("mf.dll", ExactSpelling = true)]
-    public static extern int MFCreateDeviceSource(IMFAttributes attributes, out IMFMediaSource mediaSource);
+    [LibraryImport("mf.dll")]
+    public static partial int MFCreateDeviceSource(IMFAttributes attributes, out IMFMediaSource mediaSource);
 
-    [DllImport("mfreadwrite.dll", ExactSpelling = true)]
-    public static extern int MFCreateSourceReaderFromMediaSource(IMFMediaSource mediaSource, IMFAttributes? attributes,
+    [LibraryImport("mfreadwrite.dll")]
+    public static partial int MFCreateSourceReaderFromMediaSource(IMFMediaSource mediaSource, IMFAttributes? attributes,
         out IMFSourceReader sourceReader);
 
 }
@@ -57,13 +57,12 @@ public enum SourceReaderFlags
     StreamTick = 0x00000100,
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("7FEE9E9A-4A89-47A6-899C-B6A53A70FB67")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFActivate : IMFAttributes
+public partial interface IMFActivate : IMFAttributes
 {
     [PreserveSig]
-    int ActivateObject(ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? activatedObject);
+    int ActivateObject(ref Guid interfaceId, out IntPtr activatedObject);
 
     [PreserveSig]
     int ShutdownObject();
@@ -72,19 +71,18 @@ public interface IMFActivate : IMFAttributes
     int DetachObject();
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("279A808D-AEC7-40C8-9C6B-A6B492C78A66")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFMediaSource
+public partial interface IMFMediaSource
 {
     [PreserveSig]
-    int GetEvent(int flags, [MarshalAs(UnmanagedType.IUnknown)] out object? mediaEvent);
+    int GetEvent(int flags, out IntPtr mediaEvent);
 
     [PreserveSig]
-    int BeginGetEvent([MarshalAs(UnmanagedType.IUnknown)] object? callback, [MarshalAs(UnmanagedType.IUnknown)] object? state);
+    int BeginGetEvent(IntPtr callback, IntPtr state);
 
     [PreserveSig]
-    int EndGetEvent([MarshalAs(UnmanagedType.IUnknown)] object result, [MarshalAs(UnmanagedType.IUnknown)] out object? mediaEvent);
+    int EndGetEvent(IntPtr result, out IntPtr mediaEvent);
 
     [PreserveSig]
     int QueueEvent(int mediaEventType, ref Guid extendedType, int status, IntPtr value);
@@ -93,10 +91,10 @@ public interface IMFMediaSource
     int GetCharacteristics(out int characteristics);
 
     [PreserveSig]
-    int CreatePresentationDescriptor([MarshalAs(UnmanagedType.IUnknown)] out object? presentationDescriptor);
+    int CreatePresentationDescriptor(out IntPtr presentationDescriptor);
 
     [PreserveSig]
-    int Start([MarshalAs(UnmanagedType.IUnknown)] object presentationDescriptor, ref Guid timeFormat, IntPtr startPosition);
+    int Start(IntPtr presentationDescriptor, ref Guid timeFormat, IntPtr startPosition);
 
     [PreserveSig]
     int Stop();
@@ -108,10 +106,9 @@ public interface IMFMediaSource
     int Shutdown();
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("44AE0FA8-EA31-4109-8D2E-4CAE4997C555")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFMediaType : IMFAttributes
+public partial interface IMFMediaType : IMFAttributes
 {
     [PreserveSig]
     int GetMajorType(out Guid majorType);
@@ -129,10 +126,9 @@ public interface IMFMediaType : IMFAttributes
     int FreeRepresentation(Guid representation, IntPtr representationData);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("70AE66F2-C809-4E4F-8915-BDCB406B7993")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFSourceReader
+public partial interface IMFSourceReader
 {
     [PreserveSig]
     int GetStreamSelection(int streamIndex, [MarshalAs(UnmanagedType.Bool)] out bool selected);
@@ -160,16 +156,15 @@ public interface IMFSourceReader
     int Flush(int streamIndex);
 
     [PreserveSig]
-    int GetServiceForStream(int streamIndex, ref Guid service, ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? serviceObject);
+    int GetServiceForStream(int streamIndex, ref Guid service, ref Guid interfaceId, out IntPtr serviceObject);
 
     [PreserveSig]
     int GetPresentationAttribute(int streamIndex, ref Guid attribute, IntPtr value);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("C40A00F2-B93A-4D80-AE8C-5A1C634F58E4")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFSample
+public partial interface IMFSample
 {
     [PreserveSig]
     int GetItem(ref Guid key, IntPtr value);
@@ -214,7 +209,7 @@ public interface IMFSample
     int GetAllocatedBlob(ref Guid key, out IntPtr buffer, out int size);
 
     [PreserveSig]
-    int GetUnknown(ref Guid key, ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? value);
+    int GetUnknown(ref Guid key, ref Guid interfaceId, out IntPtr value);
 
     [PreserveSig]
     int SetItem(ref Guid key, IntPtr value);
@@ -244,7 +239,7 @@ public interface IMFSample
     int SetBlob(ref Guid key, IntPtr buffer, int size);
 
     [PreserveSig]
-    int SetUnknown(ref Guid key, [MarshalAs(UnmanagedType.IUnknown)] object? value);
+    int SetUnknown(ref Guid key, IntPtr value);
 
     [PreserveSig]
     int LockStore();
@@ -306,7 +301,6 @@ public interface IMFSample
 
 [GeneratedComInterface]
 [Guid("045FA593-8799-42B8-BC8D-8968C6453507")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IMFMediaBuffer
 {
     [PreserveSig]

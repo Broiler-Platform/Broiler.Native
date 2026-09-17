@@ -1,16 +1,14 @@
 using System;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace Broiler.Native.Windows.Wic;
 
 public static partial class WicNative
 {
-
-    [ComImport]
+    [GeneratedComInterface]
     [Guid("3b16811b-6a43-4ec9-a813-3d930c13b940")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IWICBitmapFrameDecode
+    public partial interface IWICBitmapFrameDecode
     {
         [PreserveSig]
         int GetSize(out uint puiWidth, out uint puiHeight);
@@ -37,10 +35,9 @@ public static partial class WicNative
         int GetThumbnail(out IntPtr ppIThumbnail);
     }
 
-    [ComImport]
+    [GeneratedComInterface]
     [Guid("00000301-a8f2-4877-ba0a-fd2b6645fb94")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IWICFormatConverter
+    public partial interface IWICFormatConverter
     {
         [PreserveSig]
         int GetSize(out uint puiWidth, out uint puiHeight);
@@ -65,10 +62,9 @@ public static partial class WicNative
         int CanConvert(ref Guid srcPixelFormat, ref Guid dstPixelFormat, out int pfCanConvert);
     }
 
-    [ComImport]
+    [GeneratedComInterface]
     [Guid("9edde9e7-8dee-47ea-99df-e6faf2ed44bf")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IWICBitmapDecoder
+    public partial interface IWICBitmapDecoder
     {
         [PreserveSig]
         int QueryCapability(IStream pIStream, out uint pdwCapability);
@@ -104,10 +100,9 @@ public static partial class WicNative
         int GetFrame(uint index, out IWICBitmapFrameDecode ppIBitmapFrame);
     }
 
-    [ComImport]
+    [GeneratedComInterface]
     [Guid("ec5ec8a9-c395-4314-9c77-54d7a935ff70")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IWICImagingFactory
+    public partial interface IWICImagingFactory
     {
         [PreserveSig]
         int CreateDecoderFromFilename([MarshalAs(UnmanagedType.LPWStr)] string wzFilename, IntPtr pguidVendor,

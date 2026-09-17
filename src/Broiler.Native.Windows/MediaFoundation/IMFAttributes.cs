@@ -1,12 +1,12 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace Broiler.Native.Windows.MediaFoundation;
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("2CD2D921-C447-44A7-A13C-4ADABFC247E3")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMFAttributes
+public partial interface IMFAttributes
 {
     [PreserveSig]
     int GetItem(ref Guid key, IntPtr value);
@@ -51,7 +51,7 @@ public interface IMFAttributes
     int GetAllocatedBlob(ref Guid key, out IntPtr buffer, out int size);
 
     [PreserveSig]
-    int GetUnknown(ref Guid key, ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? value);
+    int GetUnknown(ref Guid key, ref Guid interfaceId, out IntPtr value);
 
     [PreserveSig]
     int SetItem(ref Guid key, IntPtr value);
@@ -81,7 +81,7 @@ public interface IMFAttributes
     int SetBlob(ref Guid key, IntPtr buffer, int size);
 
     [PreserveSig]
-    int SetUnknown(ref Guid key, [MarshalAs(UnmanagedType.IUnknown)] object? value);
+    int SetUnknown(ref Guid key, IntPtr value);
 
     [PreserveSig]
     int LockStore();

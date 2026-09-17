@@ -132,10 +132,9 @@ public struct WaveFormatExtensible
     public Guid SubFormat;
 }
 
-[ComImport]
+[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("A95664D2-9614-4F35-A746-DE8DB63617E6")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMMDeviceEnumerator
+public partial interface IMMDeviceEnumerator
 {
     [PreserveSig]
     int EnumAudioEndpoints(EDataFlow dataFlow, DeviceState stateMask, out IMMDeviceCollection devices);
@@ -144,7 +143,7 @@ public interface IMMDeviceEnumerator
     int GetDefaultAudioEndpoint(EDataFlow dataFlow, ERole role, out IMMDevice endpoint);
 
     [PreserveSig]
-    int GetDevice([MarshalAs(UnmanagedType.LPWStr)] string id, out IMMDevice device);
+    int GetDevice(string id, out IMMDevice device);
 
     [PreserveSig]
     int RegisterEndpointNotificationCallback(IMMNotificationClient client);
@@ -153,10 +152,9 @@ public interface IMMDeviceEnumerator
     int UnregisterEndpointNotificationCallback(IMMNotificationClient client);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("0BD7A1BE-7A1A-44DB-8397-CC5392387B5E")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMMDeviceCollection
+public partial interface IMMDeviceCollection
 {
     [PreserveSig]
     int GetCount(out uint count);
@@ -165,32 +163,26 @@ public interface IMMDeviceCollection
     int Item(uint itemIndex, out IMMDevice device);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("D666063F-1587-4E43-81F1-B948E807363F")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMMDevice
+public partial interface IMMDevice
 {
     [PreserveSig]
-    int Activate(
-        ref Guid interfaceId,
-        uint classContext,
-        IntPtr activationParams,
-        [MarshalAs(UnmanagedType.IUnknown)] out object? activatedInterface);
+    int Activate(ref Guid interfaceId, uint classContext, IntPtr activationParams, out IntPtr activatedInterface);
 
     [PreserveSig]
     int OpenPropertyStore(StorageAccess access, out IPropertyStore properties);
 
     [PreserveSig]
-    int GetId([MarshalAs(UnmanagedType.LPWStr)] out string id);
+    int GetId(out IntPtr id);
 
     [PreserveSig]
     int GetState(out DeviceState state);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("886D8EEB-8CF2-4446-8D02-CDBA1DBDCF99")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IPropertyStore
+public partial interface IPropertyStore
 {
     [PreserveSig]
     int GetCount(out uint propertyCount);
@@ -208,31 +200,29 @@ public interface IPropertyStore
     int Commit();
 }
 
-[ComImport]
+[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("7991EEC9-7E89-4D85-8390-6C703CEC60C0")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IMMNotificationClient
+public partial interface IMMNotificationClient
 {
     [PreserveSig]
-    int OnDeviceStateChanged([MarshalAs(UnmanagedType.LPWStr)] string deviceId, DeviceState newState);
+    int OnDeviceStateChanged(string deviceId, DeviceState newState);
 
     [PreserveSig]
-    int OnDeviceAdded([MarshalAs(UnmanagedType.LPWStr)] string deviceId);
+    int OnDeviceAdded(string deviceId);
 
     [PreserveSig]
-    int OnDeviceRemoved([MarshalAs(UnmanagedType.LPWStr)] string deviceId);
+    int OnDeviceRemoved(string deviceId);
 
     [PreserveSig]
-    int OnDefaultDeviceChanged(EDataFlow flow, ERole role, [MarshalAs(UnmanagedType.LPWStr)] string defaultDeviceId);
+    int OnDefaultDeviceChanged(EDataFlow flow, ERole role, string defaultDeviceId);
 
     [PreserveSig]
-    int OnPropertyValueChanged([MarshalAs(UnmanagedType.LPWStr)] string deviceId, PropertyKey key);
+    int OnPropertyValueChanged(string deviceId, PropertyKey key);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("1CB9AD4C-DBFA-4C32-B178-C2F568A703B2")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IAudioClient
+public partial interface IAudioClient
 {
     [PreserveSig]
     int Initialize(AudioClientShareMode shareMode, AudioClientStreamFlags streamFlags, long bufferDuration,
@@ -269,16 +259,15 @@ public interface IAudioClient
     int SetEventHandle(IntPtr eventHandle);
 
     [PreserveSig]
-    int GetService(ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? serviceInterface);
+    int GetService(ref Guid interfaceId, out IntPtr serviceInterface);
 }
 
-[ComImport]
+[GeneratedComInterface]
 [Guid("C8ADBD64-E71E-48A0-A4DE-185C395CD317")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IAudioCaptureClient
+public partial interface IAudioCaptureClient
 {
     [PreserveSig]
-    int GetBuffer(out IntPtr data, out uint framesToRead, out AudioClientBufferFlags flags, 
+    int GetBuffer(out IntPtr data, out uint framesToRead, out AudioClientBufferFlags flags,
         out ulong devicePosition, out ulong qpcPosition);
 
     [PreserveSig]
@@ -286,4 +275,37 @@ public interface IAudioCaptureClient
 
     [PreserveSig]
     int GetNextPacketSize(out uint framesInNextPacket);
+}
+
+public static class WasapiExtensions
+{
+    public static int Activate<TInterface>(this IMMDevice device, uint classContext, IntPtr activationParams, out TInterface? activatedInterface) where TInterface : class
+    {
+        Guid iid = typeof(TInterface).GUID;
+        int hr = device.Activate(ref iid, classContext, activationParams, out IntPtr ptr);
+        if (hr >= 0 && ptr != IntPtr.Zero)
+        {
+            activatedInterface = ComNative.GetOrCreateComObject<TInterface>(ptr);
+        }
+        else
+        {
+            activatedInterface = null;
+        }
+        return hr;
+    }
+
+    public static int GetService<TInterface>(this IAudioClient client, out TInterface? serviceInterface) where TInterface : class
+    {
+        Guid iid = typeof(TInterface).GUID;
+        int hr = client.GetService(ref iid, out IntPtr ptr);
+        if (hr >= 0 && ptr != IntPtr.Zero)
+        {
+            serviceInterface = ComNative.GetOrCreateComObject<TInterface>(ptr);
+        }
+        else
+        {
+            serviceInterface = null;
+        }
+        return hr;
+    }
 }

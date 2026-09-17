@@ -304,11 +304,42 @@ public static partial class WindowNative
         public uint BiClrUsed;
         public uint BiClrImportant;
     }
+
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool SetProcessDpiAwarenessContext(IntPtr dpiContext);
-    [DllImport("user32.dll", EntryPoint = "GetWindowTextW", CharSet = CharSet.Unicode, SetLastError = true)]
-    public static extern int GetWindowText(IntPtr hwnd, StringBuilder text, int maxCount);
+
+    [LibraryImport("user32.dll", EntryPoint = "GetWindowTextW", SetLastError = true)]
+    public static unsafe partial int GetWindowText(IntPtr hwnd, char* lpString, int maxCount);
+
+    public static unsafe int GetWindowText(IntPtr hwnd, Span<char> text)
+    {
+        if (text.IsEmpty) return 0;
+        fixed (char* ptr = text)
+        {
+            return GetWindowText(hwnd, ptr, text.Length);
+        }
+    }
+
+    public static int GetWindowText(IntPtr hwnd, StringBuilder text, int maxCount)
+    {
+        if (maxCount <= 0) return 0;
+        char[] buffer = new char[maxCount];
+        int count;
+        unsafe
+        {
+            fixed (char* ptr = buffer)
+            {
+                count = GetWindowText(hwnd, ptr, maxCount);
+            }
+        }
+        if (count > 0)
+        {
+            text.Append(buffer, 0, count);
+        }
+        return count;
+    }
+
     public const int ErrorClassAlreadyExists = 1410;
     public const int CwUseDefault = unchecked((int)0x80000000);
     public const uint CsHRedraw = 0x0002;

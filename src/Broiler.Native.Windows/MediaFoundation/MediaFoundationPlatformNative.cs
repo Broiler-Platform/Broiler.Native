@@ -30,8 +30,8 @@ public static partial class MediaFoundationPlatformNative
     [LibraryImport("mfplat.dll")]
     public static partial int MFShutdown();
 
-    [DllImport("mfplat.dll", ExactSpelling = true)]
-    public static extern int MFCreateAttributes(out IMFAttributes attributes, uint initialSize);
+    [LibraryImport("mfplat.dll")]
+    public static partial int MFCreateAttributes(out IMFAttributes attributes, uint initialSize);
 
     [LibraryImport("mfplat.dll")]
     public static partial int MFCreateAttributes(out IntPtr attributes, uint initialSize);
