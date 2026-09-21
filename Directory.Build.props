@@ -11,5 +11,6 @@
     <Optimize Condition="$(Configuration.StartsWith('Release'))">true</Optimize>
     <PackageProjectUrl>https://github.com/Broiler-Platform/Broiler.Native</PackageProjectUrl>
     <PackageTags>broiler;native;interop</PackageTags>
+    <VersionSuffix>preview.3</VersionSuffix>
   </PropertyGroup>
 </Project>

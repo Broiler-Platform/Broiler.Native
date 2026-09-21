@@ -103,7 +103,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >
-          dotnet nuget push 'artifacts/*.nupkg'
+          dotnet nuget push artifacts/*.nupkg
           --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
           --api-key "$GITHUB_TOKEN" --no-symbols
       - name: Push to NuGet.org
@@ -111,7 +111,7 @@ jobs:
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: >
-          dotnet nuget push 'artifacts/*.nupkg'
+          dotnet nuget push artifacts/*.nupkg
           --source https://api.nuget.org/v3/index.json
           --api-key "$NUGET_API_KEY"
       - name: Summary

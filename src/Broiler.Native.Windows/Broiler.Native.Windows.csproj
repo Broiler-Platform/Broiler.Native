@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Windows, COM, Direct2D, DirectWrite, WIC, WASAPI, and Media Foundation bindings.</Description>
+    <PackageTags>$(PackageTags);windows;win32;directx;direct2d;d2d;dwrite;wic;wasapi;mediafoundation</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Broiler.Native/Broiler.Native.csproj" />

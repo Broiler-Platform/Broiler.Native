@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Linux libc, evdev, X11, EGL, OpenGL, and Vulkan bindings.</Description>
+    <PackageTags>$(PackageTags);linux;x11;vulkan;opengl;egl;evdev;libc</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Broiler.Native/Broiler.Native.csproj" />

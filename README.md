@@ -36,14 +36,14 @@ COM callback metadata, resolver ownership, and host native calls.
 Graphics, Input, and Media reference Native packages at the versions in their
 `Directory.Packages.props`. A sibling checkout does not replace those references.
 Publish Native to the destination feed before publishing dependent components.
-See [CI, packages, and releases](docs/packaging.md) for preview version selection,
+See [CI, packages, and releases](https://github.com/Broiler-Platform/Broiler.Native/blob/main/docs/packaging.md) for preview version selection,
 dry runs, package credentials, and NuGet.org release setup.
 
 Native API namespaces now begin with `Broiler.Native`. Driver descriptions and
 OpenGL/Vulkan native exceptions moved with their bindings, so code explicitly
 using those types needs the corresponding Native namespace. Renderers, device
 providers, media decoding, diagnostic models, and domain error translation remain
-in their original components. See [the extraction inventory](docs/native-api-inventory.md).
+in their original components. See [the extraction inventory](https://github.com/Broiler-Platform/Broiler.Native/blob/main/docs/native-api-inventory.md).
 
 ## Repository layout
 
@@ -52,4 +52,4 @@ the vendored packaging defaults and release helpers; `docs/adr/` records the
 dependency boundary. The Publish workflow uses the same preview version resolver
 and feed selection as Broiler.Input, with manual dry runs enabled by default.
 
-Licensed under Apache-2.0; see [LICENSE](LICENSE).
+Licensed under Apache-2.0; see [LICENSE](https://github.com/Broiler-Platform/Broiler.Native/blob/main/LICENSE).

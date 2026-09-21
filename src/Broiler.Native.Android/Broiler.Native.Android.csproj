@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Android EGL, OpenGL ES, and native window bindings.</Description>
+    <PackageTags>$(PackageTags);android;egl;gles;opengles;anativewindow</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Broiler.Native/Broiler.Native.csproj" />
