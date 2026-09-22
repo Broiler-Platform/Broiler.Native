@@ -86,14 +86,19 @@ async function main() {
   const packageIds = packages.map(p => p.PackageId);
   const target = process.env.TARGET || 'nuget';
   if (!['nuget', 'github'].includes(target)) throw new Error(`Unknown target '${target}'.`);
-  // NuGet.org is the baseline even when publishing to GitHub Packages.
+  // Both feeds are checked regardless of target so the resolved version is
+  // the next unused preview across ALL feeds.  Without this, publishing to
+  // NuGet.org after GitHub Packages could pick a version that already exists
+  // on GitHub (e.g. preview.3 on GitHub, preview.2 on NuGet → old logic
+  // picked preview.3 for NuGet; new logic picks preview.4).
   const published = await readVersions('https://api.nuget.org/v3/index.json', packageIds);
-  if (target === 'github') {
-    const { GITHUB_REPOSITORY_OWNER: owner, GITHUB_ACTOR: actor, GITHUB_TOKEN: token } = process.env;
-    if (!owner || !actor || !token) throw new Error('GitHub feed lookup requires owner, actor, and token.');
+  const { GITHUB_REPOSITORY_OWNER: owner, GITHUB_ACTOR: actor, GITHUB_TOKEN: token } = process.env;
+  if (owner && actor && token) {
     const authorization = `Basic ${Buffer.from(`${actor}:${token}`).toString('base64')}`;
     published.push(...await readVersions(
       `https://nuget.pkg.github.com/${owner}/index.json`, packageIds, { authorization }));
+  } else if (target === 'github') {
+    throw new Error('GitHub feed lookup requires GITHUB_REPOSITORY_OWNER, GITHUB_ACTOR, and GITHUB_TOKEN.');
   }
   const tag = process.env.GITHUB_EVENT_NAME === 'push'
     ? (process.env.GITHUB_REF || '').replace(/^refs\/tags\//, '') : '';
