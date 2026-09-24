@@ -195,6 +195,8 @@ internal class Program
                     Check(PerformanceCounterNative.QueryPerformanceFrequency(out long frequency) && frequency > 0, "QPC frequency failed.");
                     Check(PerformanceCounterNative.QueryPerformanceCounter(out _), "QPC failed.");
                     Check(!HwndNative.IsWindow(nint.Zero), "NULL cannot be a window.");
+                    Check(WindowNative.LoadIcon(nint.Zero, WindowNative.IdiApplication) != nint.Zero, "The stock application icon must load.");
+                    Check(WindowNative.GetClassLongPtr(nint.Zero, WindowNative.GclpHIcon) == nint.Zero, "NULL cannot have a class icon.");
                 }
                 else if (OperatingSystem.IsLinux())
                 {
