@@ -28,8 +28,8 @@ Graphics. Associated native driver descriptions and native exceptions move here.
 | `Broiler.Graphics/src/Broiler.Graphics.Linux.OpenGL/LinuxOpenGlFunctions.cs` | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` |
 | `Broiler.Graphics/src/Broiler.Graphics.Linux.Vulkan/LinuxVulkanNative.cs` | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` |
 | `Broiler.Input/src/Broiler.Input.Linux/LinuxNativeMethods.cs` | `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` |
-| `Broiler.Input/src/Broiler.Input.Keyboard.Windows/WindowsKeyboardNativeMethods.cs` | `src/Broiler.Native.Windows/Input/WindowsKeyboardNativeMethods.cs` |
-| `Broiler.Input/src/Broiler.Input.Mouse.Windows/WindowsMouseNativeMethods.cs` | `src/Broiler.Native.Windows/Input/WindowsMouseNativeMethods.cs` |
+| `Broiler.Input/src/Broiler.Input.Keyboard.Windows/WindowsKeyboardNativeMethods.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
+| `Broiler.Input/src/Broiler.Input.Mouse.Windows/WindowsMouseNativeMethods.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
 | `Broiler.Input/src/Broiler.Input.Camera.Windows/WindowsMediaFoundationNative.cs` | `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` |
 | `Broiler.Input/src/Broiler.Input.Microphone.Windows/WindowsWasapiNative.cs` | `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` |
 | `Broiler.Media/src/Broiler.Media.Video.MediaFoundation/MediaFoundationNative.cs` | `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` |

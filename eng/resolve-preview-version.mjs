@@ -84,22 +84,7 @@ async function main() {
   const configured = packages[0].PackageVersion;
   parsePreview(configured);
   const packageIds = packages.map(p => p.PackageId);
-  const target = process.env.TARGET || 'nuget';
-  if (!['nuget', 'github'].includes(target)) throw new Error(`Unknown target '${target}'.`);
-  // Both feeds are checked regardless of target so the resolved version is
-  // the next unused preview across ALL feeds.  Without this, publishing to
-  // NuGet.org after GitHub Packages could pick a version that already exists
-  // on GitHub (e.g. preview.3 on GitHub, preview.2 on NuGet → old logic
-  // picked preview.3 for NuGet; new logic picks preview.4).
   const published = await readVersions('https://api.nuget.org/v3/index.json', packageIds);
-  const { GITHUB_REPOSITORY_OWNER: owner, GITHUB_ACTOR: actor, GITHUB_TOKEN: token } = process.env;
-  if (owner && actor && token) {
-    const authorization = `Basic ${Buffer.from(`${actor}:${token}`).toString('base64')}`;
-    published.push(...await readVersions(
-      `https://nuget.pkg.github.com/${owner}/index.json`, packageIds, { authorization }));
-  } else if (target === 'github') {
-    throw new Error('GitHub feed lookup requires GITHUB_REPOSITORY_OWNER, GITHUB_ACTOR, and GITHUB_TOKEN.');
-  }
   const tag = process.env.GITHUB_EVENT_NAME === 'push'
     ? (process.env.GITHUB_REF || '').replace(/^refs\/tags\//, '') : '';
   if (process.env.GITHUB_EVENT_NAME === 'push' && !tag.startsWith('v')) {
@@ -108,7 +93,7 @@ async function main() {
   const version = chooseVersion(configured, published, {
     suffix: process.env.VERSION_SUFFIX || '', tag,
   });
-  console.log(`Version: ${version} -> ${target} (${packageIds.length} packages; dry-run: ${process.env.DRY_RUN ?? 'true'})`);
+  console.log(`Version: ${version} -> nuget.org (${packageIds.length} packages; dry-run: ${process.env.DRY_RUN ?? 'true'})`);
   if (process.env.GITHUB_OUTPUT) {
     appendFileSync(process.env.GITHUB_OUTPUT,
       `version=${version}\nversion_args=-p:Version=${version} -p:PackageVersion=${version}\n`);

@@ -1,55 +1,98 @@
 # Broiler.Native
 
-Shared native API bindings for Broiler.Graphics, Broiler.Input, and Broiler.Media.
+Shared native API bindings for `Broiler.Graphics`, `Broiler.Input`, and `Broiler.Media`.
 The component owns native entry points, ABI structures, constants, COM contracts,
-function delegates, and library loading. It has no dependency on those consumers.
+function delegates, and library probing. It has no dependency on those consumers.
 
-| Package | Contents |
-| --- | --- |
-| `Broiler.Native` | Native library availability probing |
-| `Broiler.Native.Windows` | Win32 windowing, performance counters, Raw Input, DirectX, WIC, WASAPI, Media Foundation |
-| `Broiler.Native.Linux` | libc/evdev, X11, EGL/OpenGL, Vulkan |
-| `Broiler.Native.Android` | EGL, OpenGL ES, ANativeWindow, library resolver |
-| `Broiler.Native.All` | Convenience reference to all native packages |
+## Packages
 
-All projects target `net10.0`. A reference to a platform package does not load its
-native libraries. Call platform APIs only on a compatible host with the required
-libraries installed. Windows remains consumable by a neutral codec assembly that
-guards its WIC calls at runtime; it does not require the Windows desktop workload.
+| Package | Target | Description |
+| :--- | :--- | :--- |
+| [`Broiler.Native`](src/Broiler.Native) | Any (`net10.0`) | Lightweight core with `NativeLibraryProbe` for non-throwing library probing. Zero external dependencies. |
+| [`Broiler.Native.Windows`](src/Broiler.Native.Windows) | Windows (`net10.0`) | Win32 windowing, performance counters, Raw Input, DirectX (D2D, DWrite, DXGI, D3D11), WIC, WASAPI, Media Foundation. |
+| [`Broiler.Native.Linux`](src/Broiler.Native.Linux) | Linux (`net10.0`) | libc/evdev input, `poll`, X11, EGL/OpenGL dynamic loading and driver queries, Vulkan device enumeration. |
+| [`Broiler.Native.Android`](src/Broiler.Native.Android) | Android (`net10.0`) | EGL, OpenGL ES 2.0 / 3.0, `ANativeWindow`, and assembly-scoped dynamic soname resolver. |
+| [`Broiler.Native.All`](src/Broiler.Native.All) | Any (`net10.0`) | Convenience meta-package referencing all platform packages for multi-target or cross-platform codebases. |
 
-## Build and test
+All projects target `net10.0` and are annotated with `<IsAotCompatible>true</IsAotCompatible>`.
+A reference to a platform package does not eagerly load its native libraries; call platform APIs only on a compatible host with the required libraries installed.
 
-Requires the .NET 10 SDK.
+---
+
+## Quickstart for Consumers
+
+Install packages via NuGet:
 
 ```sh
-dotnet build Broiler.Native.slnx -c Release
-dotnet run --project src/tests/Broiler.Native.Tests -c Release --no-build
-pwsh -File eng/pack.ps1
+dotnet add package Broiler.Native.Windows
+# or for multi-platform projects:
+dotnet add package Broiler.Native.All
 ```
 
-The solution uses `Debug` and `Release`. Tests use the console-runner convention
-of the other components. CI runs on Windows and Linux and checks layout, dependency direction,
-COM callback metadata, resolver ownership, and host native calls.
+### Probing Library Availability
 
-## Consuming packages
+```csharp
+using Broiler.Native;
 
-Graphics, Input, and Media reference Native packages at the versions in their
-`Directory.Packages.props`. A sibling checkout does not replace those references.
-Publish Native to the destination feed before publishing dependent components.
-See [CI, packages, and releases](https://github.com/Broiler-Platform/Broiler.Native/blob/main/docs/packaging.md) for preview version selection,
-dry runs, package credentials, and NuGet.org release setup.
+if (OperatingSystem.IsWindows() && NativeLibraryProbe.IsAvailable("d2d1.dll"))
+{
+    // Direct2D is available
+}
+```
 
-Native API namespaces now begin with `Broiler.Native`. Driver descriptions and
-OpenGL/Vulkan native exceptions moved with their bindings, so code explicitly
-using those types needs the corresponding Native namespace. Renderers, device
-providers, media decoding, diagnostic models, and domain error translation remain
-in their original components. See [the extraction inventory](https://github.com/Broiler-Platform/Broiler.Native/blob/main/docs/native-api-inventory.md).
+### High-Precision Timing
 
-## Repository layout
+```csharp
+using Broiler.Native.Windows;
 
-`src/` holds the five libraries; `src/tests/` holds the test runner; `eng/` contains
-the vendored packaging defaults and release helpers; `docs/adr/` records the
-dependency boundary. The Publish workflow uses the same preview version resolver
-and feed selection as Broiler.Input, with manual dry runs enabled by default.
+PerformanceCounterNative.QueryPerformanceFrequency(out long frequency);
+PerformanceCounterNative.QueryPerformanceCounter(out long start);
+// ... work ...
+PerformanceCounterNative.QueryPerformanceCounter(out long end);
+double elapsedSeconds = (double)(end - start) / frequency;
+```
 
-Licensed under Apache-2.0; see [LICENSE](https://github.com/Broiler-Platform/Broiler.Native/blob/main/LICENSE).
+For complete consumer documentation, platform requirements, and detailed subsystem examples, see the [End-User and Consumer Guide](docs/consumer-guide.md).
+
+---
+
+## Developer Quickstart
+
+Requires the .NET 10 SDK, Node.js 24, and PowerShell 7 (or Windows PowerShell).
+
+```sh
+# Build solution
+dotnet build Broiler.Native.slnx -c Release
+
+# Run test suite
+dotnet run --project src/tests/Broiler.Native.Tests -c Release --no-build
+# or: bash ./eng/run-tests.sh Release
+
+# Test version resolution engine
+node --test eng/resolve-preview-version.test.mjs
+
+# Pack and verify shipping packages locally
+pwsh -File eng/pack.ps1 -Configuration Release
+
+# Verify consumer restoration against NuGet.org
+pwsh -File eng/verify-feed.ps1 -Packages artifacts
+```
+
+For guidelines on authoring bindings, COM interfaces under NativeAOT, struct layout verification, and release workflows, see the [Developer and Contributor Guide](docs/developer-guide.md).
+
+---
+
+## Documentation Index
+
+- [End-User and Consumer Guide](docs/consumer-guide.md): Package selection, host prerequisites, probing patterns, subsystem guides, and code examples.
+- [Developer and Contributor Guide](docs/developer-guide.md): Architecture scope, development setup, building, testing, binding conventions, and packaging.
+- [CI, Packages, and Releases](docs/packaging.md): Preview version calculation, feed rules, packaging validation, and NuGet.org release workflow.
+- [Architecture Decision Record: 0001 Native API Ownership](docs/adr/0001-native-api-ownership.md): Decision context and rationale for native API extraction.
+- [Native API Extraction Inventory](docs/native-api-inventory.md): Mapping of extracted types from legacy sibling components.
+- [Roadmap](docs/roadmap.md): Current implementation status and milestones.
+
+---
+
+## License
+
+Licensed under [Apache-2.0](LICENSE).

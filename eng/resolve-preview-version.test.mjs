@@ -48,20 +48,19 @@ test('all packages contribute, including a partially published newer preview', a
   assert.equal(chooseVersion('0.1.0-preview.1', versions), '0.1.0-preview.3');
 });
 
-test('cross-feed versions are cumulative so no feed gets a duplicate', () => {
-  // GitHub has preview.3, NuGet.org has preview.2 → next must be preview.4.
-  const nugetVersions = ['0.1.0-preview.1', '0.1.0-preview.2'];
-  const githubVersions = ['0.1.0-preview.1', '0.1.0-preview.2', '0.1.0-preview.3'];
-  const allVersions = [...nugetVersions, ...githubVersions];
+test('published versions are cumulative so no existing version is reused', () => {
+  const publishedA = ['0.1.0-preview.1', '0.1.0-preview.2'];
+  const publishedB = ['0.1.0-preview.1', '0.1.0-preview.2', '0.1.0-preview.3'];
+  const allVersions = [...publishedA, ...publishedB];
   assert.equal(chooseVersion('0.1.0-preview.1', allVersions), '0.1.0-preview.4');
 
-  // Duplicates across feeds don't change the outcome.
-  assert.equal(chooseVersion('0.1.0-preview.1', [...nugetVersions, ...nugetVersions]), '0.1.0-preview.3');
+  // Duplicates don't change the outcome.
+  assert.equal(chooseVersion('0.1.0-preview.1', [...publishedA, ...publishedA]), '0.1.0-preview.3');
 
-  // Single feed ahead: NuGet has preview.5, GitHub has preview.2 → next is preview.6.
+  // Highest preview wins: preview.5 present → next is preview.6.
   assert.equal(chooseVersion('0.1.0-preview.1', [
-    '0.1.0-preview.1', '0.1.0-preview.5',  // NuGet
-    '0.1.0-preview.1', '0.1.0-preview.2',  // GitHub
+    '0.1.0-preview.1', '0.1.0-preview.5',
+    '0.1.0-preview.1', '0.1.0-preview.2',
   ]), '0.1.0-preview.6');
 });
 
