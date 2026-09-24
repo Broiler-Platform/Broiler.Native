@@ -20,6 +20,13 @@ public static partial class WindowNative
             : new IntPtr(GetWindowLong32(hwnd, index));
     }
 
+    public static IntPtr GetClassLongPtr(IntPtr hwnd, int index)
+    {
+        return IntPtr.Size == 8
+            ? GetClassLongPtr64(hwnd, index)
+            : new IntPtr(GetClassLong32(hwnd, index));
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Winapi)]
     public delegate IntPtr WndProc(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
 
@@ -207,6 +214,9 @@ public static partial class WindowNative
     [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "LoadCursorW")]
     public static partial IntPtr LoadCursor(IntPtr instance, IntPtr cursorName);
 
+    [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "LoadIconW")]
+    public static partial IntPtr LoadIcon(IntPtr instance, IntPtr iconName);
+
     [LibraryImport("user32.dll")]
     public static partial IntPtr GetSysColorBrush(int index);
 
@@ -221,6 +231,12 @@ public static partial class WindowNative
 
     [LibraryImport("user32.dll", EntryPoint = "GetWindowLongW")]
     public static partial int GetWindowLong32(IntPtr hwnd, int index);
+
+    [LibraryImport("user32.dll", EntryPoint = "GetClassLongPtrW")]
+    public static partial IntPtr GetClassLongPtr64(IntPtr hwnd, int index);
+
+    [LibraryImport("user32.dll", EntryPoint = "GetClassLongW")]
+    public static partial int GetClassLong32(IntPtr hwnd, int index);
 
     [LibraryImport("user32.dll", EntryPoint = "SetWindowTextW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
     [return: MarshalAs(UnmanagedType.Bool)]
@@ -361,6 +377,8 @@ public static partial class WindowNative
     public const int SmCxSizeFrame = 32;
     public const int SmCxPaddedBorder = 92;
     public const int GwlUserData = -21;
+    public const int GclpHIcon = -14;
+    public const int GclpHIconSm = -34;
     public const int ColorWindow = 5;
     public const int LogPixelsX = 88;
     public const int HtTransparent = -1;
@@ -376,6 +394,11 @@ public static partial class WindowNative
     public const int HtBottomRight = 17;
     public const int IconSmall = 0;
     public const int IconBig = 1;
+    /// <summary>
+    /// IDI_APPLICATION: the stock application icon when loaded without a module, and the resource
+    /// id the C# compiler gives an executable's <c>ApplicationIcon</c> when loaded from one.
+    /// </summary>
+    public const int IdiApplication = 32512;
     public const uint DibRgbColors = 0;
     public const uint MonitorDefaultToNearest = 2;
     public const uint WmNccreate = 0x0081;
@@ -405,6 +428,7 @@ public static partial class WindowNative
     public const uint WmSetFocus = 0x0007;
     public const uint WmClose = 0x0010;
     public const uint WmSetIcon = 0x0080;
+    public const uint WmGetIcon = 0x007F;
     public const uint WmNccalcsize = 0x0083;
     public const uint WmNchittest = 0x0084;
     public const uint WmNcactivate = 0x0086;
