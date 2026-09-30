@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "component": "Broiler.Native",
+  "projects": [
+    "src/Broiler.Native/Broiler.Native.csproj",
+    "src/Broiler.Native.Windows/Broiler.Native.Windows.csproj",
+    "src/Broiler.Native.Linux/Broiler.Native.Linux.csproj",
+    "src/Broiler.Native.Android/Broiler.Native.Android.csproj",
+    "src/Broiler.Native.All/Broiler.Native.All.csproj"
+  ],
+  "exclude": [],
+  "exemptionPredicate": "owning-component",
+  "spdx": {
+    "copyright": ["2026 Broiler Platform contributors"],
+    "license": "Apache-2.0"
+  },
+  "spdxOverrides": [],
+  "regenerateCommand": "dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native"
+}
