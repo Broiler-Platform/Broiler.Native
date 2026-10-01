@@ -1,3 +1,20 @@
+// SPDX-FileCopyrightText: 2026 Broiler Platform contributors
+// SPDX-License-Identifier: Apache-2.0
+//
+// Broiler Code Assurance
+// ----------------------
+// Relevant units:   7
+// Annotated:        7/7
+// Exempt:           0
+// Human-reviewed:   0/7
+// IP risk:          Low
+// Security risk:    Critical
+// Criteria:         7/7
+// Resource impact:  2/10 max
+// Unverified:       7
+//
+// GENERATED - DO NOT EDIT MANUALLY
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -8,6 +25,9 @@ namespace Broiler.Native.Windows.Direct2D;
 /// the backend needs to bootstrap; every other call goes through COM vtables (see <see cref="ComPtr"/>).
 /// All members are <c>public</c>. <see cref="LibraryImport"/> is used for AOT/trimming friendliness.
 /// </summary>
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=C630AC
+// Broiler-Falsified-If: D3D11CreateDevice is given a featureLevels count larger than the D3D_FEATURE_LEVEL array at pFeatureLevels and d3d11.dll reads past the end of it
+// Broiler-Human:        PENDING
 public static partial class NativeMethods
 {
     // ---- d3d11.dll -------------------------------------------------------------------------------
@@ -17,6 +37,9 @@ public static partial class NativeMethods
     /// The backend passes a null adapter and feature-level list so the runtime chooses the default
     /// hardware/WARP capabilities for the installed Direct3D runtime.
     /// </summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=B9D586
+    // Broiler-Falsified-If: a featureLevels value larger than the number of D3D_FEATURE_LEVEL entries at pFeatureLevels makes d3d11.dll read past the end of the caller's array
+    // Broiler-Human:        PENDING
     [LibraryImport("d3d11.dll")]
     public static partial int D3D11CreateDevice(IntPtr pAdapter, D3D11Native.D3D_DRIVER_TYPE driverType, IntPtr software,
         uint flags, IntPtr pFeatureLevels, uint featureLevels, uint sdkVersion, out IntPtr ppDevice,
@@ -25,6 +48,9 @@ public static partial class NativeMethods
     // ---- dxgi.dll --------------------------------------------------------------------------------
 
     /// <summary>Creates a DXGI 1.1 factory. <paramref name="riid"/> is typically IID_IDXGIFactory1.</summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=260F5E
+    // Broiler-Falsified-If: riid is passed as the 16-byte GUID value instead of a REFIID pointer, so dxgi.dll reads the first bytes of the IID as an address
+    // Broiler-Human:        PENDING
     [LibraryImport("dxgi.dll")]
     public static partial int CreateDXGIFactory1(in Guid riid, out IntPtr ppFactory);
 
@@ -33,6 +59,9 @@ public static partial class NativeMethods
     /// <summary>
     /// Creates a Direct2D factory. The options blob is optional (pass <see cref="IntPtr.Zero"/>).
     /// </summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=3563F3
+    // Broiler-Falsified-If: a non-zero pFactoryOptions that does not point at a readable 4-byte D2D1_FACTORY_OPTIONS is dereferenced by d2d1.dll as the debug level
+    // Broiler-Human:        PENDING
     [LibraryImport("d2d1.dll")]
     public static partial int D2D1CreateFactory(D2DNative.D2D1_FACTORY_TYPE factoryType, in Guid riid, IntPtr pFactoryOptions,
         out IntPtr ppIFactory);
@@ -40,13 +69,22 @@ public static partial class NativeMethods
     // ---- dwrite.dll ------------------------------------------------------------------------------
 
     /// <summary>Creates a DirectWrite factory. <paramref name="iid"/> is IID_IDWriteFactory.</summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F2E7BF
+    // Broiler-Falsified-If: iid is passed as the 16-byte GUID value instead of a REFIID pointer, so dwrite.dll reads the first bytes of the IID as an address
+    // Broiler-Human:        PENDING
     [LibraryImport("dwrite.dll")]
     public static partial int DWriteCreateFactory(DWriteNative.DWRITE_FACTORY_TYPE factoryType, in Guid iid, out IntPtr factory);
 
     /// <summary>Returns <c>true</c> for a successful HRESULT (S_OK and other non-negative codes).</summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=74416D
+    // Broiler-Falsified-If: an HRESULT with the severity bit set, such as 0x887A0005, returns true, so the caller attaches an out pointer the failed call never wrote
+    // Broiler-Human:        PENDING
     public static bool Succeeded(int hr) => hr >= 0;
 
     /// <summary>Throws a <see cref="MarshalDirectiveException"/>-free wrapper if the HRESULT is a failure.</summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=88558B
+    // Broiler-Falsified-If: a failing HRESULT such as 0x80004005 returns without throwing, so the caller attaches the zero out pointer and calls through it
+    // Broiler-Human:        PENDING
     public static void ThrowIfFailed(int hr, string what)
     {
         if (hr < 0)

@@ -1,4 +1,9 @@
 {
+  "$comment": [
+    "Per-declaration assurance for Broiler.Native. Product projects only: the five packable projects eng/pack.ps1 packs and verifies. Broiler.Native.All is a references-only meta-package with no sources. src/tests/Broiler.Native.Tests (IsPackable=false) is not listed, so it is not covered.",
+    "No tracked source is generated (the LibraryImport and GeneratedComInterface generators write only to obj/), so nothing is excluded.",
+    "No source here is third-party-derived: the bindings were moved from Broiler.Graphics, Broiler.Input and Broiler.Media (docs/native-api-inventory.md), none of them from files those components mark as HTML Renderer code, so there are no spdxOverrides."
+  ],
   "schema": 1,
   "component": "Broiler.Native",
   "projects": [
@@ -15,5 +20,12 @@
     "license": "Apache-2.0"
   },
   "spdxOverrides": [],
+  "artefacts": {
+    "report": "CODE-ASSURANCE.md",
+    "humanReview": "HUMAN_REVIEW.md",
+    "manifest": "assurance.manifest.json"
+  },
+  "forbidDirectives": false,
+  "forgeryVocabulary": "narrow",
   "regenerateCommand": "dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native"
 }
