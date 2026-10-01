@@ -38,7 +38,7 @@ public static partial class RawInputReaderNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=42EB0C
-    // Broiler-Falsified-If: Marshal.OffsetOf of ButtonFlags is not 4 or of ButtonData not 6, where RAWMOUSE in winuser.h puts usButtonFlags and usButtonData in a union with ULONG ulButtons after USHORT usFlags
+    // Broiler-Falsified-If: Marshal.SizeOf is not 24 or Marshal.OffsetOf of ButtonFlags is not 4 or of ButtonData not 6, the layout of RAWMOUSE in winuser.h, which puts usButtonFlags and usButtonData in a union with ULONG ulButtons after USHORT usFlags
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct RawMouse

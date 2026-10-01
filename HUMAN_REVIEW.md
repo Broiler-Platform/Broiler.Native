@@ -694,7 +694,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawInputHeader` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `777845`, PENDING
   - Falsified if: Marshal.SizeOf is not 24 on 64-bit (16 on 32-bit) or Device is not at offset 8, the layout of RAWINPUTHEADER (DWORD dwType, DWORD dwSize, HANDLE hDevice, WPARAM wParam) in winuser.h
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawMouse` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `42EB0C`, PENDING
-  - Falsified if: Marshal.OffsetOf of ButtonFlags is not 4 or of ButtonData not 6, where RAWMOUSE in winuser.h puts usButtonFlags and usButtonData in a union with ULONG ulButtons after USHORT usFlags
+  - Falsified if: Marshal.SizeOf is not 24 or Marshal.OffsetOf of ButtonFlags is not 4 or of ButtonData not 6, the layout of RAWMOUSE in winuser.h, which puts usButtonFlags and usButtonData in a union with ULONG ulButtons after USHORT usFlags
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawKeyboard` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `09BBF5`, PENDING
   - Falsified if: Marshal.SizeOf is not 16 or VKey is not at offset 6 and Message at 8, the layout of RAWKEYBOARD (USHORT MakeCode, Flags, Reserved, VKey, UINT Message, ULONG ExtraInformation) in winuser.h
 - `Broiler.Native.Windows.Input.RawInputReaderNative.GetRawInputData(IntPtr, uint, IntPtr, ref uint, uint)` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=Critical, Spec=none cited, `DCA974`, PENDING
