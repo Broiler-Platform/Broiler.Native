@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Direct2D;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=5AD2D2
-// Broiler-Falsified-If: a DrawTextProc call with textLength greater than text.Length makes ID2D1RenderTarget::DrawText read UTF-16 units past the marshalled string
+// Broiler-Falsified-If: DrawTextProc's textLength is not passed as the 32-bit UINT32 directly after the string pointer, so DrawText reads a length taken from other bits and walks UTF-16 units past the marshalled page text
 // Broiler-Human:        PENDING
 public static class Direct2DRendererApi
 {
@@ -32,7 +32,7 @@ public static class Direct2DRendererApi
     public delegate void BeginDrawProc(IntPtr self);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=908727
-    // Broiler-Falsified-If: tag1 or tag2 is neither null nor a pointer to an 8-byte D2D1_TAG, so EndDraw writes its UINT64 tags into smaller or unrelated memory
+    // Broiler-Falsified-If: the tag pointers are declared narrower than a pointer, so on x64 EndDraw writes its UINT64 tags through truncated addresses
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int EndDrawProc(IntPtr self, IntPtr tag1, IntPtr tag2);
@@ -62,7 +62,7 @@ public static class Direct2DRendererApi
     public delegate void SetTransformProc(IntPtr self, in D2DNative.D2D1_MATRIX_3X2_F transform);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=E7E385
-    // Broiler-Falsified-If: a non-null brushProperties points at fewer than the 28 bytes of D2D1_BRUSH_PROPERTIES, so CreateSolidColorBrush reads opacity and transform past the caller buffer
+    // Broiler-Falsified-If: color and brushProperties reach CreateSolidColorBrush(const D2D1_COLOR_F*, const D2D1_BRUSH_PROPERTIES*, ID2D1SolidColorBrush**) in swapped positions, so Direct2D reads the colour through a null pointer and the colour as opacity and transform
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateSolidColorBrushProc(IntPtr self, in D2DNative.D2D1_COLOR_F color, IntPtr brushProperties,
@@ -75,19 +75,19 @@ public static class Direct2DRendererApi
     public delegate void FillRectangleProc(IntPtr self, in D2DNative.D2D1_RECT_F rect, IntPtr brush);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=7F9457
-    // Broiler-Falsified-If: the ID2D1Factory written to factory carries a reference the caller never releases, so each call leaks one factory reference
+    // Broiler-Falsified-If: factory is not declared as an out ID2D1Factory**, so GetFactory writes the factory pointer through an address formed from the caller's argument
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetFactoryProc(IntPtr self, out IntPtr factory);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=263E64
-    // Broiler-Falsified-If: the ID2D1PathGeometry written to pathGeometry is not released once per successful call, leaking a geometry per drawn shape
+    // Broiler-Falsified-If: pathGeometry is not declared as an out ID2D1PathGeometry**, so CreatePathGeometry writes the new geometry through an address formed from the caller's argument
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreatePathGeometryProc(IntPtr self, out IntPtr pathGeometry);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F267E0
-    // Broiler-Falsified-If: the ID2D1GeometrySink written to sink is not released after Close, leaking a sink per opened geometry
+    // Broiler-Falsified-If: sink is not declared as an out ID2D1GeometrySink**, so Open writes the sink pointer through an address formed from the caller's argument
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int PathGeometryOpenProc(IntPtr self, out IntPtr sink);
@@ -106,7 +106,7 @@ public static class Direct2DRendererApi
         D2DNative.D2D1_POINT_2F startPoint, D2DNative.D2D1_FIGURE_BEGIN figureBegin);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=1D7738
-    // Broiler-Falsified-If: a call with pointsCount greater than points.Length makes AddLines read D2D1_POINT_2F values past the end of the marshalled array
+    // Broiler-Falsified-If: points and pointsCount reach ID2D1SimplifiedGeometrySink::AddLines(const D2D1_POINT_2F*, UINT32) in swapped positions, so Direct2D reads points from the address given by the count
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GeometrySinkAddLinesProc(IntPtr self, [In] D2DNative.D2D1_POINT_2F[] points, uint pointsCount);
@@ -124,7 +124,7 @@ public static class Direct2DRendererApi
     public delegate int GeometrySinkCloseProc(IntPtr self);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=A97749
-    // Broiler-Falsified-If: geometry or brush comes from a different ID2D1Factory than the render target, so the frame fails at EndDraw with D2DERR_WRONG_FACTORY
+    // Broiler-Falsified-If: geometry and brush reach ID2D1RenderTarget::FillGeometry(ID2D1Geometry*, ID2D1Brush*, ID2D1Brush*) in swapped positions, so Direct2D calls ID2D1Geometry methods through the brush's vtable
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void FillGeometryProc(IntPtr self, IntPtr geometry, IntPtr brush, IntPtr opacityBrush);
@@ -150,7 +150,7 @@ public static class Direct2DRendererApi
         float strokeWidth, IntPtr strokeStyle);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=B0981C
-    // Broiler-Falsified-If: a call with textLength greater than text.Length makes DrawText read UTF-16 code units past the end of the marshalled string
+    // Broiler-Falsified-If: textLength is not passed as the 32-bit UINT32 directly after the string pointer, so DrawText reads a length taken from other bits and walks UTF-16 units past the marshalled page text
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
     public delegate void DrawTextProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string text, uint textLength, IntPtr textFormat,
@@ -164,13 +164,13 @@ public static class Direct2DRendererApi
         in D2DNative.D2D1_RECT_F source);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=7E94DC
-    // Broiler-Falsified-If: a PushAxisAlignedClip is not matched by exactly one PopAxisAlignedClip before EndDraw, so EndDraw returns D2DERR_PUSH_POP_UNBALANCED
+    // Broiler-Falsified-If: clipRect is passed by value rather than as a pointer to a 16-byte D2D1_RECT_F, so PushAxisAlignedClip reads the clip rectangle from an address formed from its left and top edges
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void PushAxisAlignedClipProc(IntPtr self, in D2DNative.D2D1_RECT_F clipRect, D2DNative.D2D1_ANTIALIAS_MODE antialiasMode);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F1D399
-    // Broiler-Falsified-If: a PopAxisAlignedClip with no matching PushAxisAlignedClip leaves the target unbalanced, so EndDraw returns D2DERR_PUSH_POP_UNBALANCED
+    // Broiler-Falsified-If: PopAxisAlignedClip is declared with a parameter beyond self or a return value, so a 32-bit stdcall call leaves the stack unbalanced by the extra bytes
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void PopAxisAlignedClipProc(IntPtr self);

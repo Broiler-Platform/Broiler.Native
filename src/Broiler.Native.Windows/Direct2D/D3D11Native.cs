@@ -9,7 +9,7 @@
 // Human-reviewed:   0/5
 // IP risk:          Low
 // Security risk:    High
-// Criteria:         5/5
+// Criteria:         5/4
 // Resource impact:  0/10 max
 // Unverified:       5
 //
@@ -24,11 +24,11 @@ namespace Broiler.Native.Windows.Direct2D;
 /// We only need enough to call <see cref="NativeMethods.D3D11CreateDevice"/>.
 /// </summary>
 // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=BC2851
-// Broiler-Falsified-If: a value here differs from d3d11.h or d3dcommon.h, for example BGRA_SUPPORT not being 0x20, so D3D11CreateDevice builds a device on which ID2D1Factory1::CreateDevice fails
+// Broiler-Falsified-If: D3D_FEATURE_LEVEL is not a 32-bit enum or a member differs from d3dcommon.h, so the level D3D11CreateDevice writes through pFeatureLevel overruns its out slot or is misread
 // Broiler-Human:        PENDING
 public static class D3D11Native
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=86C69F
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=86C69F
     // Broiler-Falsified-If: HARDWARE is not 1 or WARP is not 5 as in d3dcommon.h, so the WARP fallback after a failed hardware D3D11CreateDevice asks for SOFTWARE without a module handle and fails as well
     // Broiler-Human:        PENDING
     public enum D3D_DRIVER_TYPE : uint

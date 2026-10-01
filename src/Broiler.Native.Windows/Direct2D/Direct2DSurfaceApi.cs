@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Direct2D;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=062529
-// Broiler-Falsified-If: a non-null fullscreenDesc passed to CreateSwapChainForHwndProc does not point at a DXGI_SWAP_CHAIN_FULLSCREEN_DESC, so DXGI reads refresh rate and scaling from unrelated memory
+// Broiler-Falsified-If: CreateSwapChainForHwndProc passes the DXGI_SWAP_CHAIN_DESC1 pointer and fullscreenDesc to IDXGIFactory2::CreateSwapChainForHwnd in swapped positions, so DXGI reads the fullscreen description from the 48-byte swap-chain descriptor and dereferences null as the descriptor
 // Broiler-Human:        PENDING
 public static class Direct2DSurfaceApi
 {
@@ -33,20 +33,20 @@ public static class Direct2DSurfaceApi
         IntPtr restrictToOutput, out IntPtr swapChain);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=25B49B
-    // Broiler-Falsified-If: a non-null fullscreenDesc does not point at a DXGI_SWAP_CHAIN_FULLSCREEN_DESC, so DXGI reads refresh rate and scaling from unrelated memory
+    // Broiler-Falsified-If: the DXGI_SWAP_CHAIN_DESC1 pointer and fullscreenDesc reach IDXGIFactory2::CreateSwapChainForHwnd in swapped positions, so DXGI reads the fullscreen description from the 48-byte swap-chain descriptor and dereferences null as the descriptor
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateSwapChainForHwndProc(IntPtr self, IntPtr device, IntPtr hwnd, ref DxgiNative.DXGI_SWAP_CHAIN_DESC1 desc,
         IntPtr fullscreenDesc, IntPtr restrictToOutput, out IntPtr swapChain);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=CC68D0
-    // Broiler-Falsified-If: riid names an interface other than the one the caller then indexes surface with, so later vtable calls on surface run another interface methods
+    // Broiler-Falsified-If: buffer and riid reach IDXGISwapChain::GetBuffer(UINT, REFIID, void**) in swapped positions, so the back-buffer index is dereferenced as the IID pointer
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetBufferProc(IntPtr self, uint buffer, ref Guid riid, out IntPtr surface);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=5; Fingerprint=FA3C79
-    // Broiler-Falsified-If: ResizeBuffers is called while a back buffer from GetBuffer or a bitmap created over it is still referenced, so it fails with DXGI_ERROR_INVALID_CALL
+    // Broiler-Falsified-If: bufferCount, width, height, format and flags reach IDXGISwapChain::ResizeBuffers out of that order, so a resize to 1280 by 720 leaves back buffers whose description reports another size
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int ResizeBuffersProc(IntPtr self, uint bufferCount, uint width, uint height, DxgiNative.DXGI_FORMAT format, uint flags);
@@ -65,7 +65,7 @@ public static class Direct2DSurfaceApi
     public delegate void SetDpiProc(IntPtr self, float dpiX, float dpiY);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=F5376C
-    // Broiler-Falsified-If: a syncInterval above 4 is passed, which IDXGISwapChain::Present rejects with DXGI_ERROR_INVALID_CALL, so the frame is never shown
+    // Broiler-Falsified-If: syncInterval and flags reach IDXGISwapChain::Present(UINT SyncInterval, UINT Flags) in swapped positions, so Present(1, 0) is issued as Present(0, DXGI_PRESENT_TEST) and no frame reaches the window
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int PresentProc(IntPtr self, uint syncInterval, uint flags);

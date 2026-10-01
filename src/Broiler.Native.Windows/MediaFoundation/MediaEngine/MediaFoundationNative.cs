@@ -9,7 +9,7 @@
 // Human-reviewed:   0/59
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         59/59
+// Criteria:         59/55
 // Resource impact:  8/10 max
 // Unverified:       59
 //
@@ -46,11 +46,11 @@ public static partial class MediaFoundationNative
     // Broiler-Human:        PENDING
     public static readonly Guid IID_IMFMediaEngineClassFactory = new("4D645ACE-26AA-4688-9BE1-DF3516990B93");
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AF4160
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AF4160
     // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_CALLBACK in mfmediaengine.h, so the engine finds no IMFMediaEngineNotify in the attribute store and CreateInstance fails
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_CALLBACK = new("C60381B8-83A4-41F8-A3D0-DE05076849A9");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=B98297
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B98297
     // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_PLAYBACK_HWND in mfmediaengine.h, so the engine ignores the target window, runs in frame-server mode and decoded page video never reaches the HWND
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_PLAYBACK_HWND = new("D988879B-67C9-4D92-BAA7-6EADD446039D");
@@ -58,11 +58,11 @@ public static partial class MediaFoundationNative
     // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE in mfmediaengine.h, so Shutdown closes the media source asynchronously and the engine is still running when the caller releases the factory and attribute store
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE = new("C3C2E12F-7E0E-4E43-B91C-DC992CCDFA5E");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=735B96
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=735B96
     // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE in mfmediaengine.h, so the Edge mode value set with SetGUID is never read and the engine keeps its default media-element behaviour
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE = new("4E0212E2-E18F-41E1-95E5-C0E7E9235BC3");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=A118CB
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=A118CB
     // Broiler-Falsified-If: the GUID differs from MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE (A6F3E465-3ACA-442C-A3F0-AD6DDAD839AE), so the engine is configured with an unknown or older IE compatibility mode
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE = new("A6F3E465-3ACA-442C-A3F0-AD6DDAD839AE");
@@ -99,13 +99,13 @@ public partial interface IMFMediaEngineClassFactory
     int CreateInstance(uint createFlags, IMFAttributes attributes, out IMFMediaEngine mediaEngine);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=37E2E9
-    // Broiler-Falsified-If: the IMFMediaTimeRange written to timeRange is an owned reference that the IntPtr caller never passes to Marshal.Release, so each call leaks one time-range object
+    // Broiler-Falsified-If: CreateTimeRange is not vtable slot 4, directly after CreateInstance, so the call reaches CreateError and an IMFMediaError is returned where a time range is expected
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CreateTimeRange(out IntPtr timeRange);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=DF2494
-    // Broiler-Falsified-If: the IMFMediaError written to error is an owned reference that the IntPtr caller never passes to Marshal.Release, so each call leaks one error object
+    // Broiler-Falsified-If: CreateError is not vtable slot 5, the last IMFMediaEngineClassFactory method, so the call reaches CreateTimeRange and a time range is returned where an error object is expected
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CreateError(out IntPtr error);
@@ -119,7 +119,7 @@ public partial interface IMFMediaEngineClassFactory
 public partial interface IMFMediaEngine
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=E58FDF
-    // Broiler-Falsified-If: the IMFMediaError written to error is an owned reference that the IntPtr caller never passes to Marshal.Release, so each error query leaks one IMFMediaError
+    // Broiler-Falsified-If: GetError is not vtable slot 3, the first IMFMediaEngine method, so an error query reaches SetErrorCode and the out pointer is taken as an error code
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetError(out IntPtr error);
@@ -131,7 +131,7 @@ public partial interface IMFMediaEngine
     int SetErrorCode(int error);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=8; Fingerprint=625F7D
-    // Broiler-Falsified-If: the untyped IntPtr accepts a pointer that is not an IMFMediaEngineSrcElements, and the engine calls GetURL through a foreign vtable when it selects the page's source
+    // Broiler-Falsified-If: SetSourceElements does not sit in the slot after SetErrorCode, so the source-elements pointer reaches SetSource and the engine reads it as a BSTR URL
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetSourceElements(IntPtr sourceElements);
@@ -167,7 +167,7 @@ public partial interface IMFMediaEngine
     int SetPreload(int preload);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=80B762
-    // Broiler-Falsified-If: the IMFMediaTimeRange written to buffered is an owned reference that the IntPtr caller never passes to Marshal.Release, so each buffered-range query leaks one copy of the ranges
+    // Broiler-Falsified-If: GetBuffered does not sit in the slot after SetPreload, so the call reaches SetPreload or Load and the caller reads an unset time-range pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBuffered(out IntPtr buffered);
@@ -251,13 +251,13 @@ public partial interface IMFMediaEngine
     int SetPlaybackRate(double rate);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=C0F99A
-    // Broiler-Falsified-If: the IMFMediaTimeRange written to played is an owned reference that the IntPtr caller never passes to Marshal.Release, so each played-range query leaks one copy of the ranges
+    // Broiler-Falsified-If: GetPlayed does not sit in the slot after SetPlaybackRate, so the call reaches SetPlaybackRate and the caller reads an unset time-range pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetPlayed(out IntPtr played);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=B6B68E
-    // Broiler-Falsified-If: the IMFMediaTimeRange written to seekable is an owned reference that the IntPtr caller never passes to Marshal.Release, so each seekable-range query leaks one copy of the ranges
+    // Broiler-Falsified-If: GetSeekable does not sit in the slot after GetPlayed, so the call reaches IsEnded and the caller reads an unset time-range pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetSeekable(out IntPtr seekable);
@@ -359,7 +359,7 @@ public partial interface IMFMediaEngine
     int Shutdown();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=037618
-    // Broiler-Falsified-If: destination points at fewer than the 16 bytes of a RECT, or source at fewer than the 16 bytes of an MFVideoNormalizedRect, and the engine reads past the caller's memory because the untyped IntPtr parameters carry no size
+    // Broiler-Falsified-If: source, destination and borderColor reach TransferVideoFrame(IUnknown*, const MFVideoNormalizedRect*, const RECT*, const MFARGB*) in another order, so the engine reads the normalized source rectangle through the destination RECT pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int TransferVideoFrame(IntPtr destinationSurface, IntPtr source, IntPtr destination, IntPtr borderColor);

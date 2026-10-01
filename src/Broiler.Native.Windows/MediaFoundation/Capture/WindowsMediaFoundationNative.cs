@@ -9,7 +9,7 @@
 // Human-reviewed:   0/110
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         110/110
+// Criteria:         110/104
 // Resource impact:  7/10 max
 // Unverified:       110
 //
@@ -77,7 +77,7 @@ public static partial class WindowsMediaFoundationNative
     // Broiler-Falsified-If: the value differs from 8AC3587A-4AE7-42D8-99E0-0A6013EEF90F in mfidl.h, so the source-type filter selects audio capture devices or none instead of video capture devices
     // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_GUID = new("8AC3587A-4AE7-42D8-99E0-0A6013EEF90F");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=2EFB1C
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=2EFB1C
     // Broiler-Falsified-If: the value differs from 60D0E559-52F8-4FA2-BBCE-ACDB34A8EC01 in mfidl.h, so GetAllocatedString returns another attribute's string as the camera's display name or none at all
     // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_FRIENDLY_NAME = new("60D0E559-52F8-4FA2-BBCE-ACDB34A8EC01");
@@ -85,7 +85,7 @@ public static partial class WindowsMediaFoundationNative
     // Broiler-Falsified-If: the value differs from 58F0AAD8-22BF-4F8A-BB3D-D2C4978C6E2F in mfidl.h, so the symbolic link read from an enumerated device or passed to MFCreateDeviceSource does not identify the camera the caller selected
     // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK = new("58F0AAD8-22BF-4F8A-BB3D-D2C4978C6E2F");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F471DD
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F471DD
     // Broiler-Falsified-If: the value differs from 44D1A9BC-2999-4238-AE43-0730CEB2AB1B in mfidl.h, so a camera meant to be opened for shared access through the frame server is opened exclusively
     // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_FRAMESERVER_SHARE_MODE = new("44D1A9BC-2999-4238-AE43-0730CEB2AB1B");
@@ -102,7 +102,7 @@ public static partial class WindowsMediaFoundationNative
     // Broiler-Falsified-If: the value differs from 1652C33D-D6B2-4012-B834-72030849A37D in mfapi.h, so width and height are unpacked from another UINT64 attribute and plane sizes disagree with the locked buffer length
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_FRAME_SIZE = new("1652C33D-D6B2-4012-B834-72030849A37D");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=7B01F0
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7B01F0
     // Broiler-Falsified-If: the value differs from C459A2E8-3D2C-4E44-B132-FEE5156C7BB0 in mfapi.h, so the reported frame-rate numerator and denominator come from another attribute
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_FRAME_RATE = new("C459A2E8-3D2C-4E44-B132-FEE5156C7BB0");
@@ -110,11 +110,11 @@ public static partial class WindowsMediaFoundationNative
     // Broiler-Falsified-If: the value differs from 644B4E48-1E02-4516-B0EB-C01CA9D49AC6 in mfapi.h, so the row pitch, including the negative pitch of a bottom-up RGB frame, is read from another attribute
     // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_DEFAULT_STRIDE = new("644B4E48-1E02-4516-B0EB-C01CA9D49AC6");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1B6B07
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1B6B07
     // Broiler-Falsified-If: the value differs from 0F81DA2C-B537-4672-A8B2-A681B17307A3 in mfreadwrite.h, so the source reader inserts no video processor and refuses an output subtype the camera does not produce natively
     // Broiler-Human:        PENDING
     public static readonly Guid MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING = new("0F81DA2C-B537-4672-A8B2-A681B17307A3");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=29ABF8
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=29ABF8
     // Broiler-Falsified-If: the value differs from 56B67165-219E-456D-A22E-2D3004C7FE56 in mfreadwrite.h, so releasing the source reader also shuts down the media source the caller still owns
     // Broiler-Human:        PENDING
     public static readonly Guid MF_SOURCE_READER_DISCONNECT_MEDIASOURCE_ON_SHUTDOWN = new("56B67165-219E-456D-A22E-2D3004C7FE56");
@@ -140,7 +140,7 @@ public static partial class WindowsMediaFoundationNative
 
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=5FD83E
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5FD83E
 // Broiler-Falsified-If: a member differs from its MF_SOURCE_READERF value in mfreadwrite.h (Error 0x1, EndOfStream 0x2, StreamTick 0x100), so a reader error or end of stream returned by ReadSample is handled as an ordinary frame
 // Broiler-Human:        PENDING
 [Flags]
@@ -163,7 +163,7 @@ public enum SourceReaderFlags
 public partial interface IMFActivate : IMFAttributes
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=9210BC
-    // Broiler-Falsified-If: wrapping the pointer written to activatedObject without one Release leaves the activated media source with an extra reference after its wrapper is released
+    // Broiler-Falsified-If: ActivateObject is not vtable slot 33, directly after the 30 IMFAttributes methods, so the call reaches CopyAllItems and native code calls through the IID pointer as an IMFAttributes object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int ActivateObject(ref Guid interfaceId, out IntPtr activatedObject);
@@ -182,32 +182,32 @@ public partial interface IMFActivate : IMFAttributes
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=0E895F
-// Broiler-Falsified-If: an IntPtr passed as the const PROPVARIANT* of Start or QueueEvent points at less than a full PROPVARIANT (24 bytes on x64), so native code reads past the caller's allocation
+// Broiler-Falsified-If: a member is out of mfidl.h order (the four IMFMediaEventGenerator methods, then GetCharacteristics through Shutdown), so Start or QueueEvent reaches a method that reads its PROPVARIANT pointer as another argument
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("279A808D-AEC7-40C8-9C6B-A6B492C78A66")]
 public partial interface IMFMediaSource
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=0E5E8D
-    // Broiler-Falsified-If: the IMFMediaEvent pointer written to mediaEvent is not Released after use, so each retrieved event leaks one reference
+    // Broiler-Falsified-If: GetEvent is not vtable slot 3, the first IMFMediaEventGenerator method after IUnknown, so an event request reaches BeginGetEvent and the flags are taken as a callback pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetEvent(int flags, out IntPtr mediaEvent);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=A2701C
-    // Broiler-Falsified-If: the IntPtr passed as callback is not an IMFAsyncCallback that stays alive until the request completes, so the event generator calls Invoke through a released object
+    // Broiler-Falsified-If: BeginGetEvent is not vtable slot 4, directly after GetEvent, so the callback and state reach GetEvent and an event pointer is written through the callback value as an address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int BeginGetEvent(IntPtr callback, IntPtr state);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F27CE9
-    // Broiler-Falsified-If: the IMFMediaEvent pointer written by EndGetEvent is not Released after use, so each completed request leaks one event
+    // Broiler-Falsified-If: result and the mediaEvent out reach IMFMediaEventGenerator::EndGetEvent(IMFAsyncResult*, IMFMediaEvent**) in swapped positions, so the event pointer is written over the async result object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int EndGetEvent(IntPtr result, out IntPtr mediaEvent);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=0CB8DF
-    // Broiler-Falsified-If: value is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so the event generator copies past the caller's allocation
+    // Broiler-Falsified-If: QueueEvent is not vtable slot 6, after EndGetEvent, so the event type, GUID, status and PROPVARIANT pointer reach EndGetEvent or GetCharacteristics and native code writes through the event type as an address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int QueueEvent(int mediaEventType, ref Guid extendedType, int status, IntPtr value);
@@ -219,30 +219,30 @@ public partial interface IMFMediaSource
     int GetCharacteristics(out int characteristics);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=DFC700
-    // Broiler-Falsified-If: the IMFPresentationDescriptor pointer written to presentationDescriptor is not Released after use, so each call leaks one descriptor
+    // Broiler-Falsified-If: CreatePresentationDescriptor is not vtable slot 8, after GetCharacteristics, so the call reaches Start and native code reads the out slot as a presentation descriptor
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CreatePresentationDescriptor(out IntPtr presentationDescriptor);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=007B5F
-    // Broiler-Falsified-If: startPosition is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so the source reads past the caller's allocation when it starts
+    // Broiler-Falsified-If: presentationDescriptor, timeFormat and startPosition reach IMFMediaSource::Start in another order, so the source reads the PROPVARIANT start position through the time-format GUID's address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Start(IntPtr presentationDescriptor, ref Guid timeFormat, IntPtr startPosition);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=458393
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=458393
     // Broiler-Falsified-If: Stop is not dispatched through the slot after Start in mfidl.h, so a stop request runs Pause or Shutdown instead
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Stop();
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=3DEE33
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=3DEE33
     // Broiler-Falsified-If: Pause is not dispatched through the slot after Stop in mfidl.h, so a pause request runs Shutdown and the camera cannot be restarted
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Pause();
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B383A8
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B383A8
     // Broiler-Falsified-If: Shutdown is not the last IMFMediaSource slot in mfidl.h, so releasing a camera calls another method and leaves the device open
     // Broiler-Human:        PENDING
     [PreserveSig]
@@ -269,26 +269,26 @@ public partial interface IMFMediaType : IMFAttributes
     int IsCompressedFormat([MarshalAs(UnmanagedType.Bool)] out bool compressed);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=01BD88
-    // Broiler-Falsified-If: an S_FALSE result from IsEqual is treated as a match, so a media type that differs in subtype or frame size is accepted as the negotiated one
+    // Broiler-Falsified-If: mediaType and the flags out reach IMFMediaType::IsEqual(IMFMediaType*, DWORD*) in swapped positions, so the match flags are written into the other media type object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int IsEqual(IMFMediaType mediaType, out int flags);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=C437BF
-    // Broiler-Falsified-If: the block written to representationData is freed by anything other than FreeRepresentation with the same representation GUID, corrupting the media type's heap
+    // Broiler-Falsified-If: GetRepresentation is not vtable slot 36, after IsEqual, so a representation request reaches FreeRepresentation and native code frees the caller's out slot as a representation block
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetRepresentation(Guid representation, out IntPtr representationData);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=E8E537
-    // Broiler-Falsified-If: a pointer that GetRepresentation did not return for the same representation GUID reaches FreeRepresentation, so native code frees memory it does not own
+    // Broiler-Falsified-If: FreeRepresentation is not vtable slot 37, directly after GetRepresentation, so a free request reaches GetRepresentation and a new block is written through the pointer meant to be freed
     // Broiler-Human:        PENDING
     [PreserveSig]
     int FreeRepresentation(Guid representation, IntPtr representationData);
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=7; Fingerprint=0EC939
-// Broiler-Falsified-If: an IntPtr passed to GetPresentationAttribute or SetCurrentPosition points at less than a full PROPVARIANT (24 bytes on x64), so native code writes or reads past the caller's allocation
+// Broiler-Falsified-If: a member is out of mfreadwrite.h order (GetStreamSelection at slot 3 through GetPresentationAttribute at 12), so a PROPVARIANT, media-type or sample pointer is read or written by a method that takes another argument list
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("70AE66F2-C809-4E4F-8915-BDCB406B7993")]
@@ -307,31 +307,31 @@ public partial interface IMFSourceReader
     int SetStreamSelection(int streamIndex, [MarshalAs(UnmanagedType.Bool)] bool selected);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=191BB5
-    // Broiler-Falsified-If: the IMFMediaType written for an index past the last native type is used although the call returned MF_E_NO_MORE_TYPES
+    // Broiler-Falsified-If: GetNativeMediaType is not vtable slot 5, after SetStreamSelection, so the stream and type indexes reach GetCurrentMediaType and the type index is dereferenced as the out pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetNativeMediaType(int streamIndex, int mediaTypeIndex, out IMFMediaType mediaType);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=CAC63C
-    // Broiler-Falsified-If: the IMFMediaType reference written to mediaType is not released after a format change is read, so each change leaks one media type
+    // Broiler-Falsified-If: GetCurrentMediaType is not vtable slot 6, directly after GetNativeMediaType, so the out pointer is read as a media-type index and the type is written through an unset argument
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetCurrentMediaType(int streamIndex, out IMFMediaType mediaType);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=57AE9A
-    // Broiler-Falsified-If: reserved is passed as a non-null pointer although pdwReserved must be NULL in mfreadwrite.h, so the reader rejects the media type change
+    // Broiler-Falsified-If: reserved and mediaType reach IMFSourceReader::SetCurrentMediaType(DWORD, DWORD*, IMFMediaType*) in swapped positions, so the reader dereferences null as the media type
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetCurrentMediaType(int streamIndex, IntPtr reserved, IMFMediaType mediaType);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=CF62FB
-    // Broiler-Falsified-If: position points at less than a full PROPVARIANT (24 bytes on x64), so the reader reads past the caller's allocation when it seeks
+    // Broiler-Falsified-If: timeFormat and position reach IMFSourceReader::SetCurrentPosition(REFGUID, REFPROPVARIANT) in swapped positions, so the reader reads the PROPVARIANT seek position through the GUID's address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetCurrentPosition(ref Guid timeFormat, IntPtr position);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=7; Fingerprint=2D7F72
-    // Broiler-Falsified-If: a successful call that returns a null sample (stream tick, end of stream or format change) is handled as a frame, so the caller dereferences a null IMFSample
+    // Broiler-Falsified-If: ReadSample is not vtable slot 9, after SetCurrentPosition, so a read reaches Flush or SetCurrentPosition and the five out arguments are never written
     // Broiler-Human:        PENDING
     [PreserveSig]
     int ReadSample(int streamIndex, int controlFlags, out int actualStreamIndex, out SourceReaderFlags streamFlags,
@@ -344,27 +344,27 @@ public partial interface IMFSourceReader
     int Flush(int streamIndex);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=26A506
-    // Broiler-Falsified-If: the pointer written to serviceObject is called through an interface other than interfaceId, so native methods run with mismatched arguments
+    // Broiler-Falsified-If: service and interfaceId reach GetServiceForStream(DWORD, REFGUID, REFIID, LPVOID*) in swapped positions, so the reader returns the service named by the IID and the caller calls it as another interface
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetServiceForStream(int streamIndex, ref Guid service, ref Guid interfaceId, out IntPtr serviceObject);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=05DCB9
-    // Broiler-Falsified-If: value points at less than a full PROPVARIANT (24 bytes on x64), so the reader writes the attribute past the caller's allocation
+    // Broiler-Falsified-If: GetPresentationAttribute is not vtable slot 12, the last IMFSourceReader method, so the query reaches GetServiceForStream and native code writes a service pointer through the PROPVARIANT argument
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetPresentationAttribute(int streamIndex, ref Guid attribute, IntPtr value);
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=AA199C
-// Broiler-Falsified-If: an IntPtr PROPVARIANT, string or blob argument points at less memory than a full PROPVARIANT or its size argument states, so native code reads or writes past the caller's allocation
+// Broiler-Falsified-If: a member is out of mfobjects.h order (the 30 IMFAttributes slots, then GetSampleFlags at 33 through CopyToBuffer at 46), so a PROPVARIANT, string, blob or buffer pointer reaches a method that writes it with another size
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("C40A00F2-B93A-4D80-AE8C-5A1C634F58E4")]
 public partial interface IMFSample
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=CE6DAE
-    // Broiler-Falsified-If: value is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so native code writes the item past the caller's allocation
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=CE6DAE
+    // Broiler-Falsified-If: GetItem is not vtable slot 3, directly after IUnknown, so a lookup reaches GetItemType and the PROPVARIANT the caller then reads holds only a 4-byte type code
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItem(ref Guid key, IntPtr value);
@@ -375,13 +375,13 @@ public partial interface IMFSample
     [PreserveSig]
     int GetItemType(ref Guid key, out int type);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=E2FA0C
-    // Broiler-Falsified-If: value points at less than a full PROPVARIANT (24 bytes on x64), so native code reads past the caller's allocation while comparing
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=E2FA0C
+    // Broiler-Falsified-If: CompareItem is not vtable slot 5, after GetItemType, so a comparison reaches Compare and native code calls through the PROPVARIANT pointer as an IMFAttributes object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CompareItem(ref Guid key, IntPtr value, [MarshalAs(UnmanagedType.Bool)] out bool result);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=FC95C3
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=FC95C3
     // Broiler-Falsified-If: result is marshalled as a 1-byte bool instead of a 4-byte BOOL, so native code writes past the managed local and a mismatch can read as a match
     // Broiler-Human:        PENDING
     [PreserveSig]
@@ -412,19 +412,19 @@ public partial interface IMFSample
     int GetGUID(ref Guid key, out Guid value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=CC6026
-    // Broiler-Falsified-If: the returned length is read as bytes rather than UTF-16 characters without the terminator, so a buffer sized from it holds half the string
+    // Broiler-Falsified-If: GetStringLength is not vtable slot 11, so a call reaches GetGUID and native code writes 16 bytes through the 4-byte length out
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetStringLength(ref Guid key, out int length);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=77BE94
-    // Broiler-Falsified-If: size is passed as a byte count rather than the capacity in UTF-16 characters including the terminator, so native code writes up to twice the buffer's length
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=77BE94
+    // Broiler-Falsified-If: value and size reach IMFAttributes::GetString(REFGUID, LPWSTR, UINT32, UINT32*) in swapped positions, so the string is written to the address given by the capacity
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetString(ref Guid key, IntPtr value, int size, out int length);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=028D50
-    // Broiler-Falsified-If: the string written to value is freed with anything other than CoTaskMemFree, so the allocation leaks or a different heap frees it
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=028D50
+    // Broiler-Falsified-If: value and length reach GetAllocatedString(REFGUID, LPWSTR*, UINT32*) in swapped positions, so the string pointer is written into the 4-byte length and the caller frees a truncated address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAllocatedString(ref Guid key, out IntPtr value, out int length);
@@ -435,92 +435,92 @@ public partial interface IMFSample
     [PreserveSig]
     int GetBlobSize(ref Guid key, out int size);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=DF996E
-    // Broiler-Falsified-If: bufferSize is larger than the memory buffer points to, so native code copies the blob past the caller's allocation
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=DF996E
+    // Broiler-Falsified-If: buffer and bufferSize reach IMFAttributes::GetBlob(REFGUID, UINT8*, UINT32, UINT32*) in swapped positions, so the blob is copied to the address given by the size
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBlob(ref Guid key, IntPtr buffer, int bufferSize, out int blobSize);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=D95683
-    // Broiler-Falsified-If: the blob written to buffer is freed with anything other than CoTaskMemFree, so the allocation leaks or a different heap frees it
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=D95683
+    // Broiler-Falsified-If: buffer and size reach GetAllocatedBlob(REFGUID, UINT8**, UINT32*) in swapped positions, so the blob pointer is written into the 4-byte size and the caller reads through a truncated address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAllocatedBlob(ref Guid key, out IntPtr buffer, out int size);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=D93F2C
-    // Broiler-Falsified-If: the pointer written to value is called through an interface other than interfaceId, so native methods run with mismatched arguments
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D93F2C
+    // Broiler-Falsified-If: key and interfaceId reach GetUnknown(REFGUID, REFIID, LPVOID*) in swapped positions, so the store looks the IID up as the key and returns an object queried for the key GUID
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetUnknown(ref Guid key, ref Guid interfaceId, out IntPtr value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=8A63F9
-    // Broiler-Falsified-If: value points at less than a full PROPVARIANT (24 bytes on x64), so native code copies past the caller's allocation into the attribute store
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=8A63F9
+    // Broiler-Falsified-If: SetItem is not vtable slot 18, after GetUnknown, so a store request reaches GetUnknown and native code writes an interface pointer through the PROPVARIANT argument
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetItem(ref Guid key, IntPtr value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=74315D
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=74315D
     // Broiler-Falsified-If: DeleteItem is not the slot after SetItem in mfobjects.h, so a delete runs DeleteAllItems or SetUINT32 with mismatched arguments
     // Broiler-Human:        PENDING
     [PreserveSig]
     int DeleteItem(ref Guid key);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B3EEDA
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=B3EEDA
     // Broiler-Falsified-If: DeleteAllItems is not dispatched through the slot after DeleteItem in mfobjects.h, so clearing the attributes runs another method
     // Broiler-Human:        PENDING
     [PreserveSig]
     int DeleteAllItems();
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=ACC7DC
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=ACC7DC
     // Broiler-Falsified-If: value is declared wider than the UINT32 of mfobjects.h, so on x86 the caller pushes 8 bytes where native code pops 4 and the stack is unbalanced on return
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUINT32(ref Guid key, int value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D8F6A0
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=D8F6A0
     // Broiler-Falsified-If: value is declared narrower than the UINT64 of mfobjects.h, so on x86 the upper half is read from the next stack slot
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUINT64(ref Guid key, long value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=0AB870
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=0AB870
     // Broiler-Falsified-If: value is not passed as an 8-byte double, so native code stores a reinterpretation of another register or stack slot
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetDouble(ref Guid key, double value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=4C3268
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=4C3268
     // Broiler-Falsified-If: value is passed by value instead of as a REFGUID pointer, so native code reads the GUID from the bits of a pointer-sized argument
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetGUID(ref Guid key, ref Guid value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=C88CB0
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=C88CB0
     // Broiler-Falsified-If: value is marshalled as an ANSI string instead of LPWSTR, so non-ASCII characters are lost and native code reads a narrow buffer as UTF-16 past its terminator
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetString(ref Guid key, [MarshalAs(UnmanagedType.LPWStr)] string value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=643E87
-    // Broiler-Falsified-If: size is larger than the memory buffer points to, so native code copies past the caller's allocation into the attribute store
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=643E87
+    // Broiler-Falsified-If: buffer and size reach IMFAttributes::SetBlob(REFGUID, const UINT8*, UINT32) in swapped positions, so the store copies the blob from the address given by the size
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetBlob(ref Guid key, IntPtr buffer, int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=EB4C73
-    // Broiler-Falsified-If: an IntPtr passed as value is not an IUnknown pointer, so the attribute store calls AddRef through an address that is not a vtable
+    // Broiler-Falsified-If: SetUnknown is not vtable slot 27, after SetBlob, so a store request reaches SetBlob and native code copies from the IUnknown pointer with an unset size
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUnknown(ref Guid key, IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=52D8D9
-    // Broiler-Falsified-If: a LockStore call is not paired with UnlockStore on every path, so other threads block on the attribute store indefinitely
+    // Broiler-Falsified-If: LockStore is not vtable slot 28, directly after SetUnknown, so a lock request reaches SetUnknown or UnlockStore and the attribute store is never locked
     // Broiler-Human:        PENDING
     [PreserveSig]
     int LockStore();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B80F37
-    // Broiler-Falsified-If: UnlockStore is called without a matching LockStore, releasing a lock another thread holds on the attribute store
+    // Broiler-Falsified-If: UnlockStore is not vtable slot 29, directly after LockStore, so an unlock reaches GetCount, which writes through an unset argument and leaves the store locked
     // Broiler-Human:        PENDING
     [PreserveSig]
     int UnlockStore();
@@ -531,13 +531,13 @@ public partial interface IMFSample
     [PreserveSig]
     int GetCount(out int count);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=57C3C3
-    // Broiler-Falsified-If: value is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so native code writes the item past the caller's allocation
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=57C3C3
+    // Broiler-Falsified-If: GetItemByIndex is not vtable slot 31, after GetCount, so an indexed read reaches CopyAllItems and native code calls through the GUID out pointer as an IMFAttributes object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItemByIndex(int index, out Guid key, IntPtr value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=F083D6
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=F083D6
     // Broiler-Falsified-If: CopyAllItems is not the last of the 30 IMFAttributes slots in mfobjects.h, so GetSampleFlags and every sample member after it are dispatched one slot off
     // Broiler-Human:        PENDING
     [PreserveSig]
@@ -586,13 +586,13 @@ public partial interface IMFSample
     int GetBufferCount(out int bufferCount);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=2959BC
-    // Broiler-Falsified-If: the IMFMediaBuffer written for an index equal to or above GetBufferCount is used although the call returned E_INVALIDARG
+    // Broiler-Falsified-If: GetBufferByIndex is not vtable slot 40, after GetBufferCount, so the call reaches ConvertToContiguousBuffer and a buffer pointer is written through the index value as an address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBufferByIndex(int index, out IMFMediaBuffer buffer);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=799F86
-    // Broiler-Falsified-If: the IMFMediaBuffer reference written to buffer is not released after the frame is copied, so each converted sample leaks a frame-sized buffer
+    // Broiler-Falsified-If: ConvertToContiguousBuffer is not vtable slot 41, after GetBufferByIndex, so the call reaches AddBuffer and the caller's out slot is read as a buffer to append
     // Broiler-Human:        PENDING
     [PreserveSig]
     int ConvertToContiguousBuffer(out IMFMediaBuffer buffer);
@@ -616,33 +616,33 @@ public partial interface IMFSample
     int RemoveAllBuffers();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B86A11
-    // Broiler-Falsified-If: the total length of a sample holding several buffers is used to size a read through one buffer's Lock pointer, so the read runs past that buffer's current length
+    // Broiler-Falsified-If: totalLength is not declared as an out 4-byte DWORD, so GetTotalLength writes the byte count into a slot of another width and the length read back carries stale bits
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetTotalLength(out int totalLength);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=5C8BE2
-    // Broiler-Falsified-If: a destination whose maximum length is below GetTotalLength returns MF_E_BUFFERTOOSMALL and the caller still reads the destination as a copied frame
+    // Broiler-Falsified-If: CopyToBuffer is not vtable slot 46, the last IMFSample method, so a copy request reaches GetTotalLength and native code writes a byte count over the destination buffer object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CopyToBuffer(IMFMediaBuffer buffer);
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=59E929
-// Broiler-Falsified-If: the pointer from Lock is read beyond the currentLength it returned or after Unlock, so the caller reads memory the media buffer does not hold for it
+// Broiler-Falsified-If: a member is out of mfobjects.h order (Lock, Unlock, GetCurrentLength, SetCurrentLength, GetMaxLength after IUnknown), so the length that bounds reads through the Lock pointer comes from another method
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("045FA593-8799-42B8-BC8D-8968C6453507")]
 public partial interface IMFMediaBuffer
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=B58521
-    // Broiler-Falsified-If: the pointer written to buffer is used beyond the maxLength written beside it, so the caller reads or writes past the media buffer
+    // Broiler-Falsified-If: buffer, maxLength and currentLength reach IMFMediaBuffer::Lock(BYTE**, DWORD*, DWORD*) in another order, so the data pointer is written into a 4-byte length and the caller reads frames through a truncated address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Lock(out IntPtr buffer, out int maxLength, out int currentLength);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=82E696
-    // Broiler-Falsified-If: the pointer from Lock is still dereferenced after Unlock returns, so the caller reads memory the media buffer may have moved or freed
+    // Broiler-Falsified-If: Unlock is not vtable slot 4, directly after Lock, so an unlock reaches GetCurrentLength with no out argument and native code writes the length through an unset pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Unlock();
@@ -654,7 +654,7 @@ public partial interface IMFMediaBuffer
     int GetCurrentLength(out int currentLength);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=6EBEA5
-    // Broiler-Falsified-If: a value above the buffer's maximum length is treated as applied although the call returned E_INVALIDARG, so the caller then reads that many bytes through the Lock pointer
+    // Broiler-Falsified-If: currentLength is not passed as a 4-byte DWORD, so SetCurrentLength stores a length taken from stray bits and GetCurrentLength then reports more valid bytes than were written
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetCurrentLength(int currentLength);

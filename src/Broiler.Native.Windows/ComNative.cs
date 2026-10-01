@@ -9,7 +9,7 @@
 // Human-reviewed:   0/32
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         32/31
+// Criteria:         32/29
 // Resource impact:  3/10 max
 // Unverified:       32
 //
@@ -31,13 +31,13 @@ namespace Broiler.Native.Windows;
 public partial interface IStream
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=EBC476
-    // Broiler-Falsified-If: a cb larger than the writable buffer at pv lets the native stream copy up to cb bytes past the end of the caller's memory
+    // Broiler-Falsified-If: Read is not vtable slot 3, the first ISequentialStream method after IUnknown, so a read request reaches Write and the stream copies cb bytes out of the caller's buffer instead of into it
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Read(IntPtr pv, uint cb, out uint pcbRead);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=2AC1C9
-    // Broiler-Falsified-If: a cb larger than the readable buffer at pv makes the native stream copy bytes from beyond the end of the caller's memory into the stream
+    // Broiler-Falsified-If: Write is not vtable slot 4, directly after Read, so a write request reaches Read and the stream copies cb bytes into the caller's buffer instead of out of it
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Write(IntPtr pv, uint cb, out uint pcbWritten);
@@ -85,7 +85,7 @@ public partial interface IStream
     int UnlockRegion(ulong libOffset, ulong cb, uint dwLockType);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=D1A188
-    // Broiler-Falsified-If: a pstatstg buffer smaller than the native STATSTG (80 bytes on x64, 72 on x86) is overrun when Stat writes the structure
+    // Broiler-Falsified-If: Stat is not vtable slot 12, after UnlockRegion, so a stat request reaches Clone and an IStream pointer is written into the STATSTG buffer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Stat(IntPtr pstatstg, uint grfStatFlag);
@@ -99,7 +99,7 @@ public partial interface IStream
 
 /// <summary>Shared COM initialization, activation, allocation, and ownership operations.</summary>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=E10EF6
-// Broiler-Falsified-If: a block or interface pointer that one owner already freed (through CoTaskMemFree, ReleaseIUnknown, or an HGLOBAL a stream deletes on release) is freed or released a second time through these helpers
+// Broiler-Falsified-If: ReleaseIUnknown lowers a non-null pointer's reference count by other than exactly one, or CoTaskMemFree binds an export other than ole32's, so an object or block another holder still uses is freed
 // Broiler-Human:        PENDING
 public static partial class ComNative
 {
@@ -111,11 +111,11 @@ public static partial class ComNative
     // Broiler-Falsified-If: a value other than 1 makes a nested CoInitializeEx on an already initialised thread skip its matching CoUninitialize, leaving the apartment's initialisation count unbalanced
     // Broiler-Human:        PENDING
     public const int S_FALSE = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0C6B23
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=0C6B23
     // Broiler-Falsified-If: a value other than 0x80070005 makes an OS refusal of camera or microphone access surface as a generic native failure instead of PermissionDenied
     // Broiler-Human:        PENDING
     public const int E_ACCESSDENIED = unchecked((int)0x80070005);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=A76EE8
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=A76EE8
     // Broiler-Falsified-If: a value other than 0x80070490 makes a machine with no default capture endpoint throw instead of reporting that no microphone is present
     // Broiler-Human:        PENDING
     public const int E_NOTFOUND = unchecked((int)0x80070490);
@@ -148,19 +148,19 @@ public static partial class ComNative
     public static partial int CoInitializeEx(IntPtr reserved, uint coInit);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=1CDFE8
-    // Broiler-Falsified-If: a thread calls CoUninitialize more times than CoInitializeEx returned S_OK or S_FALSE on it, tearing down the apartment while interface pointers created there are still released later
+    // Broiler-Falsified-If: the import binds an export other than ole32's CoUninitialize, so the thread's apartment initialisation count is not lowered and a later CoInitializeEx on it still returns S_FALSE
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial void CoUninitialize();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=396F43
-    // Broiler-Falsified-If: a pointer not allocated by CoTaskMemAlloc, such as a Marshal.AllocHGlobal block, or one already freed reaches CoTaskMemFree and corrupts the COM task heap
+    // Broiler-Falsified-If: the import binds an export other than ole32's CoTaskMemFree, such as GlobalFree, so a string returned by IMMDevice.GetId is released to another heap
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial void CoTaskMemFree(IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=F9E5E6
-    // Broiler-Falsified-If: the +1 reference returned in ppv on success is not released exactly once by its caller through ReleaseIUnknown or ComPtr, leaking the in-process server or releasing it under another holder
+    // Broiler-Falsified-If: rclsid or riid is passed by value rather than as a REFCLSID or REFIID pointer, so ole32 reads the first bytes of the GUID as an address
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int CoCreateInstance(in Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, in Guid riid, out IntPtr ppv);
@@ -179,7 +179,7 @@ public static partial class ComNative
     public static partial int CoCreateInstance(in Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, in Guid riid, out WicNative.IWICImagingFactory ppv);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=B90342
-    // Broiler-Falsified-If: an hGlobal handed over with fDeleteOnRelease true is also freed by the caller, so the stream's final Release frees the block a second time
+    // Broiler-Falsified-If: fDeleteOnRelease is not marshalled as a 4-byte BOOL, so a false request reaches ole32 with stray upper bytes and the stream frees an HGLOBAL the caller still owns
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int CreateStreamOnHGlobal(IntPtr hGlobal, [MarshalAs(UnmanagedType.Bool)] bool fDeleteOnRelease, out IStream ppstm);

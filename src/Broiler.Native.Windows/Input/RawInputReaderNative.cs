@@ -9,7 +9,7 @@
 // Human-reviewed:   0/9
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         9/9
+// Criteria:         9/8
 // Resource impact:  3/10 max
 // Unverified:       9
 //
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Input;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=33D29B
-// Broiler-Falsified-If: a GetRawInputData size argument larger than the memory at data lets user32 write RAWINPUT bytes past the end of the caller's buffer
+// Broiler-Falsified-If: GetRawInputData passes data and size to user32 in swapped positions, so the RAWINPUT is written through the size's address and the byte count into the caller's buffer
 // Broiler-Human:        PENDING
 public static partial class RawInputReaderNative
 {
@@ -67,7 +67,7 @@ public static partial class RawInputReaderNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=DCA974
-    // Broiler-Falsified-If: a size argument larger than the memory at data lets user32 write a RAWINPUT past the end of the caller's buffer
+    // Broiler-Falsified-If: data and size reach GetRawInputData(HRAWINPUT, UINT, LPVOID, PUINT, UINT) in swapped positions, so user32 writes the RAWINPUT through the size's address and the byte count into the caller's buffer
     // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial uint GetRawInputData(IntPtr rawInput, uint command, IntPtr data, ref uint size, uint headerSize);
@@ -83,7 +83,7 @@ public static partial class RawInputReaderNative
     // Broiler-Falsified-If: the value is not winuser.h's RIM_TYPEKEYBOARD 1, so a keyboard report is not decoded with the RAWKEYBOARD layout and raw key events are dropped or misread
     // Broiler-Human:        PENDING
     public const uint RimTypeKeyboard = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=712CB5
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=712CB5
     // Broiler-Falsified-If: the value is not winuser.h's MOUSE_MOVE_ABSOLUTE 0x0001, so a pen tablet's absolute LastX and LastY in 0 to 65535 are treated as relative deltas
     // Broiler-Human:        PENDING
     public const ushort MouseMoveAbsolute = 0x0001;

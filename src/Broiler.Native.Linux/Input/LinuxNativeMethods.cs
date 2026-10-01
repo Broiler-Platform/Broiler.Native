@@ -9,7 +9,7 @@
 // Human-reviewed:   0/27
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         27/27
+// Criteria:         27/13
 // Resource impact:  3/10 max
 // Unverified:       27
 //
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Linux.Input;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=C79A53
-// Broiler-Falsified-If: Read is called with a count larger than buffer.Length and read(2) writes evdev bytes past the end of the pinned managed array
+// Broiler-Falsified-If: Read's count is declared narrower than size_t, so on x86-64 read(2) takes a byte count with undefined upper bits and writes evdev bytes past the end of the pinned array
 // Broiler-Human:        PENDING
 public static partial class LinuxNativeMethods
 {
@@ -30,7 +30,7 @@ public static partial class LinuxNativeMethods
     // Broiler-Falsified-If: O_RDONLY differs from 0, so open(2) asks for write access to the evdev node and fails with EACCES for a user who may only read input devices
     // Broiler-Human:        PENDING
     public const int O_RDONLY = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=22552B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=22552B
     // Broiler-Falsified-If: O_NONBLOCK differs from 0x800 (04000 octal on x86-64 and arm64), so a read on an idle event device blocks the read loop instead of returning EAGAIN
     // Broiler-Human:        PENDING
     public const int O_NONBLOCK = 0x800;
@@ -39,52 +39,52 @@ public static partial class LinuxNativeMethods
     // Broiler-Human:        PENDING
     public const int O_CLOEXEC = 0x80000;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=B28418
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B28418
     // Broiler-Falsified-If: POLLIN differs from 0x0001, so poll(2) never reports the event device readable and the read loop only wakes on its timeout
     // Broiler-Human:        PENDING
     public const short POLLIN = 0x0001;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AC1DCE
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AC1DCE
     // Broiler-Falsified-If: POLLERR differs from 0x0008, so an event device in an error state is not recognised in revents and the loop keeps polling a dead descriptor
     // Broiler-Human:        PENDING
     public const short POLLERR = 0x0008;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=06CE9C
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=06CE9C
     // Broiler-Falsified-If: POLLHUP differs from 0x0010, so an unplugged event device is not recognised in revents and is not reported as removed
     // Broiler-Human:        PENDING
     public const short POLLHUP = 0x0010;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=06ECDE
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=06ECDE
     // Broiler-Falsified-If: POLLNVAL differs from 0x0020, so polling a closed descriptor is not recognised in revents and the loop spins on it
     // Broiler-Human:        PENDING
     public const short POLLNVAL = 0x0020;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=BC45A0
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=BC45A0
     // Broiler-Falsified-If: EINTR differs from 4, so a poll or read interrupted by a signal is reported as a device fault instead of being retried
     // Broiler-Human:        PENDING
     public const int EINTR = 4;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F96002
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=F96002
     // Broiler-Falsified-If: EIO differs from 5, so a read that fails after the device is unplugged is classified as a generic fault instead of a removed device
     // Broiler-Human:        PENDING
     public const int EIO = 5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=14B507
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=14B507
     // Broiler-Falsified-If: EAGAIN differs from 11, so a nonblocking read with no pending events is reported as a fault and stops the read loop
     // Broiler-Human:        PENDING
     public const int EAGAIN = 11;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=10AC33
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=10AC33
     // Broiler-Falsified-If: EACCES differs from 13, so an open refused by the input group permissions is not classified as permission denied
     // Broiler-Human:        PENDING
     public const int EACCES = 13;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1FA33E
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=1FA33E
     // Broiler-Falsified-If: EBUSY differs from 16, so a device another process holds is not classified as busy
     // Broiler-Human:        PENDING
     public const int EBUSY = 16;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D76B4A
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=D76B4A
     // Broiler-Falsified-If: ENODEV differs from 19, so a read on a removed event device is not classified as a removed device and recovery is skipped
     // Broiler-Human:        PENDING
     public const int ENODEV = 19;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=61565D
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=61565D
     // Broiler-Falsified-If: ENOENT differs from 2, so opening a missing /dev/input node is not classified as device not found
     // Broiler-Human:        PENDING
     public const int ENOENT = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=8E279A
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=8E279A
     // Broiler-Falsified-If: EPERM differs from 1, so an open refused by a seat or container policy is not classified as permission denied
     // Broiler-Human:        PENDING
     public const int EPERM = 1;
@@ -93,7 +93,7 @@ public static partial class LinuxNativeMethods
     // Broiler-Falsified-If: EVIOCSCLOCKID differs from 0x400445a0, the encoding of _IOW('E', 0xa0, int), so the clock switch fails with EINVAL and event timestamps stay on CLOCK_REALTIME
     // Broiler-Human:        PENDING
     private const nuint EVIOCSCLOCKID = 0x400445a0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=80FE56
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=80FE56
     // Broiler-Falsified-If: CLOCK_MONOTONIC differs from 1, so EVIOCSCLOCKID selects another clock or fails and event timestamps jump when the wall clock is adjusted
     // Broiler-Human:        PENDING
     private const int CLOCK_MONOTONIC = 1;
@@ -105,13 +105,13 @@ public static partial class LinuxNativeMethods
     public static partial int Open([MarshalAs(UnmanagedType.LPUTF8Str)] string pathname, int flags);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=B87244
-    // Broiler-Falsified-If: a count larger than buffer.Length reaches read(2), which writes the excess bytes past the end of the pinned managed array
+    // Broiler-Falsified-If: count is declared narrower than size_t, so on x86-64 read(2) takes a byte count with undefined upper bits and writes evdev bytes past the end of the pinned array
     // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "read", SetLastError = true)]
     public static partial nint Read(int fd, byte[] buffer, nuint count);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=D0C8DE
-    // Broiler-Falsified-If: an nfds larger than fds.Length reaches poll(2), which reads pollfd entries and writes revents past the end of the pinned array
+    // Broiler-Falsified-If: nfds is declared narrower than nfds_t, so on x86-64 poll(2) takes an entry count with undefined upper bits and walks pollfd entries past the end of the pinned array
     // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "poll", SetLastError = true)]
     public static partial int Poll([In, Out] PollFd[] fds, nuint nfds, int timeout);
@@ -123,7 +123,7 @@ public static partial class LinuxNativeMethods
     private static partial int IoctlClockId(int fd, nuint request, ref int clockId);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=7FA6C0
-    // Broiler-Falsified-If: an absInfo array shorter than the size encoded in the request lets the kernel copy struct input_absinfo past the end of the pinned array
+    // Broiler-Falsified-If: request is declared narrower than unsigned long, so on x86-64 ioctl(2) receives an EVIOCGABS code with undefined upper bits and copies into the array under another request's size
     // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "ioctl", SetLastError = true)]
     private static partial int IoctlAbsInfo(int fd, nuint request, byte[] absInfo);

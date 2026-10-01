@@ -9,7 +9,7 @@
 // Human-reviewed:   0/76
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         76/76
+// Criteria:         76/63
 // Resource impact:  5/10 max
 // Unverified:       76
 //
@@ -26,32 +26,32 @@ namespace Broiler.Native.Windows.Wasapi;
 // Broiler-Human:        PENDING
 public static partial class WindowsWasapiNative
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=598F31
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=598F31
     // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x004) = 0x88890004 from audioclient.h, so a removed capture endpoint is reported as a generic failure rather than an invalidated device
     // Broiler-Human:        PENDING
     public const int AUDCLNT_E_DEVICE_INVALIDATED = unchecked((int)0x88890004);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=9E74FF
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=9E74FF
     // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x008) = 0x88890008 from audioclient.h, so an Initialize rejected for its format is not recognised as an unsupported format
     // Broiler-Human:        PENDING
     public const int AUDCLNT_E_UNSUPPORTED_FORMAT = unchecked((int)0x88890008);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=92F951
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=92F951
     // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x00A) = 0x8889000A from audioclient.h, so an endpoint held in exclusive mode by another process is not reported as busy
     // Broiler-Human:        PENDING
     public const int AUDCLNT_E_DEVICE_IN_USE = unchecked((int)0x8889000A);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AACA56
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=AACA56
     // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x010) = 0x88890010 from audioclient.h, so a stopped Windows Audio service is not recognised as the audio host being unavailable
     // Broiler-Human:        PENDING
     public const int AUDCLNT_E_SERVICE_NOT_RUNNING = unchecked((int)0x88890010);
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=65462B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=65462B
     // Broiler-Falsified-If: the value is not 0 as in winbase.h, so a capture event that WaitForSingleObject reports as signalled is not recognised as signalled
     // Broiler-Human:        PENDING
     public const uint WAIT_OBJECT_0 = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E2DDDC
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E2DDDC
     // Broiler-Falsified-If: the value is not 258 (0x102) as in winerror.h, so a wait that timed out is treated as a signalled event and the capture client is drained with no packet ready
     // Broiler-Human:        PENDING
     public const uint WAIT_TIMEOUT = 258;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=EE48F5
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EE48F5
     // Broiler-Falsified-If: the value is not 0xFFFFFFFF as in winbase.h, so a failed wait on a closed or invalid event handle is treated as a signal and the capture loop spins instead of stopping
     // Broiler-Human:        PENDING
     public const uint WAIT_FAILED = 0xFFFFFFFF;
@@ -88,7 +88,7 @@ public static partial class WindowsWasapiNative
     [LibraryImport("ole32.dll")]
     public static partial int PropVariantClear(ref PropVariant value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=7EA6F8
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=7EA6F8
     // Broiler-Falsified-If: a NULL return leaves Marshal.GetLastWin32Error reporting a code from an earlier call because the stub does not capture the last error after CreateEventW
     // Broiler-Human:        PENDING
     [LibraryImport("kernel32.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
@@ -116,7 +116,7 @@ public static partial class WindowsWasapiNative
     public static partial uint WaitForSingleObject(IntPtr handle, uint milliseconds);
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6C0BBA
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6C0BBA
 // Broiler-Falsified-If: Render, Capture and All are not 0, 1 and 2 as in mmdeviceapi.h EDataFlow, so a Capture enumeration or default-endpoint lookup returns render endpoints
 // Broiler-Human:        PENDING
 public enum EDataFlow
@@ -126,7 +126,7 @@ public enum EDataFlow
     All = 2,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=502AAE
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=502AAE
 // Broiler-Falsified-If: Console, Multimedia and Communications are not 0, 1 and 2 as in mmdeviceapi.h ERole, so GetDefaultAudioEndpoint returns the default endpoint for a different role
 // Broiler-Human:        PENDING
 public enum ERole
@@ -136,7 +136,7 @@ public enum ERole
     Communications = 2,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=406EC2
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=406EC2
 // Broiler-Falsified-If: a flag differs from DEVICE_STATE_ACTIVE 0x1, DISABLED 0x2, NOTPRESENT 0x4 or UNPLUGGED 0x8 in mmdeviceapi.h, so an Active state mask also enumerates unplugged or disabled endpoints
 // Broiler-Human:        PENDING
 [Flags]
@@ -157,7 +157,7 @@ public enum StorageAccess
     Read = 0,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AACE47
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AACE47
 // Broiler-Falsified-If: Shared and Exclusive are not 0 and 1 as in audiosessiontypes.h AUDCLNT_SHAREMODE, so Initialize requests exclusive mode and takes the endpoint from other applications
 // Broiler-Human:        PENDING
 public enum AudioClientShareMode
@@ -166,7 +166,7 @@ public enum AudioClientShareMode
     Exclusive = 1,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=8FB445
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=8FB445
 // Broiler-Falsified-If: EventCallback is not AUDCLNT_STREAMFLAGS_EVENTCALLBACK 0x00040000 from audiosessiontypes.h, so Initialize does not enable event-driven buffering and SetEventHandle fails
 // Broiler-Human:        PENDING
 [Flags]
@@ -176,7 +176,7 @@ public enum AudioClientStreamFlags : uint
     EventCallback = 0x00040000,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=56809F
+// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=56809F
 // Broiler-Falsified-If: Silent is not AUDCLNT_BUFFERFLAGS_SILENT 0x2 from audioclient.h, so a packet the audio engine marks as silence is copied and delivered as captured audio
 // Broiler-Human:        PENDING
 [Flags]
@@ -271,7 +271,7 @@ public partial interface IMMDeviceEnumerator
     int RegisterEndpointNotificationCallback(IMMNotificationClient client);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=81112A
-    // Broiler-Falsified-If: a call made from inside an IMMNotificationClient callback blocks the audio service's notification thread that is running that callback
+    // Broiler-Falsified-If: UnregisterEndpointNotificationCallback is not the fifth method after IUnknown, directly after RegisterEndpointNotificationCallback, so an unregister request registers the client again and its callbacks keep arriving after the owner is gone
     // Broiler-Human:        PENDING
     [PreserveSig]
     int UnregisterEndpointNotificationCallback(IMMNotificationClient client);
@@ -291,21 +291,21 @@ public partial interface IMMDeviceCollection
     int GetCount(out uint count);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=A3EAF2
-    // Broiler-Falsified-If: an index equal to the GetCount result returns E_INVALIDARG with a null device, and a caller that ignores the PreserveSig HRESULT dereferences that device
+    // Broiler-Falsified-If: itemIndex and the device out reach IMMDeviceCollection::Item(UINT, IMMDevice**) in swapped positions, so the device pointer is written through the index value as an address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Item(uint itemIndex, out IMMDevice device);
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=37CE13
-// Broiler-Falsified-If: Activate is handed a non-null activationParams pointer to fewer than the 24 bytes of a PROPVARIANT on x64, so the audio service reads past the caller's buffer
+// Broiler-Falsified-If: a member is out of mmdeviceapi.h order (Activate, OpenPropertyStore, GetId, GetState after IUnknown), so GetId's string-pointer out or Activate's parameter pointer reaches a method that reads or writes it with another size
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("D666063F-1587-4E43-81F1-B948E807363F")]
 public partial interface IMMDevice
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=86ECE4
-    // Broiler-Falsified-If: a non-null activationParams pointing at the 16-byte managed PropVariant makes the audio service read a 24-byte PROPVARIANT past its end on x64
+    // Broiler-Falsified-If: activationParams and the out pointer reach IMMDevice::Activate(REFIID, DWORD, PROPVARIANT*, void**) in swapped positions, so the activated interface is written through the activation-parameter pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Activate(ref Guid interfaceId, uint classContext, IntPtr activationParams, out IntPtr activatedInterface);
@@ -317,7 +317,7 @@ public partial interface IMMDevice
     int OpenPropertyStore(StorageAccess access, out IPropertyStore properties);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=A54561
-    // Broiler-Falsified-If: the LPWSTR it returns is released with anything other than CoTaskMemFree, so every endpoint-id lookup leaks the string or frees it on the wrong heap
+    // Broiler-Falsified-If: GetId is not vtable slot 5, after OpenPropertyStore, so an id query reaches GetState and a 4-byte state is written into the 8-byte string-pointer out the caller then dereferences
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetId(out IntPtr id);
@@ -343,7 +343,7 @@ public partial interface IPropertyStore
     int GetCount(out uint propertyCount);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=53B7D0
-    // Broiler-Falsified-If: an index equal to the GetCount result returns a failing HRESULT with a zeroed PropertyKey, and a caller that ignores the PreserveSig HRESULT passes that key to GetValue
+    // Broiler-Falsified-If: GetAt is not vtable slot 4, directly after GetCount, so an index lookup reaches GetValue and native code writes a PROPVARIANT through the 20-byte PROPERTYKEY out
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAt(uint propertyIndex, out PropertyKey key);
@@ -361,7 +361,7 @@ public partial interface IPropertyStore
     int SetValue(ref PropertyKey key, ref PropVariant value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=8609BA
-    // Broiler-Falsified-If: Commit on a store opened with StorageAccess.Read returns STG_E_ACCESSDENIED, and a caller that ignores the PreserveSig HRESULT assumes the change persisted
+    // Broiler-Falsified-If: Commit is not vtable slot 7, the last IPropertyStore method, so a commit request reaches SetValue and native code dereferences unset key and value pointers
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Commit();
@@ -406,14 +406,14 @@ public partial interface IMMNotificationClient
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=85032C
-// Broiler-Falsified-If: Initialize is given a format pointer whose cbSize claims more trailing bytes than the block holds, so the audio engine reads past the caller's WAVEFORMATEX
+// Broiler-Falsified-If: a member is out of audioclient.h order, so Initialize's format pointer or GetMixFormat's out pointer reaches another method that reads or writes it with a different size
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("1CB9AD4C-DBFA-4C32-B178-C2F568A703B2")]
 public partial interface IAudioClient
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=8F9E64
-    // Broiler-Falsified-If: a format pointer to a WAVEFORMATEX whose cbSize exceeds the bytes allocated after its 18-byte header makes the audio engine read past the caller's block
+    // Broiler-Falsified-If: format and audioSessionGuid reach IAudioClient::Initialize in swapped positions, so the engine reads the WAVEFORMATEX through the session GUID pointer, or through null when no session is given
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Initialize(AudioClientShareMode shareMode, AudioClientStreamFlags streamFlags, long bufferDuration,
@@ -438,13 +438,13 @@ public partial interface IAudioClient
     int GetCurrentPadding(out uint currentPaddingFrameCount);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=9D437E
-    // Broiler-Falsified-If: a format pointer to a WAVEFORMATEX whose cbSize exceeds the bytes allocated after its 18-byte header makes the audio engine read past the caller's block
+    // Broiler-Falsified-If: format and the closestMatch out reach IAudioClient::IsFormatSupported in swapped positions, so the engine reads the WAVEFORMATEX from the caller's out slot
     // Broiler-Human:        PENDING
     [PreserveSig]
     int IsFormatSupported(AudioClientShareMode shareMode, IntPtr format, out IntPtr closestMatch);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=EB4C3A
-    // Broiler-Falsified-If: the WAVEFORMATEX block it returns is released with anything other than CoTaskMemFree, so each capture start leaks the mix format or frees it on the wrong heap
+    // Broiler-Falsified-If: GetMixFormat is not vtable slot 8, directly after IsFormatSupported, so the query reaches GetDevicePeriod and an 8-byte period is written where the caller expects a WAVEFORMATEX pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetMixFormat(out IntPtr deviceFormat);
@@ -474,34 +474,34 @@ public partial interface IAudioClient
     int Reset();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=A5695E
-    // Broiler-Falsified-If: the event handle is closed with CloseHandle while the stream is still running, so the audio engine signals a handle value that may already name another kernel object
+    // Broiler-Falsified-If: SetEventHandle is not vtable slot 13, after Reset, so the event handle reaches GetService as its IID pointer and the engine never signals it
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetEventHandle(IntPtr eventHandle);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=DCDAC0
-    // Broiler-Falsified-If: the serviceInterface pointer returned with S_OK carries a reference the caller never releases, so each capture-client lookup leaks the service object
+    // Broiler-Falsified-If: interfaceId and the out pointer reach IAudioClient::GetService(REFIID, void**) in swapped positions, so the service pointer is written over the caller's IID
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetService(ref Guid interfaceId, out IntPtr serviceInterface);
 }
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=E6F0E2
-// Broiler-Falsified-If: the packet GetBuffer returns is read for more than framesToRead frames of the mix format's nBlockAlign, past the end of the buffer the audio engine lent
+// Broiler-Falsified-If: GetBuffer, ReleaseBuffer and GetNextPacketSize are not the first three slots after IUnknown as in audioclient.h, so the packet pointer and frame count are read from outputs another method never wrote
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("C8ADBD64-E71E-48A0-A4DE-185C395CD317")]
 public partial interface IAudioCaptureClient
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=BE96C9
-    // Broiler-Falsified-If: data is read beyond framesToRead times the mix format's nBlockAlign bytes, or after ReleaseBuffer, so the copy runs past the packet the audio engine lent
+    // Broiler-Falsified-If: data and framesToRead reach IAudioCaptureClient::GetBuffer(BYTE**, UINT32*, DWORD*, UINT64*, UINT64*) in swapped positions, so the frame count that sizes the caller's copy is read from the packet pointer
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBuffer(out IntPtr data, out uint framesToRead, out AudioClientBufferFlags flags,
         out ulong devicePosition, out ulong qpcPosition);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D3903A
-    // Broiler-Falsified-If: framesRead differs from both 0 and the framesToRead GetBuffer returned, so the engine returns AUDCLNT_E_INVALID_SIZE and the next GetBuffer fails with AUDCLNT_E_OUT_OF_ORDER
+    // Broiler-Falsified-If: ReleaseBuffer is not vtable slot 4, directly after GetBuffer, so a release reaches GetNextPacketSize and the engine writes a frame count through the framesRead value as an address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int ReleaseBuffer(uint framesRead);

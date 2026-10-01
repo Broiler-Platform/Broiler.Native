@@ -9,7 +9,7 @@
 // Human-reviewed:   0/19
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         19/19
+// Criteria:         19/14
 // Resource impact:  2/10 max
 // Unverified:       19
 //
@@ -100,7 +100,7 @@ public static class DWriteNative
 
     // ---- Enums -----------------------------------------------------------------------------------
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=91544C
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=91544C
     // Broiler-Falsified-If: SHARED or ISOLATED differs from the 0 and 1 dwrite.h defines, so DWriteCreateFactory creates the other kind of factory or fails with E_INVALIDARG
     // Broiler-Human:        PENDING
     public enum DWRITE_FACTORY_TYPE : uint
@@ -109,7 +109,7 @@ public static class DWriteNative
         ISOLATED = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=EAFC54
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EAFC54
     // Broiler-Falsified-If: a member differs from its dwrite.h weight (THIN 100 through BLACK 900), so CreateTextFormat selects a lighter or heavier face than the caller asked for
     // Broiler-Human:        PENDING
     public enum DWRITE_FONT_WEIGHT : uint
@@ -123,7 +123,7 @@ public static class DWriteNative
         BLACK = 900,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=104D70
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=104D70
     // Broiler-Falsified-If: NORMAL, OBLIQUE or ITALIC differs from the 0, 1 and 2 dwrite.h defines, so CreateTextFormat selects or synthesizes the wrong slant
     // Broiler-Human:        PENDING
     public enum DWRITE_FONT_STYLE : uint
@@ -133,7 +133,7 @@ public static class DWriteNative
         ITALIC = 2,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=5E30C9
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5E30C9
     // Broiler-Falsified-If: NORMAL is not 5 as dwrite.h defines, so CreateTextFormat selects a condensed or expanded face or rejects the undefined value 0
     // Broiler-Human:        PENDING
     public enum DWRITE_FONT_STRETCH : uint
@@ -141,7 +141,7 @@ public static class DWriteNative
         NORMAL = 5,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=92FDEF
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=92FDEF
     // Broiler-Falsified-If: NATURAL, GDI_CLASSIC or GDI_NATURAL differs from the 0, 1 and 2 dwrite.h defines, so DrawText places glyphs with a different measuring mode than the text was measured in
     // Broiler-Human:        PENDING
     public enum DWRITE_MEASURING_MODE : uint

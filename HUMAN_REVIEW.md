@@ -85,27 +85,27 @@ relevant units in a state that blocks a release.
 
 | File | Units | Relevant | Exempt | Unverified | IP risk | Security risk | Criteria |
 |---|---:|---:|---:|---:|---|---|---:|
-| `src/Broiler.Native.Android/AndroidEglNative.cs` | 46 | 46 | 0 | 46 | Low | Critical | 46/46 |
-| `src/Broiler.Native.Android/AndroidGlesNative.cs` | 52 | 52 | 0 | 52 | Low | Critical | 52/52 |
+| `src/Broiler.Native.Android/AndroidEglNative.cs` | 46 | 46 | 0 | 46 | Low | Critical | 46/19 |
+| `src/Broiler.Native.Android/AndroidGlesNative.cs` | 52 | 52 | 0 | 52 | Low | Critical | 52/31 |
 | `src/Broiler.Native.Android/AndroidNativeLibraries.cs` | 11 | 8 | 3 | 8 | Low | High | 8/8 |
-| `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` | 10 | 10 | 0 | 10 | Low | High | 10/10 |
+| `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` | 10 | 10 | 0 | 10 | Low | Critical | 10/8 |
 | `src/Broiler.Native.Android/AndroidOpenGlEsDriverInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 1/0 |
 | `src/Broiler.Native.Android/AndroidOpenGlEsException.cs` | 3 | 3 | 0 | 3 | Low | Low | 3/0 |
-| `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` | 30 | 27 | 3 | 27 | Low | Critical | 27/27 |
-| `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` | 36 | 36 | 0 | 36 | Low | Critical | 36/36 |
+| `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` | 30 | 27 | 3 | 27 | Low | Critical | 27/13 |
+| `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` | 36 | 36 | 0 | 36 | Low | Critical | 36/16 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlDriverInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 2/0 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlException.cs` | 3 | 3 | 0 | 3 | Low | Low | 3/0 |
-| `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` | 96 | 54 | 42 | 54 | Low | Critical | 54/54 |
-| `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` | 42 | 38 | 4 | 38 | Low | Critical | 38/38 |
+| `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` | 96 | 54 | 42 | 54 | Low | Critical | 54/33 |
+| `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` | 42 | 38 | 4 | 38 | Low | Critical | 38/26 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanDeviceInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 1/0 |
-| `src/Broiler.Native.Linux/Vulkan/LinuxVulkanException.cs` | 3 | 3 | 0 | 3 | None | Low | 2/0 |
-| `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` | 70 | 32 | 38 | 32 | Low | Critical | 32/29 |
-| `src/Broiler.Native.Windows/ComNative.cs` | 32 | 32 | 0 | 32 | Low | Critical | 32/31 |
+| `src/Broiler.Native.Linux/Vulkan/LinuxVulkanException.cs` | 3 | 3 | 0 | 3 | Low | Low | 2/0 |
+| `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` | 70 | 32 | 38 | 32 | Low | Critical | 32/27 |
+| `src/Broiler.Native.Windows/ComNative.cs` | 32 | 32 | 0 | 32 | Low | Critical | 32/29 |
 | `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` | 14 | 11 | 3 | 11 | Low | Critical | 11/11 |
 | `src/Broiler.Native.Windows/Direct2D/ComVtable.cs` | 3 | 3 | 0 | 3 | Low | Critical | 3/3 |
-| `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` | 131 | 65 | 66 | 65 | Low | Critical | 65/65 |
-| `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` | 22 | 5 | 17 | 5 | Low | High | 5/5 |
-| `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` | 44 | 19 | 25 | 19 | Low | Critical | 19/19 |
+| `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` | 131 | 65 | 66 | 65 | Low | Critical | 65/53 |
+| `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` | 22 | 5 | 17 | 5 | Low | High | 5/4 |
+| `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` | 44 | 19 | 25 | 19 | Low | Critical | 19/14 |
 | `src/Broiler.Native.Windows/Direct2D/Direct2DDeviceApi.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
 | `src/Broiler.Native.Windows/Direct2D/Direct2DImageStoreApi.cs` | 2 | 2 | 0 | 2 | Low | Critical | 2/2 |
 | `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` | 5 | 5 | 0 | 5 | Low | Critical | 5/5 |
@@ -113,19 +113,19 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` | 8 | 8 | 0 | 8 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` | 8 | 8 | 0 | 8 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` | 3 | 3 | 0 | 3 | Low | Critical | 3/3 |
-| `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` | 47 | 20 | 27 | 20 | Low | High | 20/20 |
+| `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` | 47 | 20 | 27 | 20 | Low | Critical | 20/14 |
 | `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` | 7 | 7 | 0 | 7 | Low | Critical | 7/7 |
 | `src/Broiler.Native.Windows/HwndNative.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
-| `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` | 26 | 9 | 17 | 9 | Low | Critical | 9/9 |
-| `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` | 14 | 10 | 4 | 10 | Low | Critical | 10/10 |
-| `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` | 117 | 110 | 7 | 110 | Low | Critical | 110/110 |
+| `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` | 26 | 9 | 17 | 9 | Low | Critical | 9/8 |
+| `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` | 14 | 10 | 4 | 10 | Low | Critical | 10/4 |
+| `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` | 117 | 110 | 7 | 110 | Low | Critical | 110/104 |
 | `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` | 31 | 31 | 0 | 31 | Low | Critical | 31/31 |
-| `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` | 59 | 59 | 0 | 59 | Low | Critical | 59/59 |
-| `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` | 22 | 22 | 0 | 22 | Low | High | 22/22 |
+| `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` | 59 | 59 | 0 | 59 | Low | Critical | 59/55 |
+| `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` | 22 | 22 | 0 | 22 | Low | High | 22/6 |
 | `src/Broiler.Native.Windows/PerformanceCounterNative.cs` | 3 | 3 | 0 | 3 | Low | High | 3/3 |
-| `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 114 | 76 | 38 | 76 | Low | Critical | 76/76 |
-| `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 47 | 0 | 47 | Low | Critical | 47/47 |
-| `src/Broiler.Native.Windows/WindowNative.cs` | 215 | 155 | 60 | 155 | Low | Critical | 155/153 |
+| `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 114 | 76 | 38 | 76 | Low | Critical | 76/63 |
+| `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 47 | 0 | 47 | Low | Critical | 47/41 |
+| `src/Broiler.Native.Windows/WindowNative.cs` | 215 | 155 | 60 | 155 | Low | Critical | 155/75 |
 | `src/Broiler.Native/NativeLibraryProbe.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
 
 ## 7. Decisions Recorded
@@ -144,65 +144,11 @@ one wrong and the human line it carries. The set is read from the assessments ra
 written out, so a unit that becomes `High` joins it at the next generation.
 
 - `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=ADR-0001, `CCDC42`, PENDING
-  - Falsified if: ChooseConfig passes a configSize larger than configs.Length and eglChooseConfig writes EGLConfig handles past the end of the pinned configs array
-- `Broiler.Native.Android.AndroidEglNative.EGL_FALSE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `EEE3BF`, PENDING
-  - Falsified if: EGL_FALSE is not 0, so an EGLBoolean failure from eglMakeCurrent or eglSwapBuffers compares unequal to it and is taken as success
-- `Broiler.Native.Android.AndroidEglNative.EGL_TRUE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `20CED0`, PENDING
-  - Falsified if: EGL_TRUE is not 1, so a caller comparing an EGLBoolean return against it treats a successful EGL call as a failure
-- `Broiler.Native.Android.AndroidEglNative.EGL_NO_DISPLAY` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `234B24`, PENDING
-  - Falsified if: EGL_NO_DISPLAY is not the null pointer, so a failed eglGetDisplay is not recognised and its zero handle reaches eglInitialize
-- `Broiler.Native.Android.AndroidEglNative.EGL_NO_SURFACE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `3CADBF`, PENDING
-  - Falsified if: EGL_NO_SURFACE is not the null pointer, so a failed surface creation is not recognised and MakeCurrent with it does not unbind the current surface
-- `Broiler.Native.Android.AndroidEglNative.EGL_NO_CONTEXT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `20E18C`, PENDING
-  - Falsified if: EGL_NO_CONTEXT is not the null pointer, so MakeCurrent with it leaves the context bound to the thread and a failed eglCreateContext is not recognised
+  - Falsified if: ChooseConfig's configs array is not of pointer-sized EGLConfig handles, so on a 64-bit device eglChooseConfig writes 8-byte handles past the end of the pinned array
 - `Broiler.Native.Android.AndroidEglNative.EGL_DEFAULT_DISPLAY` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `A985BE`, PENDING
   - Falsified if: EGL_DEFAULT_DISPLAY is not the null EGLNativeDisplayType, so eglGetDisplay is handed an arbitrary native display pointer instead of the default display
 - `Broiler.Native.Android.AndroidEglNative.EGL_NONE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `F1A225`, PENDING
   - Falsified if: EGL_NONE is not 0x3038, so every attribute list ends without a terminator and eglChooseConfig or eglCreateContext reads past the end of the array
-- `Broiler.Native.Android.AndroidEglNative.EGL_ALPHA_SIZE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `9ADE51`, PENDING
-  - Falsified if: EGL_ALPHA_SIZE is not 0x3021, so eglChooseConfig rejects the attribute list or matches a config without an 8-bit alpha channel
-- `Broiler.Native.Android.AndroidEglNative.EGL_BLUE_SIZE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `3C817F`, PENDING
-  - Falsified if: EGL_BLUE_SIZE is not 0x3022, so eglChooseConfig rejects the attribute list or matches a config without an 8-bit blue channel
-- `Broiler.Native.Android.AndroidEglNative.EGL_GREEN_SIZE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `F45F72`, PENDING
-  - Falsified if: EGL_GREEN_SIZE is not 0x3023, so eglChooseConfig rejects the attribute list or matches a config without an 8-bit green channel
-- `Broiler.Native.Android.AndroidEglNative.EGL_RED_SIZE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `C99A69`, PENDING
-  - Falsified if: EGL_RED_SIZE is not 0x3024, so eglChooseConfig rejects the attribute list or matches a config without an 8-bit red channel
-- `Broiler.Native.Android.AndroidEglNative.EGL_DEPTH_SIZE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `3EB559`, PENDING
-  - Falsified if: EGL_DEPTH_SIZE is not 0x3025, so eglChooseConfig rejects the attribute list or applies the zero depth request to another attribute
-- `Broiler.Native.Android.AndroidEglNative.EGL_STENCIL_SIZE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `1FD37C`, PENDING
-  - Falsified if: EGL_STENCIL_SIZE is not 0x3026, so eglChooseConfig rejects the attribute list or applies the zero stencil request to another attribute
-- `Broiler.Native.Android.AndroidEglNative.EGL_SURFACE_TYPE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `AB3532`, PENDING
-  - Falsified if: EGL_SURFACE_TYPE is not 0x3033, so eglChooseConfig returns a config that cannot back the requested window or pbuffer surface and surface creation fails with EGL_BAD_MATCH
-- `Broiler.Native.Android.AndroidEglNative.EGL_RENDERABLE_TYPE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `77486E`, PENDING
-  - Falsified if: EGL_RENDERABLE_TYPE is not 0x3040, so eglChooseConfig returns a config without ES 3 support and eglCreateContext for client version 3 fails
-- `Broiler.Native.Android.AndroidEglNative.EGL_NATIVE_VISUAL_ID` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `C89B59`, PENDING
-  - Falsified if: EGL_NATIVE_VISUAL_ID is not 0x302E, so eglGetConfigAttrib returns another attribute and the ANativeWindow buffer format does not match the chosen config
-- `Broiler.Native.Android.AndroidEglNative.EGL_HEIGHT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `5C4021`, PENDING
-  - Falsified if: EGL_HEIGHT is not 0x3056, so eglCreatePbufferSurface or eglQuerySurface sets or reads another attribute and the surface height is wrong
-- `Broiler.Native.Android.AndroidEglNative.EGL_WIDTH` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `9FCA3C`, PENDING
-  - Falsified if: EGL_WIDTH is not 0x3057, so eglCreatePbufferSurface or eglQuerySurface sets or reads another attribute and the surface width is wrong
-- `Broiler.Native.Android.AndroidEglNative.EGL_CONTEXT_CLIENT_VERSION` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `242E3B`, PENDING
-  - Falsified if: EGL_CONTEXT_CLIENT_VERSION is not 0x3098, so eglCreateContext rejects the attribute list or creates a context of the default ES 1 version in which glBlitFramebuffer is missing
-- `Broiler.Native.Android.AndroidEglNative.EGL_PBUFFER_BIT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `55F42F`, PENDING
-  - Falsified if: EGL_PBUFFER_BIT is not 0x0001, so the EGL_SURFACE_TYPE mask selects a config without pbuffer support and eglCreatePbufferSurface fails with EGL_BAD_MATCH
-- `Broiler.Native.Android.AndroidEglNative.EGL_WINDOW_BIT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `0A0099`, PENDING
-  - Falsified if: EGL_WINDOW_BIT is not 0x0004, so the EGL_SURFACE_TYPE mask selects a config without window support and eglCreateWindowSurface fails with EGL_BAD_MATCH
-- `Broiler.Native.Android.AndroidEglNative.EGL_OPENGL_ES_BIT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `187E51`, PENDING
-  - Falsified if: EGL_OPENGL_ES_BIT is not 0x0001, so an EGL_RENDERABLE_TYPE mask built from it selects configs for another client API
-- `Broiler.Native.Android.AndroidEglNative.EGL_OPENGL_ES2_BIT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `34B92D`, PENDING
-  - Falsified if: EGL_OPENGL_ES2_BIT is not 0x0004, so an EGL_RENDERABLE_TYPE mask built from it selects configs for another client API
-- `Broiler.Native.Android.AndroidEglNative.EGL_OPENGL_ES3_BIT` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `80660A`, PENDING
-  - Falsified if: EGL_OPENGL_ES3_BIT is not 0x0040, so eglChooseConfig matches a config that cannot create the client version 3 context
-- `Broiler.Native.Android.AndroidEglNative.EGL_OPENGL_ES_API` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `26A954`, PENDING
-  - Falsified if: EGL_OPENGL_ES_API is not 0x30A0, so eglBindAPI fails with EGL_BAD_PARAMETER or binds desktop GL, which Android does not provide
-- `Broiler.Native.Android.AndroidEglNative.EGL_SUCCESS` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `4712E5`, PENDING
-  - Falsified if: EGL_SUCCESS is not 0x3000, so an eglGetError result of no error is classified as a failure
-- `Broiler.Native.Android.AndroidEglNative.EGL_CONTEXT_LOST` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `ACF5D0`, PENDING
-  - Falsified if: EGL_CONTEXT_LOST is not 0x300E, so a lost context after eglMakeCurrent is reported as a generic EGL failure instead of a device loss the host can recover from
-- `Broiler.Native.Android.AndroidEglNative.EGL_BAD_SURFACE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `83EE47`, PENDING
-  - Falsified if: EGL_BAD_SURFACE is not 0x300D, so an eglGetError result for a destroyed or invalid surface is classified as another error
-- `Broiler.Native.Android.AndroidEglNative.EGL_BAD_NATIVE_WINDOW` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `5457EC`, PENDING
-  - Falsified if: EGL_BAD_NATIVE_WINDOW is not 0x300B, so an eglGetError result for an invalid ANativeWindow is classified as another error
 - `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `885D32`, PENDING
   - Falsified if: the displayId argument or the EGLDisplay return is declared narrower than a native pointer, so a 64-bit device passes or receives a truncated display handle
 - `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `B5AA7C`, PENDING
@@ -212,17 +158,17 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Android.AndroidEglNative.BindApi(int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `D9992F`, PENDING
   - Falsified if: the EGLenum api argument is not passed as a 32-bit value, so EGL_OPENGL_ES_API reaches eglBindAPI as a different enum and the call fails with EGL_BAD_PARAMETER
 - `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `314663`, PENDING
-  - Falsified if: a configSize larger than configs.Length lets eglChooseConfig write EGLConfig handles past the end of the pinned configs array
+  - Falsified if: configs is not marshalled as an array of pointer-sized EGLConfig handles, so on a 64-bit device eglChooseConfig writes 8-byte handles into 4-byte elements and runs past the pinned array
 - `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `D9277A`, PENDING
   - Falsified if: the out value is not a 32-bit int, so the EGLint that eglGetConfigAttrib writes for EGL_NATIVE_VISUAL_ID is truncated or overruns the managed local
 - `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `B24254`, PENDING
-  - Falsified if: an attribList without a trailing EGL_NONE makes eglCreateContext read past the end of the pinned int array
+  - Falsified if: attribList and shareContext reach eglCreateContext(EGLDisplay, EGLConfig, EGLContext, const EGLint*) in swapped positions, so EGL walks the share context's memory as an attribute list
 - `Broiler.Native.Android.AndroidEglNative.DestroyContext(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `4D4D42`, PENDING
   - Falsified if: the display and context arguments are in a different order than eglDestroyContext(EGLDisplay, EGLContext), so the call fails with EGL_BAD_DISPLAY and the context leaks
 - `Broiler.Native.Android.AndroidEglNative.CreatePbufferSurface(IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `7ACFAF`, PENDING
-  - Falsified if: an attribList without a trailing EGL_NONE makes eglCreatePbufferSurface read past the end of the pinned int array
+  - Falsified if: config and attribList reach eglCreatePbufferSurface(EGLDisplay, EGLConfig, const EGLint*) in swapped positions, so EGL walks the config handle's memory as an attribute list
 - `Broiler.Native.Android.AndroidEglNative.CreateWindowSurface(IntPtr, IntPtr, IntPtr, int[]?)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `DAD63B`, PENDING
-  - Falsified if: a non-null attribList without a trailing EGL_NONE makes eglCreateWindowSurface read past the end of the pinned int array
+  - Falsified if: nativeWindow and attribList reach eglCreateWindowSurface(EGLDisplay, EGLConfig, EGLNativeWindowType, const EGLint*) in swapped positions, so EGL walks the ANativeWindow as an attribute list and takes the array as the window
 - `Broiler.Native.Android.AndroidEglNative.DestroySurface(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `A060B1`, PENDING
   - Falsified if: the display and surface arguments are in a different order than eglDestroySurface(EGLDisplay, EGLSurface), so the call fails with EGL_BAD_DISPLAY and the window buffers leak
 - `Broiler.Native.Android.AndroidEglNative.MakeCurrent(IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `BA9F32`, PENDING
@@ -236,57 +182,15 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `B71C87`, PENDING
   - Falsified if: the EGLint return of eglGetError is not read as a 32-bit value, so EGL_CONTEXT_LOST arrives as a different code and a lost context is not reported as one
 - `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `1454CE`, PENDING
-  - Falsified if: ReadPixels with GL_RGBA and GL_UNSIGNED_BYTE writes width*height*4 bytes into a pixels buffer the caller sized smaller, overrunning it
-- `Broiler.Native.Android.AndroidGlesNative.GL_NO_ERROR` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `18A47D`, PENDING
-  - Falsified if: the value is not 0, the GL_NO_ERROR that glGetError returns when no flag is set, so ThrowIfError throws after a successful operation
-- `Broiler.Native.Android.AndroidGlesNative.GL_TEXTURE_2D` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `486868`, PENDING
-  - Falsified if: the value is not 0x0DE1 (GL_TEXTURE_2D in gl3.h), so BindTexture and TexImage2D with it raise GL_INVALID_ENUM and the frame is never uploaded
+  - Falsified if: the seven arguments reach glReadPixels out of order, so format and type arrive swapped and the driver writes another number of bytes per pixel through the caller's pixels pointer
 - `Broiler.Native.Android.AndroidGlesNative.GL_RGBA` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `11D122`, PENDING
   - Falsified if: the value is not 0x1908 (GL_RGBA), so ReadPixels or TexImage2D moves a different number of bytes per pixel through a buffer the caller sized at four
-- `Broiler.Native.Android.AndroidGlesNative.GL_RGBA8` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `616C07`, PENDING
-  - Falsified if: the value is not 0x8058 (GL_RGBA8), so TexImage2D allocates storage that GL_RGBA with GL_UNSIGNED_BYTE cannot upload into and raises GL_INVALID_OPERATION
 - `Broiler.Native.Android.AndroidGlesNative.GL_UNSIGNED_BYTE` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `6D0452`, PENDING
   - Falsified if: the value is not 0x1401 (GL_UNSIGNED_BYTE), so ReadPixels with GL_RGBA writes more than four bytes per pixel into the caller's buffer, sixteen for GL_FLOAT
-- `Broiler.Native.Android.AndroidGlesNative.GL_TEXTURE_MIN_FILTER` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `ED3B88`, PENDING
-  - Falsified if: the value is not 0x2801 (GL_TEXTURE_MIN_FILTER), so TexParameteri sets another parameter and the texture keeps its mipmapped default minification filter
-- `Broiler.Native.Android.AndroidGlesNative.GL_TEXTURE_MAG_FILTER` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `464BAE`, PENDING
-  - Falsified if: the value is not 0x2800 (GL_TEXTURE_MAG_FILTER), so TexParameteri with it raises GL_INVALID_ENUM and the next ThrowIfError blames an unrelated operation
-- `Broiler.Native.Android.AndroidGlesNative.GL_TEXTURE_WRAP_S` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `E8912E`, PENDING
-  - Falsified if: the value is not 0x2802 (GL_TEXTURE_WRAP_S), so horizontal wrapping stays GL_REPEAT and edge texels sample from the opposite side
-- `Broiler.Native.Android.AndroidGlesNative.GL_TEXTURE_WRAP_T` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `0DF071`, PENDING
-  - Falsified if: the value is not 0x2803 (GL_TEXTURE_WRAP_T), so vertical wrapping stays GL_REPEAT and edge texels sample from the opposite side
-- `Broiler.Native.Android.AndroidGlesNative.GL_LINEAR` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `6B549F`, PENDING
-  - Falsified if: the value is not 0x2601 (GL_LINEAR), so the filter parameters set with it raise GL_INVALID_ENUM or select nearest sampling
-- `Broiler.Native.Android.AndroidGlesNative.GL_NEAREST` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `7E8CAD`, PENDING
-  - Falsified if: the value is not 0x2600 (GL_NEAREST), so BlitFramebuffer with it as the filter raises GL_INVALID_ENUM and the frame is not copied to the window
-- `Broiler.Native.Android.AndroidGlesNative.GL_CLAMP_TO_EDGE` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `1CAE98`, PENDING
-  - Falsified if: the value is not 0x812F (GL_CLAMP_TO_EDGE), so the wrap parameters set with it raise GL_INVALID_ENUM and stay GL_REPEAT
-- `Broiler.Native.Android.AndroidGlesNative.GL_FRAMEBUFFER` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `63A28A`, PENDING
-  - Falsified if: the value is not 0x8D40 (GL_FRAMEBUFFER), so BindFramebuffer, FramebufferTexture2D and CheckFramebufferStatus with it raise GL_INVALID_ENUM and the texture is never attached
-- `Broiler.Native.Android.AndroidGlesNative.GL_READ_FRAMEBUFFER` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `F6251B`, PENDING
-  - Falsified if: the value is not 0x8CA8 (GL_READ_FRAMEBUFFER), so ReadPixels and BlitFramebuffer read from whichever framebuffer was bound for reading before, not the uploaded frame
-- `Broiler.Native.Android.AndroidGlesNative.GL_DRAW_FRAMEBUFFER` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `62E432`, PENDING
-  - Falsified if: the value is not 0x8CA9 (GL_DRAW_FRAMEBUFFER), so BlitFramebuffer writes into the offscreen texture instead of the window's default framebuffer
-- `Broiler.Native.Android.AndroidGlesNative.GL_COLOR_ATTACHMENT0` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `46BB0D`, PENDING
-  - Falsified if: the value is not 0x8CE0 (GL_COLOR_ATTACHMENT0), so FramebufferTexture2D attaches the texture elsewhere and the framebuffer has no colour attachment
-- `Broiler.Native.Android.AndroidGlesNative.GL_FRAMEBUFFER_COMPLETE` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `F456FE`, PENDING
-  - Falsified if: the value is not 0x8CD5 (GL_FRAMEBUFFER_COMPLETE), so the status of a complete framebuffer does not compare equal to it and every upload is rejected
-- `Broiler.Native.Android.AndroidGlesNative.GL_COLOR_BUFFER_BIT` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `DB1E23`, PENDING
-  - Falsified if: the value is not 0x4000 (GL_COLOR_BUFFER_BIT), so Clear and BlitFramebuffer with it act on depth or stencil and the window's colour is neither cleared nor copied
 - `Broiler.Native.Android.AndroidGlesNative.GL_PACK_ALIGNMENT` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `6C18C1`, PENDING
   - Falsified if: the value is not 0x0D05 (GL_PACK_ALIGNMENT), so the pack alignment stays 4 and ReadPixels pads rows whose byte width is not a multiple of 4 past a tightly sized buffer
 - `Broiler.Native.Android.AndroidGlesNative.GL_UNPACK_ALIGNMENT` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `80D3CE`, PENDING
   - Falsified if: the value is not 0x0CF5 (GL_UNPACK_ALIGNMENT), so the unpack alignment stays 4 and TexImage2D reads padded rows past a tightly sized buffer when a row is not a multiple of 4 bytes
-- `Broiler.Native.Android.AndroidGlesNative.GL_SCISSOR_TEST` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `D94511`, PENDING
-  - Falsified if: the value is not 0x0C11 (GL_SCISSOR_TEST), so Disable leaves a scissor box set elsewhere active and Clear and BlitFramebuffer touch only part of the window
-- `Broiler.Native.Android.AndroidGlesNative.GL_VENDOR` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `FA360B`, PENDING
-  - Falsified if: the value is not 0x1F00 (GL_VENDOR), so GetStringValue returns another driver string or an empty one as the vendor
-- `Broiler.Native.Android.AndroidGlesNative.GL_RENDERER` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `8CE1CD`, PENDING
-  - Falsified if: the value is not 0x1F01 (GL_RENDERER), so GetStringValue returns another driver string or an empty one as the renderer
-- `Broiler.Native.Android.AndroidGlesNative.GL_VERSION` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `DC1AB2`, PENDING
-  - Falsified if: the value is not 0x1F02 (GL_VERSION), so GetStringValue returns another driver string or an empty one as the version
-- `Broiler.Native.Android.AndroidGlesNative.GL_SHADING_LANGUAGE_VERSION` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `E87C00`, PENDING
-  - Falsified if: the value is not 0x8B8C (GL_SHADING_LANGUAGE_VERSION), so GetStringValue returns another driver string or an empty one as the GLSL version
 - `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `AD9690`, PENDING
   - Falsified if: a count above 1 makes glGenTextures write count names through the single out uint, past the caller's 4-byte slot
 - `Broiler.Native.Android.AndroidGlesNative.DeleteTextures(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `0A6CA2`, PENDING
@@ -296,7 +200,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Android.AndroidGlesNative.TexParameteri(int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `A34865`, PENDING
   - Falsified if: the parameter name and value reach glTexParameteri swapped, so setting GL_TEXTURE_MIN_FILTER to GL_LINEAR raises GL_INVALID_ENUM and the filter stays mipmapped
 - `Broiler.Native.Android.AndroidGlesNative.TexImage2D(int, int, int, int, int, int, int, int, IntPtr)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `A9CDA8`, PENDING
-  - Falsified if: a pixels buffer smaller than width*height*4 bytes for GL_RGBA with GL_UNSIGNED_BYTE, plus GL_UNPACK_ALIGNMENT row padding, is read past its end into the texture
+  - Falsified if: the nine arguments reach glTexImage2D out of order, so format and type arrive swapped and the driver reads another number of bytes per pixel from the caller's pixels pointer
 - `Broiler.Native.Android.AndroidGlesNative.GenFramebuffers(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `4EFD10`, PENDING
   - Falsified if: a count above 1 makes glGenFramebuffers write count names through the single out uint, past the caller's 4-byte slot
 - `Broiler.Native.Android.AndroidGlesNative.DeleteFramebuffers(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `9D2CF0`, PENDING
@@ -314,7 +218,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Android.AndroidGlesNative.Clear(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `10E14B`, PENDING
   - Falsified if: the mask reaches glClear as a value other than the bitfield passed, so a GL_COLOR_BUFFER_BIT clear leaves the colour buffer unchanged
 - `Broiler.Native.Android.AndroidGlesNative.ReadPixels(int, int, int, int, int, int, IntPtr)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `944115`, PENDING
-  - Falsified if: with GL_RGBA and GL_UNSIGNED_BYTE, a pixels buffer smaller than width*height*4 bytes plus GL_PACK_ALIGNMENT row padding is written past its end
+  - Falsified if: the seven arguments reach glReadPixels out of order, so format and type arrive swapped and the driver writes another number of bytes per pixel through the caller's pixels pointer
 - `Broiler.Native.Android.AndroidGlesNative.BlitFramebuffer(int, int, int, int, int, int, int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, Spec=none cited, `EFD1E6`, PENDING
   - Falsified if: the ten arguments reach glBlitFramebuffer out of order, so a 640 by 480 source blitted to 1280 by 960 copies another rectangle or treats the filter as the mask
 - `Broiler.Native.Android.AndroidGlesNative.PixelStorei(int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `8D640E`, PENDING
@@ -344,7 +248,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Android.AndroidNativeLibraries.Egl` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `15C6CF`, PENDING
   - Falsified if: the value is not libEGL.so, the soname Android ships EGL under, so an EGL import bound without the resolver fails to load on a device that has EGL
 - `Broiler.Native.Android.AndroidNativeLibraries.Gles` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `2716D7`, PENDING
-  - Falsified if: a GLES import bound before EnsureRegistered runs loads by this name alone and fails with DllNotFoundException on a device that only ships libGLESv2.so
+  - Falsified if: the value is not libGLESv3.so, the library the NDK documents for the ES 3.0 entry points this backend imports, so a GLES import bound without the resolver loads by another soname and fails on a device that ships only libGLESv3.so
 - `Broiler.Native.Android.AndroidNativeLibraries.AndroidRuntime` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `0E0F4B`, PENDING
   - Falsified if: the value is not libandroid.so, the NDK library exporting ANativeWindow_fromSurface, so every window import fails with DllNotFoundException since Resolve has no candidates for it
 - `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `E33051`, PENDING
@@ -355,13 +259,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: an import name other than libEGL.so or libGLESv3.so, such as libandroid.so, is redirected to an EGL or GLES candidate instead of returning zero to the runtime's own probing
 - `Broiler.Native.Android.AndroidNativeLibraries.TryLoadAny(IReadOnlyList<string>, out string)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `C11A03`, PENDING
   - Falsified if: a successful probe leaves the probed library loaded because the handle it opened is not freed before the name is reported
-- `Broiler.Native.Android.AndroidNativeWindowNative` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, Spec=none cited, `8121EE`, PENDING
-  - Falsified if: a Release not matched by a FromSurface or Acquire reference frees the ANativeWindow while the host Surface still renders to it
-- `Broiler.Native.Android.AndroidNativeWindowNative.WindowFormatRgba8888` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, Spec=none cited, `0A0115`, PENDING
-  - Falsified if: the value is not 1 (WINDOW_FORMAT_RGBA_8888 in the NDK native_window.h), so SetBuffersGeometry requests a buffer format other than 8-bit RGBA with alpha
-- `Broiler.Native.Android.AndroidNativeWindowNative.WindowFormatRgbx8888` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, Spec=none cited, `D56A1B`, PENDING
-  - Falsified if: the value is not 2 (WINDOW_FORMAT_RGBX_8888 in the NDK native_window.h), so SetBuffersGeometry requests a buffer format other than 8-bit RGB with an ignored fourth byte
-- `Broiler.Native.Android.AndroidNativeWindowNative.FromSurface(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, Spec=none cited, `F68393`, PENDING
+- `Broiler.Native.Android.AndroidNativeWindowNative` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=Critical, Spec=none cited, `8121EE`, PENDING
+  - Falsified if: FromSurface's JNIEnv* and jobject arguments reach ANativeWindow_fromSurface in swapped order, so the NDK calls through the Surface handle as the JNI function table
+- `Broiler.Native.Android.AndroidNativeWindowNative.FromSurface(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=Critical, Spec=none cited, `F68393`, PENDING
   - Falsified if: the JNIEnv* and jobject arguments reach ANativeWindow_fromSurface in swapped order, so the Surface handle is dereferenced as the JNI function table
 - `Broiler.Native.Android.AndroidNativeWindowNative.Acquire(IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, Spec=none cited, `F2F5A1`, PENDING
   - Falsified if: Acquire does not add a reference, so a window released once by its other owner is freed while this caller still holds it
@@ -376,51 +276,23 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Android.AndroidNativeWindowNative.SetBuffersGeometry(IntPtr, int, int, int)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, Spec=none cited, `5A7772`, PENDING
   - Falsified if: a 640 by 480 geometry returns 0 but GetWidth and GetHeight then report 480 by 640, showing the width and height reach the NDK swapped
 - `Broiler.Native.Linux.Input.LinuxNativeMethods` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `C79A53`, PENDING
-  - Falsified if: Read is called with a count larger than buffer.Length and read(2) writes evdev bytes past the end of the pinned managed array
+  - Falsified if: Read's count is declared narrower than size_t, so on x86-64 read(2) takes a byte count with undefined upper bits and writes evdev bytes past the end of the pinned array
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.O_RDONLY` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `C25069`, PENDING
   - Falsified if: O_RDONLY differs from 0, so open(2) asks for write access to the evdev node and fails with EACCES for a user who may only read input devices
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.O_NONBLOCK` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `22552B`, PENDING
-  - Falsified if: O_NONBLOCK differs from 0x800 (04000 octal on x86-64 and arm64), so a read on an idle event device blocks the read loop instead of returning EAGAIN
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.O_CLOEXEC` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `69C944`, PENDING
   - Falsified if: O_CLOEXEC differs from 0x80000 (02000000 octal), so the evdev descriptor is inherited by child processes the host spawns
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.POLLIN` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `B28418`, PENDING
-  - Falsified if: POLLIN differs from 0x0001, so poll(2) never reports the event device readable and the read loop only wakes on its timeout
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.POLLERR` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `AC1DCE`, PENDING
-  - Falsified if: POLLERR differs from 0x0008, so an event device in an error state is not recognised in revents and the loop keeps polling a dead descriptor
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.POLLHUP` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `06CE9C`, PENDING
-  - Falsified if: POLLHUP differs from 0x0010, so an unplugged event device is not recognised in revents and is not reported as removed
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.POLLNVAL` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `06ECDE`, PENDING
-  - Falsified if: POLLNVAL differs from 0x0020, so polling a closed descriptor is not recognised in revents and the loop spins on it
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EINTR` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `BC45A0`, PENDING
-  - Falsified if: EINTR differs from 4, so a poll or read interrupted by a signal is reported as a device fault instead of being retried
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EIO` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `F96002`, PENDING
-  - Falsified if: EIO differs from 5, so a read that fails after the device is unplugged is classified as a generic fault instead of a removed device
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EAGAIN` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `14B507`, PENDING
-  - Falsified if: EAGAIN differs from 11, so a nonblocking read with no pending events is reported as a fault and stops the read loop
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EACCES` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `10AC33`, PENDING
-  - Falsified if: EACCES differs from 13, so an open refused by the input group permissions is not classified as permission denied
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EBUSY` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `1FA33E`, PENDING
-  - Falsified if: EBUSY differs from 16, so a device another process holds is not classified as busy
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.ENODEV` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `D76B4A`, PENDING
-  - Falsified if: ENODEV differs from 19, so a read on a removed event device is not classified as a removed device and recovery is skipped
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.ENOENT` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `61565D`, PENDING
-  - Falsified if: ENOENT differs from 2, so opening a missing /dev/input node is not classified as device not found
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EPERM` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `8E279A`, PENDING
-  - Falsified if: EPERM differs from 1, so an open refused by a seat or container policy is not classified as permission denied
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.EVIOCSCLOCKID` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `136EA3`, PENDING
   - Falsified if: EVIOCSCLOCKID differs from 0x400445a0, the encoding of _IOW('E', 0xa0, int), so the clock switch fails with EINVAL and event timestamps stay on CLOCK_REALTIME
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.CLOCK_MONOTONIC` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `80FE56`, PENDING
-  - Falsified if: CLOCK_MONOTONIC differs from 1, so EVIOCSCLOCKID selects another clock or fails and event timestamps jump when the wall clock is adjusted
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Open(string, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `B96AC4`, PENDING
   - Falsified if: a pathname containing an embedded NUL character is truncated at the NUL by the UTF-8 marshaller, so open(2) opens a different node than the one named instead of failing
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `B87244`, PENDING
-  - Falsified if: a count larger than buffer.Length reaches read(2), which writes the excess bytes past the end of the pinned managed array
+  - Falsified if: count is declared narrower than size_t, so on x86-64 read(2) takes a byte count with undefined upper bits and writes evdev bytes past the end of the pinned array
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `D0C8DE`, PENDING
-  - Falsified if: an nfds larger than fds.Length reaches poll(2), which reads pollfd entries and writes revents past the end of the pinned array
+  - Falsified if: nfds is declared narrower than nfds_t, so on x86-64 poll(2) takes an entry count with undefined upper bits and walks pollfd entries past the end of the pinned array
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlClockId(int, nuint, ref int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `E09054`, PENDING
   - Falsified if: the clock id reaches ioctl(2) by value instead of as a pointer to a 32-bit int, so EVIOCSCLOCKID fails with EFAULT on every device
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlAbsInfo(int, nuint, byte[])` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `7FA6C0`, PENDING
-  - Falsified if: an absInfo array shorter than the size encoded in the request lets the kernel copy struct input_absinfo past the end of the pinned array
+  - Falsified if: request is declared narrower than unsigned long, so on x86-64 ioctl(2) receives an EVIOCGABS code with undefined upper bits and copies into the array under another request's size
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.TrySetMonotonicClock(int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `3DDB0B`, PENDING
   - Falsified if: an EVIOCSCLOCKID ioctl that fails with -1 makes the method return true, so callers treat CLOCK_REALTIME event timestamps as monotonic
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.TryGetAbsInfo(int, ushort, out int, out int, out int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `77BE13`, PENDING
@@ -430,49 +302,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.PollFd` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `D2661F`, PENDING
   - Falsified if: PollFd is not 8 bytes with Events and Revents as 16-bit fields at offsets 4 and 6, so poll(2) reads the event mask from and writes revents into the wrong bytes
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, Spec=none cited, `9489E2`, PENDING
-  - Falsified if: a configSize larger than configs.Length lets eglChooseConfig write EGLConfig handles past the end of the pinned managed array
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_FALSE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `EEE3BF`, PENDING
-  - Falsified if: EGL_FALSE differs from 0, so a failed eglInitialize, eglMakeCurrent or eglSwapBuffers compares unequal to it and is treated as success
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_TRUE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `20CED0`, PENDING
-  - Falsified if: EGL_TRUE differs from 1, so a successful EGL call compared against it is treated as a failure
+  - Falsified if: ChooseConfig's configs array is not of pointer-sized EGLConfig handles, so on x86-64 eglChooseConfig writes 8-byte handles past the end of the pinned array
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_NONE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, Spec=none cited, `F1A225`, PENDING
   - Falsified if: EGL_NONE differs from 0x3038, so attribute lists ending in it are unterminated and eglChooseConfig or eglCreateContext reads attribute pairs past the end of the array
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_RED_SIZE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `C99A69`, PENDING
-  - Falsified if: EGL_RED_SIZE differs from 0x3024, so the 8-bit red request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_GREEN_SIZE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `F45F72`, PENDING
-  - Falsified if: EGL_GREEN_SIZE differs from 0x3023, so the 8-bit green request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_BLUE_SIZE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `3C817F`, PENDING
-  - Falsified if: EGL_BLUE_SIZE differs from 0x3022, so the 8-bit blue request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_ALPHA_SIZE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `9ADE51`, PENDING
-  - Falsified if: EGL_ALPHA_SIZE differs from 0x3021, so a config without an alpha channel is chosen and read-back pixels lose transparency
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_DEPTH_SIZE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `3EB559`, PENDING
-  - Falsified if: EGL_DEPTH_SIZE differs from 0x3025, so the depth request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_STENCIL_SIZE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `1FD37C`, PENDING
-  - Falsified if: EGL_STENCIL_SIZE differs from 0x3026, so the stencil request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_SURFACE_TYPE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `AB3532`, PENDING
-  - Falsified if: EGL_SURFACE_TYPE differs from 0x3033, so a config that cannot back a window or pbuffer surface is chosen and surface creation fails with EGL_BAD_MATCH
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_RENDERABLE_TYPE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `77486E`, PENDING
-  - Falsified if: EGL_RENDERABLE_TYPE differs from 0x3040, so a config without desktop OpenGL support is chosen and eglCreateContext fails with EGL_BAD_CONFIG
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_WIDTH` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `9FCA3C`, PENDING
-  - Falsified if: EGL_WIDTH differs from 0x3057, so eglCreatePbufferSurface rejects the list or creates a pbuffer of the default zero width
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_HEIGHT` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `5C4021`, PENDING
-  - Falsified if: EGL_HEIGHT differs from 0x3056, so eglCreatePbufferSurface rejects the list or creates a pbuffer of the default zero height
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_CONTEXT_MAJOR_VERSION` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `F6E397`, PENDING
-  - Falsified if: EGL_CONTEXT_MAJOR_VERSION differs from 0x3098, so the requested OpenGL 3.x context is created as a 1.x context or rejected with EGL_BAD_ATTRIBUTE
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_CONTEXT_MINOR_VERSION` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `0A6C46`, PENDING
-  - Falsified if: EGL_CONTEXT_MINOR_VERSION differs from 0x30FB, so the minor version request is rejected with EGL_BAD_ATTRIBUTE or ignored
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_CONTEXT_OPENGL_PROFILE_MASK` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `8338EC`, PENDING
-  - Falsified if: EGL_CONTEXT_OPENGL_PROFILE_MASK differs from 0x30FD, so the core-profile request is rejected or a compatibility context is created instead
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_PBUFFER_BIT` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `55F42F`, PENDING
-  - Falsified if: EGL_PBUFFER_BIT differs from 0x0001, so the offscreen path chooses a config that eglCreatePbufferSurface rejects with EGL_BAD_MATCH
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_WINDOW_BIT` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `0A0099`, PENDING
-  - Falsified if: EGL_WINDOW_BIT differs from 0x0004, so the window path chooses a config that eglCreateWindowSurface rejects with EGL_BAD_MATCH
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_OPENGL_BIT` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `88F4A0`, PENDING
-  - Falsified if: EGL_OPENGL_BIT differs from 0x0008, so the chosen config renders only OpenGL ES and the desktop OpenGL context cannot be created on it
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_OPENGL_API` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `AA8383`, PENDING
-  - Falsified if: EGL_OPENGL_API differs from 0x30A2, so eglBindAPI fails with EGL_BAD_PARAMETER or binds OpenGL ES (0x30A0) instead of desktop OpenGL
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `F4A90D`, PENDING
-  - Falsified if: EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT differs from 0x00000001, so the profile mask asks for the compatibility profile or an invalid one
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `BD56B4`, PENDING
   - Falsified if: an Xlib Display pointer above 4 GiB passed as displayId reaches eglGetDisplay truncated to 32 bits, so EGL opens a different display or returns EGL_NO_DISPLAY
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `89B711`, PENDING
@@ -482,15 +314,15 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.BindApi(int)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `7F31B4`, PENDING
   - Falsified if: EGL_OPENGL_API passed here does not reach eglBindAPI as the 32-bit EGLenum 0x30A2, so the thread stays bound to OpenGL ES and the desktop context request fails
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, Spec=none cited, `7A0D75`, PENDING
-  - Falsified if: a configSize larger than configs.Length lets eglChooseConfig write EGLConfig handles past the end of the pinned array
+  - Falsified if: configs is not marshalled as an array of pointer-sized EGLConfig handles, so on x86-64 eglChooseConfig writes 8-byte handles into 4-byte elements and runs past the pinned array
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, Spec=none cited, `9110AD`, PENDING
-  - Falsified if: an attribList without a trailing EGL_NONE makes eglCreateContext read attribute pairs past the end of the pinned array
+  - Falsified if: attribList and shareContext reach eglCreateContext(EGLDisplay, EGLConfig, EGLContext, const EGLint*) in swapped positions, so EGL walks the share context's memory as an attribute list
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.DestroyContext(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `CEE9B9`, PENDING
   - Falsified if: an EGLContext handle reaches eglDestroyContext at other than pointer width, so it fails with EGL_BAD_CONTEXT and the driver context leaks
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.CreatePbufferSurface(IntPtr, IntPtr, int[])` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, Spec=none cited, `E5C06E`, PENDING
-  - Falsified if: an attribList without a trailing EGL_NONE makes eglCreatePbufferSurface read attribute pairs past the end of the pinned array
+  - Falsified if: config and attribList reach eglCreatePbufferSurface(EGLDisplay, EGLConfig, const EGLint*) in swapped positions, so EGL walks the config handle's memory as an attribute list
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.CreateWindowSurface(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, Spec=none cited, `26BB95`, PENDING
-  - Falsified if: an attribList without a trailing EGL_NONE makes eglCreateWindowSurface read attribute pairs past the end of the pinned array
+  - Falsified if: nativeWindow and attribList reach eglCreateWindowSurface(EGLDisplay, EGLConfig, EGLNativeWindowType, const EGLint*) in swapped positions, so EGL walks the X window id as an attribute list and takes the array address as the window
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.DestroySurface(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `645A11`, PENDING
   - Falsified if: an EGLSurface handle reaches eglDestroySurface at other than pointer width, so it fails with EGL_BAD_SURFACE and the surface buffers leak
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.MakeCurrent(IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `B3981D`, PENDING
@@ -502,65 +334,23 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.GetProcAddress(string)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, Spec=none cited, `774421`, PENDING
   - Falsified if: the function pointer eglGetProcAddress returns is truncated to 32 bits on x86-64, so a delegate built from it jumps to an unrelated address
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `B1E919`, PENDING
-  - Falsified if: ReadPixels writes height rows of width x 4 bytes through the caller's pixels pointer with no length argument, so a buffer smaller than that is overrun by the driver
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_NO_ERROR` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `18A47D`, PENDING
-  - Falsified if: the value differs from GL_NO_ERROR (0) in the Khronos gl.h, so ThrowIfError throws after a successful call or stays silent after a failed one
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_TEXTURE_2D` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `486868`, PENDING
-  - Falsified if: the value differs from GL_TEXTURE_2D (0x0DE1) in gl.h, so glBindTexture and glTexImage2D fail with GL_INVALID_ENUM or address another texture target
+  - Falsified if: GlReadPixelsProc's seven declared parameters differ in order from glReadPixels(x, y, width, height, format, type, pixels), so format and type arrive swapped and the driver writes another number of bytes per pixel through the pixels pointer
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_RGBA` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `11D122`, PENDING
   - Falsified if: the value differs from GL_RGBA (0x1908) in gl.h, so glReadPixels and glTexImage2D move a different number of components per pixel than the 4-byte-per-pixel buffers callers size
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_RGBA8` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `616C07`, PENDING
-  - Falsified if: the value differs from GL_RGBA8 (0x8058) in gl.h, so glTexImage2D allocates another internal format and the colour attachment is incomplete or loses precision
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_UNSIGNED_BYTE` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `6D0452`, PENDING
   - Falsified if: the value differs from GL_UNSIGNED_BYTE (0x1401) in gl.h, so pixel transfers use a wider component type and the driver reads or writes past a buffer sized at one byte per component
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_TEXTURE_MIN_FILTER` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `ED3B88`, PENDING
-  - Falsified if: the value differs from GL_TEXTURE_MIN_FILTER (0x2801) in gl.h, so the texture keeps the default mipmapping minification filter and samples as incomplete with only level 0 defined
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_TEXTURE_MAG_FILTER` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `464BAE`, PENDING
-  - Falsified if: the value differs from GL_TEXTURE_MAG_FILTER (0x2800) in gl.h, so glTexParameteri fails with GL_INVALID_ENUM or sets another parameter and magnification keeps its default filter
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_TEXTURE_WRAP_S` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `E8912E`, PENDING
-  - Falsified if: the value differs from GL_TEXTURE_WRAP_S (0x2802) in gl.h, so the horizontal wrap mode stays GL_REPEAT and edge texels bleed in from the opposite side
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_TEXTURE_WRAP_T` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `0DF071`, PENDING
-  - Falsified if: the value differs from GL_TEXTURE_WRAP_T (0x2803) in gl.h, so the vertical wrap mode stays GL_REPEAT and edge texels bleed in from the opposite side
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_LINEAR` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `6B549F`, PENDING
-  - Falsified if: the value differs from GL_LINEAR (0x2601) in gl.h, so glTexParameteri or glBlitFramebuffer rejects the filter with GL_INVALID_ENUM
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_NEAREST` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `7E8CAD`, PENDING
-  - Falsified if: the value differs from GL_NEAREST (0x2600) in gl.h, so glTexParameteri or glBlitFramebuffer rejects the filter with GL_INVALID_ENUM
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_CLAMP_TO_EDGE` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `1CAE98`, PENDING
-  - Falsified if: the value differs from GL_CLAMP_TO_EDGE (0x812F) in gl.h, so glTexParameteri rejects the wrap mode with GL_INVALID_ENUM and the texture keeps GL_REPEAT
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_FRAMEBUFFER` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `63A28A`, PENDING
-  - Falsified if: the value differs from GL_FRAMEBUFFER (0x8D40) in gl.h, so glBindFramebuffer and glFramebufferTexture2D fail with GL_INVALID_ENUM and drawing goes to the default framebuffer
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_READ_FRAMEBUFFER` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `F6251B`, PENDING
-  - Falsified if: the value differs from GL_READ_FRAMEBUFFER (0x8CA8) in gl.h, so glReadPixels reads from whichever framebuffer was bound for reading before
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_DRAW_FRAMEBUFFER` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `62E432`, PENDING
-  - Falsified if: the value differs from GL_DRAW_FRAMEBUFFER (0x8CA9) in gl.h, so glBlitFramebuffer writes into whichever framebuffer was bound for drawing before
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_COLOR_ATTACHMENT0` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `46BB0D`, PENDING
-  - Falsified if: the value differs from GL_COLOR_ATTACHMENT0 (0x8CE0) in gl.h, so glFramebufferTexture2D attaches the texture elsewhere and the framebuffer reports incomplete
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_FRAMEBUFFER_COMPLETE` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `F456FE`, PENDING
-  - Falsified if: the value differs from GL_FRAMEBUFFER_COMPLETE (0x8CD5) in gl.h, so a complete framebuffer is rejected or an incomplete one is accepted and later reads return undefined pixels
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_COLOR_BUFFER_BIT` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `DB1E23`, PENDING
-  - Falsified if: the value differs from GL_COLOR_BUFFER_BIT (0x4000) in gl.h, so glClear or glBlitFramebuffer acts on the depth or stencil buffer instead of colour
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_PACK_ALIGNMENT` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `6C18C1`, PENDING
   - Falsified if: the value differs from GL_PACK_ALIGNMENT (0x0D05) in gl.h, so a row alignment wider than 4 stays in effect and glReadPixels of an odd-width RGBA image writes padded rows past a tightly packed buffer
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_UNPACK_ALIGNMENT` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `80D3CE`, PENDING
   - Falsified if: the value differs from GL_UNPACK_ALIGNMENT (0x0CF5) in gl.h, so a row alignment wider than 4 stays in effect and glTexImage2D of an odd-width RGBA image reads padded rows past a tightly packed buffer
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_SCISSOR_TEST` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `D94511`, PENDING
-  - Falsified if: the value differs from GL_SCISSOR_TEST (0x0C11) in gl.h, so glEnable leaves scissoring off and glClear paints the whole framebuffer instead of the scissor rectangle
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_VENDOR` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `FA360B`, PENDING
-  - Falsified if: the value differs from GL_VENDOR (0x1F00) in gl.h, so glGetString returns NULL or another string and the driver report names the wrong vendor
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_RENDERER` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `8CE1CD`, PENDING
-  - Falsified if: the value differs from GL_RENDERER (0x1F01) in gl.h, so glGetString returns NULL or another string and the driver report names the wrong renderer
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_VERSION` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `DC1AB2`, PENDING
-  - Falsified if: the value differs from GL_VERSION (0x1F02) in gl.h, so glGetString returns NULL or another string and the driver report states the wrong context version
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_SHADING_LANGUAGE_VERSION` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `E87C00`, PENDING
-  - Falsified if: the value differs from GL_SHADING_LANGUAGE_VERSION (0x8B8C) in gl.h, so glGetString returns NULL or another string and the driver report states the wrong GLSL version
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.LinuxOpenGlFunctions()` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `A9BC99`, PENDING
   - Falsified if: an entry-point name is paired with a delegate type whose parameter list differs from that function's gl.h prototype (for example glReadPixels loaded as GlTexImage2DProc), so calls through that field hand the driver a mismatched argument list
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.LoadCurrentContext()` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `9FD27C`, PENDING
   - Falsified if: it returns a function table when no EGL context is current on the calling thread, and the first GL call through that table dispatches into a driver with no context bound
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GetString(uint)` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `525EF7`, PENDING
-  - Falsified if: a non-zero pointer that is not a NUL-terminated driver string (for example one returned while no context is current) is scanned by PtrToStringAnsi past the end of the driver's allocation
+  - Falsified if: a NULL from glGetString, returned when no context is current, is passed to PtrToStringAnsi or reported as an empty string rather than as unavailable
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GetDriverInfo()` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `AAF5FB`, PENDING
-  - Falsified if: GL_SHADING_LANGUAGE_VERSION is queried on a context older than OpenGL 2.0, so glGetString returns NULL with GL_INVALID_ENUM left pending and the next ThrowIfError blames an unrelated operation
+  - Falsified if: two of the GL_VENDOR, GL_RENDERER, GL_VERSION and GL_SHADING_LANGUAGE_VERSION queries are passed in swapped positions, so Renderer holds the version string
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.ThrowIfError(string)` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `470A06`, PENDING
   - Falsified if: glGetError is read only once, so when several error flags are recorded the remaining ones survive and a later ThrowIfError reports them against an unrelated operation
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.Load<TDelegate>(string)` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `0A9223`, PENDING
@@ -574,7 +364,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlTexParameteriProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `72149D`, PENDING
   - Falsified if: the declared parameters differ from glTexParameteri(GLenum, GLenum, GLint), for example a float param, so the filter or wrap value arrives in a floating-point register the driver never reads
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlTexImage2DProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `53B054`, PENDING
-  - Falsified if: a pixels buffer shorter than height rows of width x 4 bytes (GL_RGBA, GL_UNSIGNED_BYTE, each row rounded up to GL_UNPACK_ALIGNMENT) is read past its end by glTexImage2D
+  - Falsified if: the nine declared parameters differ in order from glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels), so format and type arrive swapped and the driver reads another number of bytes per pixel from the pixels pointer
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlGenFramebuffersProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `918023`, PENDING
   - Falsified if: n greater than 1 makes glGenFramebuffers write n framebuffer names through the out pointer to a single uint, overwriting the caller's memory after it
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlDeleteFramebuffersProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `74B8E4`, PENDING
@@ -592,7 +382,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlClearProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `ED39A6`, PENDING
   - Falsified if: the mask is not passed as the 32-bit GLbitfield of glClear(GLbitfield mask), so GL_COLOR_BUFFER_BIT arrives as a different bit set and the colour buffer is not cleared
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlReadPixelsProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `4D8968`, PENDING
-  - Falsified if: a pixels buffer shorter than height rows of width x 4 bytes (GL_RGBA, GL_UNSIGNED_BYTE, each row rounded up to GL_PACK_ALIGNMENT) is written past its end by glReadPixels
+  - Falsified if: the seven declared parameters differ in order from glReadPixels(x, y, width, height, format, type, pixels), so format and type arrive swapped and the driver writes another number of bytes per pixel through the pixels pointer
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlBlitFramebufferProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `2FE5E1`, PENDING
   - Falsified if: the ten declared parameters differ in order from glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter), so the source and destination rectangles are swapped or the filter is read as a coordinate
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlPixelStoreiProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, Spec=none cited, `C7EF03`, PENDING
@@ -610,45 +400,21 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlGetStringProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, Spec=none cited, `C7F9A4`, PENDING
   - Falsified if: the const GLubyte pointer return is declared as a 32-bit int, so on 64-bit Linux the driver's string address is truncated before GetString reads it
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, Spec=none cited, `96F4E9`, PENDING
-  - Falsified if: XChangeProperty or XSetWMProtocols is handed an element count larger than its managed array, and Xlib reads past the end of the pinned data
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.False` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `5A4444`, PENDING
-  - Falsified if: the value is nonzero, so XSync(display, False) discards queued events such as a pending ConfigureNotify and InternAtom only looks up atoms that already exist
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.FocusIn` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `0B2AC7`, PENDING
-  - Falsified if: the value differs from X.h's FocusIn (9), so a focus gain read from XNextEvent is never recognised or another event type is taken for one
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.FocusOut` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `513968`, PENDING
-  - Falsified if: the value differs from X.h's FocusOut (10), so a focus loss read from XNextEvent is never recognised or another event type is taken for one
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.MapNotify` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `1108B2`, PENDING
-  - Falsified if: the value differs from X.h's MapNotify (19), so the window-mapped event is never recognised and the post-map focus request never runs
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.ConfigureNotify` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `DAA504`, PENDING
-  - Falsified if: the value differs from X.h's ConfigureNotify (22), so XEvent bytes 56 and 60 of another event type are read as the new window width and height
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.ClientMessage` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `F416DA`, PENDING
-  - Falsified if: the value differs from X.h's ClientMessage (33), so XEvent byte 56 of another event type is compared against WM_DELETE_WINDOW and a close request is missed or invented
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.PropModeReplace` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `29F3D4`, PENDING
-  - Falsified if: the value differs from X.h's PropModeReplace (0), so each title change prepends or appends to _NET_WM_NAME instead of replacing it
+  - Falsified if: SetWmProtocols's Atom array does not use pointer-sized elements, so on x86-64 XSetWMProtocols reads 8-byte Atoms from 4-byte elements and runs past the end of the pinned array
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.Format8` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, Spec=none cited, `0082CC`, PENDING
   - Falsified if: the value is not 8, so XChangeProperty given a UTF-8 byte array with its byte length as the element count reads 2 or 8 times that many bytes from the array
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.RevertToParent` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `6AD7EF`, PENDING
-  - Falsified if: the value differs from X.h's RevertToParent (2), so XSetInputFocus raises BadValue or focus reverts to the root instead of the parent when the window is unmapped
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.CurrentTime` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `34E752`, PENDING
-  - Falsified if: the value is not 0 (X.h's CurrentTime), so XSetInputFocus carries a stale timestamp and the server ignores the focus request
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.ExposureMask` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `027160`, PENDING
-  - Falsified if: the value differs from X.h's ExposureMask (bit 15), so XSelectInput requests a different event class than Expose
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.StructureNotifyMask` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `F90552`, PENDING
-  - Falsified if: the value differs from X.h's StructureNotifyMask (bit 17), so ConfigureNotify and MapNotify are never delivered and window resizes go unseen
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.FocusChangeMask` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `9A9639`, PENDING
-  - Falsified if: the value differs from X.h's FocusChangeMask (bit 21), so FocusIn and FocusOut are never delivered to the window
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.OpenDisplay(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, Spec=none cited, `929967`, PENDING
-  - Falsified if: a non-zero displayName that does not point to a NUL-terminated byte string is read past its end by XOpenDisplay
+  - Falsified if: displayName is declared narrower than a pointer, so on x86-64 XOpenDisplay reads the display name through a truncated address
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.CloseDisplay(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `876CC0`, PENDING
-  - Falsified if: a Display* is passed to any other X call after CloseDisplay returned for it, so Xlib touches freed connection memory
+  - Falsified if: the display argument is declared narrower than a pointer, so on x86-64 XCloseDisplay receives a truncated Display* and frees memory at an unrelated address
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.DefaultScreen(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `84D7AA`, PENDING
-  - Falsified if: a null Display* from a failed OpenDisplay reaches XDefaultScreen, which dereferences it without a null test and crashes the process
+  - Falsified if: the import binds XDefaultScreenOfDisplay rather than XDefaultScreen, so a Screen* truncated to int is returned as the screen number
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.RootWindow(IntPtr, int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `0B2C4A`, PENDING
-  - Falsified if: a screenNumber outside 0 to ScreenCount minus 1 is passed, and XRootWindow indexes past Xlib's screen array without a bounds test
+  - Falsified if: the Window return is declared narrower than C unsigned long, so on x86-64 the root window id read back is truncated and XCreateSimpleWindow is given another parent
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.BlackPixel(IntPtr, int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `224BE2`, PENDING
-  - Falsified if: a screenNumber outside 0 to ScreenCount minus 1 is passed, and XBlackPixel indexes past Xlib's screen array without a bounds test
+  - Falsified if: the pixel return is declared narrower than C unsigned long, so on x86-64 the border colour passed on to XCreateSimpleWindow carries undefined upper bits
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.WhitePixel(IntPtr, int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `48663B`, PENDING
-  - Falsified if: a screenNumber outside 0 to ScreenCount minus 1 is passed, and XWhitePixel indexes past Xlib's screen array without a bounds test
+  - Falsified if: the pixel return is declared narrower than C unsigned long, so on x86-64 the background colour passed on to XCreateSimpleWindow carries undefined upper bits
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.CreateSimpleWindow(IntPtr, IntPtr, int, int, uint, uint, uint, IntPtr, IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `464005`, PENDING
   - Falsified if: border or background is declared narrower than C unsigned long, so these stack-passed arguments reach XCreateSimpleWindow with undefined upper bytes on x86-64
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.StoreName(IntPtr, IntPtr, string)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `EEE573`, PENDING
@@ -658,35 +424,35 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.MapWindow(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `8B669F`, PENDING
   - Falsified if: the window XID is declared narrower than C unsigned long, so XMapWindow receives an XID with undefined upper bits and maps another window or raises BadWindow
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.ResizeWindow(IntPtr, IntPtr, uint, uint)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `98C0F3`, PENDING
-  - Falsified if: a zero width or height reaches XResizeWindow, and the resulting BadValue error goes to Xlib's default handler, which exits the process when no custom handler is installed
+  - Falsified if: width and height reach XResizeWindow in swapped positions, so a resize to 800 by 600 is followed by a ConfigureNotify reporting 600 by 800
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.DestroyWindow(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `79BA88`, PENDING
-  - Falsified if: the window is destroyed after its Display* was closed, so XDestroyWindow writes into freed connection memory
+  - Falsified if: the display and window arguments reach XDestroyWindow(Display*, Window) in swapped positions, so Xlib dereferences the window id as the connection pointer
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.Flush(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `F8DD82`, PENDING
-  - Falsified if: Flush runs on one thread while another thread issues requests on the same Display* without XInitThreads, corrupting Xlib's output buffer
+  - Falsified if: the import binds XSync or another export instead of XFlush, so the call blocks on a server round trip or drops queued events instead of only sending buffered requests
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.Pending(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `B97E6E`, PENDING
-  - Falsified if: Pending and NextEvent run on a thread other than the one issuing requests on the same Display* without XInitThreads, corrupting Xlib's event queue
+  - Falsified if: the import binds XEventsQueued or another export instead of XPending, so events still unread on the connection are not counted and the loop stops reading while events are waiting
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.NextEvent(IntPtr, out XEvent)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `70D77F`, PENDING
   - Falsified if: Xlib's XEvent on the target is larger than the 192-byte managed struct, so XNextEvent writes past the out local
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.InternAtom(IntPtr, string, int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `C1DAEF`, PENDING
   - Falsified if: the atom name is marshalled as UTF-16 or without a terminating NUL, so the server interns a different atom than the one named, such as _NET_WM_NAME
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.ChangeProperty(IntPtr, IntPtr, IntPtr, IntPtr, int, int, byte[], int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, Spec=none cited, `618340`, PENDING
-  - Falsified if: an elementCount larger than data.Length, or format 16 or 32 with elementCount equal to the byte length, makes Xlib read past the end of the pinned array (format 32 items are 8-byte C longs on LP64)
+  - Falsified if: data and elementCount reach XChangeProperty in swapped positions, so the element count is dereferenced as the property data and the array address is taken as the count
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.SetWmProtocols(IntPtr, IntPtr, IntPtr[], int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, Spec=none cited, `D252C5`, PENDING
-  - Falsified if: a count larger than protocols.Length makes XSetWMProtocols read Atom values past the end of the pinned array
+  - Falsified if: protocols is not marshalled as an array of pointer-sized Atoms, so on x86-64 XSetWMProtocols reads 8-byte Atoms from 4-byte elements and runs past the end of the pinned array
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.SetInputFocus(IntPtr, IntPtr, int, int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `54C7BF`, PENDING
   - Falsified if: time is declared int while Xlib's Time is a 64-bit unsigned long on LP64, so XSetInputFocus receives a register whose upper half the caller never defined
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.QueryPointer(IntPtr, IntPtr, out IntPtr, out IntPtr, out int, out int, out int, out int, out uint)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `C89EB0`, PENDING
   - Falsified if: rootReturn or childReturn is declared narrower than the 64-bit Window Xlib writes, so XQueryPointer writes past those out locals
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.Sync(IntPtr, int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `B4629B`, PENDING
-  - Falsified if: Sync is called with a nonzero discard, and queued FocusIn, MapNotify and ConfigureNotify events are dropped before the event loop can read them
+  - Falsified if: the import binds an export other than XSync, such as XFlush, so a sync returns before the server has processed the queued requests and the ConfigureNotify they cause is not yet queued
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.GetInputFocus(IntPtr, out IntPtr, out int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `1B3468`, PENDING
   - Falsified if: focusReturn is declared narrower than the 64-bit Window Xlib writes, so XGetInputFocus writes past the out local
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.SetErrorHandler(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `36F83B`, PENDING
-  - Falsified if: the handler pointer comes from a delegate the GC can collect, or one not using the C calling convention, so the next X protocol error calls freed or mismatched thunk code
+  - Falsified if: the handler argument or the previous-handler return is declared narrower than a function pointer, so on x86-64 Xlib installs a truncated handler address and the next protocol error jumps to it
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.XEvent` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `803926`, PENDING
   - Falsified if: on 64-bit Linux the bytes at offsets 56 and 60 are not XConfigureEvent width and height, or offset 56 is not XClientMessageEvent data.l[0], so resizes and close requests are read from the wrong bytes
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `E46435`, PENDING
-  - Falsified if: vkGetPhysicalDeviceProperties or a physical-device or queue-family enumeration writes past the HGlobal buffer or managed array it is given
+  - Falsified if: vkEnumeratePhysicalDevices or vkGetPhysicalDeviceQueueFamilyProperties receives its count and array arguments in swapped positions, so the driver writes handles or 24-byte entries through the count's address
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_SUCCESS` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `E6373E`, PENDING
   - Falsified if: the value is not 0 (vulkan_core.h's VK_SUCCESS), so ThrowIfFailed throws on success or lets a failed vkCreateInstance hand back an unset handle
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_INCOMPLETE` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `1A4D80`, PENDING
@@ -699,10 +465,6 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the value is not 2, so vkCreateDevice rejects or misreads the queue create-info entries by their sType
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `649809`, PENDING
   - Falsified if: the value is not 3, so vkCreateDevice rejects or misreads the device create-info struct by its sType
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_QUEUE_GRAPHICS_BIT` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `4C65A0`, PENDING
-  - Falsified if: the value is not 0x1, so a compute-only or transfer-only queue family is selected as the graphics queue for vkCreateDevice and vkGetDeviceQueue
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.MakeApiVersion(uint, int, int, int)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `29F334`, PENDING
-  - Falsified if: a variant above 7 is accepted and its high bits are shifted out, returning the same version as variant modulo 8
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetSupportedInstanceVersion()` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `06A932`, PENDING
   - Falsified if: a Vulkan 1.0 loader that does not export vkEnumerateInstanceVersion makes the method throw instead of returning version 1.0.0
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.ThrowIfFailed(int, string)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `1B627A`, PENDING
@@ -712,43 +474,43 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.EnumerateInstanceVersion(out uint)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `205D93`, PENDING
   - Falsified if: apiVersion is declared with a width other than uint32_t, so the loader's write leaves part of the out local undefined or overruns it
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.CreateInstance(ref VkInstanceCreateInfo, IntPtr, out IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `5CE6EF`, PENDING
-  - Falsified if: an EnabledExtensionCount or EnabledLayerCount larger than the name array it describes makes the loader read name pointers past that allocation
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.DestroyInstance(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `98A399`, PENDING
-  - Falsified if: an instance is destroyed while a VkDevice created from it is still alive, or destroyed twice, so the loader frees dispatch tables still in use
+  - Falsified if: createInfo and allocator reach vkCreateInstance(const VkInstanceCreateInfo*, const VkAllocationCallbacks*, VkInstance*) in swapped positions, so the loader calls through the create-info fields as allocation callbacks
+- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.DestroyInstance(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `98A399`, PENDING
+  - Falsified if: instance and allocator reach vkDestroyInstance(VkInstance, const VkAllocationCallbacks*) in swapped positions, so the loader reads allocation callbacks through the instance handle
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.EnumeratePhysicalDevices(IntPtr, ref uint, IntPtr[]?)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `0003C3`, PENDING
-  - Falsified if: a physicalDeviceCount larger than physicalDevices.Length lets the loader write VkPhysicalDevice handles past the end of the pinned array
+  - Falsified if: physicalDevices is not marshalled as an out array of pointer-sized handles, so the loader writes 8-byte VkPhysicalDevice handles into narrower elements and runs past the pinned array
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetPhysicalDeviceQueueFamilyProperties(IntPtr, ref uint, VkQueueFamilyProperties[]?)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `8B21E9`, PENDING
-  - Falsified if: a queueFamilyPropertyCount larger than queueFamilyProperties.Length lets the driver write 24-byte entries past the end of the pinned array
+  - Falsified if: the count and the properties array reach vkGetPhysicalDeviceQueueFamilyProperties in swapped positions, so the driver writes the family count through the array and 24-byte entries through the count's address
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetPhysicalDeviceProperties(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `89BCFE`, PENDING
-  - Falsified if: properties points to fewer bytes than VkPhysicalDeviceProperties (824 on 64-bit), so the driver writes past the allocation
+  - Falsified if: physicalDevice and properties reach vkGetPhysicalDeviceProperties in swapped positions, so the driver writes the 824-byte properties structure over the physical-device object
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.CreateDevice(IntPtr, ref VkDeviceCreateInfo, IntPtr, out IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `59040F`, PENDING
-  - Falsified if: a QueueCreateInfoCount larger than the VkDeviceQueueCreateInfo entries at PQueueCreateInfos makes the driver read past that allocation
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.DestroyDevice(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `19195C`, PENDING
-  - Falsified if: a device is destroyed while queue work is still executing because vkDeviceWaitIdle was not called first, so the driver frees resources the GPU is still using
+  - Falsified if: createInfo and allocator reach vkCreateDevice(VkPhysicalDevice, const VkDeviceCreateInfo*, const VkAllocationCallbacks*, VkDevice*) in swapped positions, so the driver calls through the create-info fields as allocation callbacks
+- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.DestroyDevice(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `19195C`, PENDING
+  - Falsified if: device and allocator reach vkDestroyDevice(VkDevice, const VkAllocationCallbacks*) in swapped positions, so the driver reads allocation callbacks through the device handle
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetDeviceQueue(IntPtr, uint, uint, out IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `933A0D`, PENDING
-  - Falsified if: a queueIndex at or above the QueueCount requested at device creation is passed, and the driver returns an invalid queue handle instead of failing
+  - Falsified if: queueFamilyIndex and queueIndex reach vkGetDeviceQueue(VkDevice, uint32_t, uint32_t, VkQueue*) in swapped positions, so the queue at index 1 of family 0 is requested as index 0 of family 1
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.DeviceWaitIdle(IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `3C80E2`, PENDING
-  - Falsified if: DeviceWaitIdle runs while another thread submits to a queue of the same device, which Vulkan requires the caller to synchronize externally
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkApplicationInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `2B62F4`, PENDING
+  - Falsified if: the import binds an export other than vkDeviceWaitIdle, such as vkQueueWaitIdle, so the call returns while work on the device's other queues is still running
+- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkApplicationInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `2B62F4`, PENDING
   - Falsified if: Marshal.SizeOf is not 48 on 64-bit or apiVersion is not at offset 44, so the loader reads the requested API version from the wrong bytes
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkInstanceCreateInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `D473E7`, PENDING
+- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkInstanceCreateInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `D473E7`, PENDING
   - Falsified if: Marshal.SizeOf is not 64 on 64-bit or ppEnabledExtensionNames is not at offset 56, so the loader treats a count or padding as a pointer
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkDeviceQueueCreateInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `3020AD`, PENDING
   - Falsified if: Marshal.SizeOf is not 40 on 64-bit or pQueuePriorities is not at offset 32, so the driver reads queue priorities through the wrong bytes
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkDeviceCreateInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `CADF59`, PENDING
+- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkDeviceCreateInfo` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `CADF59`, PENDING
   - Falsified if: Marshal.SizeOf is not 72 on 64-bit or pEnabledFeatures is not at offset 64, so the driver dereferences a count or padding as the features pointer
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkQueueFamilyProperties` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `243E73`, PENDING
   - Falsified if: Marshal.SizeOf is not 24, so the driver's array writes use a different stride than the managed elements and overrun the last one
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VkExtent3D` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `BD2FAE`, PENDING
   - Falsified if: a field is not a 32-bit unsigned value, so the struct is not 12 bytes and VkQueueFamilyProperties no longer matches the driver's 24-byte entries
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.ReadUInt32(IntPtr, int)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `B56DE7`, PENDING
-  - Falsified if: an offset above the allocation size minus 4 reads past the end of the HGlobal buffer, since the offset is not bounded
+  - Falsified if: the value is read at the buffer plus offset times four rather than plus offset, so vendorId at offset 8 is taken from byte 32
 - `Broiler.Native.Windows.IStream` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `72C7E0`, PENDING
   - Falsified if: a member declared out of objidl.h IStream order (Read, Write, Seek, SetSize, CopyTo, Commit, Revert, LockRegion, UnlockRegion, Stat, Clone after IUnknown) sends a call such as Read with a caller buffer to a different native slot
 - `Broiler.Native.Windows.IStream.Read(IntPtr, uint, out uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `EBC476`, PENDING
-  - Falsified if: a cb larger than the writable buffer at pv lets the native stream copy up to cb bytes past the end of the caller's memory
+  - Falsified if: Read is not vtable slot 3, the first ISequentialStream method after IUnknown, so a read request reaches Write and the stream copies cb bytes out of the caller's buffer instead of into it
 - `Broiler.Native.Windows.IStream.Write(IntPtr, uint, out uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `2AC1C9`, PENDING
-  - Falsified if: a cb larger than the readable buffer at pv makes the native stream copy bytes from beyond the end of the caller's memory into the stream
+  - Falsified if: Write is not vtable slot 4, directly after Read, so a write request reaches Read and the stream copies cb bytes into the caller's buffer instead of out of it
 - `Broiler.Native.Windows.IStream.Seek(long, uint, out ulong)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `2AF8C4`, PENDING
   - Falsified if: Seek(-1, STREAM_SEEK_CUR) does not move the position back by one byte, showing dlibMove is not passed as a signed 64-bit LARGE_INTEGER
 - `Broiler.Native.Windows.IStream.SetSize(ulong)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `107363`, PENDING
@@ -764,19 +526,15 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.IStream.UnlockRegion(ulong, ulong, uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `0DB8D7`, PENDING
   - Falsified if: UnlockRegion on a CreateStreamOnHGlobal stream returns something other than STG_E_INVALIDFUNCTION (0x80030001), showing the call reaches a slot other than IStream::UnlockRegion
 - `Broiler.Native.Windows.IStream.Stat(IntPtr, uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `D1A188`, PENDING
-  - Falsified if: a pstatstg buffer smaller than the native STATSTG (80 bytes on x64, 72 on x86) is overrun when Stat writes the structure
+  - Falsified if: Stat is not vtable slot 12, after UnlockRegion, so a stat request reaches Clone and an IStream pointer is written into the STATSTG buffer
 - `Broiler.Native.Windows.IStream.Clone(out IStream)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `C91B52`, PENDING
   - Falsified if: moving the seek pointer of the stream returned by Clone also moves the original's, or the clone does not read the original's bytes, showing the call reaches a slot other than IStream::Clone
 - `Broiler.Native.Windows.ComNative` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `E10EF6`, PENDING
-  - Falsified if: a block or interface pointer that one owner already freed (through CoTaskMemFree, ReleaseIUnknown, or an HGLOBAL a stream deletes on release) is freed or released a second time through these helpers
+  - Falsified if: ReleaseIUnknown lowers a non-null pointer's reference count by other than exactly one, or CoTaskMemFree binds an export other than ole32's, so an object or block another holder still uses is freed
 - `Broiler.Native.Windows.ComNative.S_OK` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `AD5C7E`, PENDING
   - Falsified if: a value other than 0 makes callers that pair a successful CoInitializeEx with CoUninitialize skip it, leaving the thread's apartment initialised after the capture or decode work ends
 - `Broiler.Native.Windows.ComNative.S_FALSE` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `72A585`, PENDING
   - Falsified if: a value other than 1 makes a nested CoInitializeEx on an already initialised thread skip its matching CoUninitialize, leaving the apartment's initialisation count unbalanced
-- `Broiler.Native.Windows.ComNative.E_ACCESSDENIED` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `0C6B23`, PENDING
-  - Falsified if: a value other than 0x80070005 makes an OS refusal of camera or microphone access surface as a generic native failure instead of PermissionDenied
-- `Broiler.Native.Windows.ComNative.E_NOTFOUND` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `A76EE8`, PENDING
-  - Falsified if: a value other than 0x80070490 makes a machine with no default capture endpoint throw instead of reporting that no microphone is present
 - `Broiler.Native.Windows.ComNative.RPC_E_CHANGED_MODE` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `84F45B`, PENDING
   - Falsified if: a value other than 0x80010106 makes COM users on a thread already in a single-threaded apartment fail initialisation instead of continuing without a matching CoUninitialize
 - `Broiler.Native.Windows.ComNative.COINIT_MULTITHREADED` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `6774C3`, PENDING
@@ -788,17 +546,17 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.ComNative.CoInitializeEx(IntPtr, uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `29F17C`, PENDING
   - Falsified if: CoInitializeEx with COINIT_MULTITHREADED on a thread already in a single-threaded apartment returns something other than RPC_E_CHANGED_MODE, showing the HRESULT is not returned unchanged
 - `Broiler.Native.Windows.ComNative.CoUninitialize()` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `1CDFE8`, PENDING
-  - Falsified if: a thread calls CoUninitialize more times than CoInitializeEx returned S_OK or S_FALSE on it, tearing down the apartment while interface pointers created there are still released later
+  - Falsified if: the import binds an export other than ole32's CoUninitialize, so the thread's apartment initialisation count is not lowered and a later CoInitializeEx on it still returns S_FALSE
 - `Broiler.Native.Windows.ComNative.CoTaskMemFree(IntPtr)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `396F43`, PENDING
-  - Falsified if: a pointer not allocated by CoTaskMemAlloc, such as a Marshal.AllocHGlobal block, or one already freed reaches CoTaskMemFree and corrupts the COM task heap
+  - Falsified if: the import binds an export other than ole32's CoTaskMemFree, such as GlobalFree, so a string returned by IMMDevice.GetId is released to another heap
 - `Broiler.Native.Windows.ComNative.CoCreateInstance(in Guid, IntPtr, uint, in Guid, out IntPtr)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `F9E5E6`, PENDING
-  - Falsified if: the +1 reference returned in ppv on success is not released exactly once by its caller through ReleaseIUnknown or ComPtr, leaking the in-process server or releasing it under another holder
+  - Falsified if: rclsid or riid is passed by value rather than as a REFCLSID or REFIID pointer, so ole32 reads the first bytes of the GUID as an address
 - `Broiler.Native.Windows.ComNative.CoCreateInstance(ref Guid, IntPtr, uint, ref Guid, out object?)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `4C1BCE`, PENDING
   - Falsified if: the object returned on success is not a built-in runtime-callable wrapper, so ComNative.ReleaseComObject leaves the activation's native reference held until finalization
 - `Broiler.Native.Windows.ComNative.CoCreateInstance(in Guid, IntPtr, uint, in Guid, out WicNative.IWICImagingFactory)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `DE546D`, PENDING
   - Falsified if: after a successful call the activation's own +1 out reference is still held once the managed IWICImagingFactory wrapper has been collected, showing the generated marshaller kept it as well as the wrapper's reference
 - `Broiler.Native.Windows.ComNative.CreateStreamOnHGlobal(IntPtr, bool, out IStream)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `B90342`, PENDING
-  - Falsified if: an hGlobal handed over with fDeleteOnRelease true is also freed by the caller, so the stream's final Release frees the block a second time
+  - Falsified if: fDeleteOnRelease is not marshalled as a 4-byte BOOL, so a false request reaches ole32 with stray upper bytes and the stream frees an HGLOBAL the caller still owns
 - `Broiler.Native.Windows.ComNative.GetOrCreateComObject<TInterface>(IntPtr)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `92D005`, PENDING
   - Falsified if: after the caller releases its own reference to comPointer the returned wrapper points at a destroyed object, showing the wrapper took no native reference of its own
 - `Broiler.Native.Windows.ComNative.ReleaseIUnknown(IntPtr)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, Spec=none cited, `455A91`, PENDING
@@ -806,7 +564,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.ComNative.ReleaseComObject(object?)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, Spec=none cited, `EFB4EB`, PENDING
   - Falsified if: a source-generated ComObject (from a [GeneratedComInterface] out parameter or GetOrCreateComObject) is neither IsComObject nor IDisposable, so the call returns with its native reference still held until finalization
 - `Broiler.Native.Windows.Direct2D.ComPtr` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=Critical, Spec=none cited, `2776DD`, PENDING
-  - Falsified if: Dispose racing on two threads lets both read the same non-zero pointer and call IUnknown::Release twice for the one owned reference
+  - Falsified if: a second Dispose or Release on the same ComPtr calls IUnknown::Release (slot 2) again for the one owned reference, dropping the native count below the references held
 - `Broiler.Native.Windows.Direct2D.ComPtr.QueryInterfaceProc` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, Spec=none cited, `0E802B`, PENDING
   - Falsified if: on 32-bit x86 a call through this delegate leaves the stack unbalanced or returns a garbage result, showing its convention or parameters differ from IUnknown::QueryInterface(this, REFIID, void**)
 - `Broiler.Native.Windows.Direct2D.ComPtr.AddRefProc` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, Spec=none cited, `BE262F`, PENDING
@@ -913,32 +671,8 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: slot 9 of ID2D1SimplifiedGeometrySink is not Close (EndFigure is 8), so the sink is never closed and FillGeometry on the path fails the frame with D2DERR_WRONG_STATE
 - `Broiler.Native.Windows.Direct2D.D2DNative.VtblFillGeometry` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `E71DA5`, PENDING
   - Falsified if: slot 23 is not ID2D1RenderTarget::FillGeometry (DrawGeometry is 22, FillMesh 24), so the triangle is stroked with the brush argument read as a width or the geometry is read as an ID2D1Mesh
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2DERR_RECREATE_TARGET` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `42D9F6`, PENDING
-  - Falsified if: the value is not 0x8899000C from d2derr.h, so an EndDraw that reports a lost target surfaces as a generic failure and the device is never recreated
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_FACTORY_TYPE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `6850E8`, PENDING
   - Falsified if: MULTI_THREADED is not 1 as in d2d1.h, so a factory requested as multi-threaded is created single-threaded and calls from several threads race inside Direct2D
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_ALPHA_MODE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `4EA25C`, PENDING
-  - Falsified if: PREMULTIPLIED is not 1 or IGNORE is not 3 as in dcommon.h, so CreateBitmap treats uploaded premultiplied BGRA pixels as straight alpha, or an opaque surface's alpha channel as meaningful, and composites page images wrongly
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_ANTIALIAS_MODE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `FA02ED`, PENDING
-  - Falsified if: PER_PRIMITIVE is not 0 or ALIASED is not 1 as in d2d1.h, so SetAntialiasMode and PushAxisAlignedClip get the opposite mode or an out-of-range value that fails the frame at EndDraw
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_TEXT_ANTIALIAS_MODE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `B14994`, PENDING
-  - Falsified if: a member differs from d2d1.h (DEFAULT 0, CLEARTYPE 1, GRAYSCALE 2, ALIASED 3), so SetTextAntialiasMode applies another text antialias mode than the frame options asked for or an out-of-range value that fails the frame at EndDraw
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_DRAW_TEXT_OPTIONS` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `7ABC57`, PENDING
-  - Falsified if: CLIP is not 0x2 as in d2d1.h, so DrawText asked to clip draws page text outside its layout rectangle or turns on NO_SNAP (0x1) instead
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_BITMAP_INTERPOLATION_MODE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `237502`, PENDING
-  - Falsified if: NEAREST_NEIGHBOR is not 0 or LINEAR is not 1 as in d2d1.h, so DrawBitmap scales page images with the other filter or an out-of-range mode that fails the frame at EndDraw
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_MAP_OPTIONS` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `F54725`, PENDING
-  - Falsified if: READ is not 1 as in d2d1_1.h, so Map on the CPU_READ readback bitmap asks for WRITE or DISCARD access and fails, and ReadToBitmap throws instead of returning pixels
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_BITMAP_OPTIONS` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `68A1FB`, PENDING
-  - Falsified if: TARGET is not 0x1, CANNOT_DRAW is not 0x2 or CPU_READ is not 0x4 as in d2d1_1.h, so CreateBitmap1 makes a target bitmap SetTarget rejects or a readback bitmap Map refuses
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_FILL_MODE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `9CF115`, PENDING
-  - Falsified if: WINDING is not 1 as in d2d1.h, so SetFillMode fills the triangle path by the alternate rule and disagrees with the CPU rasterizer's nonzero winding fill
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_FIGURE_BEGIN` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `E6C578`, PENDING
-  - Falsified if: FILLED is not 0 as in d2d1.h, so BeginFigure starts a hollow figure and FillGeometry paints nothing for the triangle
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_FIGURE_END` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `DF6801`, PENDING
-  - Falsified if: CLOSED is not 1 as in d2d1.h, so EndFigure leaves the triangle figure open and a stroke of the path misses its closing edge
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_DEVICE_CONTEXT_OPTIONS` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `62F884`, PENDING
-  - Falsified if: NONE is not 0 as in d2d1_1.h, so CreateDeviceContext asked for no options turns on multithreaded optimizations or rejects the call as an invalid option
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_SIZE_U` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `9B8A78`, PENDING
   - Falsified if: the struct is not two consecutive 32-bit unsigned integers, Width then Height (8 bytes), so CreateBitmap reads more or wider rows from the pinned source buffer than the caller sized from Width and Height
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_MAPPED_RECT` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `A8FA51`, PENDING
@@ -950,13 +684,13 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_BITMAP_PROPERTIES1` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `651843`, PENDING
   - Falsified if: on x64 ColorContext is not at offset 24 after BitmapOptions and 4 bytes of padding (32 bytes in all), so CreateBitmap1 or CreateBitmapFromDxgiSurface dereferences a garbage ID2D1ColorContext pointer
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_COLOR_F` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `20006A`, PENDING
-  - Falsified if: the struct is not four consecutive floats R, G, B, A (16 bytes) as D3DCOLORVALUE, so Clear and CreateSolidColorBrush read the channels in another order or 4 bytes past the argument
+  - Falsified if: the struct is not four consecutive floats R, G, B, A (16 bytes) as D3DCOLORVALUE, so Clear and CreateSolidColorBrush read the channels in another order
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_POINT_2F` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `FDCA31`, PENDING
   - Falsified if: the struct is not two consecutive 32-bit floats, X then Y (8 bytes), so AddLines reads pointsCount entries at the native 8-byte stride past the end of a managed array laid out with another element size
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_RECT_F` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `5A4C8B`, PENDING
   - Falsified if: the struct is not four floats Left, Top, Right, Bottom in that order (16 bytes), so FillRectangle, PushAxisAlignedClip and the DrawText layout rectangle receive swapped edges and paint or clip page content in the wrong place
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_ROUNDED_RECT` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `B27539`, PENDING
-  - Falsified if: the struct is not a 16-byte D2D1_RECT_F followed by RadiusX and RadiusY floats (24 bytes), so FillRoundedRectangle and DrawRoundedRectangle take the radii from the rectangle or read 8 bytes past the argument
+  - Falsified if: the struct is not a 16-byte D2D1_RECT_F followed by RadiusX and RadiusY floats (24 bytes), so FillRoundedRectangle and DrawRoundedRectangle take the radii from the rectangle
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_MATRIX_3X2_F` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `440448`, PENDING
   - Falsified if: the six floats are not in the d2d1.h _11, _12, _21, _22, _31, _32 order, so SetTransform applies a transposed matrix or takes the translation from the shear terms and page content is drawn in the wrong place
 - `Broiler.Native.Windows.Direct2D.D2DNative.CreateDeviceContextProc` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `F3DA9B`, PENDING
@@ -964,9 +698,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Direct2D.D2DNative.SetTargetProc` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `307319`, PENDING
   - Falsified if: the void return or the single ID2D1Image* argument differs from ID2D1DeviceContext::SetTarget in d2d1_1.h, so the target bitmap lands in the wrong argument slot and the context keeps drawing to the previous target
 - `Broiler.Native.Windows.Direct2D.D3D11Native` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, Spec=none cited, `BC2851`, PENDING
-  - Falsified if: a value here differs from d3d11.h or d3dcommon.h, for example BGRA_SUPPORT not being 0x20, so D3D11CreateDevice builds a device on which ID2D1Factory1::CreateDevice fails
-- `Broiler.Native.Windows.Direct2D.D3D11Native.D3D_DRIVER_TYPE` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, Spec=none cited, `86C69F`, PENDING
-  - Falsified if: HARDWARE is not 1 or WARP is not 5 as in d3dcommon.h, so the WARP fallback after a failed hardware D3D11CreateDevice asks for SOFTWARE without a module handle and fails as well
+  - Falsified if: D3D_FEATURE_LEVEL is not a 32-bit enum or a member differs from d3dcommon.h, so the level D3D11CreateDevice writes through pFeatureLevel overruns its out slot or is misread
 - `Broiler.Native.Windows.Direct2D.D3D11Native.D3D_FEATURE_LEVEL` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, Spec=none cited, `4B4341`, PENDING
   - Falsified if: a member differs from d3dcommon.h (LEVEL_11_0 is 0xb000) or the underlying type is not 32 bits, so the level D3D11CreateDevice writes through pFeatureLevel is misread or overruns its out slot
 - `Broiler.Native.Windows.Direct2D.D3D11Native.D3D11_CREATE_DEVICE_FLAG` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, Spec=none cited, `4351CA`, PENDING
@@ -997,16 +729,6 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: slot 18 of an IDWriteFactory vtable is not CreateTextLayout, so the text pointer and caller-supplied length reach a method with a different parameter list
 - `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetMetrics` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `EA1B94`, PENDING
   - Falsified if: slot 60 of an IDWriteTextLayout vtable is not GetMetrics but a neighbour such as GetLineMetrics, so the DWRITE_TEXT_METRICS out buffer receives a different structure
-- `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_FACTORY_TYPE` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `91544C`, PENDING
-  - Falsified if: SHARED or ISOLATED differs from the 0 and 1 dwrite.h defines, so DWriteCreateFactory creates the other kind of factory or fails with E_INVALIDARG
-- `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_FONT_WEIGHT` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `EAFC54`, PENDING
-  - Falsified if: a member differs from its dwrite.h weight (THIN 100 through BLACK 900), so CreateTextFormat selects a lighter or heavier face than the caller asked for
-- `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_FONT_STYLE` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `104D70`, PENDING
-  - Falsified if: NORMAL, OBLIQUE or ITALIC differs from the 0, 1 and 2 dwrite.h defines, so CreateTextFormat selects or synthesizes the wrong slant
-- `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_FONT_STRETCH` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `5E30C9`, PENDING
-  - Falsified if: NORMAL is not 5 as dwrite.h defines, so CreateTextFormat selects a condensed or expanded face or rejects the undefined value 0
-- `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_MEASURING_MODE` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `92FDEF`, PENDING
-  - Falsified if: NATURAL, GDI_CLASSIC or GDI_NATURAL differs from the 0, 1 and 2 dwrite.h defines, so DrawText places glyphs with a different measuring mode than the text was measured in
 - `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_TEXT_METRICS` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `71E01C`, PENDING
   - Falsified if: Marshal.SizeOf is not the 36 bytes IDWriteTextLayout::GetMetrics writes, or LineCount is not at offset 32 after seven floats and MaxBidiReorderingDepth
 - `Broiler.Native.Windows.Direct2D.DWriteNative.CreateTextFormatProc` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `3000F3`, PENDING
@@ -1014,27 +736,27 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Direct2D.Direct2DDeviceApi` in `src/Broiler.Native.Windows/Direct2D/Direct2DDeviceApi.cs` - Security=High, Spec=none cited, `A189CB`, PENDING
   - Falsified if: CreateD2DDeviceProc differs from ID2D1Factory1::CreateDevice(IDXGIDevice*, ID2D1Device**), so the new device pointer is written through the wrong argument
 - `Broiler.Native.Windows.Direct2D.Direct2DDeviceApi.CreateD2DDeviceProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DDeviceApi.cs` - Security=High, Spec=none cited, `6E40F2`, PENDING
-  - Falsified if: dxgiDevice is not the IDXGIDevice obtained by QueryInterface from the D3D11 device, so CreateDevice calls IDXGIDevice methods through another interface vtable
+  - Falsified if: dxgiDevice and the ID2D1Device** out reach ID2D1Factory1::CreateDevice(IDXGIDevice*, ID2D1Device**) in swapped positions, so the new device pointer is written over the first bytes of the IDXGIDevice object
 - `Broiler.Native.Windows.Direct2D.Direct2DImageStoreApi` in `src/Broiler.Native.Windows/Direct2D/Direct2DImageStoreApi.cs` - Security=Critical, Spec=none cited, `BF5EB3`, PENDING
-  - Falsified if: a CreateBitmapProc call whose sourceData holds fewer than pitch times size.Height bytes makes ID2D1RenderTarget::CreateBitmap read past the decoded pixel buffer
+  - Falsified if: CreateBitmapProc's sourceData and pitch reach ID2D1RenderTarget::CreateBitmap(D2D1_SIZE_U, const void*, UINT32, const D2D1_BITMAP_PROPERTIES*, ID2D1Bitmap**) in swapped positions, so Direct2D reads decoded pixels from the address given by the pitch
 - `Broiler.Native.Windows.Direct2D.Direct2DImageStoreApi.CreateBitmapProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DImageStoreApi.cs` - Security=Critical, Spec=none cited, `B276F6`, PENDING
-  - Falsified if: sourceData holds fewer than pitch times size.Height bytes, so CreateBitmap copies past the end of the decoded image pixels
+  - Falsified if: sourceData and pitch reach ID2D1RenderTarget::CreateBitmap(D2D1_SIZE_U, const void*, UINT32, const D2D1_BITMAP_PROPERTIES*, ID2D1Bitmap**) in swapped positions, so Direct2D reads decoded pixels from the address given by the pitch
 - `Broiler.Native.Windows.Direct2D.Direct2DOffscreenSurfaceApi` in `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` - Security=Critical, Spec=none cited, `1DD226`, PENDING
-  - Falsified if: a CreateBitmap1Proc call whose non-null sourceData holds fewer than pitch times size.Height bytes makes ID2D1DeviceContext::CreateBitmap read past the caller buffer
+  - Falsified if: CreateBitmap1Proc's sourceData and pitch reach ID2D1DeviceContext::CreateBitmap(D2D1_SIZE_U, const void*, UINT32, const D2D1_BITMAP_PROPERTIES1*, ID2D1Bitmap1**) in swapped positions, so Direct2D reads pixels from the address given by the pitch
 - `Broiler.Native.Windows.Direct2D.Direct2DOffscreenSurfaceApi.CreateBitmap1Proc` in `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` - Security=Critical, Spec=none cited, `A118A6`, PENDING
-  - Falsified if: a non-null sourceData holds fewer than pitch times size.Height bytes, so ID2D1DeviceContext::CreateBitmap reads past the end of the caller pixel buffer
+  - Falsified if: sourceData and pitch reach ID2D1DeviceContext::CreateBitmap(D2D1_SIZE_U, const void*, UINT32, const D2D1_BITMAP_PROPERTIES1*, ID2D1Bitmap1**) in swapped positions, so Direct2D reads pixels from the address given by the pitch
 - `Broiler.Native.Windows.Direct2D.Direct2DOffscreenSurfaceApi.CopyFromBitmapProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` - Security=Critical, Spec=none cited, `622C7A`, PENDING
-  - Falsified if: a non-null destinationPoint or sourceRect does not point at a D2D1_POINT_2U or D2D1_RECT_U, so CopyFromBitmap reads its coordinates from unrelated memory
+  - Falsified if: destinationPoint and bitmap reach ID2D1Bitmap::CopyFromBitmap(const D2D1_POINT_2U*, ID2D1Bitmap*, const D2D1_RECT_U*) in swapped positions, so Direct2D reads the destination point from the source bitmap object and calls through null as the bitmap
 - `Broiler.Native.Windows.Direct2D.Direct2DOffscreenSurfaceApi.MapProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` - Security=Critical, Spec=none cited, `37BC4C`, PENDING
-  - Falsified if: a reader takes more than Pitch times the bitmap pixel height bytes through the mapped Bits pointer, reading outside the mapped surface
+  - Falsified if: options and the mapped-rect out reach ID2D1Bitmap1::Map(D2D1_MAP_OPTIONS, D2D1_MAPPED_RECT*) in swapped positions, so Map writes the pitch and bits pointer through the options value as an address
 - `Broiler.Native.Windows.Direct2D.Direct2DOffscreenSurfaceApi.UnmapProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` - Security=High, Spec=none cited, `4A016C`, PENDING
-  - Falsified if: a reader still dereferences the Bits pointer from MapProc after UnmapProc has returned for the same bitmap
+  - Falsified if: UnmapProc is declared with a parameter beyond self, so a 32-bit stdcall call to ID2D1Bitmap1::Unmap leaves the stack unbalanced by the extra bytes
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=Critical, Spec=none cited, `5AD2D2`, PENDING
-  - Falsified if: a DrawTextProc call with textLength greater than text.Length makes ID2D1RenderTarget::DrawText read UTF-16 units past the marshalled string
+  - Falsified if: DrawTextProc's textLength is not passed as the 32-bit UINT32 directly after the string pointer, so DrawText reads a length taken from other bits and walks UTF-16 units past the marshalled page text
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.BeginDrawProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `19DEFC`, PENDING
   - Falsified if: BeginDraw is declared with a return value or a parameter beyond self, so a 32-bit stdcall call leaves the stack unbalanced by the extra bytes
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.EndDrawProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=Critical, Spec=none cited, `908727`, PENDING
-  - Falsified if: tag1 or tag2 is neither null nor a pointer to an 8-byte D2D1_TAG, so EndDraw writes its UINT64 tags into smaller or unrelated memory
+  - Falsified if: the tag pointers are declared narrower than a pointer, so on x64 EndDraw writes its UINT64 tags through truncated addresses
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.ClearProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `AE36CF`, PENDING
   - Falsified if: the color is passed by value instead of as a pointer to a 16-byte D2D1_COLOR_F, so Clear dereferences the colour components as an address
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.SetAntialiasModeProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `DF1DCC`, PENDING
@@ -1044,27 +766,27 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.SetTransformProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `698448`, PENDING
   - Falsified if: the matrix is passed by value instead of as a pointer to a 24-byte D2D1_MATRIX_3X2_F, so SetTransform reads its six floats from an address formed from matrix contents
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.CreateSolidColorBrushProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=Critical, Spec=none cited, `E7E385`, PENDING
-  - Falsified if: a non-null brushProperties points at fewer than the 28 bytes of D2D1_BRUSH_PROPERTIES, so CreateSolidColorBrush reads opacity and transform past the caller buffer
+  - Falsified if: color and brushProperties reach CreateSolidColorBrush(const D2D1_COLOR_F*, const D2D1_BRUSH_PROPERTIES*, ID2D1SolidColorBrush**) in swapped positions, so Direct2D reads the colour through a null pointer and the colour as opacity and transform
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.FillRectangleProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `824F30`, PENDING
   - Falsified if: the rectangle is passed by value instead of as a pointer to a 16-byte D2D1_RECT_F, so FillRectangle dereferences the left and top coordinates as an address
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.GetFactoryProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `7F9457`, PENDING
-  - Falsified if: the ID2D1Factory written to factory carries a reference the caller never releases, so each call leaks one factory reference
+  - Falsified if: factory is not declared as an out ID2D1Factory**, so GetFactory writes the factory pointer through an address formed from the caller's argument
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.CreatePathGeometryProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `263E64`, PENDING
-  - Falsified if: the ID2D1PathGeometry written to pathGeometry is not released once per successful call, leaking a geometry per drawn shape
+  - Falsified if: pathGeometry is not declared as an out ID2D1PathGeometry**, so CreatePathGeometry writes the new geometry through an address formed from the caller's argument
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.PathGeometryOpenProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `F267E0`, PENDING
-  - Falsified if: the ID2D1GeometrySink written to sink is not released after Close, leaking a sink per opened geometry
+  - Falsified if: sink is not declared as an out ID2D1GeometrySink**, so Open writes the sink pointer through an address formed from the caller's argument
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.GeometrySinkSetFillModeProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `EA5E6B`, PENDING
   - Falsified if: the fill mode is not marshalled as the 32-bit D2D1_FILL_MODE enum, so the value Direct2D reads carries bits the caller never set
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.GeometrySinkBeginFigureProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `112802`, PENDING
   - Falsified if: startPoint is passed as a pointer instead of the 8-byte D2D1_POINT_2F by value, so BeginFigure starts the figure at coordinates taken from an address
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.GeometrySinkAddLinesProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=Critical, Spec=none cited, `1D7738`, PENDING
-  - Falsified if: a call with pointsCount greater than points.Length makes AddLines read D2D1_POINT_2F values past the end of the marshalled array
+  - Falsified if: points and pointsCount reach ID2D1SimplifiedGeometrySink::AddLines(const D2D1_POINT_2F*, UINT32) in swapped positions, so Direct2D reads points from the address given by the count
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.GeometrySinkEndFigureProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `B50897`, PENDING
   - Falsified if: the figure end is not marshalled as the 32-bit D2D1_FIGURE_END enum, so the value Direct2D reads carries bits the caller never set
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.GeometrySinkCloseProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `610C3C`, PENDING
   - Falsified if: Close is declared returning void, so its failure HRESULT is lost and an unclosed geometry reaches FillGeometry
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.FillGeometryProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `A97749`, PENDING
-  - Falsified if: geometry or brush comes from a different ID2D1Factory than the render target, so the frame fails at EndDraw with D2DERR_WRONG_FACTORY
+  - Falsified if: geometry and brush reach ID2D1RenderTarget::FillGeometry(ID2D1Geometry*, ID2D1Brush*, ID2D1Brush*) in swapped positions, so Direct2D calls ID2D1Geometry methods through the brush's vtable
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.DrawRectangleProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `3980C2`, PENDING
   - Falsified if: strokeWidth is not marshalled as a 32-bit float after the brush pointer, so DrawRectangle strokes with a width reinterpreted from other bits
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.FillRoundedRectangleProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `53C94F`, PENDING
@@ -1072,53 +794,53 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.DrawRoundedRectangleProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `5F1379`, PENDING
   - Falsified if: strokeWidth is not marshalled as a 32-bit float after the brush pointer, so DrawRoundedRectangle strokes with a width reinterpreted from other bits
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.DrawTextProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=Critical, Spec=none cited, `B0981C`, PENDING
-  - Falsified if: a call with textLength greater than text.Length makes DrawText read UTF-16 code units past the end of the marshalled string
+  - Falsified if: textLength is not passed as the 32-bit UINT32 directly after the string pointer, so DrawText reads a length taken from other bits and walks UTF-16 units past the marshalled page text
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.DrawBitmapProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `B19583`, PENDING
   - Falsified if: opacity is not marshalled as a 32-bit float between the destination pointer and the interpolation mode, so DrawBitmap draws with an opacity reinterpreted from other bits
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.PushAxisAlignedClipProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `7E94DC`, PENDING
-  - Falsified if: a PushAxisAlignedClip is not matched by exactly one PopAxisAlignedClip before EndDraw, so EndDraw returns D2DERR_PUSH_POP_UNBALANCED
+  - Falsified if: clipRect is passed by value rather than as a pointer to a 16-byte D2D1_RECT_F, so PushAxisAlignedClip reads the clip rectangle from an address formed from its left and top edges
 - `Broiler.Native.Windows.Direct2D.Direct2DRendererApi.PopAxisAlignedClipProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DRendererApi.cs` - Security=High, Spec=none cited, `F1D399`, PENDING
-  - Falsified if: a PopAxisAlignedClip with no matching PushAxisAlignedClip leaves the target unbalanced, so EndDraw returns D2DERR_PUSH_POP_UNBALANCED
+  - Falsified if: PopAxisAlignedClip is declared with a parameter beyond self or a return value, so a 32-bit stdcall call leaves the stack unbalanced by the extra bytes
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=Critical, Spec=none cited, `062529`, PENDING
-  - Falsified if: a non-null fullscreenDesc passed to CreateSwapChainForHwndProc does not point at a DXGI_SWAP_CHAIN_FULLSCREEN_DESC, so DXGI reads refresh rate and scaling from unrelated memory
+  - Falsified if: CreateSwapChainForHwndProc passes the DXGI_SWAP_CHAIN_DESC1 pointer and fullscreenDesc to IDXGIFactory2::CreateSwapChainForHwnd in swapped positions, so DXGI reads the fullscreen description from the 48-byte swap-chain descriptor and dereferences null as the descriptor
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.CreateSwapChainForCompositionProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=High, Spec=none cited, `7753C7`, PENDING
   - Falsified if: desc is not passed as a pointer to the 48-byte DXGI_SWAP_CHAIN_DESC1, so DXGI allocates swap-chain buffers from misread width, height or buffer count
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.CreateSwapChainForHwndProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=Critical, Spec=none cited, `25B49B`, PENDING
-  - Falsified if: a non-null fullscreenDesc does not point at a DXGI_SWAP_CHAIN_FULLSCREEN_DESC, so DXGI reads refresh rate and scaling from unrelated memory
+  - Falsified if: the DXGI_SWAP_CHAIN_DESC1 pointer and fullscreenDesc reach IDXGIFactory2::CreateSwapChainForHwnd in swapped positions, so DXGI reads the fullscreen description from the 48-byte swap-chain descriptor and dereferences null as the descriptor
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.GetBufferProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=High, Spec=none cited, `CC68D0`, PENDING
-  - Falsified if: riid names an interface other than the one the caller then indexes surface with, so later vtable calls on surface run another interface methods
+  - Falsified if: buffer and riid reach IDXGISwapChain::GetBuffer(UINT, REFIID, void**) in swapped positions, so the back-buffer index is dereferenced as the IID pointer
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.ResizeBuffersProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=High, Spec=none cited, `FA3C79`, PENDING
-  - Falsified if: ResizeBuffers is called while a back buffer from GetBuffer or a bitmap created over it is still referenced, so it fails with DXGI_ERROR_INVALID_CALL
+  - Falsified if: bufferCount, width, height, format and flags reach IDXGISwapChain::ResizeBuffers out of that order, so a resize to 1280 by 720 leaves back buffers whose description reports another size
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.CreateBitmapFromDxgiSurfaceProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=High, Spec=none cited, `3A939B`, PENDING
   - Falsified if: the ColorContext field of bitmapProperties does not land at offset 24 on x64 after four padding bytes, so Direct2D dereferences padding as an ID2D1ColorContext
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.SetDpiProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=High, Spec=none cited, `07F303`, PENDING
   - Falsified if: dpiX and dpiY are not marshalled as 32-bit floats, so SetDpi scales every later draw by values reinterpreted from other bits
 - `Broiler.Native.Windows.Direct2D.Direct2DSurfaceApi.PresentProc` in `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` - Security=High, Spec=none cited, `F5376C`, PENDING
-  - Falsified if: a syncInterval above 4 is passed, which IDXGISwapChain::Present rejects with DXGI_ERROR_INVALID_CALL, so the frame is never shown
+  - Falsified if: syncInterval and flags reach IDXGISwapChain::Present(UINT SyncInterval, UINT Flags) in swapped positions, so Present(1, 0) is issued as Present(0, DXGI_PRESENT_TEST) and no frame reaches the window
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=Critical, Spec=none cited, `6C4DE2`, PENDING
-  - Falsified if: a GetStringProc call whose size exceeds the WCHAR capacity of buffer makes GetString write the name and its terminator past the allocation
+  - Falsified if: GetStringProc's buffer and size reach IDWriteLocalizedStrings::GetString(UINT32, WCHAR*, UINT32) in swapped positions, so the name and its terminator are written to the address given by the capacity
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.GetSystemFontCollectionProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=High, Spec=none cited, `C6C363`, PENDING
   - Falsified if: checkForUpdates is not marshalled as a 4-byte BOOL, so GetSystemFontCollection reads stray bits and rescans installed fonts on calls meant to reuse the collection
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.GetFontFamilyCountProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=High, Spec=none cited, `9E781E`, PENDING
   - Falsified if: the UINT32 count is read as a wider type, so a loop bounded by it calls GetFontFamily with indices the collection rejects
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.GetFontFamilyProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=High, Spec=none cited, `7109EE`, PENDING
-  - Falsified if: the HRESULT for an index equal to GetFontFamilyCount is ignored and the null family pointer it leaves is dereferenced through ComVtable
+  - Falsified if: index and the family out reach IDWriteFontCollection::GetFontFamily(UINT32, IDWriteFontFamily**) in swapped positions, so the family pointer is written through the index value as an address
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.GetFamilyNamesProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=High, Spec=none cited, `31159B`, PENDING
-  - Falsified if: the IDWriteLocalizedStrings written to names is not released once per successful call, leaking one per enumerated family
+  - Falsified if: names is not declared as an out IDWriteLocalizedStrings**, so GetFamilyNames writes the strings pointer through an address formed from the caller's argument
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.FindLocaleNameProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=High, Spec=none cited, `4B03F9`, PENDING
   - Falsified if: exists is not marshalled as a 4-byte BOOL, so a locale the strings do not contain is reported as found and its unset index is used
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.GetStringLengthProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=High, Spec=none cited, `BAB88A`, PENDING
-  - Falsified if: the returned length is used as the GetString size with no room for the terminating NUL, so GetString fails with E_NOT_SUFFICIENT_BUFFER
+  - Falsified if: index and the length out reach IDWriteLocalizedStrings::GetStringLength(UINT32, UINT32*) in swapped positions, so the length is written through the index value as an address
 - `Broiler.Native.Windows.Direct2D.DirectWriteFontFamiliesApi.GetStringProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` - Security=Critical, Spec=none cited, `15EEF0`, PENDING
-  - Falsified if: size is larger than the WCHAR capacity of buffer, so GetString writes the name and its NUL terminator past the end of the allocation
+  - Falsified if: buffer and size reach IDWriteLocalizedStrings::GetString(UINT32, WCHAR*, UINT32) in swapped positions, so the name and its terminator are written to the address given by the capacity
 - `Broiler.Native.Windows.Direct2D.DirectWriteTextMetricsProviderApi` in `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` - Security=Critical, Spec=none cited, `E4A9A2`, PENDING
-  - Falsified if: a CreateTextLayoutProc call with textLength greater than text.Length makes IDWriteFactory::CreateTextLayout read UTF-16 units past the marshalled string
+  - Falsified if: CreateTextLayoutProc's textLength is not passed as the 32-bit UINT32 directly after the string pointer, so CreateTextLayout reads a length taken from other bits and walks UTF-16 units past the marshalled text
 - `Broiler.Native.Windows.Direct2D.DirectWriteTextMetricsProviderApi.CreateTextLayoutProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` - Security=Critical, Spec=none cited, `671FA2`, PENDING
-  - Falsified if: a call with textLength greater than text.Length makes CreateTextLayout read UTF-16 code units past the end of the marshalled string
+  - Falsified if: textLength is not passed as the 32-bit UINT32 directly after the string pointer, so CreateTextLayout reads a length taken from other bits and walks UTF-16 units past the marshalled text
 - `Broiler.Native.Windows.Direct2D.DirectWriteTextMetricsProviderApi.GetMetricsProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` - Security=High, Spec=none cited, `ED31D6`, PENDING
   - Falsified if: metrics is not an out pointer to the 36-byte DWRITE_TEXT_METRICS, so the width and line count GetMetrics writes land in the wrong fields or past the struct
-- `Broiler.Native.Windows.Direct2D.DxgiNative` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `AC7CA2`, PENDING
-  - Falsified if: a vtable slot constant does not follow dxgi.h's method order, so ComVtable.Method calls a different IDXGISwapChain or IDXGIFactory2 method with the wrong argument list
+- `Broiler.Native.Windows.Direct2D.DxgiNative` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=Critical, Spec=none cited, `AC7CA2`, PENDING
+  - Falsified if: DXGI_FORMAT.B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a value naming a wider format such as R16G16B16A16_UNORM (11) makes CreateBitmap read 8 bytes per pixel from a source buffer the caller sized at 4
 - `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGIFactory1` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `0DB933`, PENDING
   - Falsified if: the GUID differs from dxgi.h's IID_IDXGIFactory1 770aae78-f26f-4dba-a829-253c83d1b387, so the factory pointer returned for it is not an IDXGIFactory1 and slots 12 and 13 index a different vtable
 - `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGIFactory2` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `16EECF`, PENDING
@@ -1139,32 +861,20 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the slot is not 15 (IDXGIFactory 7-11, IDXGIFactory1 12-13, IsWindowedStereoEnabled 14), so the HWND and swap-chain descriptor reach CreateSwapChainForCoreWindow or IsWindowedStereoEnabled
 - `Broiler.Native.Windows.Direct2D.DxgiNative.VtblCreateSwapChainForComposition` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `A5208F`, PENDING
   - Falsified if: the slot is not 24, the last IDXGIFactory2 method in dxgi1_2.h, so CreateSwapChainForCompositionProc's arguments reach UnregisterOcclusionStatus or an IDXGIFactory3 method
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_FORMAT` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `AE923C`, PENDING
-  - Falsified if: B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a BGRA swap chain is created as RGBA and red and blue swap on present
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SWAP_EFFECT` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `934555`, PENDING
-  - Falsified if: FLIP_SEQUENTIAL is not 3 as in dxgi.h, so CreateSwapChainForComposition, which accepts only flip-model effects, returns DXGI_ERROR_INVALID_CALL
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SCALING` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `62E17F`, PENDING
-  - Falsified if: STRETCH is not 0 as in dxgi1_2.h, so CreateSwapChainForComposition, which accepts only DXGI_SCALING_STRETCH, returns DXGI_ERROR_INVALID_CALL
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_ALPHA_MODE` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `B7E7AD`, PENDING
-  - Falsified if: PREMULTIPLIED is not 1 as in dxgi1_2.h, so a composition swap chain interprets premultiplied pixels as straight alpha and translucent edges composite too dark
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_ERROR_DEVICE_REMOVED` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `FB32A3`, PENDING
-  - Falsified if: the value differs from dxgi.h's 0x887A0005, so a Present that returns DXGI_ERROR_DEVICE_REMOVED is not recognised as device loss and the surface keeps drawing to the removed device
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_ERROR_DEVICE_RESET` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `BED815`, PENDING
-  - Falsified if: the value differs from dxgi.h's 0x887A0007, so a DXGI_ERROR_DEVICE_RESET result is not recognised as device loss and the device is never recreated
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_USAGE_RENDER_TARGET_OUTPUT` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `7A0151`, PENDING
-  - Falsified if: the value differs from dxgi.h's 0x20 (1 shifted left by 1 + 4), so the back buffer cannot be bound as a Direct2D target and CreateBitmapFromDxgiSurface fails
+- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_FORMAT` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=Critical, Spec=none cited, `AE923C`, PENDING
+  - Falsified if: B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a value naming a wider format such as R16G16B16A16_UNORM (11) makes CreateBitmap read 8 bytes per pixel from a source buffer the caller sized at 4
 - `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SAMPLE_DESC` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `A550C9`, PENDING
   - Falsified if: Count and Quality are in the opposite order to dxgicommon.h, so a descriptor asking for Count 1 and Quality 0 reaches DXGI as Count 0 and swap-chain creation fails
 - `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SWAP_CHAIN_DESC1` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `DBD1C7`, PENDING
-  - Falsified if: Marshal.SizeOf is not 48 or Stereo is not a 4-byte BOOL, so CreateSwapChainForHwnd reads SampleDesc and the later fields at shifted offsets or past the end of the caller's struct
+  - Falsified if: Marshal.SizeOf is not 48 or Stereo is not a 4-byte BOOL, so CreateSwapChainForHwnd reads SampleDesc and the later fields at shifted offsets
 - `Broiler.Native.Windows.Direct2D.NativeMethods` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=Critical, Spec=none cited, `C630AC`, PENDING
-  - Falsified if: D3D11CreateDevice is given a featureLevels count larger than the D3D_FEATURE_LEVEL array at pFeatureLevels and d3d11.dll reads past the end of it
+  - Falsified if: D3D11CreateDevice receives pFeatureLevels and featureLevels in swapped positions, so the level count is dereferenced as the D3D_FEATURE_LEVEL array
 - `Broiler.Native.Windows.Direct2D.NativeMethods.D3D11CreateDevice(IntPtr, D3D11Native.D3D_DRIVER_TYPE, IntPtr, uint, IntPtr, uint, uint, out IntPtr, out D3D11Native.D3D_FEATURE_LEVEL, out IntPtr)` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=Critical, Spec=none cited, `B9D586`, PENDING
-  - Falsified if: a featureLevels value larger than the number of D3D_FEATURE_LEVEL entries at pFeatureLevels makes d3d11.dll read past the end of the caller's array
+  - Falsified if: pFeatureLevels and featureLevels reach D3D11CreateDevice in swapped positions, so the level count is dereferenced as the D3D_FEATURE_LEVEL array
 - `Broiler.Native.Windows.Direct2D.NativeMethods.CreateDXGIFactory1(in Guid, out IntPtr)` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=High, Spec=none cited, `260F5E`, PENDING
   - Falsified if: riid is passed as the 16-byte GUID value instead of a REFIID pointer, so dxgi.dll reads the first bytes of the IID as an address
 - `Broiler.Native.Windows.Direct2D.NativeMethods.D2D1CreateFactory(D2DNative.D2D1_FACTORY_TYPE, in Guid, IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=Critical, Spec=none cited, `3563F3`, PENDING
-  - Falsified if: a non-zero pFactoryOptions that does not point at a readable 4-byte D2D1_FACTORY_OPTIONS is dereferenced by d2d1.dll as the debug level
+  - Falsified if: riid and pFactoryOptions reach D2D1CreateFactory(D2D1_FACTORY_TYPE, REFIID, const D2D1_FACTORY_OPTIONS*, void**) in swapped positions, so d2d1.dll reads the factory options from the IID and dereferences the options pointer as the IID
 - `Broiler.Native.Windows.Direct2D.NativeMethods.DWriteCreateFactory(DWriteNative.DWRITE_FACTORY_TYPE, in Guid, out IntPtr)` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=High, Spec=none cited, `F2E7BF`, PENDING
   - Falsified if: iid is passed as the 16-byte GUID value instead of a REFIID pointer, so dwrite.dll reads the first bytes of the IID as an address
 - `Broiler.Native.Windows.Direct2D.NativeMethods.Succeeded(int)` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=High, Spec=none cited, `74416D`, PENDING
@@ -1176,7 +886,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.HwndNative.IsWindow(nint)` in `src/Broiler.Native.Windows/HwndNative.cs` - Security=High, Spec=none cited, `EF9423`, PENDING
   - Falsified if: the 4-byte BOOL result is read as a 1-byte bool, so a nonzero result such as 0x100 reports a live window as destroyed
 - `Broiler.Native.Windows.Input.RawInputReaderNative` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=Critical, Spec=none cited, `33D29B`, PENDING
-  - Falsified if: a GetRawInputData size argument larger than the memory at data lets user32 write RAWINPUT bytes past the end of the caller's buffer
+  - Falsified if: GetRawInputData passes data and size to user32 in swapped positions, so the RAWINPUT is written through the size's address and the byte count into the caller's buffer
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawInputHeader` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `777845`, PENDING
   - Falsified if: Marshal.SizeOf is not sizeof(RAWINPUTHEADER), 24 bytes on x64 and 16 on x86, so GetRawInputData rejects the header size and the payload is read from the wrong offset
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawMouse` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `42EB0C`, PENDING
@@ -1184,35 +894,21 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawKeyboard` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `09BBF5`, PENDING
   - Falsified if: VKey is not read from offset 6 of RAWKEYBOARD (MakeCode 0, Flags 2, Reserved 4, VKey 6, Message 8, ExtraInformation 12), so a key press reports another field as its virtual-key code
 - `Broiler.Native.Windows.Input.RawInputReaderNative.GetRawInputData(IntPtr, uint, IntPtr, ref uint, uint)` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=Critical, Spec=none cited, `DCA974`, PENDING
-  - Falsified if: a size argument larger than the memory at data lets user32 write a RAWINPUT past the end of the caller's buffer
+  - Falsified if: data and size reach GetRawInputData(HRAWINPUT, UINT, LPVOID, PUINT, UINT) in swapped positions, so user32 writes the RAWINPUT through the size's address and the byte count into the caller's buffer
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RidInput` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=Critical, Spec=none cited, `94FC5D`, PENDING
   - Falsified if: the value is not winuser.h's RID_INPUT 0x10000003, so GetRawInputData reports a header-only size and the payload read after the header runs past the returned bytes
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RimTypeMouse` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `DFAAB1`, PENDING
   - Falsified if: the value is not winuser.h's RIM_TYPEMOUSE 0, so a mouse report is not decoded with the RAWMOUSE layout and raw mouse events are dropped or misread
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RimTypeKeyboard` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `162CC9`, PENDING
   - Falsified if: the value is not winuser.h's RIM_TYPEKEYBOARD 1, so a keyboard report is not decoded with the RAWKEYBOARD layout and raw key events are dropped or misread
-- `Broiler.Native.Windows.Input.RawInputReaderNative.MouseMoveAbsolute` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, Spec=none cited, `712CB5`, PENDING
-  - Falsified if: the value is not winuser.h's MOUSE_MOVE_ABSOLUTE 0x0001, so a pen tablet's absolute LastX and LastY in 0 to 65535 are treated as relative deltas
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=Critical, Spec=none cited, `B1A9F1`, PENDING
-  - Falsified if: RegisterRawInputDevices is given a deviceCount larger than rawInputDevices.Length and user32 reads RAWINPUTDEVICE entries past the end of the pinned array
+  - Falsified if: RegisterRawInputDevices passes deviceCount and rawInputDeviceSize to user32 in swapped positions, so user32 walks as many entries as the struct size names past the pinned array
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative.RawInputDevice` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `BCE2F9`, PENDING
   - Falsified if: TargetWindow is not at offset 8 on x64 or 4 on x86 as in RAWINPUTDEVICE, so user32 reads hwndTarget from the wrong bytes and WM_INPUT goes to another window or none
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative.RegisterRawInputDevices(RawInputDevice[], uint, uint)` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=Critical, Spec=none cited, `261907`, PENDING
-  - Falsified if: a deviceCount larger than rawInputDevices.Length makes user32 read RAWINPUTDEVICE entries past the end of the pinned array
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.GenericDesktopUsagePage` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `EB47D1`, PENDING
-  - Falsified if: the value is not HID usage page 0x01 (Generic Desktop), so RegisterRawInputDevices subscribes to no mouse or keyboard and WM_INPUT never arrives
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.MouseUsage` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `E0FE7B`, PENDING
-  - Falsified if: the value is not Generic Desktop usage 0x02 (Mouse), so the mouse registration subscribes to a different device class and no raw mouse input arrives
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.KeyboardUsage` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `4F870A`, PENDING
-  - Falsified if: the value is not Generic Desktop usage 0x06 (Keyboard), so the keyboard registration subscribes to a different device class and no raw key input arrives
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.RidevRemove` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `6A73CF`, PENDING
-  - Falsified if: the value is not winuser.h's RIDEV_REMOVE 0x00000001, so unregistering a device leaves its WM_INPUT registration active after the owner is gone
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.RidevNoLegacy` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `129CED`, PENDING
-  - Falsified if: the value is not winuser.h's RIDEV_NOLEGACY 0x00000030, so legacy WM_KEYDOWN and WM_MOUSEMOVE messages keep arriving beside WM_INPUT and input is delivered twice
+  - Falsified if: deviceCount and rawInputDeviceSize reach RegisterRawInputDevices(PCRAWINPUTDEVICE, UINT, UINT) in swapped positions, so user32 walks as many entries as the struct size names past the pinned array
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative.RidevInputSink` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `397AAC`, PENDING
   - Falsified if: the value is not winuser.h's RIDEV_INPUTSINK 0x00000100, so a window registered for background input stops receiving WM_INPUT once it loses the foreground
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.RidevDevNotify` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, Spec=none cited, `E83D3A`, PENDING
-  - Falsified if: the value is not winuser.h's RIDEV_DEVNOTIFY 0x00002000, so WM_INPUT_DEVICE_CHANGE is not sent when a mouse or keyboard is attached or removed
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `2038F3`, PENDING
   - Falsified if: an out parameter of a binding here differs in width from its SDK prototype (the UINT32* device count, the IMFActivate*** array), so native code writes the count or pointer into a slot of the wrong size
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_SOURCE_READER_FIRST_VIDEO_STREAM` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `3AD40B`, PENDING
@@ -1239,58 +935,46 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the value differs from C60AC5FE-252A-478F-A0EF-BC8FA5F7CAD3 in mfidl.h, so MFEnumDeviceSources and MFCreateDeviceSource receive no source-type filter and do not select video capture devices
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_GUID` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `F8C1D8`, PENDING
   - Falsified if: the value differs from 8AC3587A-4AE7-42D8-99E0-0A6013EEF90F in mfidl.h, so the source-type filter selects audio capture devices or none instead of video capture devices
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_FRIENDLY_NAME` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `2EFB1C`, PENDING
-  - Falsified if: the value differs from 60D0E559-52F8-4FA2-BBCE-ACDB34A8EC01 in mfidl.h, so GetAllocatedString returns another attribute's string as the camera's display name or none at all
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `D2B752`, PENDING
   - Falsified if: the value differs from 58F0AAD8-22BF-4F8A-BB3D-D2C4978C6E2F in mfidl.h, so the symbolic link read from an enumerated device or passed to MFCreateDeviceSource does not identify the camera the caller selected
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_FRAMESERVER_SHARE_MODE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `F471DD`, PENDING
-  - Falsified if: the value differs from 44D1A9BC-2999-4238-AE43-0730CEB2AB1B in mfidl.h, so a camera meant to be opened for shared access through the frame server is opened exclusively
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_MAJOR_TYPE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `BEC5C8`, PENDING
   - Falsified if: the value differs from 48EBA18E-F8C9-4687-BF11-0A74C9F96A8F in mfapi.h, so a media type's major type is read from another attribute and non-video types pass as video
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_SUBTYPE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `3EFFFC`, PENDING
   - Falsified if: the value differs from F7E34C9A-42E8-4714-B74B-CB29D72C35E5 in mfapi.h, so the pixel format of negotiated frames is read from another attribute and frame bytes are laid out by the wrong format
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_FRAME_SIZE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `48EB75`, PENDING
   - Falsified if: the value differs from 1652C33D-D6B2-4012-B834-72030849A37D in mfapi.h, so width and height are unpacked from another UINT64 attribute and plane sizes disagree with the locked buffer length
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_FRAME_RATE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `7B01F0`, PENDING
-  - Falsified if: the value differs from C459A2E8-3D2C-4E44-B132-FEE5156C7BB0 in mfapi.h, so the reported frame-rate numerator and denominator come from another attribute
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_DEFAULT_STRIDE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `1D27BE`, PENDING
   - Falsified if: the value differs from 644B4E48-1E02-4516-B0EB-C01CA9D49AC6 in mfapi.h, so the row pitch, including the negative pitch of a bottom-up RGB frame, is read from another attribute
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `1B6B07`, PENDING
-  - Falsified if: the value differs from 0F81DA2C-B537-4672-A8B2-A681B17307A3 in mfreadwrite.h, so the source reader inserts no video processor and refuses an output subtype the camera does not produce natively
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_SOURCE_READER_DISCONNECT_MEDIASOURCE_ON_SHUTDOWN` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `29ABF8`, PENDING
-  - Falsified if: the value differs from 56B67165-219E-456D-A22E-2D3004C7FE56 in mfreadwrite.h, so releasing the source reader also shuts down the media source the caller still owns
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFEnumDeviceSources(IMFAttributes, out IntPtr, out uint)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `8E6AB1`, PENDING
   - Falsified if: an out parameter differs in width from the IMFActivate*** and UINT32* of the mfidl.h prototype, so the CoTaskMem array pointer or the device count lands in a slot of the wrong size
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFCreateDeviceSource(IMFAttributes, out IMFMediaSource)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `8FEFF4`, PENDING
   - Falsified if: the IMFMediaSource reference written to ppSource is not owned by the returned wrapper, so releasing the wrapper leaves the camera device source alive
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFCreateSourceReaderFromMediaSource(IMFMediaSource, IMFAttributes?, out IMFSourceReader)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `1B4E53`, PENDING
   - Falsified if: a null attributes argument does not reach native code as a null IMFAttributes*, so the optional pAttributes of mfreadwrite.h receives an invalid interface pointer
-- `Broiler.Native.Windows.MediaFoundation.Capture.SourceReaderFlags` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `5FD83E`, PENDING
-  - Falsified if: a member differs from its MF_SOURCE_READERF value in mfreadwrite.h (Error 0x1, EndOfStream 0x2, StreamTick 0x100), so a reader error or end of stream returned by ReadSample is handled as an ordinary frame
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFActivate` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `9CE72D`, PENDING
   - Falsified if: the interface does not derive from an IMFAttributes declaration of exactly 30 methods, so ActivateObject is not dispatched through vtable slot 33 and calls another native method with mismatched arguments
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFActivate.ActivateObject(ref Guid, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `9210BC`, PENDING
-  - Falsified if: wrapping the pointer written to activatedObject without one Release leaves the activated media source with an extra reference after its wrapper is released
+  - Falsified if: ActivateObject is not vtable slot 33, directly after the 30 IMFAttributes methods, so the call reaches CopyAllItems and native code calls through the IID pointer as an IMFAttributes object
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFActivate.ShutdownObject()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `B2D4A2`, PENDING
   - Falsified if: ShutdownObject is not dispatched through the slot after ActivateObject in mfobjects.h, so a shutdown request runs another method and the device stays open
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFActivate.DetachObject()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `3D143C`, PENDING
   - Falsified if: DetachObject is not dispatched through the slot after ShutdownObject in mfobjects.h, so a detach request runs another method with mismatched arguments
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `0E895F`, PENDING
-  - Falsified if: an IntPtr passed as the const PROPVARIANT* of Start or QueueEvent points at less than a full PROPVARIANT (24 bytes on x64), so native code reads past the caller's allocation
+  - Falsified if: a member is out of mfidl.h order (the four IMFMediaEventGenerator methods, then GetCharacteristics through Shutdown), so Start or QueueEvent reaches a method that reads its PROPVARIANT pointer as another argument
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.GetEvent(int, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `0E5E8D`, PENDING
-  - Falsified if: the IMFMediaEvent pointer written to mediaEvent is not Released after use, so each retrieved event leaks one reference
+  - Falsified if: GetEvent is not vtable slot 3, the first IMFMediaEventGenerator method after IUnknown, so an event request reaches BeginGetEvent and the flags are taken as a callback pointer
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.BeginGetEvent(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `A2701C`, PENDING
-  - Falsified if: the IntPtr passed as callback is not an IMFAsyncCallback that stays alive until the request completes, so the event generator calls Invoke through a released object
+  - Falsified if: BeginGetEvent is not vtable slot 4, directly after GetEvent, so the callback and state reach GetEvent and an event pointer is written through the callback value as an address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.EndGetEvent(IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `F27CE9`, PENDING
-  - Falsified if: the IMFMediaEvent pointer written by EndGetEvent is not Released after use, so each completed request leaks one event
+  - Falsified if: result and the mediaEvent out reach IMFMediaEventGenerator::EndGetEvent(IMFAsyncResult*, IMFMediaEvent**) in swapped positions, so the event pointer is written over the async result object
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.QueueEvent(int, ref Guid, int, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `0CB8DF`, PENDING
-  - Falsified if: value is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so the event generator copies past the caller's allocation
+  - Falsified if: QueueEvent is not vtable slot 6, after EndGetEvent, so the event type, GUID, status and PROPVARIANT pointer reach EndGetEvent or GetCharacteristics and native code writes through the event type as an address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.GetCharacteristics(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `233D25`, PENDING
   - Falsified if: GetCharacteristics is not dispatched through slot 7, the first after the four IMFMediaEventGenerator methods in mfidl.h, so the characteristics DWORD is written by a different method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.CreatePresentationDescriptor(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `DFC700`, PENDING
-  - Falsified if: the IMFPresentationDescriptor pointer written to presentationDescriptor is not Released after use, so each call leaks one descriptor
+  - Falsified if: CreatePresentationDescriptor is not vtable slot 8, after GetCharacteristics, so the call reaches Start and native code reads the out slot as a presentation descriptor
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.Start(IntPtr, ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `007B5F`, PENDING
-  - Falsified if: startPosition is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so the source reads past the caller's allocation when it starts
+  - Falsified if: presentationDescriptor, timeFormat and startPosition reach IMFMediaSource::Start in another order, so the source reads the PROPVARIANT start position through the time-format GUID's address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.Stop()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `458393`, PENDING
   - Falsified if: Stop is not dispatched through the slot after Start in mfidl.h, so a stop request runs Pause or Shutdown instead
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaSource.Pause()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `3DEE33`, PENDING
@@ -1304,41 +988,41 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaType.IsCompressedFormat(out bool)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `8C2475`, PENDING
   - Falsified if: compressed is marshalled as a 1-byte bool instead of a 4-byte BOOL, so native code writes past the managed local
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaType.IsEqual(IMFMediaType, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `01BD88`, PENDING
-  - Falsified if: an S_FALSE result from IsEqual is treated as a match, so a media type that differs in subtype or frame size is accepted as the negotiated one
+  - Falsified if: mediaType and the flags out reach IMFMediaType::IsEqual(IMFMediaType*, DWORD*) in swapped positions, so the match flags are written into the other media type object
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaType.GetRepresentation(Guid, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `C437BF`, PENDING
-  - Falsified if: the block written to representationData is freed by anything other than FreeRepresentation with the same representation GUID, corrupting the media type's heap
+  - Falsified if: GetRepresentation is not vtable slot 36, after IsEqual, so a representation request reaches FreeRepresentation and native code frees the caller's out slot as a representation block
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaType.FreeRepresentation(Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `E8E537`, PENDING
-  - Falsified if: a pointer that GetRepresentation did not return for the same representation GUID reaches FreeRepresentation, so native code frees memory it does not own
+  - Falsified if: FreeRepresentation is not vtable slot 37, directly after GetRepresentation, so a free request reaches GetRepresentation and a new block is written through the pointer meant to be freed
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `0EC939`, PENDING
-  - Falsified if: an IntPtr passed to GetPresentationAttribute or SetCurrentPosition points at less than a full PROPVARIANT (24 bytes on x64), so native code writes or reads past the caller's allocation
+  - Falsified if: a member is out of mfreadwrite.h order (GetStreamSelection at slot 3 through GetPresentationAttribute at 12), so a PROPVARIANT, media-type or sample pointer is read or written by a method that takes another argument list
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.GetStreamSelection(int, out bool)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `ACDBE9`, PENDING
   - Falsified if: selected is marshalled as a 1-byte bool instead of a 4-byte BOOL, so native code writes 3 bytes past the managed local
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.SetStreamSelection(int, bool)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `37F403`, PENDING
   - Falsified if: selected is passed as a 1-byte bool instead of a 4-byte BOOL, so native code reads undefined upper bytes and a deselect can leave the stream enabled
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.GetNativeMediaType(int, int, out IMFMediaType)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `191BB5`, PENDING
-  - Falsified if: the IMFMediaType written for an index past the last native type is used although the call returned MF_E_NO_MORE_TYPES
+  - Falsified if: GetNativeMediaType is not vtable slot 5, after SetStreamSelection, so the stream and type indexes reach GetCurrentMediaType and the type index is dereferenced as the out pointer
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.GetCurrentMediaType(int, out IMFMediaType)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `CAC63C`, PENDING
-  - Falsified if: the IMFMediaType reference written to mediaType is not released after a format change is read, so each change leaks one media type
+  - Falsified if: GetCurrentMediaType is not vtable slot 6, directly after GetNativeMediaType, so the out pointer is read as a media-type index and the type is written through an unset argument
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.SetCurrentMediaType(int, IntPtr, IMFMediaType)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `57AE9A`, PENDING
-  - Falsified if: reserved is passed as a non-null pointer although pdwReserved must be NULL in mfreadwrite.h, so the reader rejects the media type change
+  - Falsified if: reserved and mediaType reach IMFSourceReader::SetCurrentMediaType(DWORD, DWORD*, IMFMediaType*) in swapped positions, so the reader dereferences null as the media type
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.SetCurrentPosition(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `CF62FB`, PENDING
-  - Falsified if: position points at less than a full PROPVARIANT (24 bytes on x64), so the reader reads past the caller's allocation when it seeks
+  - Falsified if: timeFormat and position reach IMFSourceReader::SetCurrentPosition(REFGUID, REFPROPVARIANT) in swapped positions, so the reader reads the PROPVARIANT seek position through the GUID's address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.ReadSample(int, int, out int, out SourceReaderFlags, out long, out IMFSample?)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `2D7F72`, PENDING
-  - Falsified if: a successful call that returns a null sample (stream tick, end of stream or format change) is handled as a frame, so the caller dereferences a null IMFSample
+  - Falsified if: ReadSample is not vtable slot 9, after SetCurrentPosition, so a read reaches Flush or SetCurrentPosition and the five out arguments are never written
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.Flush(int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `7D05AD`, PENDING
   - Falsified if: Flush is not dispatched through the slot after ReadSample in mfreadwrite.h, so a flush request runs GetServiceForStream and native code writes through garbage pointer arguments
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.GetServiceForStream(int, ref Guid, ref Guid, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `26A506`, PENDING
-  - Falsified if: the pointer written to serviceObject is called through an interface other than interfaceId, so native methods run with mismatched arguments
+  - Falsified if: service and interfaceId reach GetServiceForStream(DWORD, REFGUID, REFIID, LPVOID*) in swapped positions, so the reader returns the service named by the IID and the caller calls it as another interface
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSourceReader.GetPresentationAttribute(int, ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `05DCB9`, PENDING
-  - Falsified if: value points at less than a full PROPVARIANT (24 bytes on x64), so the reader writes the attribute past the caller's allocation
+  - Falsified if: GetPresentationAttribute is not vtable slot 12, the last IMFSourceReader method, so the query reaches GetServiceForStream and native code writes a service pointer through the PROPVARIANT argument
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `AA199C`, PENDING
-  - Falsified if: an IntPtr PROPVARIANT, string or blob argument points at less memory than a full PROPVARIANT or its size argument states, so native code reads or writes past the caller's allocation
+  - Falsified if: a member is out of mfobjects.h order (the 30 IMFAttributes slots, then GetSampleFlags at 33 through CopyToBuffer at 46), so a PROPVARIANT, string, blob or buffer pointer reaches a method that writes it with another size
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetItem(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `CE6DAE`, PENDING
-  - Falsified if: value is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so native code writes the item past the caller's allocation
+  - Falsified if: GetItem is not vtable slot 3, directly after IUnknown, so a lookup reaches GetItemType and the PROPVARIANT the caller then reads holds only a 4-byte type code
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetItemType(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `14817B`, PENDING
   - Falsified if: GetItemType is not the slot after GetItem in the IMFAttributes order of mfobjects.h, so the attribute type is written by a different method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.CompareItem(ref Guid, IntPtr, out bool)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `E2FA0C`, PENDING
-  - Falsified if: value points at less than a full PROPVARIANT (24 bytes on x64), so native code reads past the caller's allocation while comparing
+  - Falsified if: CompareItem is not vtable slot 5, after GetItemType, so a comparison reaches Compare and native code calls through the PROPVARIANT pointer as an IMFAttributes object
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.Compare(IMFAttributes, int, out bool)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `FC95C3`, PENDING
   - Falsified if: result is marshalled as a 1-byte bool instead of a 4-byte BOOL, so native code writes past the managed local and a mismatch can read as a match
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetUINT32(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `22EFE5`, PENDING
@@ -1350,21 +1034,21 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetGUID(ref Guid, out Guid)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `04EAF7`, PENDING
   - Falsified if: value is not a 16-byte Guid passed by pointer, so native code writes the GUID past the managed local
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetStringLength(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `CC6026`, PENDING
-  - Falsified if: the returned length is read as bytes rather than UTF-16 characters without the terminator, so a buffer sized from it holds half the string
+  - Falsified if: GetStringLength is not vtable slot 11, so a call reaches GetGUID and native code writes 16 bytes through the 4-byte length out
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetString(ref Guid, IntPtr, int, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `77BE94`, PENDING
-  - Falsified if: size is passed as a byte count rather than the capacity in UTF-16 characters including the terminator, so native code writes up to twice the buffer's length
+  - Falsified if: value and size reach IMFAttributes::GetString(REFGUID, LPWSTR, UINT32, UINT32*) in swapped positions, so the string is written to the address given by the capacity
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetAllocatedString(ref Guid, out IntPtr, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `028D50`, PENDING
-  - Falsified if: the string written to value is freed with anything other than CoTaskMemFree, so the allocation leaks or a different heap frees it
+  - Falsified if: value and length reach GetAllocatedString(REFGUID, LPWSTR*, UINT32*) in swapped positions, so the string pointer is written into the 4-byte length and the caller frees a truncated address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetBlobSize(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `689F15`, PENDING
   - Falsified if: GetBlobSize is not the slot after GetAllocatedString in mfobjects.h, so the blob size is written by a different method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetBlob(ref Guid, IntPtr, int, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `DF996E`, PENDING
-  - Falsified if: bufferSize is larger than the memory buffer points to, so native code copies the blob past the caller's allocation
+  - Falsified if: buffer and bufferSize reach IMFAttributes::GetBlob(REFGUID, UINT8*, UINT32, UINT32*) in swapped positions, so the blob is copied to the address given by the size
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetAllocatedBlob(ref Guid, out IntPtr, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `D95683`, PENDING
-  - Falsified if: the blob written to buffer is freed with anything other than CoTaskMemFree, so the allocation leaks or a different heap frees it
+  - Falsified if: buffer and size reach GetAllocatedBlob(REFGUID, UINT8**, UINT32*) in swapped positions, so the blob pointer is written into the 4-byte size and the caller reads through a truncated address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetUnknown(ref Guid, ref Guid, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `D93F2C`, PENDING
-  - Falsified if: the pointer written to value is called through an interface other than interfaceId, so native methods run with mismatched arguments
+  - Falsified if: key and interfaceId reach GetUnknown(REFGUID, REFIID, LPVOID*) in swapped positions, so the store looks the IID up as the key and returns an object queried for the key GUID
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.SetItem(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `8A63F9`, PENDING
-  - Falsified if: value points at less than a full PROPVARIANT (24 bytes on x64), so native code copies past the caller's allocation into the attribute store
+  - Falsified if: SetItem is not vtable slot 18, after GetUnknown, so a store request reaches GetUnknown and native code writes an interface pointer through the PROPVARIANT argument
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.DeleteItem(ref Guid)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `74315D`, PENDING
   - Falsified if: DeleteItem is not the slot after SetItem in mfobjects.h, so a delete runs DeleteAllItems or SetUINT32 with mismatched arguments
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.DeleteAllItems()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `B3EEDA`, PENDING
@@ -1380,17 +1064,17 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.SetString(ref Guid, string)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `C88CB0`, PENDING
   - Falsified if: value is marshalled as an ANSI string instead of LPWSTR, so non-ASCII characters are lost and native code reads a narrow buffer as UTF-16 past its terminator
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.SetBlob(ref Guid, IntPtr, int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `643E87`, PENDING
-  - Falsified if: size is larger than the memory buffer points to, so native code copies past the caller's allocation into the attribute store
+  - Falsified if: buffer and size reach IMFAttributes::SetBlob(REFGUID, const UINT8*, UINT32) in swapped positions, so the store copies the blob from the address given by the size
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.SetUnknown(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `EB4C73`, PENDING
-  - Falsified if: an IntPtr passed as value is not an IUnknown pointer, so the attribute store calls AddRef through an address that is not a vtable
+  - Falsified if: SetUnknown is not vtable slot 27, after SetBlob, so a store request reaches SetBlob and native code copies from the IUnknown pointer with an unset size
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.LockStore()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `52D8D9`, PENDING
-  - Falsified if: a LockStore call is not paired with UnlockStore on every path, so other threads block on the attribute store indefinitely
+  - Falsified if: LockStore is not vtable slot 28, directly after SetUnknown, so a lock request reaches SetUnknown or UnlockStore and the attribute store is never locked
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.UnlockStore()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `B80F37`, PENDING
-  - Falsified if: UnlockStore is called without a matching LockStore, releasing a lock another thread holds on the attribute store
+  - Falsified if: UnlockStore is not vtable slot 29, directly after LockStore, so an unlock reaches GetCount, which writes through an unset argument and leaves the store locked
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetCount(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `C12DCA`, PENDING
   - Falsified if: GetCount is not the slot after UnlockStore in mfobjects.h, so the item count is written by a different method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetItemByIndex(int, out Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `57C3C3`, PENDING
-  - Falsified if: value is non-null and points at less than a full PROPVARIANT (24 bytes on x64), so native code writes the item past the caller's allocation
+  - Falsified if: GetItemByIndex is not vtable slot 31, after GetCount, so an indexed read reaches CopyAllItems and native code calls through the GUID out pointer as an IMFAttributes object
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.CopyAllItems(IMFAttributes)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `F083D6`, PENDING
   - Falsified if: CopyAllItems is not the last of the 30 IMFAttributes slots in mfobjects.h, so GetSampleFlags and every sample member after it are dispatched one slot off
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetSampleFlags(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `28DCB0`, PENDING
@@ -1408,9 +1092,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetBufferCount(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `B473B3`, PENDING
   - Falsified if: GetBufferCount is not dispatched through the slot after SetSampleDuration in mfobjects.h, so the buffer count is written by a different method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetBufferByIndex(int, out IMFMediaBuffer)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `2959BC`, PENDING
-  - Falsified if: the IMFMediaBuffer written for an index equal to or above GetBufferCount is used although the call returned E_INVALIDARG
+  - Falsified if: GetBufferByIndex is not vtable slot 40, after GetBufferCount, so the call reaches ConvertToContiguousBuffer and a buffer pointer is written through the index value as an address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.ConvertToContiguousBuffer(out IMFMediaBuffer)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `799F86`, PENDING
-  - Falsified if: the IMFMediaBuffer reference written to buffer is not released after the frame is copied, so each converted sample leaks a frame-sized buffer
+  - Falsified if: ConvertToContiguousBuffer is not vtable slot 41, after GetBufferByIndex, so the call reaches AddBuffer and the caller's out slot is read as a buffer to append
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.AddBuffer(IMFMediaBuffer)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `35F355`, PENDING
   - Falsified if: AddBuffer is not dispatched through the slot after ConvertToContiguousBuffer in mfobjects.h, so adding a buffer runs RemoveBufferByIndex with the interface pointer as an index
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.RemoveBufferByIndex(int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `AB56F6`, PENDING
@@ -1418,29 +1102,29 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.RemoveAllBuffers()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `2BC579`, PENDING
   - Falsified if: RemoveAllBuffers is not dispatched through the slot after RemoveBufferByIndex in mfobjects.h, so clearing the buffers runs GetTotalLength or another method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.GetTotalLength(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `B86A11`, PENDING
-  - Falsified if: the total length of a sample holding several buffers is used to size a read through one buffer's Lock pointer, so the read runs past that buffer's current length
+  - Falsified if: totalLength is not declared as an out 4-byte DWORD, so GetTotalLength writes the byte count into a slot of another width and the length read back carries stale bits
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFSample.CopyToBuffer(IMFMediaBuffer)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, Spec=none cited, `5C8BE2`, PENDING
-  - Falsified if: a destination whose maximum length is below GetTotalLength returns MF_E_BUFFERTOOSMALL and the caller still reads the destination as a copied frame
+  - Falsified if: CopyToBuffer is not vtable slot 46, the last IMFSample method, so a copy request reaches GetTotalLength and native code writes a byte count over the destination buffer object
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaBuffer` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `59E929`, PENDING
-  - Falsified if: the pointer from Lock is read beyond the currentLength it returned or after Unlock, so the caller reads memory the media buffer does not hold for it
+  - Falsified if: a member is out of mfobjects.h order (Lock, Unlock, GetCurrentLength, SetCurrentLength, GetMaxLength after IUnknown), so the length that bounds reads through the Lock pointer comes from another method
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaBuffer.Lock(out IntPtr, out int, out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `B58521`, PENDING
-  - Falsified if: the pointer written to buffer is used beyond the maxLength written beside it, so the caller reads or writes past the media buffer
+  - Falsified if: buffer, maxLength and currentLength reach IMFMediaBuffer::Lock(BYTE**, DWORD*, DWORD*) in another order, so the data pointer is written into a 4-byte length and the caller reads frames through a truncated address
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaBuffer.Unlock()` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `82E696`, PENDING
-  - Falsified if: the pointer from Lock is still dereferenced after Unlock returns, so the caller reads memory the media buffer may have moved or freed
+  - Falsified if: Unlock is not vtable slot 4, directly after Lock, so an unlock reaches GetCurrentLength with no out argument and native code writes the length through an unset pointer
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaBuffer.GetCurrentLength(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `BA0C7A`, PENDING
   - Falsified if: currentLength is declared other than a 4-byte DWORD, so the byte count a caller reads through the Lock pointer carries stale bits and overruns the buffer
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaBuffer.SetCurrentLength(int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `6EBEA5`, PENDING
-  - Falsified if: a value above the buffer's maximum length is treated as applied although the call returned E_INVALIDARG, so the caller then reads that many bytes through the Lock pointer
+  - Falsified if: currentLength is not passed as a 4-byte DWORD, so SetCurrentLength stores a length taken from stray bits and GetCurrentLength then reports more valid bytes than were written
 - `Broiler.Native.Windows.MediaFoundation.Capture.IMFMediaBuffer.GetMaxLength(out int)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, Spec=none cited, `5A8655`, PENDING
   - Falsified if: maxLength is declared other than a 4-byte DWORD, so a capacity with stale upper bits sizes a write through the Lock pointer past the buffer
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `782571`, PENDING
   - Falsified if: a member out of mfobjects.h vtable order (GetItem at slot 3 through CopyAllItems at slot 32) sends a call to a native method whose arguments differ, so a PROPVARIANT, GUID or pointer is written through an out sized for something else
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetItem(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `CE6DAE`, PENDING
-  - Falsified if: a value pointer addressing fewer than 24 bytes on x64 (16 on x86) is overrun when native code copies the stored PROPVARIANT into it
+  - Falsified if: GetItem is not vtable slot 3, directly after IUnknown, so a lookup reaches GetItemType and the PROPVARIANT the caller then reads holds only a 4-byte type code
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetItemType(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `14817B`, PENDING
   - Falsified if: GetItemType is not vtable slot 4, directly after GetItem, so a call reaches GetItem and native code writes a whole PROPVARIANT through the 4-byte type out
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.CompareItem(ref Guid, IntPtr, out bool)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `E2FA0C`, PENDING
-  - Falsified if: a value pointer that does not address a fully initialised native-size PROPVARIANT lets native code read past it or follow a garbage string or blob pointer inside it
+  - Falsified if: CompareItem is not vtable slot 5, after GetItemType, so a comparison reaches Compare and native code calls through the PROPVARIANT pointer as an IMFAttributes object
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.Compare(IMFAttributes, int, out bool)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `FC95C3`, PENDING
   - Falsified if: result is marshalled as a 1-byte bool rather than a 4-byte BOOL, so native code writes 3 bytes past the managed out slot
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetUINT32(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `22EFE5`, PENDING
@@ -1454,19 +1138,19 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetStringLength(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `CC6026`, PENDING
   - Falsified if: GetStringLength is not vtable slot 11, so a call reaches GetGUID and native code writes 16 bytes through the 4-byte length out
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetString(ref Guid, IntPtr, int, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `77BE94`, PENDING
-  - Falsified if: a size counted in bytes rather than UTF-16 characters lets native code write up to twice the buffer length, terminator included, into value
+  - Falsified if: value and size reach IMFAttributes::GetString(REFGUID, LPWSTR, UINT32, UINT32*) in swapped positions, so the string is written to the address given by the capacity
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetAllocatedString(ref Guid, out IntPtr, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `028D50`, PENDING
-  - Falsified if: the pointer written to value is freed with anything other than CoTaskMemFree, or not freed, so each call leaks or corrupts the COM task-memory block holding the string
+  - Falsified if: value and length reach GetAllocatedString(REFGUID, LPWSTR*, UINT32*) in swapped positions, so the string pointer is written into the 4-byte length and the caller frees a truncated address
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetBlobSize(ref Guid, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `689F15`, PENDING
   - Falsified if: GetBlobSize is not vtable slot 14, so a call reaches GetAllocatedString and native code writes a pointer through the 4-byte size out
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetBlob(ref Guid, IntPtr, int, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `DF996E`, PENDING
-  - Falsified if: a bufferSize larger than the bytes buffer addresses lets native code copy the stored blob past the end of the caller's buffer
+  - Falsified if: buffer and bufferSize reach IMFAttributes::GetBlob(REFGUID, UINT8*, UINT32, UINT32*) in swapped positions, so the blob is copied to the address given by the size
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetAllocatedBlob(ref Guid, out IntPtr, out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `D95683`, PENDING
-  - Falsified if: a caller copies more than the returned size bytes out of buffer and reads past the end of the CoTaskMemAlloc block
+  - Falsified if: buffer and size reach GetAllocatedBlob(REFGUID, UINT8**, UINT32*) in swapped positions, so the blob pointer is written into the 4-byte size and the caller reads through a truncated address
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetUnknown(ref Guid, ref Guid, out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `D93F2C`, PENDING
-  - Falsified if: the AddRef'd interface pointer written to value is not released by the caller, so each call leaks one reference to the stored object
+  - Falsified if: key and interfaceId reach GetUnknown(REFGUID, REFIID, LPVOID*) in swapped positions, so the store looks the IID up as the key and returns an object queried for the key GUID
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.SetItem(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `8A63F9`, PENDING
-  - Falsified if: a value pointer that does not address an initialised native-size PROPVARIANT lets native code read past it and copy a garbage string or blob pointer into the store
+  - Falsified if: SetItem is not vtable slot 18, after GetUnknown, so a store request reaches GetUnknown and native code writes an interface pointer through the PROPVARIANT argument
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.DeleteItem(ref Guid)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `74315D`, PENDING
   - Falsified if: DeleteItem is not vtable slot 19, directly after SetItem, so a call carrying only a key reaches SetItem and native code reads a PROPVARIANT through an unset argument
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.DeleteAllItems()` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `B3EEDA`, PENDING
@@ -1482,17 +1166,17 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.SetString(ref Guid, string)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `C88CB0`, PENDING
   - Falsified if: value is marshalled as an ANSI LPStr instead of LPWStr, so native code reads single-byte text as UTF-16 and runs past the marshalled buffer looking for a 2-byte terminator
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.SetBlob(ref Guid, IntPtr, int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `643E87`, PENDING
-  - Falsified if: a size larger than the bytes buffer addresses lets native code copy memory past the end of the caller's buffer into the store
+  - Falsified if: buffer and size reach IMFAttributes::SetBlob(REFGUID, const UINT8*, UINT32) in swapped positions, so the store copies the blob from the address given by the size
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.SetUnknown(ref Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `EB4C73`, PENDING
-  - Falsified if: a value that is not a live IUnknown pointer, such as one already released, makes native code call AddRef through a freed vtable
+  - Falsified if: SetUnknown is not vtable slot 27, after SetBlob, so a store request reaches SetBlob and native code copies from the IUnknown pointer with an unset size
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.LockStore()` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `52D8D9`, PENDING
-  - Falsified if: a LockStore call is not matched by UnlockStore on every path, so another thread calling any member on the same store blocks indefinitely
+  - Falsified if: LockStore is not vtable slot 28, directly after SetUnknown, so a lock request reaches SetUnknown or UnlockStore and the attribute store is never locked
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.UnlockStore()` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `B80F37`, PENDING
   - Falsified if: UnlockStore is not vtable slot 29, directly after LockStore, so an unlock reaches GetCount, which writes through an unset argument and leaves the store locked
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetCount(out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `C12DCA`, PENDING
   - Falsified if: GetCount is not vtable slot 30, so a call reaches GetItemByIndex and native code takes the count out pointer as an index and writes a GUID through an unset argument
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetItemByIndex(int, out Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, Spec=none cited, `57C3C3`, PENDING
-  - Falsified if: a non-null value pointer addressing fewer than 24 bytes on x64 (16 on x86) is overrun when native code copies the indexed item's PROPVARIANT into it
+  - Falsified if: GetItemByIndex is not vtable slot 31, after GetCount, so an indexed read reaches CopyAllItems and native code calls through the GUID out pointer as an IMFAttributes object
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.CopyAllItems(IMFAttributes)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, Spec=none cited, `F083D6`, PENDING
   - Falsified if: CopyAllItems is not the last member at vtable slot 32, so IMFActivate.ActivateObject and IMFMediaType.GetMajorType in the derived interfaces dispatch to the wrong native slot
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `31739E`, PENDING
@@ -1505,16 +1189,8 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the GUID differs from CLSID_MFMediaEngineClassFactory (B44392DA-499B-446B-A4CB-005FEAD0E6D5) in mfmediaengine.h, so CoCreateInstance activates another registered in-process class or fails with REGDB_E_CLASSNOTREG
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.IID_IMFMediaEngineClassFactory` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `BFBA6C`, PENDING
   - Falsified if: the GUID differs from the [Guid] on IMFMediaEngineClassFactory, so CoCreateInstance asks the factory class for an interface it does not expose and returns E_NOINTERFACE
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_CALLBACK` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `AF4160`, PENDING
-  - Falsified if: the key differs from MF_MEDIA_ENGINE_CALLBACK in mfmediaengine.h, so the engine finds no IMFMediaEngineNotify in the attribute store and CreateInstance fails
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_PLAYBACK_HWND` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `B98297`, PENDING
-  - Falsified if: the key differs from MF_MEDIA_ENGINE_PLAYBACK_HWND in mfmediaengine.h, so the engine ignores the target window, runs in frame-server mode and decoded page video never reaches the HWND
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `113EE9`, PENDING
   - Falsified if: the key differs from MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE in mfmediaengine.h, so Shutdown closes the media source asynchronously and the engine is still running when the caller releases the factory and attribute store
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `735B96`, PENDING
-  - Falsified if: the key differs from MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE in mfmediaengine.h, so the Edge mode value set with SetGUID is never read and the engine keeps its default media-element behaviour
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `A118CB`, PENDING
-  - Falsified if: the GUID differs from MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE (A6F3E465-3ACA-442C-A3F0-AD6DDAD839AE), so the engine is configured with an unknown or older IE compatibility mode
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineNotify` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `4624E7`, PENDING
   - Falsified if: the [Guid] differs from IID_IMFMediaEngineNotify (FEE7C112-E776-42B5-9BBF-0048524E2BD5), so the engine's QueryInterface on the callback fails and CreateInstance has no notify sink
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineNotify.EventNotify(uint, UIntPtr, uint)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `FD7E19`, PENDING
@@ -1524,17 +1200,17 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineClassFactory.CreateInstance(uint, IMFAttributes, out IMFMediaEngine)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `9BBC9A`, PENDING
   - Falsified if: the marshaller wraps the IMFMediaEngine written to mediaEngine without releasing the reference the factory returned, so each engine keeps one native reference after Shutdown and the last managed release
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineClassFactory.CreateTimeRange(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `37E2E9`, PENDING
-  - Falsified if: the IMFMediaTimeRange written to timeRange is an owned reference that the IntPtr caller never passes to Marshal.Release, so each call leaks one time-range object
+  - Falsified if: CreateTimeRange is not vtable slot 4, directly after CreateInstance, so the call reaches CreateError and an IMFMediaError is returned where a time range is expected
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineClassFactory.CreateError(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `DF2494`, PENDING
-  - Falsified if: the IMFMediaError written to error is an owned reference that the IntPtr caller never passes to Marshal.Release, so each call leaks one error object
+  - Falsified if: CreateError is not vtable slot 5, the last IMFMediaEngineClassFactory method, so the call reaches CreateTimeRange and a time range is returned where an error object is expected
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=Critical, Spec=none cited, `B197E9`, PENDING
   - Falsified if: a member is missing or out of mfmediaengine.h order, so later slots shift and a call such as Shutdown() runs TransferVideoFrame, which dereferences unset surface and RECT pointer arguments
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.GetError(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `E58FDF`, PENDING
-  - Falsified if: the IMFMediaError written to error is an owned reference that the IntPtr caller never passes to Marshal.Release, so each error query leaks one IMFMediaError
+  - Falsified if: GetError is not vtable slot 3, the first IMFMediaEngine method, so an error query reaches SetErrorCode and the out pointer is taken as an error code
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.SetErrorCode(int)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `ABCE54`, PENDING
   - Falsified if: SetErrorCode does not sit in the slot after GetError, so the MF_MEDIA_ENGINE_ERR code reaches SetSourceElements and is dereferenced as an interface pointer
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.SetSourceElements(IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `625F7D`, PENDING
-  - Falsified if: the untyped IntPtr accepts a pointer that is not an IMFMediaEngineSrcElements, and the engine calls GetURL through a foreign vtable when it selects the page's source
+  - Falsified if: SetSourceElements does not sit in the slot after SetErrorCode, so the source-elements pointer reaches SetSource and the engine reads it as a BSTR URL
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.SetSource(string)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `670DA0`, PENDING
   - Falsified if: url is marshalled without the BStr attribute, so the engine reads the length from the four bytes before an LPWSTR and copies past the end of the page-supplied URL
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.GetCurrentSource(out string?)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `CA939B`, PENDING
@@ -1546,7 +1222,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.SetPreload(int)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `B5134F`, PENDING
   - Falsified if: SetPreload does not sit in the slot after GetPreload, so the preload value reaches GetBuffered as its out pointer and the engine writes an interface pointer to that address
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.GetBuffered(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `80B762`, PENDING
-  - Falsified if: the IMFMediaTimeRange written to buffered is an owned reference that the IntPtr caller never passes to Marshal.Release, so each buffered-range query leaks one copy of the ranges
+  - Falsified if: GetBuffered does not sit in the slot after SetPreload, so the call reaches SetPreload or Load and the caller reads an unset time-range pointer
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.Load()` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `4179CD`, PENDING
   - Falsified if: Load is shifted onto a neighbouring slot, so a call meant to start loading page media runs GetBuffered or CanPlayType with unset pointer arguments
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.CanPlayType(string, out int)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `310347`, PENDING
@@ -1574,9 +1250,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.SetPlaybackRate(double)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `478425`, PENDING
   - Falsified if: Rate is declared as float, so the engine reads a double from a register holding a single-precision value and plays page media at an unrelated rate
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.GetPlayed(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `C0F99A`, PENDING
-  - Falsified if: the IMFMediaTimeRange written to played is an owned reference that the IntPtr caller never passes to Marshal.Release, so each played-range query leaks one copy of the ranges
+  - Falsified if: GetPlayed does not sit in the slot after SetPlaybackRate, so the call reaches SetPlaybackRate and the caller reads an unset time-range pointer
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.GetSeekable(out IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `B6B68E`, PENDING
-  - Falsified if: the IMFMediaTimeRange written to seekable is an owned reference that the IntPtr caller never passes to Marshal.Release, so each seekable-range query leaks one copy of the ranges
+  - Falsified if: GetSeekable does not sit in the slot after GetPlayed, so the call reaches IsEnded and the caller reads an unset time-range pointer
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.IsEnded()` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `4FE527`, PENDING
   - Falsified if: IsEnded is shifted onto GetSeekable's slot, so the engine writes an IMFMediaTimeRange pointer through an unset out-pointer argument
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.GetAutoPlay()` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `57EAA0`, PENDING
@@ -1610,45 +1286,13 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.Shutdown()` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `B383A8`, PENDING
   - Falsified if: Shutdown is shifted onto TransferVideoFrame's slot, so the call passes no arguments and the engine dereferences unset surface and RECT pointers
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.TransferVideoFrame(IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=Critical, Spec=none cited, `037618`, PENDING
-  - Falsified if: destination points at fewer than the 16 bytes of a RECT, or source at fewer than the 16 bytes of an MFVideoNormalizedRect, and the engine reads past the caller's memory because the untyped IntPtr parameters carry no size
+  - Falsified if: source, destination and borderColor reach TransferVideoFrame(IUnknown*, const MFVideoNormalizedRect*, const RECT*, const MFARGB*) in another order, so the engine reads the normalized source rectangle through the destination RECT pointer
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.OnVideoStreamTick(out long)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, Spec=none cited, `B3A83D`, PENDING
   - Falsified if: presentationTime is declared narrower than the 64-bit LONGLONG, so the engine writes eight bytes into a four-byte slot and overwrites the adjacent local
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `48313E`, PENDING
   - Falsified if: an mfplat.dll import differs from its mfapi.h prototype in pointer width, so a 64-bit caller of MFCreateAttributes wraps and Releases a truncated IMFAttributes address
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_VERSION` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `083E15`, PENDING
   - Falsified if: the value is not mfapi.h's MF_SDK_VERSION<<16 | MF_API_VERSION (0x00020070), so MFStartup rejects it with MF_E_BAD_STARTUP_VERSION or starts the platform at an API level the declared interfaces do not assume
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MFSTARTUP_NOSOCKET` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `20B68F`, PENDING
-  - Falsified if: the value is not mfapi.h's 0x1, so MFStartup runs a full startup that also initialises the sockets layer, or rejects an undefined flag, in a process that only needs local playback and capture
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_PLATFORM_NOT_INITIALIZED` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `683182`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36B0, so a Media Foundation call made before MFStartup is not recognised and is reported as a generic native failure instead of an unavailable host
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_INVALIDMEDIATYPE` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `834B18`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36B4, so a media type rejected by a source or engine is not recognised and is reported as a generic native failure instead of an unsupported format
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_NOT_INITIALIZED` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `B88454`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36B6, so an object used before its own initialisation is not recognised as an unavailable host and falls through to a generic native failure
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_NO_MORE_TYPES` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `27B4DF`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36B9, so the end of an IMFSourceReader native media type enumeration is not recognised and format negotiation throws instead of stopping after the last index
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_NOT_FOUND` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `011577`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36D5, so a capture device that cannot be found is reported as a generic native failure instead of a missing device
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_NOT_AVAILABLE` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `76DC1C`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36D6, so a platform feature reported as unavailable is not recognised as an unavailable host and falls through to a generic native failure
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_ATTRIBUTENOTFOUND` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `255495`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36E6, so an IMFAttributes getter's missing-key result cannot be told apart from a failed read
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_DISABLED_IN_SAFEMODE` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `93A586`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D36EF, so Media Foundation refusing to run in safe mode is not recognised as an unavailable host and falls through to a generic native failure
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_SHUTDOWN` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `11F2F5`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D3E85, so a source reader or media engine that was already shut down is not recognised and a removed camera is reported as a generic native failure
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_VIDEO_RECORDING_DEVICE_INVALIDATED` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `DFD5BA`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D3EA2, so a camera unplugged during capture is not reported as a removed device
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_VIDEO_RECORDING_DEVICE_PREEMPTED` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `58A734`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D3EA3, so a camera taken over by a higher-priority application is not reported as a busy device
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_VIDEO_DEVICE_LOCKED` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `54A931`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00D4E24, so a camera held exclusively by another process is not reported as a busy device
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_NO_CAPTURE_DEVICES_AVAILABLE` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `7C25C5`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00DABE0, so MFEnumDeviceSources on a machine without a camera throws instead of yielding an empty device list
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_CAPTURE_SOURCE_NO_VIDEO_STREAM_PRESENT` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `C5D9FD`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00DABE7, so a capture source without a video stream is not reported as a missing device
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_E_UNSUPPORTED_CAPTURE_DEVICE_PRESENT` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `1E4826`, PENDING
-  - Falsified if: the value is not mferror.h's 0xC00DABED, so an unsupported capture device is not reported as an unsupported capability
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MFStartup(int, int)` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `FB247B`, PENDING
   - Falsified if: the import declares a calling convention other than the WINAPI default that STDAPI requires, so on 32-bit x86 the version and flags arguments are popped by both sides and the caller's stack is unbalanced after MFStartup returns
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MFShutdown()` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, Spec=none cited, `344711`, PENDING
@@ -1665,20 +1309,6 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the out parameter is narrower than the 8-byte LARGE_INTEGER, so kernel32 writes eight bytes into a smaller managed slot and corrupts the adjacent value in the caller's frame
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `C217C8`, PENDING
   - Falsified if: PropVariantClear is handed the 16-byte managed PropVariant on x64 while ole32 clears a 24-byte PROPVARIANT, overwriting the 8 bytes that follow it
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.AUDCLNT_E_DEVICE_INVALIDATED` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `598F31`, PENDING
-  - Falsified if: the value is not AUDCLNT_ERR(0x004) = 0x88890004 from audioclient.h, so a removed capture endpoint is reported as a generic failure rather than an invalidated device
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.AUDCLNT_E_UNSUPPORTED_FORMAT` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `9E74FF`, PENDING
-  - Falsified if: the value is not AUDCLNT_ERR(0x008) = 0x88890008 from audioclient.h, so an Initialize rejected for its format is not recognised as an unsupported format
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.AUDCLNT_E_DEVICE_IN_USE` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `92F951`, PENDING
-  - Falsified if: the value is not AUDCLNT_ERR(0x00A) = 0x8889000A from audioclient.h, so an endpoint held in exclusive mode by another process is not reported as busy
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.AUDCLNT_E_SERVICE_NOT_RUNNING` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `AACA56`, PENDING
-  - Falsified if: the value is not AUDCLNT_ERR(0x010) = 0x88890010 from audioclient.h, so a stopped Windows Audio service is not recognised as the audio host being unavailable
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.WAIT_OBJECT_0` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `65462B`, PENDING
-  - Falsified if: the value is not 0 as in winbase.h, so a capture event that WaitForSingleObject reports as signalled is not recognised as signalled
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.WAIT_TIMEOUT` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `E2DDDC`, PENDING
-  - Falsified if: the value is not 258 (0x102) as in winerror.h, so a wait that timed out is treated as a signalled event and the capture client is drained with no packet ready
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.WAIT_FAILED` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `EE48F5`, PENDING
-  - Falsified if: the value is not 0xFFFFFFFF as in winbase.h, so a failed wait on a closed or invalid event handle is treated as a signal and the capture loop spins instead of stopping
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.MMDeviceEnumeratorClassId` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `4E9396`, PENDING
   - Falsified if: the GUID differs from CLSID_MMDeviceEnumerator BCDE0395-E52F-467C-8E3D-C4579291692E in mmdeviceapi.h, so CoCreateInstance activates another class or fails with REGDB_E_CLASSNOTREG
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.IMMDeviceEnumeratorId` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `019EC1`, PENDING
@@ -1693,7 +1323,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the GUID differs from KSDATAFORMAT_SUBTYPE_IEEE_FLOAT 00000003-0000-0010-8000-00AA00389B71 in ksmedia.h, so a WAVE_FORMAT_EXTENSIBLE float mix format is not recognised as 32-bit float samples
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.PropVariantClear(ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `72B3B6`, PENDING
   - Falsified if: on x64 ole32 PropVariantClear zeroes a 24-byte PROPVARIANT through a pointer to the 16-byte managed PropVariant, overwriting the 8 bytes after a stack local
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.CreateEventW(IntPtr, bool, bool, string?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `7EA6F8`, PENDING
+- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.CreateEventW(IntPtr, bool, bool, string?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `7EA6F8`, PENDING
   - Falsified if: a NULL return leaves Marshal.GetLastWin32Error reporting a code from an earlier call because the stub does not capture the last error after CreateEventW
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.SetEvent(IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `E6D39B`, PENDING
   - Falsified if: the BOOL result is read as a 1-byte bool instead of a 4-byte BOOL, so a failed SetEvent on a closed handle reports success and a blocked capture wait is never interrupted
@@ -1701,20 +1331,8 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the BOOL result is read as a 1-byte bool instead of a 4-byte BOOL, so closing an event handle that was already closed reports success and the double close goes unnoticed
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.WaitForSingleObject(IntPtr, uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `75FDEC`, PENDING
   - Falsified if: a WAIT_FAILED return on a closed handle leaves Marshal.GetLastWin32Error reporting a code from an earlier call because the stub does not capture the last error
-- `Broiler.Native.Windows.Wasapi.EDataFlow` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `6C0BBA`, PENDING
-  - Falsified if: Render, Capture and All are not 0, 1 and 2 as in mmdeviceapi.h EDataFlow, so a Capture enumeration or default-endpoint lookup returns render endpoints
-- `Broiler.Native.Windows.Wasapi.ERole` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `502AAE`, PENDING
-  - Falsified if: Console, Multimedia and Communications are not 0, 1 and 2 as in mmdeviceapi.h ERole, so GetDefaultAudioEndpoint returns the default endpoint for a different role
-- `Broiler.Native.Windows.Wasapi.DeviceState` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `406EC2`, PENDING
-  - Falsified if: a flag differs from DEVICE_STATE_ACTIVE 0x1, DISABLED 0x2, NOTPRESENT 0x4 or UNPLUGGED 0x8 in mmdeviceapi.h, so an Active state mask also enumerates unplugged or disabled endpoints
 - `Broiler.Native.Windows.Wasapi.StorageAccess` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `6BC679`, PENDING
   - Falsified if: Read is not STGM_READ (0), so OpenPropertyStore asks for write access to the endpoint property store and fails with E_ACCESSDENIED in a non-elevated process
-- `Broiler.Native.Windows.Wasapi.AudioClientShareMode` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `AACE47`, PENDING
-  - Falsified if: Shared and Exclusive are not 0 and 1 as in audiosessiontypes.h AUDCLNT_SHAREMODE, so Initialize requests exclusive mode and takes the endpoint from other applications
-- `Broiler.Native.Windows.Wasapi.AudioClientStreamFlags` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `8FB445`, PENDING
-  - Falsified if: EventCallback is not AUDCLNT_STREAMFLAGS_EVENTCALLBACK 0x00040000 from audiosessiontypes.h, so Initialize does not enable event-driven buffering and SetEventHandle fails
-- `Broiler.Native.Windows.Wasapi.AudioClientBufferFlags` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `56809F`, PENDING
-  - Falsified if: Silent is not AUDCLNT_BUFFERFLAGS_SILENT 0x2 from audioclient.h, so a packet the audio engine marks as silence is copied and delivered as captured audio
 - `Broiler.Native.Windows.Wasapi.PropertyKey` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `B090C8`, PENDING
   - Falsified if: the layout is not a 16-byte GUID followed by a 4-byte DWORD (20 bytes, no padding) as in wtypes.h PROPERTYKEY, so GetAt and GetValue read or write the property id at the wrong offset
 - `Broiler.Native.Windows.Wasapi.PropVariant` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `6295F8`, PENDING
@@ -1734,21 +1352,21 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.IMMDeviceEnumerator.RegisterEndpointNotificationCallback(IMMNotificationClient)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `5ECB61`, PENDING
   - Falsified if: client is not passed as an interface pointer for IID 7991EEC9-7E89-4D85-8390-6C703CEC60C0, so the audio service calls OnDeviceStateChanged through the vtable of another interface
 - `Broiler.Native.Windows.Wasapi.IMMDeviceEnumerator.UnregisterEndpointNotificationCallback(IMMNotificationClient)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `81112A`, PENDING
-  - Falsified if: a call made from inside an IMMNotificationClient callback blocks the audio service's notification thread that is running that callback
+  - Falsified if: UnregisterEndpointNotificationCallback is not the fifth method after IUnknown, directly after RegisterEndpointNotificationCallback, so an unregister request registers the client again and its callbacks keep arriving after the owner is gone
 - `Broiler.Native.Windows.Wasapi.IMMDeviceCollection` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `6ACDC0`, PENDING
   - Falsified if: GetCount and Item are not the first two slots after IUnknown as in mmdeviceapi.h, so an Item call runs GetCount and a device pointer is written into a uint
 - `Broiler.Native.Windows.Wasapi.IMMDeviceCollection.GetCount(out uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `9DEF9C`, PENDING
   - Falsified if: count is written through a pointer to anything other than a 4-byte UINT, so an Item loop bounded by it reads part of its bound from the adjacent stack slot
 - `Broiler.Native.Windows.Wasapi.IMMDeviceCollection.Item(uint, out IMMDevice)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `A3EAF2`, PENDING
-  - Falsified if: an index equal to the GetCount result returns E_INVALIDARG with a null device, and a caller that ignores the PreserveSig HRESULT dereferences that device
+  - Falsified if: itemIndex and the device out reach IMMDeviceCollection::Item(UINT, IMMDevice**) in swapped positions, so the device pointer is written through the index value as an address
 - `Broiler.Native.Windows.Wasapi.IMMDevice` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `37CE13`, PENDING
-  - Falsified if: Activate is handed a non-null activationParams pointer to fewer than the 24 bytes of a PROPVARIANT on x64, so the audio service reads past the caller's buffer
+  - Falsified if: a member is out of mmdeviceapi.h order (Activate, OpenPropertyStore, GetId, GetState after IUnknown), so GetId's string-pointer out or Activate's parameter pointer reaches a method that reads or writes it with another size
 - `Broiler.Native.Windows.Wasapi.IMMDevice.Activate(ref Guid, uint, IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `86ECE4`, PENDING
-  - Falsified if: a non-null activationParams pointing at the 16-byte managed PropVariant makes the audio service read a 24-byte PROPVARIANT past its end on x64
+  - Falsified if: activationParams and the out pointer reach IMMDevice::Activate(REFIID, DWORD, PROPVARIANT*, void**) in swapped positions, so the activated interface is written through the activation-parameter pointer
 - `Broiler.Native.Windows.Wasapi.IMMDevice.OpenPropertyStore(StorageAccess, out IPropertyStore)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `4D668C`, PENDING
   - Falsified if: access is not passed as the 4-byte DWORD stgmAccess of mmdeviceapi.h, so the store is opened with an access mode taken from undefined upper bits
 - `Broiler.Native.Windows.Wasapi.IMMDevice.GetId(out IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `A54561`, PENDING
-  - Falsified if: the LPWSTR it returns is released with anything other than CoTaskMemFree, so every endpoint-id lookup leaks the string or frees it on the wrong heap
+  - Falsified if: GetId is not vtable slot 5, after OpenPropertyStore, so an id query reaches GetState and a 4-byte state is written into the 8-byte string-pointer out the caller then dereferences
 - `Broiler.Native.Windows.Wasapi.IMMDevice.GetState(out DeviceState)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `2C18EF`, PENDING
   - Falsified if: state is written through a pointer to anything other than a 4-byte DWORD, so an unplugged endpoint can read as Active
 - `Broiler.Native.Windows.Wasapi.IPropertyStore` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `079EE3`, PENDING
@@ -1756,13 +1374,13 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.GetCount(out uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `39889B`, PENDING
   - Falsified if: propertyCount is written through a pointer to anything other than a 4-byte DWORD, so a GetAt loop bounded by it asks for indexes past the end of the store
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.GetAt(uint, out PropertyKey)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `53B7D0`, PENDING
-  - Falsified if: an index equal to the GetCount result returns a failing HRESULT with a zeroed PropertyKey, and a caller that ignores the PreserveSig HRESULT passes that key to GetValue
+  - Falsified if: GetAt is not vtable slot 4, directly after GetCount, so an index lookup reaches GetValue and native code writes a PROPVARIANT through the 20-byte PROPERTYKEY out
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.GetValue(ref PropertyKey, out PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `2E7085`, PENDING
   - Falsified if: on x64 the property store writes a 24-byte PROPVARIANT through the pointer to the 16-byte managed PropVariant, overwriting the 8 bytes after a stack local such as GetFriendlyName's value
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.SetValue(ref PropertyKey, ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `7DEB4C`, PENDING
   - Falsified if: on x64 the property store reads a 24-byte PROPVARIANT from the 16-byte managed PropVariant, taking the 8 bytes after the struct as part of the value
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.Commit()` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `8609BA`, PENDING
-  - Falsified if: Commit on a store opened with StorageAccess.Read returns STG_E_ACCESSDENIED, and a caller that ignores the PreserveSig HRESULT assumes the change persisted
+  - Falsified if: Commit is not vtable slot 7, the last IPropertyStore method, so a commit request reaches SetValue and native code dereferences unset key and value pointers
 - `Broiler.Native.Windows.Wasapi.IMMNotificationClient` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `2B52F8`, PENDING
   - Falsified if: an implementation blocks, or calls Register or UnregisterEndpointNotificationCallback, inside a callback that runs on the audio service's notification thread and deadlocks it
 - `Broiler.Native.Windows.Wasapi.IMMNotificationClient.OnDeviceStateChanged(string, DeviceState)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `96A9AC`, PENDING
@@ -1776,9 +1394,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.IMMNotificationClient.OnPropertyValueChanged(string, PropertyKey)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `DEBD93`, PENDING
   - Falsified if: key is read with an argument convention other than the by-value 20-byte PROPERTYKEY of mmdeviceapi.h, so the implementation receives a format id and property id the audio service did not send
 - `Broiler.Native.Windows.Wasapi.IAudioClient` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `85032C`, PENDING
-  - Falsified if: Initialize is given a format pointer whose cbSize claims more trailing bytes than the block holds, so the audio engine reads past the caller's WAVEFORMATEX
+  - Falsified if: a member is out of audioclient.h order, so Initialize's format pointer or GetMixFormat's out pointer reaches another method that reads or writes it with a different size
 - `Broiler.Native.Windows.Wasapi.IAudioClient.Initialize(AudioClientShareMode, AudioClientStreamFlags, long, long, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `8F9E64`, PENDING
-  - Falsified if: a format pointer to a WAVEFORMATEX whose cbSize exceeds the bytes allocated after its 18-byte header makes the audio engine read past the caller's block
+  - Falsified if: format and audioSessionGuid reach IAudioClient::Initialize in swapped positions, so the engine reads the WAVEFORMATEX through the session GUID pointer, or through null when no session is given
 - `Broiler.Native.Windows.Wasapi.IAudioClient.GetBufferSize(out uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `7407DC`, PENDING
   - Falsified if: bufferFrameCount is written through a pointer to anything other than a 4-byte UINT32, so a buffer sized from it is smaller than the endpoint buffer
 - `Broiler.Native.Windows.Wasapi.IAudioClient.GetStreamLatency(out long)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `FEE5D6`, PENDING
@@ -1786,9 +1404,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.IAudioClient.GetCurrentPadding(out uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `B5581D`, PENDING
   - Falsified if: currentPaddingFrameCount is written through a pointer to anything other than a 4-byte UINT32, so the frames already queued in the endpoint buffer are misread
 - `Broiler.Native.Windows.Wasapi.IAudioClient.IsFormatSupported(AudioClientShareMode, IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `9D437E`, PENDING
-  - Falsified if: a format pointer to a WAVEFORMATEX whose cbSize exceeds the bytes allocated after its 18-byte header makes the audio engine read past the caller's block
+  - Falsified if: format and the closestMatch out reach IAudioClient::IsFormatSupported in swapped positions, so the engine reads the WAVEFORMATEX from the caller's out slot
 - `Broiler.Native.Windows.Wasapi.IAudioClient.GetMixFormat(out IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `EB4C3A`, PENDING
-  - Falsified if: the WAVEFORMATEX block it returns is released with anything other than CoTaskMemFree, so each capture start leaks the mix format or frees it on the wrong heap
+  - Falsified if: GetMixFormat is not vtable slot 8, directly after IsFormatSupported, so the query reaches GetDevicePeriod and an 8-byte period is written where the caller expects a WAVEFORMATEX pointer
 - `Broiler.Native.Windows.Wasapi.IAudioClient.GetDevicePeriod(out long, out long)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `C6E8C9`, PENDING
   - Falsified if: the two REFERENCE_TIME outputs are not in audioclient.h order (default period, then minimum period), so a client takes the minimum period for the default
 - `Broiler.Native.Windows.Wasapi.IAudioClient.Start()` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `6B8586`, PENDING
@@ -1798,15 +1416,15 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.IAudioClient.Reset()` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `C17181`, PENDING
   - Falsified if: Reset is not the tenth method after IUnknown as in audioclient.h, so a reset runs another method and the queued packets are not flushed
 - `Broiler.Native.Windows.Wasapi.IAudioClient.SetEventHandle(IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `A5695E`, PENDING
-  - Falsified if: the event handle is closed with CloseHandle while the stream is still running, so the audio engine signals a handle value that may already name another kernel object
+  - Falsified if: SetEventHandle is not vtable slot 13, after Reset, so the event handle reaches GetService as its IID pointer and the engine never signals it
 - `Broiler.Native.Windows.Wasapi.IAudioClient.GetService(ref Guid, out IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `DCDAC0`, PENDING
-  - Falsified if: the serviceInterface pointer returned with S_OK carries a reference the caller never releases, so each capture-client lookup leaks the service object
+  - Falsified if: interfaceId and the out pointer reach IAudioClient::GetService(REFIID, void**) in swapped positions, so the service pointer is written over the caller's IID
 - `Broiler.Native.Windows.Wasapi.IAudioCaptureClient` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `E6F0E2`, PENDING
-  - Falsified if: the packet GetBuffer returns is read for more than framesToRead frames of the mix format's nBlockAlign, past the end of the buffer the audio engine lent
+  - Falsified if: GetBuffer, ReleaseBuffer and GetNextPacketSize are not the first three slots after IUnknown as in audioclient.h, so the packet pointer and frame count are read from outputs another method never wrote
 - `Broiler.Native.Windows.Wasapi.IAudioCaptureClient.GetBuffer(out IntPtr, out uint, out AudioClientBufferFlags, out ulong, out ulong)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `BE96C9`, PENDING
-  - Falsified if: data is read beyond framesToRead times the mix format's nBlockAlign bytes, or after ReleaseBuffer, so the copy runs past the packet the audio engine lent
+  - Falsified if: data and framesToRead reach IAudioCaptureClient::GetBuffer(BYTE**, UINT32*, DWORD*, UINT64*, UINT64*) in swapped positions, so the frame count that sizes the caller's copy is read from the packet pointer
 - `Broiler.Native.Windows.Wasapi.IAudioCaptureClient.ReleaseBuffer(uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `D3903A`, PENDING
-  - Falsified if: framesRead differs from both 0 and the framesToRead GetBuffer returned, so the engine returns AUDCLNT_E_INVALID_SIZE and the next GetBuffer fails with AUDCLNT_E_OUT_OF_ORDER
+  - Falsified if: ReleaseBuffer is not vtable slot 4, directly after GetBuffer, so a release reaches GetNextPacketSize and the engine writes a frame count through the framesRead value as an address
 - `Broiler.Native.Windows.Wasapi.IAudioCaptureClient.GetNextPacketSize(out uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `6EB7A4`, PENDING
   - Falsified if: framesInNextPacket is written through a pointer to anything other than a 4-byte UINT32, so a drain loop that stops at zero never sees zero and spins
 - `Broiler.Native.Windows.Wasapi.WasapiExtensions` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `D28A8B`, PENDING
@@ -1816,7 +1434,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.WasapiExtensions.GetService<TInterface>(this IAudioClient, out TInterface?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `1D2EA0`, PENDING
   - Falsified if: the pointer IAudioClient.GetService returns with S_OK is wrapped by GetOrCreateComObject, which takes its own reference, and is never released, so every call leaks one reference to the service object
 - `Broiler.Native.Windows.Wic.WicNative` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `5EFA14`, PENDING
-  - Falsified if: a CopyPixels call on a frame or format converter with cbBufferSize larger than the memory at pbBuffer lets the codec write decoded page-image rows past the end of that buffer
+  - Falsified if: CopyPixels on a frame or format converter receives cbStride, cbBufferSize and pbBuffer out of order, so the codec writes decoded page-image rows to an address given by a size value
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `1783FD`, PENDING
   - Falsified if: a member is out of wincodec.h order (IWICBitmapSource's GetSize to CopyPixels at slots 3-7, then GetMetadataQueryReader, GetColorContexts, GetThumbnail), so a call reaches a native method with another argument list that writes through its stride, size or index argument as a pointer
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.GetSize(out uint, out uint)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `7C536B`, PENDING
@@ -1826,15 +1444,15 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.GetResolution(out double, out double)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `2054F8`, PENDING
   - Falsified if: pDpiX or pDpiY is declared as a 4-byte float or int rather than an 8-byte double, so native code writes 8 bytes into a 4-byte managed out slot
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.CopyPalette(IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `ACA555`, PENDING
-  - Falsified if: a pIPalette that is not a live IWICPalette, such as one already released, makes the frame call palette methods through a freed vtable when copying an indexed image's colour table
+  - Falsified if: CopyPalette is not vtable slot 6 of IWICBitmapSource, after GetResolution, so the palette pointer reaches CopyPixels as its rectangle and the codec writes pixel rows through unset arguments
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.CopyPixels(IntPtr, uint, uint, IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `19BB8D`, PENDING
-  - Falsified if: a cbBufferSize larger than the memory pbBuffer addresses lets the codec write decoded page-image rows past the end of the caller's buffer
+  - Falsified if: cbStride, cbBufferSize and pbBuffer reach IWICBitmapSource::CopyPixels(const WICRect*, UINT, UINT, BYTE*) in another order, so the codec writes decoded page-image rows to the address given by a size value
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.GetMetadataQueryReader(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `5B4345`, PENDING
-  - Falsified if: the IWICMetadataQueryReader pointer written to ppIMetadataQueryReader is not Released by the caller, so each call leaks one reference that keeps the frame and its metadata blocks alive
+  - Falsified if: GetMetadataQueryReader is not vtable slot 8, the first after the IWICBitmapSource methods, so the call reaches GetColorContexts with the out pointer as its count and native code dereferences unset array arguments
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.GetColorContexts(uint, IntPtr, out uint)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `2E33A1`, PENDING
-  - Falsified if: a cCount larger than the number of IWICColorContext pointers at ppIColorContexts makes the codec read past the caller's array and initialise an embedded ICC profile into whatever those words address
+  - Falsified if: GetColorContexts is not vtable slot 9, after GetMetadataQueryReader, so the count and array pointer reach GetThumbnail and a bitmap-source pointer is written through the count value as an address
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.GetThumbnail(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `F83FCD`, PENDING
-  - Falsified if: the IWICBitmapSource pointer written to ppIThumbnail is not Released by the caller, so each call leaks a reference that keeps the decoder and its page-supplied stream alive
+  - Falsified if: GetThumbnail is not vtable slot 10, after GetColorContexts, so the call reaches GetColorContexts with the out pointer as its count and native code dereferences unset array arguments
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `EBC48E`, PENDING
   - Falsified if: a member is out of wincodec.h order (IWICBitmapSource's GetSize to CopyPixels at slots 3-7, then Initialize at 8 and CanConvert at 9), so a call reaches a native method with another argument list that writes through one of its integer arguments as a pointer
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter.GetSize(out uint, out uint)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `7C536B`, PENDING
@@ -1844,9 +1462,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter.GetResolution(out double, out double)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `2054F8`, PENDING
   - Falsified if: pDpiX or pDpiY is declared as a 4-byte float or int rather than an 8-byte double, so native code writes 8 bytes into a 4-byte managed out slot
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter.CopyPalette(IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `ACA555`, PENDING
-  - Falsified if: a pIPalette that is not a live IWICPalette, such as one already released, makes the converter call palette methods through a freed vtable when copying the destination colour table
+  - Falsified if: CopyPalette is not vtable slot 6 of IWICBitmapSource, after GetResolution, so the palette pointer reaches CopyPixels as its rectangle and the codec writes pixel rows through unset arguments
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter.CopyPixels(IntPtr, uint, uint, IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `19BB8D`, PENDING
-  - Falsified if: a cbBufferSize larger than the memory pbBuffer addresses lets the converter write converted page-image rows past the end of the caller's buffer
+  - Falsified if: cbStride, cbBufferSize and pbBuffer reach IWICBitmapSource::CopyPixels(const WICRect*, UINT, UINT, BYTE*) in another order, so the codec writes converted page-image rows to the address given by a size value
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter.Initialize(IWICBitmapFrameDecode, ref Guid, int, IntPtr, double, int)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `F22BAE`, PENDING
   - Falsified if: pISource is marshalled as a pointer to an interface whose slots 3-7 are not IWICBitmapSource's GetSize to CopyPixels, so the converter pulls the source's size and pixels through the wrong native methods
 - `Broiler.Native.Windows.Wic.WicNative.IWICFormatConverter.CanConvert(ref Guid, ref Guid, out int)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `C957AB`, PENDING
@@ -1860,57 +1478,45 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetContainerFormat(out Guid)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `DCE272`, PENDING
   - Falsified if: the container-format out is declared narrower than the 16-byte GUID, so native code writes the GUID_ContainerFormat value past the managed out slot
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetDecoderInfo(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `51BF48`, PENDING
-  - Falsified if: the IWICBitmapDecoderInfo pointer written to ppIDecoderInfo is not Released by the caller, so each call leaks one reference to the codec's component info
+  - Falsified if: GetDecoderInfo is not vtable slot 6, after GetContainerFormat, so the call reaches GetContainerFormat and a 16-byte GUID is written through the 8-byte pointer out
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.CopyPalette(IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `ACA555`, PENDING
-  - Falsified if: a pIPalette that is not a live IWICPalette, such as one already released, makes the decoder call palette methods through a freed vtable when copying the container's global colour table
+  - Falsified if: CopyPalette is not vtable slot 7 of IWICBitmapDecoder, after GetDecoderInfo, so the palette pointer reaches GetMetadataQueryReader as its out argument and a reader pointer is written into the palette object
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetMetadataQueryReader(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `5B4345`, PENDING
-  - Falsified if: the IWICMetadataQueryReader pointer written to ppIMetadataQueryReader is not Released by the caller, so each call leaks one reference that keeps the decoder and its container metadata alive
+  - Falsified if: GetMetadataQueryReader is not vtable slot 8 of IWICBitmapDecoder, after CopyPalette, so the call reaches GetPreview and a bitmap source is returned where a metadata reader is expected
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetPreview(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `E2D6CB`, PENDING
-  - Falsified if: the IWICBitmapSource pointer written to ppIBitmapSource is not Released by the caller, so each call leaks a reference that keeps the decoder and its page-supplied stream alive
+  - Falsified if: GetPreview is not vtable slot 9, after GetMetadataQueryReader, so the call reaches GetColorContexts with the out pointer as its count and native code dereferences unset array arguments
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetColorContexts(uint, IntPtr, out uint)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `2E33A1`, PENDING
-  - Falsified if: a cCount larger than the number of IWICColorContext pointers at ppIColorContexts makes the decoder read past the caller's array and initialise an embedded ICC profile into whatever those words address
+  - Falsified if: GetColorContexts is not vtable slot 10 of IWICBitmapDecoder, after GetPreview, so the count and array pointer reach GetThumbnail and a bitmap-source pointer is written through the count value as an address
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetThumbnail(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `F83FCD`, PENDING
-  - Falsified if: the IWICBitmapSource pointer written to ppIThumbnail is not Released by the caller, so each call leaks a reference that keeps the decoder and its page-supplied stream alive
+  - Falsified if: GetThumbnail is not vtable slot 11 of IWICBitmapDecoder, after GetColorContexts, so the call reaches GetFrameCount and a 4-byte count is written into the 8-byte pointer out the caller then dereferences
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetFrameCount(out uint)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `C7763B`, PENDING
   - Falsified if: GetFrameCount is not vtable slot 12, directly before GetFrame, so a count query reaches GetThumbnail and native code writes an 8-byte interface pointer through the 4-byte count out
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapDecoder.GetFrame(uint, out IWICBitmapFrameDecode)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `ABCC93`, PENDING
   - Falsified if: GetFrame is not vtable slot 13, the last IWICBitmapDecoder member, so the call reaches GetFrameCount and native code writes the frame count through the frame index taken as a pointer
-- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `A8CD55`, PENDING
+- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `A8CD55`, PENDING
   - Falsified if: a member is out of wincodec.h order (CreateDecoderFromFilename at slot 3 through CreateFormatConverter at slot 10), so CreateDecoderFromStream reaches CreateDecoderFromFilename and native code reads the IStream pointer as a NUL-terminated UTF-16 file name
-- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoderFromFilename(string, IntPtr, uint, int, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `777C84`, PENDING
+- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoderFromFilename(string, IntPtr, uint, int, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `777C84`, PENDING
   - Falsified if: wzFilename is marshalled as an ANSI LPStr instead of LPWStr, so native code reads single-byte text as UTF-16 and opens a path other than the one passed, or runs past the marshalled buffer looking for a 2-byte terminator
-- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoderFromStream(IStream, IntPtr, int, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `A96950`, PENDING
+- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoderFromStream(IStream, IntPtr, int, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `A96950`, PENDING
   - Falsified if: pIStream is marshalled as an IUnknown or other interface pointer instead of the IStream obtained for IID_IStream, so the codec's Read and Seek calls on page-supplied image bytes dispatch through the wrong vtable slots
-- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoderFromFileHandle(IntPtr, IntPtr, int, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `0FCBE9`, PENDING
+- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoderFromFileHandle(IntPtr, IntPtr, int, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `0FCBE9`, PENDING
   - Falsified if: hFile is declared narrower than the pointer-sized ULONG_PTR, so on 64-bit the factory reads a truncated handle and decodes from whichever file that value names in the process
 - `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateComponentInfo(ref Guid, out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `84A58A`, PENDING
-  - Falsified if: the IWICComponentInfo pointer written to ppIInfo is not Released by the caller, so each call leaks one reference to the component's registration info
-- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoder(ref Guid, IntPtr, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `B0ED40`, PENDING
+  - Falsified if: CreateComponentInfo is not vtable slot 6, after CreateDecoderFromFileHandle, so the CLSID pointer reaches CreateDecoderFromFileHandle as a file handle
+- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateDecoder(ref Guid, IntPtr, out IWICBitmapDecoder)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `B0ED40`, PENDING
   - Falsified if: guidContainerFormat is passed by value rather than as a REFGUID pointer, so native code dereferences the first 8 bytes of the GUID as an address
-- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateEncoder(ref Guid, IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `F89366`, PENDING
-  - Falsified if: the IWICBitmapEncoder pointer written to ppIEncoder is not Released by the caller, so each call leaks one encoder instance and its registration
+- `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateEncoder(ref Guid, IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `F89366`, PENDING
+  - Falsified if: CreateEncoder is not vtable slot 8, after CreateDecoder, so an encoder request reaches CreateDecoder and a decoder is returned where an encoder is expected
 - `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreatePalette(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `592ED9`, PENDING
-  - Falsified if: the IWICPalette pointer written to ppIPalette is not Released by the caller after CopyPalette fills it, so each call leaks one palette object
+  - Falsified if: CreatePalette is not vtable slot 9, after CreateEncoder, so the call reaches CreateFormatConverter and a converter is returned where a palette is expected
 - `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateFormatConverter(out IWICFormatConverter)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `903F42`, PENDING
   - Falsified if: CreateFormatConverter is not vtable slot 10, so the call reaches CreatePalette and the returned IWICPalette fails the cast to IWICFormatConverter, making every converted decode throw
-- `Broiler.Native.Windows.Wic.WicNative.WinCodecErrUnknownImageFormat` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `CD41A9`, PENDING
-  - Falsified if: the value is not wincodec.h's WINCODEC_ERR_UNKNOWNIMAGEFORMAT 0x88982F07, so bytes no registered WIC codec recognises are reported as a generic decode failure instead of a missing decoder
-- `Broiler.Native.Windows.Wic.WicNative.WinCodecErrComponentNotFound` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `215DCE`, PENDING
-  - Falsified if: the value is not wincodec.h's WINCODEC_ERR_COMPONENTNOTFOUND 0x88982F50, so a machine without the optional WebP codec is not recognised as missing a decoder and the image is reported as malformed
-- `Broiler.Native.Windows.Wic.WicNative.WinCodecErrInvalidRegistration` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `39F404`, PENDING
-  - Falsified if: the value is not wincodec.h's WINCODEC_ERR_INVALIDREGISTRATION 0x88982F8A, so a codec with a broken registration is not recognised as an unavailable decoder and its failure is reported as malformed image data
-- `Broiler.Native.Windows.Wic.WicNative.WinCodecErrComponentInitializeFailure` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `E1A38A`, PENDING
-  - Falsified if: the value is not wincodec.h's WINCODEC_ERR_COMPONENTINITIALIZEFAILURE 0x88982F8B, so a codec registered but not activatable, as on hosted CI images, is reported as malformed image data instead of an unavailable decoder
 - `Broiler.Native.Windows.Wic.WicNative.ClsidWicImagingFactory` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `58F4DA`, PENDING
   - Falsified if: the value is neither wincodec.h's CLSID_WICImagingFactory1 {cacaf262-9370-4615-a13b-9f5539da4c0a} nor CLSID_WICImagingFactory2, so CoCreateInstance returns REGDB_E_CLASSNOTREG and no image is decoded through WIC
 - `Broiler.Native.Windows.Wic.WicNative.IidWicImagingFactory` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `958C80`, PENDING
   - Falsified if: the value differs from IWICImagingFactory's Guid attribute and wincodec.h's IID_IWICImagingFactory {ec5ec8a9-c395-4314-9c77-54d7a935ff70}, so CoCreateInstance asks the factory for another interface and fails with E_NOINTERFACE
-- `Broiler.Native.Windows.Wic.WicNative.PixelFormat32bppRgba` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `B7D3A3`, PENDING
-  - Falsified if: the value is not wincodec.h's GUID_WICPixelFormat32bppRGBA {f5c7ad2d-6a8d-43dd-a7a8-a29935261ae9}, so a successful conversion yields a layout other than straight 8-bit RGBA and the decoded image has swapped or premultiplied channels
-- `Broiler.Native.Windows.Wic.WicNative.PixelFormat32bppBgra` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, Spec=none cited, `1F1023`, PENDING
-  - Falsified if: the value is not wincodec.h's GUID_WICPixelFormat32bppBGRA {6fddc324-4e03-4bfe-b185-3d77768dc90f}, so the fallback conversion yields a layout other than straight BGRA and the caller's BGRA-to-RGBA swizzle produces wrong colours
 - `Broiler.Native.Windows.WindowNative` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `3B0E79`, PENDING
-  - Falsified if: GetWindowText(IntPtr, char*, int) is called with a maxCount larger than the characters lpString addresses, so GetWindowTextW writes the title and its terminator past the end of the caller's buffer
+  - Falsified if: GetWindowText(IntPtr, Span<char>) passes a count other than text.Length to GetWindowTextW, so a title longer than the span is written past its end
 - `Broiler.Native.Windows.WindowNative.SetWindowLongPtr(IntPtr, int, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `16DDCC`, PENDING
   - Falsified if: on a 64-bit process the call reaches SetWindowLongW rather than SetWindowLongPtrW, so the GCHandle pointer stored at GWLP_USERDATA keeps only its low 32 bits and GCHandle.FromIntPtr later resolves a truncated handle
 - `Broiler.Native.Windows.WindowNative.GetWindowLongPtr(IntPtr, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `DD2B69`, PENDING
@@ -1922,19 +1528,19 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.WindowNative.WNDCLASSEX` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `637957`, PENDING
   - Falsified if: a field is out of winuser.h WNDCLASSEXW order or Marshal.SizeOf is not 80 on x64 (48 on x86), so RegisterClassExW takes lpfnWndProc or lpszClassName from the wrong offset and the class calls a non-function address
 - `Broiler.Native.Windows.WindowNative.RECT` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `563E6D`, PENDING
-  - Falsified if: Marshal.SizeOf is not 16 or the fields are not in left, top, right, bottom order, so GetWindowRect or AdjustWindowRectExForDpi writes a frame edge into the wrong member or past the struct
+  - Falsified if: Marshal.SizeOf is not 16 or the fields are not in left, top, right, bottom order, so GetWindowRect or AdjustWindowRectExForDpi writes a frame edge into the wrong member
 - `Broiler.Native.Windows.WindowNative.POINT` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `AA2E46`, PENDING
   - Falsified if: Marshal.SizeOf is not 8 or Y precedes X, so ScreenToClient converts a wheel event's screen coordinates with the axes swapped
 - `Broiler.Native.Windows.WindowNative.TRACKMOUSEEVENT` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E547C3`, PENDING
   - Falsified if: Marshal.SizeOf is not 24 on x64 (16 on x86) or HwndTrack is not the third field, so TrackMouseEvent rejects the cbSize or arms leave tracking for a handle read from the flags
 - `Broiler.Native.Windows.WindowNative.MSG` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `2C3C7D`, PENDING
-  - Falsified if: Marshal.SizeOf is not 48 on x64 (28 on x86) or a field is out of winuser.h order, so GetMessageW writes the message past the managed struct or DispatchMessageW hands the window procedure wParam in place of lParam
+  - Falsified if: Marshal.SizeOf is not 48 on x64 (28 on x86) or a field is out of winuser.h order, so DispatchMessageW hands the window procedure wParam in place of lParam
 - `Broiler.Native.Windows.WindowNative.CREATESTRUCT` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `39F0BA`, PENDING
   - Falsified if: a field is out of winuser.h CREATESTRUCTW order, so Marshal.PtrToStructure on the WM_NCCREATE lParam reads LpCreateParams from another member and GCHandle.FromIntPtr resolves a value that is not a handle
 - `Broiler.Native.Windows.WindowNative.GetModuleHandle(string?)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `150856`, PENDING
   - Falsified if: a null module name is marshalled as an empty string rather than a null pointer, so GetModuleHandleW returns zero instead of the executable's HINSTANCE and the window class is registered against no module
 - `Broiler.Native.Windows.WindowNative.RegisterClassEx(ref WNDCLASSEX)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `2D2FB1`, PENDING
-  - Falsified if: a WndProc held only by the WNDCLASSEX passed in is collected after the call returns, so user32 calls a freed marshalling thunk on the class's next message
+  - Falsified if: the import binds RegisterClassExA rather than RegisterClassExW, so the UTF-16 class name is read as a one-character ANSI string and CreateWindowExW cannot find the class
 - `Broiler.Native.Windows.WindowNative.CreateWindowEx(uint, string, string, uint, int, int, int, int, IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `B8CB64`, PENDING
   - Falsified if: the parameters are not in user32 CreateWindowExW order (exStyle, class, name, style, x, y, width, height, parent, menu, instance, param), so the style lands in the extended style or the GCHandle passed as param reaches hMenu
 - `Broiler.Native.Windows.WindowNative.AdjustWindowRectEx(ref RECT, uint, bool, uint)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C0C181`, PENDING
@@ -1959,16 +1565,16 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the import is not bound to user32's PostQuitMessage, so destroying the window that owns the loop leaves GetMessage blocking and the process running with no window
 - `Broiler.Native.Windows.WindowNative.PostMessage(IntPtr, uint, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `785298`, PENDING
   - Falsified if: wParam or lParam is declared as a 32-bit int, so on 64-bit a pointer-sized payload posted to the window arrives with its high half cleared
-- `Broiler.Native.Windows.WindowNative.InvalidateRect(IntPtr, IntPtr, bool)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `11E879`, PENDING
+- `Broiler.Native.Windows.WindowNative.InvalidateRect(IntPtr, IntPtr, bool)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `11E879`, PENDING
   - Falsified if: erase is marshalled as a 1-byte bool rather than a 4-byte BOOL, so user32 reads three stray bytes and a false erase sends WM_ERASEBKGND, flashing the class brush behind animation frames
-- `Broiler.Native.Windows.WindowNative.ValidateRect(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `3194D3`, PENDING
+- `Broiler.Native.Windows.WindowNative.ValidateRect(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `3194D3`, PENDING
   - Falsified if: rect is declared as a 32-bit int, so on 64-bit the IntPtr.Zero meaning the whole client area arrives with undefined high bits and user32 reads a RECT through it
 - `Broiler.Native.Windows.WindowNative.MoveWindow(IntPtr, int, int, int, int, bool)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `19633F`, PENDING
   - Falsified if: repaint is marshalled as a 1-byte bool rather than a 4-byte BOOL, so user32 reads three stray bytes and a moved render host is repainted or left unpainted against the caller's choice
 - `Broiler.Native.Windows.WindowNative.DestroyWindow(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `005B01`, PENDING
   - Falsified if: the import does not set SetLastError, so a DestroyWindow refused for a window owned by another thread reports a stale error code instead of ERROR_ACCESS_DENIED
 - `Broiler.Native.Windows.WindowNative.GetParent(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E7F331`, PENDING
-  - Falsified if: called on an owned top-level window it returns the owner, so a render-host lookup routed through it resolves the owner's GWLP_USERDATA and dispatches to another window instance
+  - Falsified if: the HWND return is declared narrower than a pointer, so on 64-bit the parent handle read back is truncated and the render host resolves another window's GWLP_USERDATA
 - `Broiler.Native.Windows.WindowNative.SetTimer(IntPtr, nuint, uint, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `3A2024`, PENDING
   - Falsified if: eventId or the return is declared 32-bit rather than UINT_PTR, so on 64-bit the timer id compared against AnimationTimerId in WM_TIMER never matches and animation ticks fall through to DefWindowProc
 - `Broiler.Native.Windows.WindowNative.KillTimer(IntPtr, nuint)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `24FCA7`, PENDING
@@ -1980,20 +1586,20 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.WindowNative.ScreenToClient(IntPtr, ref POINT)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `D0E8CE`, PENDING
   - Falsified if: point is passed by value rather than by reference, so user32 writes the client coordinates to a copy and wheel events keep their screen coordinates
 - `Broiler.Native.Windows.WindowNative.TrackMouseEvent(ref TRACKMOUSEEVENT)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `0C9D2E`, PENDING
-  - Falsified if: a TRACKMOUSEEVENT whose CbSize is not Marshal.SizeOf of the struct makes TrackMouseEvent fail, so WM_MOUSELEAVE is never posted and hover state sticks after the pointer leaves
+  - Falsified if: trackMouseEvent is passed by value rather than by reference, so user32 reads the TRACKMOUSEEVENT from an address formed from its CbSize and flags
 - `Broiler.Native.Windows.WindowNative.GetClientRect(IntPtr, out RECT)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `212BE0`, PENDING
   - Falsified if: rect is passed by value rather than as an out pointer, so user32 writes the 16-byte client rectangle through an address formed from the struct's first field
 - `Broiler.Native.Windows.WindowNative.GetDpiForWindow(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `81749E`, PENDING
-  - Falsified if: on a Windows build whose user32 has no GetDpiForWindow export the first call throws EntryPointNotFoundException instead of letting the caller fall back to GetDeviceCaps LOGPIXELSX
+  - Falsified if: the import binds GetDpiForSystem or another export instead of GetDpiForWindow, so a window on a 144-DPI monitor reports the system DPI
 - `Broiler.Native.Windows.WindowNative.GetDC(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `58339A`, PENDING
-  - Falsified if: a DC obtained for a window is not passed to ReleaseDC on every path, so each DPI query leaks a device context
+  - Falsified if: the HDC return is declared narrower than a pointer, so on 64-bit GetDeviceCaps and ReleaseDC receive a truncated device-context handle
 - `Broiler.Native.Windows.WindowNative.ReleaseDC(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `089DAA`, PENDING
   - Falsified if: hwnd and hdc are passed in swapped order, so user32 releases nothing, returns 0 and the window DC from GetDC leaks
 - `Broiler.Native.Windows.WindowNative.GetDeviceCaps(IntPtr, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `A5C5DC`, PENDING
   - Falsified if: index or the return is declared other than a 32-bit int, so LOGPIXELSX reads back a register half and the fallback DPI is not 96 on a 100% display
-- `Broiler.Native.Windows.WindowNative.LoadCursor(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `178AF0`, PENDING
+- `Broiler.Native.Windows.WindowNative.LoadCursor(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `178AF0`, PENDING
   - Falsified if: cursorName is marshalled as a string rather than passed as the MAKEINTRESOURCE integer, so IDC_ARROW (32512) is looked up as a resource name and the class gets no cursor
-- `Broiler.Native.Windows.WindowNative.LoadIcon(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C66880`, PENDING
+- `Broiler.Native.Windows.WindowNative.LoadIcon(IntPtr, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `C66880`, PENDING
   - Falsified if: iconName is marshalled as a string rather than passed as the MAKEINTRESOURCE integer, so IDI_APPLICATION is looked up by name, the executable's icon is not found and the class falls back to the generic window glyph
 - `Broiler.Native.Windows.WindowNative.GetSysColorBrush(int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `CDE6AD`, PENDING
   - Falsified if: the import binds GetSysColor instead of GetSysColorBrush, so a COLORREF value is stored as WNDCLASSEX.HbrBackground and the class background paints with an invalid brush handle
@@ -2026,195 +1632,39 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.WindowNative.GetMonitorInfo(IntPtr, ref MONITORINFO)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `7EA744`, PENDING
   - Falsified if: a MONITORINFO whose CbSize names the 104-byte MONITORINFOEXW lets user32 write the device name past the end of the 40-byte managed struct
 - `Broiler.Native.Windows.WindowNative.DestroyIcon(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `9BE911`, PENDING
-  - Falsified if: an icon still set on a window through WM_SETICON is destroyed before its replacement is sent, so the caption and taskbar draw from a freed HICON
-- `Broiler.Native.Windows.WindowNative.CreateIconIndirect(ref ICONINFO)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `86BA93`, PENDING
-  - Falsified if: the returned HICON is not passed to DestroyIcon once replaced, so each icon change leaks the icon and the copies the system made of HbmColor and HbmMask
+  - Falsified if: the BOOL result is read as a 1-byte bool, so a failed DestroyIcon reports success and the caller treats a still-allocated icon handle as freed
+- `Broiler.Native.Windows.WindowNative.CreateIconIndirect(ref ICONINFO)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `86BA93`, PENDING
+  - Falsified if: iconInfo is passed by value rather than by reference, so CreateIconIndirect reads the ICONINFO from an address formed from its FIcon and hotspot fields
 - `Broiler.Native.Windows.WindowNative.CreateDIBSection(IntPtr, ref BITMAPINFOHEADER, uint, out IntPtr, IntPtr, uint)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `9DDFFE`, PENDING
   - Falsified if: a header with BiBitCount of 8 or less, or BI_BITFIELDS compression, makes gdi32 read a colour table or masks past the end of the 40-byte BITMAPINFOHEADER passed by reference
 - `Broiler.Native.Windows.WindowNative.CreateBitmap(int, int, uint, uint, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `C60669`, PENDING
-  - Falsified if: a non-null bits pointer addressing fewer than width times height times bitsPerPixel/8 bytes, each row rounded up to 16 bits, is read past its end
+  - Falsified if: width and bitsPerPixel reach CreateBitmap(int, int, UINT, UINT, const void*) in swapped positions, so a 32-pixel-wide one-bit mask is read as a one-pixel-wide 32-bit bitmap from a non-null bits pointer
 - `Broiler.Native.Windows.WindowNative.DeleteObject(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C1D6A1`, PENDING
-  - Falsified if: the CreateDIBSection colour bitmap is deleted before Marshal.Copy writes its bits pointer, so the pixel copy lands in freed section memory
+  - Falsified if: the gdiObject argument is declared narrower than a pointer, so on 64-bit DeleteObject receives a truncated handle and the bitmap leaks
 - `Broiler.Native.Windows.WindowNative.MONITORINFO` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `85EE60`, PENDING
   - Falsified if: Marshal.SizeOf is not 40 or RcWork precedes RcMonitor, so GetMonitorInfo fills the wrong rectangle and a maximised owner-drawn window is clamped to the whole monitor and covers the taskbar
 - `Broiler.Native.Windows.WindowNative.ICONINFO` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `3ED120`, PENDING
   - Falsified if: FIcon, XHotspot and YHotspot are not three 4-byte fields ahead of the two bitmap handles, so on 64-bit CreateIconIndirect reads HbmMask from padding and builds the icon from a garbage bitmap handle
-- `Broiler.Native.Windows.WindowNative.BITMAPINFOHEADER` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C8BD94`, PENDING
+- `Broiler.Native.Windows.WindowNative.BITMAPINFOHEADER` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `C8BD94`, PENDING
   - Falsified if: Marshal.SizeOf is not 40 or BiPlanes and BiBitCount are not 16-bit, so CreateDIBSection reads BiCompression from BiBitCount's bytes and allocates a DIB of another depth whose bits the caller then overruns
 - `Broiler.Native.Windows.WindowNative.SetProcessDpiAwarenessContext(IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `F83A05`, PENDING
-  - Falsified if: on a Windows build whose user32 has no SetProcessDpiAwarenessContext export the call throws EntryPointNotFoundException instead of returning false to a best-effort caller
+  - Falsified if: the BOOL result is read as a 1-byte bool, so a call refused because the awareness was already set reports success
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, char*, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `139E0E`, PENDING
-  - Falsified if: a maxCount larger than the characters lpString addresses lets GetWindowTextW write the title and its terminator past the end of the buffer
+  - Falsified if: lpString and maxCount reach GetWindowTextW(HWND, LPWSTR, int) in swapped positions, so the window title is written to the address given by the count
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, Span<char>)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `E80171`, PENDING
   - Falsified if: the count passed to GetWindowTextW is not text.Length, so a title longer than the span is written past the end of the pinned span
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, StringBuilder, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `6D9166`, PENDING
   - Falsified if: a maxCount different from the length of the char[] it pins lets GetWindowTextW write past the array's end
-- `Broiler.Native.Windows.WindowNative.ErrorClassAlreadyExists` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `563198`, PENDING
-  - Falsified if: the value is not winerror.h's ERROR_CLASS_ALREADY_EXISTS (1410), so a second window's RegisterClassEx failure for the already-registered class throws Win32Exception instead of reusing the class
-- `Broiler.Native.Windows.WindowNative.CwUseDefault` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `F3FFA5`, PENDING
-  - Falsified if: the value is not winuser.h's CW_USEDEFAULT (0x80000000), so CreateWindowEx places a window without an explicit position at that literal coordinate rather than at the system default
-- `Broiler.Native.Windows.WindowNative.CsHRedraw` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `0ADB11`, PENDING
-  - Falsified if: the value is not winuser.h's CS_HREDRAW (0x0002), so a width change does not invalidate the whole client area and stale pixels remain in the newly exposed strip
-- `Broiler.Native.Windows.WindowNative.CsVRedraw` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C43CC5`, PENDING
-  - Falsified if: the value is not winuser.h's CS_VREDRAW (0x0001), so a height change does not invalidate the whole client area and stale pixels remain in the newly exposed strip
-- `Broiler.Native.Windows.WindowNative.WsOverlappedWindow` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `435859`, PENDING
-  - Falsified if: the value is not winuser.h's WS_OVERLAPPEDWINDOW (0x00CF0000), so the top-level window is created without some of its caption, system menu, sizing border and minimise and maximise boxes
-- `Broiler.Native.Windows.WindowNative.WsChild` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `48284F`, PENDING
-  - Falsified if: the value is not winuser.h's WS_CHILD (0x40000000), so CreateWindowEx makes the render host a top-level window that is neither clipped to nor moved with its owner
-- `Broiler.Native.Windows.WindowNative.WsVisible` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `9C8D1D`, PENDING
-  - Falsified if: the value is not winuser.h's WS_VISIBLE (0x10000000), so the render host child is created hidden and never paints
-- `Broiler.Native.Windows.WindowNative.WsClipChildren` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `33D697`, PENDING
-  - Falsified if: the value is not winuser.h's WS_CLIPCHILDREN (0x02000000), so painting the top-level window draws over its render host child and every frame flickers
-- `Broiler.Native.Windows.WindowNative.WsClipSiblings` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `F377A5`, PENDING
-  - Falsified if: the value is not winuser.h's WS_CLIPSIBLINGS (0x04000000), so overlapping child windows paint over each other
-- `Broiler.Native.Windows.WindowNative.WsThickFrame` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `B4E022`, PENDING
-  - Falsified if: the value is not winuser.h's WS_THICKFRAME (0x00040000), so masking it out of a non-resizable window's style leaves the sizing border in place or clears another style bit
-- `Broiler.Native.Windows.WindowNative.WsMaximizeBox` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `EDDF9C`, PENDING
-  - Falsified if: the value is not winuser.h's WS_MAXIMIZEBOX (0x00010000), so masking it out of a non-resizable window's style leaves the maximise button active or clears another style bit
-- `Broiler.Native.Windows.WindowNative.SwShow` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `794847`, PENDING
-  - Falsified if: the value is not winuser.h's SW_SHOW (5), so the first ShowWindow after CreateWindowEx leaves the window hidden or shows it minimised or maximised
-- `Broiler.Native.Windows.WindowNative.SwMaximize` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `EC13C7`, PENDING
-  - Falsified if: the value is not winuser.h's SW_MAXIMIZE (3), so requesting the maximised state sends another show command and the window is not maximised
-- `Broiler.Native.Windows.WindowNative.SwMinimize` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `EE6D80`, PENDING
-  - Falsified if: the value is not winuser.h's SW_MINIMIZE (6), so requesting the minimised state sends another show command and the window stays on screen
-- `Broiler.Native.Windows.WindowNative.SwRestore` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `D567AE`, PENDING
-  - Falsified if: the value is not winuser.h's SW_RESTORE (9), so leaving the minimised or maximised state does not restore the window's previous size and position
-- `Broiler.Native.Windows.WindowNative.SizeMinimized` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `CDC25D`, PENDING
-  - Falsified if: the value is not winuser.h's SIZE_MINIMIZED (1), so the WM_SIZE sent on minimise is not recognised and the surface is resized to a zero client area
-- `Broiler.Native.Windows.WindowNative.SmCxScreen` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `73C692`, PENDING
-  - Falsified if: the value is not winuser.h's SM_CXSCREEN (0), so centring a window with no explicit position uses another metric as the screen width
-- `Broiler.Native.Windows.WindowNative.SmCyScreen` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `43C5AF`, PENDING
-  - Falsified if: the value is not winuser.h's SM_CYSCREEN (1), so centring a window with no explicit position uses another metric as the screen height
-- `Broiler.Native.Windows.WindowNative.SmCxSizeFrame` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E5BE6C`, PENDING
-  - Falsified if: the value is not winuser.h's SM_CXSIZEFRAME (32), so the owner-drawn resize border width adds another metric to SM_CXPADDEDBORDER and no longer matches the native frame
-- `Broiler.Native.Windows.WindowNative.SmCxPaddedBorder` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `FE7C5B`, PENDING
-  - Falsified if: the value is not winuser.h's SM_CXPADDEDBORDER (92), so the owner-drawn resize border omits the padded border, or adds another metric, and no longer matches the native frame
 - `Broiler.Native.Windows.WindowNative.GwlUserData` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `D79778`, PENDING
   - Falsified if: the value is not winuser.h's GWLP_USERDATA (-21), so the GCHandle stored on WM_NCCREATE overwrites another window slot such as GWLP_WNDPROC (-4) or GWLP_HINSTANCE (-6) and the next message runs through the overwritten slot
-- `Broiler.Native.Windows.WindowNative.GclpHIcon` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `9B9195`, PENDING
-  - Falsified if: the value is not winuser.h's GCLP_HICON (-14), so reading the class icon returns another class slot such as GCLP_HCURSOR (-12) and compares unequal to the registered icon
-- `Broiler.Native.Windows.WindowNative.GclpHIconSm` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `6A46B8`, PENDING
-  - Falsified if: the value is not winuser.h's GCLP_HICONSM (-34), so reading the small class icon returns another class slot and reports a missing or wrong small icon
-- `Broiler.Native.Windows.WindowNative.ColorWindow` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `2AEA97`, PENDING
-  - Falsified if: the value is not winuser.h's COLOR_WINDOW (5), so the class background brush is another system colour and the window shows that colour before the first frame
-- `Broiler.Native.Windows.WindowNative.LogPixelsX` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `1F51B8`, PENDING
-  - Falsified if: the value is not wingdi.h's LOGPIXELSX (88), so the GetDeviceCaps DPI fallback returns another device capability and the window is scaled by it
-- `Broiler.Native.Windows.WindowNative.HtTransparent` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `FD202E`, PENDING
-  - Falsified if: the value is not winuser.h's HTTRANSPARENT (-1), so the render host's border hit test does not pass through to the top-level window and the owner-drawn resize border cannot be dragged
-- `Broiler.Native.Windows.WindowNative.HtClient` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `DDA4ED`, PENDING
-  - Falsified if: the value is not winuser.h's HTCLIENT (1), so the render host compares hit-test results against another area code and either swallows client-area clicks or passes them through to the frame
-- `Broiler.Native.Windows.WindowNative.HtCaption` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `584B5B`, PENDING
-  - Falsified if: the value is not winuser.h's HTCAPTION (2), so a move drag sends WM_NCLBUTTONDOWN with another hit code and starts a resize, or nothing, instead of moving the window
-- `Broiler.Native.Windows.WindowNative.HtLeft` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `D5A456`, PENDING
-  - Falsified if: the value is not winuser.h's HTLEFT (10), so dragging the left owner-drawn border resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtRight` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `EC0570`, PENDING
-  - Falsified if: the value is not winuser.h's HTRIGHT (11), so dragging the right owner-drawn border resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtTop` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C896B1`, PENDING
-  - Falsified if: the value is not winuser.h's HTTOP (12), so dragging the top owner-drawn border resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtTopLeft` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E5E637`, PENDING
-  - Falsified if: the value is not winuser.h's HTTOPLEFT (13), so dragging the top-left owner-drawn corner resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtTopRight` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C2FCF3`, PENDING
-  - Falsified if: the value is not winuser.h's HTTOPRIGHT (14), so dragging the top-right owner-drawn corner resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtBottom` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `07F885`, PENDING
-  - Falsified if: the value is not winuser.h's HTBOTTOM (15), so dragging the bottom owner-drawn border resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtBottomLeft` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `38DF7E`, PENDING
-  - Falsified if: the value is not winuser.h's HTBOTTOMLEFT (16), so dragging the bottom-left owner-drawn corner resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.HtBottomRight` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `614BB3`, PENDING
-  - Falsified if: the value is not winuser.h's HTBOTTOMRIGHT (17), so dragging the bottom-right owner-drawn corner resizes another edge or does nothing
-- `Broiler.Native.Windows.WindowNative.IconSmall` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `6C361E`, PENDING
-  - Falsified if: the value is not winuser.h's ICON_SMALL (0), so WM_SETICON replaces the large icon twice and the caption keeps the class's small icon
-- `Broiler.Native.Windows.WindowNative.IconBig` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `4D6C98`, PENDING
-  - Falsified if: the value is not winuser.h's ICON_BIG (1), so WM_SETICON replaces the small icon twice and the taskbar and Alt+Tab keep the class's large icon
 - `Broiler.Native.Windows.WindowNative.IdiApplication` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `96BA8F`, PENDING
   - Falsified if: the value is not winuser.h's IDI_APPLICATION (32512), so LoadIcon on the executable module finds no icon resource and the class registers with the generic window glyph
-- `Broiler.Native.Windows.WindowNative.DibRgbColors` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `D1227E`, PENDING
-  - Falsified if: the value is not wingdi.h's DIB_RGB_COLORS (0), so CreateDIBSection reads the colour table as DIB_PAL_COLORS palette indices and fails or builds the icon bitmap against the device palette
-- `Broiler.Native.Windows.WindowNative.MonitorDefaultToNearest` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C9D0FD`, PENDING
-  - Falsified if: the value is not winuser.h's MONITOR_DEFAULTTONEAREST (2), so a window off every monitor gets a zero HMONITOR from MonitorFromWindow and the maximised work-area clamp is skipped
 - `Broiler.Native.Windows.WindowNative.WmNccreate` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `905B6E`, PENDING
   - Falsified if: the value is not winuser.h's WM_NCCREATE (0x0081), so the window procedure reads another message's lParam as a CREATESTRUCT pointer and GCHandle.FromIntPtr resolves a garbage handle
 - `Broiler.Native.Windows.WindowNative.WmNcdestroy` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `9A3CC4`, PENDING
   - Falsified if: the value is not winuser.h's WM_NCDESTROY (0x0082), so the GCHandle in GWLP_USERDATA is freed on another message or never, so later messages resolve a freed handle or the window object leaks
-- `Broiler.Native.Windows.WindowNative.WmCreate` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `1FEEFE`, PENDING
-  - Falsified if: the value is not winuser.h's WM_CREATE (0x0001), so the render host and graphics resources are created on another message or never
-- `Broiler.Native.Windows.WindowNative.WmDestroy` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `BC5922`, PENDING
-  - Falsified if: the value is not winuser.h's WM_DESTROY (0x0002), so graphics resources are not released and PostQuitMessage is not posted when the window that owns the loop is destroyed
-- `Broiler.Native.Windows.WindowNative.WmSize` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `708A97`, PENDING
-  - Falsified if: the value is not winuser.h's WM_SIZE (0x0005), so the surface is not resized and the frame is stretched after the window is resized
-- `Broiler.Native.Windows.WindowNative.WmCommand` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `7458AF`, PENDING
-  - Falsified if: the value is not winuser.h's WM_COMMAND (0x0111), so menu and accelerator commands arriving while the window closes are not suppressed
-- `Broiler.Native.Windows.WindowNative.WmPaint` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `DE53C7`, PENDING
-  - Falsified if: the value is not winuser.h's WM_PAINT (0x000F), so the window procedure never validates the client area and user32 resends WM_PAINT in a busy loop
-- `Broiler.Native.Windows.WindowNative.WmEraseBkgnd` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C2853A`, PENDING
-  - Falsified if: the value is not winuser.h's WM_ERASEBKGND (0x0014), so the render host's background erase is not suppressed and each frame flickers through the class brush
-- `Broiler.Native.Windows.WindowNative.WmDpiChanged` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E8068D`, PENDING
-  - Falsified if: the value is not winuser.h's WM_DPICHANGED (0x02E0), so moving the window to a monitor with another scale does not resize the surface and the frame renders at the old DPI
-- `Broiler.Native.Windows.WindowNative.WmTimer` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `89F5F6`, PENDING
-  - Falsified if: the value is not winuser.h's WM_TIMER (0x0113), so the animation timer's ticks reach DefWindowProc and animations never advance
-- `Broiler.Native.Windows.WindowNative.WmMouseMove` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `AB91DA`, PENDING
-  - Falsified if: the value is not winuser.h's WM_MOUSEMOVE (0x0200), so pointer moves over the render host are not reported and hover and drag never update
-- `Broiler.Native.Windows.WindowNative.WmLButtonDown` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `A70806`, PENDING
-  - Falsified if: the value is not winuser.h's WM_LBUTTONDOWN (0x0201), so left-button presses over the render host are not reported as pointer-down
-- `Broiler.Native.Windows.WindowNative.WmLButtonUp` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `87A58A`, PENDING
-  - Falsified if: the value is not winuser.h's WM_LBUTTONUP (0x0202), so left-button releases are not reported and a drag started with the left button never ends
-- `Broiler.Native.Windows.WindowNative.WmRButtonDown` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `35F273`, PENDING
-  - Falsified if: the value is not winuser.h's WM_RBUTTONDOWN (0x0204), so right-button presses over the render host are not reported as pointer-down
-- `Broiler.Native.Windows.WindowNative.WmRButtonUp` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `389F9F`, PENDING
-  - Falsified if: the value is not winuser.h's WM_RBUTTONUP (0x0205), so right-button releases are not reported and a context-menu gesture never completes
-- `Broiler.Native.Windows.WindowNative.WmMButtonDown` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `8D5BF1`, PENDING
-  - Falsified if: the value is not winuser.h's WM_MBUTTONDOWN (0x0207), so middle-button presses over the render host are not reported as pointer-down
-- `Broiler.Native.Windows.WindowNative.WmMButtonUp` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `947FD5`, PENDING
-  - Falsified if: the value is not winuser.h's WM_MBUTTONUP (0x0208), so middle-button releases are not reported and a middle-button gesture never ends
-- `Broiler.Native.Windows.WindowNative.WmMouseWheel` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `2E8C7B`, PENDING
-  - Falsified if: the value is not winuser.h's WM_MOUSEWHEEL (0x020A), so vertical wheel input is not reported and content does not scroll
-- `Broiler.Native.Windows.WindowNative.WmMouseHWheel` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `4BB58B`, PENDING
-  - Falsified if: the value is not winuser.h's WM_MOUSEHWHEEL (0x020E), so horizontal wheel input is not reported and content does not scroll sideways
-- `Broiler.Native.Windows.WindowNative.WmMouseLeave` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `A5ED52`, PENDING
-  - Falsified if: the value is not winuser.h's WM_MOUSELEAVE (0x02A3), so the pointer leaving the render host is not reported and hover state sticks
-- `Broiler.Native.Windows.WindowNative.WmKeyDown` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `59D4F4`, PENDING
-  - Falsified if: the value is not winuser.h's WM_KEYDOWN (0x0100), so key presses are not reported to the window's key handlers
-- `Broiler.Native.Windows.WindowNative.WmKeyUp` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `5469E2`, PENDING
-  - Falsified if: the value is not winuser.h's WM_KEYUP (0x0101), so key releases are not reported and a released key still reads as held in the handlers
-- `Broiler.Native.Windows.WindowNative.WmChar` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `DD18B3`, PENDING
-  - Falsified if: the value is not winuser.h's WM_CHAR (0x0102), so translated character input is not reported and text cannot be typed
-- `Broiler.Native.Windows.WindowNative.WmSysKeyDown` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `951DB1`, PENDING
-  - Falsified if: the value is not winuser.h's WM_SYSKEYDOWN (0x0104), so Alt-modified key presses are not reported to the window's key handlers
-- `Broiler.Native.Windows.WindowNative.WmSetFocus` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `C29429`, PENDING
-  - Falsified if: the value is not winuser.h's WM_SETFOCUS (0x0007), so a handler for keyboard focus arriving runs on another message or never
-- `Broiler.Native.Windows.WindowNative.WmClose` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `64C94B`, PENDING
-  - Falsified if: the value is not winuser.h's WM_CLOSE (0x0010), so the close button does not raise the close request and a secondary window is destroyed under its owner
-- `Broiler.Native.Windows.WindowNative.WmSetIcon` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `D310EC`, PENDING
-  - Falsified if: the value is not winuser.h's WM_SETICON (0x0080), so the caption and taskbar keep their old icons and the replaced icons are destroyed while still set on the window
-- `Broiler.Native.Windows.WindowNative.WmGetIcon` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `B5DCC0`, PENDING
-  - Falsified if: the value is not winuser.h's WM_GETICON (0x007F), so reading a window's icon returns another message's result instead of the HICON set through WM_SETICON
 - `Broiler.Native.Windows.WindowNative.WmNccalcsize` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `91C039`, PENDING
   - Falsified if: the value is not winuser.h's WM_NCCALCSIZE (0x0083), so owner-drawn chrome does not report the whole window as client area and Windows draws its own caption and border over the UI's title bar
-- `Broiler.Native.Windows.WindowNative.WmNchittest` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `4D8EEB`, PENDING
-  - Falsified if: the value is not winuser.h's WM_NCHITTEST (0x0084), so the owner-drawn frame is never hit-tested and its resize border cannot be dragged
-- `Broiler.Native.Windows.WindowNative.WmNcactivate` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `55BAC8`, PENDING
-  - Falsified if: the value is not winuser.h's WM_NCACTIVATE (0x0086), so activating or deactivating the window lets DefWindowProc repaint the native caption over the owner-drawn title bar
-- `Broiler.Native.Windows.WindowNative.WmNcLButtonDown` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `2E49A0`, PENDING
-  - Falsified if: the value is not winuser.h's WM_NCLBUTTONDOWN (0x00A1), so a move or resize drag sends another message and DefWindowProc never enters its move or size loop
-- `Broiler.Native.Windows.WindowNative.MkLButton` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `BF9AF2`, PENDING
-  - Falsified if: the value is not winuser.h's MK_LBUTTON (0x0001), so the left-button state in a mouse message's wParam is decoded as another button and drags report the wrong buttons
-- `Broiler.Native.Windows.WindowNative.MkControl` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `EC2C68`, PENDING
-  - Falsified if: the value is not winuser.h's MK_CONTROL (0x0008), so Ctrl held during a wheel or click is decoded as another key and Ctrl+wheel zoom does not trigger
-- `Broiler.Native.Windows.WindowNative.MkShift` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `DF5B3C`, PENDING
-  - Falsified if: the value is not winuser.h's MK_SHIFT (0x0004), so Shift held during a click is decoded as another key and Shift+click does not extend a selection
-- `Broiler.Native.Windows.WindowNative.MkRButton` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E958D6`, PENDING
-  - Falsified if: the value is not winuser.h's MK_RBUTTON (0x0002), so the right-button state in a mouse message's wParam is decoded as another button
-- `Broiler.Native.Windows.WindowNative.MkMButton` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `8DD374`, PENDING
-  - Falsified if: the value is not winuser.h's MK_MBUTTON (0x0010), so the middle-button state in a mouse message's wParam is decoded as another button
-- `Broiler.Native.Windows.WindowNative.VkControl` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `0A938A`, PENDING
-  - Falsified if: the value is not winuser.h's VK_CONTROL (0x11), so GetKeyState reports another key's state as the Ctrl modifier
-- `Broiler.Native.Windows.WindowNative.VkShift` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `08A3D7`, PENDING
-  - Falsified if: the value is not winuser.h's VK_SHIFT (0x10), so GetKeyState reports another key's state as the Shift modifier
-- `Broiler.Native.Windows.WindowNative.VkMenu` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `EE1A5E`, PENDING
-  - Falsified if: the value is not winuser.h's VK_MENU (0x12), so GetKeyState reports another key's state as the Alt modifier
-- `Broiler.Native.Windows.WindowNative.WheelDelta` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `F3C491`, PENDING
-  - Falsified if: the value is not winuser.h's WHEEL_DELTA (120), so one notch of the wheel scrolls by a fraction or a multiple of a line step
-- `Broiler.Native.Windows.WindowNative.TmeLeave` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, Spec=none cited, `E93D95`, PENDING
-  - Falsified if: the value is not winuser.h's TME_LEAVE (0x00000002), so TrackMouseEvent arms hover or another notification and WM_MOUSELEAVE is never posted
 - `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, Spec=none cited, `82A0F5`, PENDING
   - Falsified if: a probe through IsAvailable leaves a library the process had not loaded before still mapped after the call returns, true or false
 - `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, Spec=none cited, `A7B31A`, PENDING

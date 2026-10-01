@@ -8,8 +8,8 @@
 // Exempt:           27
 // Human-reviewed:   0/20
 // IP risk:          Low
-// Security risk:    High
-// Criteria:         20/20
+// Security risk:    Critical
+// Criteria:         20/14
 // Resource impact:  0/10 max
 // Unverified:       20
 //
@@ -25,8 +25,8 @@ namespace Broiler.Native.Windows.Direct2D;
 /// Structures use <see cref="StructLayoutAttribute"/> with sequential layout so they
 /// can be marshalled blittably.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=AC7CA2
-// Broiler-Falsified-If: a vtable slot constant does not follow dxgi.h's method order, so ComVtable.Method calls a different IDXGISwapChain or IDXGIFactory2 method with the wrong argument list
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=AC7CA2
+// Broiler-Falsified-If: DXGI_FORMAT.B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a value naming a wider format such as R16G16B16A16_UNORM (11) makes CreateBitmap read 8 bytes per pixel from a source buffer the caller sized at 4
 // Broiler-Human:        PENDING
 public static class DxgiNative
 {
@@ -96,8 +96,8 @@ public static class DxgiNative
 
     // ---- Enums -----------------------------------------------------------------------------------
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AE923C
-    // Broiler-Falsified-If: B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a BGRA swap chain is created as RGBA and red and blue swap on present
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=AE923C
+    // Broiler-Falsified-If: B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a value naming a wider format such as R16G16B16A16_UNORM (11) makes CreateBitmap read 8 bytes per pixel from a source buffer the caller sized at 4
     // Broiler-Human:        PENDING
     public enum DXGI_FORMAT : uint
     {
@@ -106,7 +106,7 @@ public static class DxgiNative
         B8G8R8A8_UNORM = 87,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=934555
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=934555
     // Broiler-Falsified-If: FLIP_SEQUENTIAL is not 3 as in dxgi.h, so CreateSwapChainForComposition, which accepts only flip-model effects, returns DXGI_ERROR_INVALID_CALL
     // Broiler-Human:        PENDING
     public enum DXGI_SWAP_EFFECT : uint
@@ -117,7 +117,7 @@ public static class DxgiNative
         FLIP_DISCARD = 4,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=62E17F
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=62E17F
     // Broiler-Falsified-If: STRETCH is not 0 as in dxgi1_2.h, so CreateSwapChainForComposition, which accepts only DXGI_SCALING_STRETCH, returns DXGI_ERROR_INVALID_CALL
     // Broiler-Human:        PENDING
     public enum DXGI_SCALING : uint
@@ -127,7 +127,7 @@ public static class DxgiNative
         ASPECT_RATIO_STRETCH = 2,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=B7E7AD
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B7E7AD
     // Broiler-Falsified-If: PREMULTIPLIED is not 1 as in dxgi1_2.h, so a composition swap chain interprets premultiplied pixels as straight alpha and translucent edges composite too dark
     // Broiler-Human:        PENDING
     public enum DXGI_ALPHA_MODE : uint
@@ -139,17 +139,17 @@ public static class DxgiNative
     }
 
     /// <summary>Common DXGI error codes surfaced as HRESULTs.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=FB32A3
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=FB32A3
     // Broiler-Falsified-If: the value differs from dxgi.h's 0x887A0005, so a Present that returns DXGI_ERROR_DEVICE_REMOVED is not recognised as device loss and the surface keeps drawing to the removed device
     // Broiler-Human:        PENDING
     public const int DXGI_ERROR_DEVICE_REMOVED = unchecked((int)0x887A0005);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=BED815
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=BED815
     // Broiler-Falsified-If: the value differs from dxgi.h's 0x887A0007, so a DXGI_ERROR_DEVICE_RESET result is not recognised as device loss and the device is never recreated
     // Broiler-Human:        PENDING
     public const int DXGI_ERROR_DEVICE_RESET = unchecked((int)0x887A0007);
 
     /// <summary>Swap-chain buffer usage flag used for render-target back buffers.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=7A0151
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7A0151
     // Broiler-Falsified-If: the value differs from dxgi.h's 0x20 (1 shifted left by 1 + 4), so the back buffer cannot be bound as a Direct2D target and CreateBitmapFromDxgiSurface fails
     // Broiler-Human:        PENDING
     public const uint DXGI_USAGE_RENDER_TARGET_OUTPUT = 0x00000020;
@@ -167,7 +167,7 @@ public static class DxgiNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DBD1C7
-    // Broiler-Falsified-If: Marshal.SizeOf is not 48 or Stereo is not a 4-byte BOOL, so CreateSwapChainForHwnd reads SampleDesc and the later fields at shifted offsets or past the end of the caller's struct
+    // Broiler-Falsified-If: Marshal.SizeOf is not 48 or Stereo is not a 4-byte BOOL, so CreateSwapChainForHwnd reads SampleDesc and the later fields at shifted offsets
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DXGI_SWAP_CHAIN_DESC1

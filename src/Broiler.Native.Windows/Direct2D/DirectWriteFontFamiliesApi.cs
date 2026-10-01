@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Direct2D;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=6C4DE2
-// Broiler-Falsified-If: a GetStringProc call whose size exceeds the WCHAR capacity of buffer makes GetString write the name and its terminator past the allocation
+// Broiler-Falsified-If: GetStringProc's buffer and size reach IDWriteLocalizedStrings::GetString(UINT32, WCHAR*, UINT32) in swapped positions, so the name and its terminator are written to the address given by the capacity
 // Broiler-Human:        PENDING
 public static class DirectWriteFontFamiliesApi
 {
@@ -39,13 +39,13 @@ public static class DirectWriteFontFamiliesApi
     public delegate uint GetFontFamilyCountProc(IntPtr self);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=7109EE
-    // Broiler-Falsified-If: the HRESULT for an index equal to GetFontFamilyCount is ignored and the null family pointer it leaves is dereferenced through ComVtable
+    // Broiler-Falsified-If: index and the family out reach IDWriteFontCollection::GetFontFamily(UINT32, IDWriteFontFamily**) in swapped positions, so the family pointer is written through the index value as an address
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetFontFamilyProc(IntPtr self, uint index, out IntPtr family);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=31159B
-    // Broiler-Falsified-If: the IDWriteLocalizedStrings written to names is not released once per successful call, leaking one per enumerated family
+    // Broiler-Falsified-If: names is not declared as an out IDWriteLocalizedStrings**, so GetFamilyNames writes the strings pointer through an address formed from the caller's argument
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetFamilyNamesProc(IntPtr self, out IntPtr names);
@@ -58,13 +58,13 @@ public static class DirectWriteFontFamiliesApi
         out uint index, [MarshalAs(UnmanagedType.Bool)] out bool exists);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=BAB88A
-    // Broiler-Falsified-If: the returned length is used as the GetString size with no room for the terminating NUL, so GetString fails with E_NOT_SUFFICIENT_BUFFER
+    // Broiler-Falsified-If: index and the length out reach IDWriteLocalizedStrings::GetStringLength(UINT32, UINT32*) in swapped positions, so the length is written through the index value as an address
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetStringLengthProc(IntPtr self, uint index, out uint length);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=15EEF0
-    // Broiler-Falsified-If: size is larger than the WCHAR capacity of buffer, so GetString writes the name and its NUL terminator past the end of the allocation
+    // Broiler-Falsified-If: buffer and size reach IDWriteLocalizedStrings::GetString(UINT32, WCHAR*, UINT32) in swapped positions, so the name and its terminator are written to the address given by the capacity
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetStringProc(IntPtr self, uint index, IntPtr buffer, uint size);

@@ -9,7 +9,7 @@
 // Human-reviewed:   0/54
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         54/54
+// Criteria:         54/33
 // Resource impact:  6/10 max
 // Unverified:       54
 //
@@ -21,15 +21,15 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Linux.OpenGL;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=B1E919
-// Broiler-Falsified-If: ReadPixels writes height rows of width x 4 bytes through the caller's pixels pointer with no length argument, so a buffer smaller than that is overrun by the driver
+// Broiler-Falsified-If: GlReadPixelsProc's seven declared parameters differ in order from glReadPixels(x, y, width, height, format, type, pixels), so format and type arrive swapped and the driver writes another number of bytes per pixel through the pixels pointer
 // Broiler-Human:        PENDING
 public sealed class LinuxOpenGlFunctions
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=18A47D
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=18A47D
     // Broiler-Falsified-If: the value differs from GL_NO_ERROR (0) in the Khronos gl.h, so ThrowIfError throws after a successful call or stays silent after a failed one
     // Broiler-Human:        PENDING
     public const int GL_NO_ERROR = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=486868
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=486868
     // Broiler-Falsified-If: the value differs from GL_TEXTURE_2D (0x0DE1) in gl.h, so glBindTexture and glTexImage2D fail with GL_INVALID_ENUM or address another texture target
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_2D = 0x0DE1;
@@ -37,7 +37,7 @@ public sealed class LinuxOpenGlFunctions
     // Broiler-Falsified-If: the value differs from GL_RGBA (0x1908) in gl.h, so glReadPixels and glTexImage2D move a different number of components per pixel than the 4-byte-per-pixel buffers callers size
     // Broiler-Human:        PENDING
     public const int GL_RGBA = 0x1908;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=616C07
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=616C07
     // Broiler-Falsified-If: the value differs from GL_RGBA8 (0x8058) in gl.h, so glTexImage2D allocates another internal format and the colour attachment is incomplete or loses precision
     // Broiler-Human:        PENDING
     public const int GL_RGBA8 = 0x8058;
@@ -45,55 +45,55 @@ public sealed class LinuxOpenGlFunctions
     // Broiler-Falsified-If: the value differs from GL_UNSIGNED_BYTE (0x1401) in gl.h, so pixel transfers use a wider component type and the driver reads or writes past a buffer sized at one byte per component
     // Broiler-Human:        PENDING
     public const int GL_UNSIGNED_BYTE = 0x1401;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=ED3B88
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=ED3B88
     // Broiler-Falsified-If: the value differs from GL_TEXTURE_MIN_FILTER (0x2801) in gl.h, so the texture keeps the default mipmapping minification filter and samples as incomplete with only level 0 defined
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_MIN_FILTER = 0x2801;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=464BAE
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=464BAE
     // Broiler-Falsified-If: the value differs from GL_TEXTURE_MAG_FILTER (0x2800) in gl.h, so glTexParameteri fails with GL_INVALID_ENUM or sets another parameter and magnification keeps its default filter
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_MAG_FILTER = 0x2800;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E8912E
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E8912E
     // Broiler-Falsified-If: the value differs from GL_TEXTURE_WRAP_S (0x2802) in gl.h, so the horizontal wrap mode stays GL_REPEAT and edge texels bleed in from the opposite side
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_WRAP_S = 0x2802;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0DF071
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0DF071
     // Broiler-Falsified-If: the value differs from GL_TEXTURE_WRAP_T (0x2803) in gl.h, so the vertical wrap mode stays GL_REPEAT and edge texels bleed in from the opposite side
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_WRAP_T = 0x2803;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6B549F
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6B549F
     // Broiler-Falsified-If: the value differs from GL_LINEAR (0x2601) in gl.h, so glTexParameteri or glBlitFramebuffer rejects the filter with GL_INVALID_ENUM
     // Broiler-Human:        PENDING
     public const int GL_LINEAR = 0x2601;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=7E8CAD
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7E8CAD
     // Broiler-Falsified-If: the value differs from GL_NEAREST (0x2600) in gl.h, so glTexParameteri or glBlitFramebuffer rejects the filter with GL_INVALID_ENUM
     // Broiler-Human:        PENDING
     public const int GL_NEAREST = 0x2600;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1CAE98
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1CAE98
     // Broiler-Falsified-If: the value differs from GL_CLAMP_TO_EDGE (0x812F) in gl.h, so glTexParameteri rejects the wrap mode with GL_INVALID_ENUM and the texture keeps GL_REPEAT
     // Broiler-Human:        PENDING
     public const int GL_CLAMP_TO_EDGE = 0x812F;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=63A28A
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=63A28A
     // Broiler-Falsified-If: the value differs from GL_FRAMEBUFFER (0x8D40) in gl.h, so glBindFramebuffer and glFramebufferTexture2D fail with GL_INVALID_ENUM and drawing goes to the default framebuffer
     // Broiler-Human:        PENDING
     public const int GL_FRAMEBUFFER = 0x8D40;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F6251B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F6251B
     // Broiler-Falsified-If: the value differs from GL_READ_FRAMEBUFFER (0x8CA8) in gl.h, so glReadPixels reads from whichever framebuffer was bound for reading before
     // Broiler-Human:        PENDING
     public const int GL_READ_FRAMEBUFFER = 0x8CA8;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=62E432
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=62E432
     // Broiler-Falsified-If: the value differs from GL_DRAW_FRAMEBUFFER (0x8CA9) in gl.h, so glBlitFramebuffer writes into whichever framebuffer was bound for drawing before
     // Broiler-Human:        PENDING
     public const int GL_DRAW_FRAMEBUFFER = 0x8CA9;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=46BB0D
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=46BB0D
     // Broiler-Falsified-If: the value differs from GL_COLOR_ATTACHMENT0 (0x8CE0) in gl.h, so glFramebufferTexture2D attaches the texture elsewhere and the framebuffer reports incomplete
     // Broiler-Human:        PENDING
     public const int GL_COLOR_ATTACHMENT0 = 0x8CE0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F456FE
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F456FE
     // Broiler-Falsified-If: the value differs from GL_FRAMEBUFFER_COMPLETE (0x8CD5) in gl.h, so a complete framebuffer is rejected or an incomplete one is accepted and later reads return undefined pixels
     // Broiler-Human:        PENDING
     public const int GL_FRAMEBUFFER_COMPLETE = 0x8CD5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DB1E23
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DB1E23
     // Broiler-Falsified-If: the value differs from GL_COLOR_BUFFER_BIT (0x4000) in gl.h, so glClear or glBlitFramebuffer acts on the depth or stencil buffer instead of colour
     // Broiler-Human:        PENDING
     public const int GL_COLOR_BUFFER_BIT = 0x4000;
@@ -105,23 +105,23 @@ public sealed class LinuxOpenGlFunctions
     // Broiler-Falsified-If: the value differs from GL_UNPACK_ALIGNMENT (0x0CF5) in gl.h, so a row alignment wider than 4 stays in effect and glTexImage2D of an odd-width RGBA image reads padded rows past a tightly packed buffer
     // Broiler-Human:        PENDING
     public const int GL_UNPACK_ALIGNMENT = 0x0CF5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D94511
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D94511
     // Broiler-Falsified-If: the value differs from GL_SCISSOR_TEST (0x0C11) in gl.h, so glEnable leaves scissoring off and glClear paints the whole framebuffer instead of the scissor rectangle
     // Broiler-Human:        PENDING
     public const int GL_SCISSOR_TEST = 0x0C11;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=FA360B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=FA360B
     // Broiler-Falsified-If: the value differs from GL_VENDOR (0x1F00) in gl.h, so glGetString returns NULL or another string and the driver report names the wrong vendor
     // Broiler-Human:        PENDING
     public const uint GL_VENDOR = 0x1F00;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=8CE1CD
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=8CE1CD
     // Broiler-Falsified-If: the value differs from GL_RENDERER (0x1F01) in gl.h, so glGetString returns NULL or another string and the driver report names the wrong renderer
     // Broiler-Human:        PENDING
     public const uint GL_RENDERER = 0x1F01;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DC1AB2
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=DC1AB2
     // Broiler-Falsified-If: the value differs from GL_VERSION (0x1F02) in gl.h, so glGetString returns NULL or another string and the driver report states the wrong context version
     // Broiler-Human:        PENDING
     public const uint GL_VERSION = 0x1F02;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E87C00
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=E87C00
     // Broiler-Falsified-If: the value differs from GL_SHADING_LANGUAGE_VERSION (0x8B8C) in gl.h, so glGetString returns NULL or another string and the driver report states the wrong GLSL version
     // Broiler-Human:        PENDING
     public const uint GL_SHADING_LANGUAGE_VERSION = 0x8B8C;
@@ -228,7 +228,7 @@ public sealed class LinuxOpenGlFunctions
     public void Flush() => _flush();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=525EF7
-    // Broiler-Falsified-If: a non-zero pointer that is not a NUL-terminated driver string (for example one returned while no context is current) is scanned by PtrToStringAnsi past the end of the driver's allocation
+    // Broiler-Falsified-If: a NULL from glGetString, returned when no context is current, is passed to PtrToStringAnsi or reported as an empty string rather than as unavailable
     // Broiler-Human:        PENDING
     public string GetString(uint name)
     {
@@ -239,7 +239,7 @@ public sealed class LinuxOpenGlFunctions
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=AAF5FB
-    // Broiler-Falsified-If: GL_SHADING_LANGUAGE_VERSION is queried on a context older than OpenGL 2.0, so glGetString returns NULL with GL_INVALID_ENUM left pending and the next ThrowIfError blames an unrelated operation
+    // Broiler-Falsified-If: two of the GL_VENDOR, GL_RENDERER, GL_VERSION and GL_SHADING_LANGUAGE_VERSION queries are passed in swapped positions, so Renderer holds the version string
     // Broiler-Human:        PENDING
     public LinuxOpenGlDriverInfo GetDriverInfo() =>
         new(GetString(GL_VENDOR), GetString(GL_RENDERER), GetString(GL_VERSION), GetString(GL_SHADING_LANGUAGE_VERSION));
@@ -291,7 +291,7 @@ public sealed class LinuxOpenGlFunctions
     private delegate void GlTexParameteriProc(int target, int pname, int param);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=53B054
-    // Broiler-Falsified-If: a pixels buffer shorter than height rows of width x 4 bytes (GL_RGBA, GL_UNSIGNED_BYTE, each row rounded up to GL_UNPACK_ALIGNMENT) is read past its end by glTexImage2D
+    // Broiler-Falsified-If: the nine declared parameters differ in order from glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels), so format and type arrive swapped and the driver reads another number of bytes per pixel from the pixels pointer
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlTexImage2DProc(int target, int level, int internalFormat, int width, int height, int border, int format, int type, IntPtr pixels);
@@ -345,7 +345,7 @@ public sealed class LinuxOpenGlFunctions
     private delegate void GlClearProc(int mask);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=4D8968
-    // Broiler-Falsified-If: a pixels buffer shorter than height rows of width x 4 bytes (GL_RGBA, GL_UNSIGNED_BYTE, each row rounded up to GL_PACK_ALIGNMENT) is written past its end by glReadPixels
+    // Broiler-Falsified-If: the seven declared parameters differ in order from glReadPixels(x, y, width, height, format, type, pixels), so format and type arrive swapped and the driver writes another number of bytes per pixel through the pixels pointer
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlReadPixelsProc(int x, int y, int width, int height, int format, int type, IntPtr pixels);

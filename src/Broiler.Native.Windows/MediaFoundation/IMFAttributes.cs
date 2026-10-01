@@ -29,7 +29,7 @@ namespace Broiler.Native.Windows.MediaFoundation;
 public partial interface IMFAttributes
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=CE6DAE
-    // Broiler-Falsified-If: a value pointer addressing fewer than 24 bytes on x64 (16 on x86) is overrun when native code copies the stored PROPVARIANT into it
+    // Broiler-Falsified-If: GetItem is not vtable slot 3, directly after IUnknown, so a lookup reaches GetItemType and the PROPVARIANT the caller then reads holds only a 4-byte type code
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItem(ref Guid key, IntPtr value);
@@ -41,7 +41,7 @@ public partial interface IMFAttributes
     int GetItemType(ref Guid key, out int type);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=E2FA0C
-    // Broiler-Falsified-If: a value pointer that does not address a fully initialised native-size PROPVARIANT lets native code read past it or follow a garbage string or blob pointer inside it
+    // Broiler-Falsified-If: CompareItem is not vtable slot 5, after GetItemType, so a comparison reaches Compare and native code calls through the PROPVARIANT pointer as an IMFAttributes object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CompareItem(ref Guid key, IntPtr value, [MarshalAs(UnmanagedType.Bool)] out bool result);
@@ -83,13 +83,13 @@ public partial interface IMFAttributes
     int GetStringLength(ref Guid key, out int length);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=77BE94
-    // Broiler-Falsified-If: a size counted in bytes rather than UTF-16 characters lets native code write up to twice the buffer length, terminator included, into value
+    // Broiler-Falsified-If: value and size reach IMFAttributes::GetString(REFGUID, LPWSTR, UINT32, UINT32*) in swapped positions, so the string is written to the address given by the capacity
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetString(ref Guid key, IntPtr value, int size, out int length);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=028D50
-    // Broiler-Falsified-If: the pointer written to value is freed with anything other than CoTaskMemFree, or not freed, so each call leaks or corrupts the COM task-memory block holding the string
+    // Broiler-Falsified-If: value and length reach GetAllocatedString(REFGUID, LPWSTR*, UINT32*) in swapped positions, so the string pointer is written into the 4-byte length and the caller frees a truncated address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAllocatedString(ref Guid key, out IntPtr value, out int length);
@@ -101,25 +101,25 @@ public partial interface IMFAttributes
     int GetBlobSize(ref Guid key, out int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=DF996E
-    // Broiler-Falsified-If: a bufferSize larger than the bytes buffer addresses lets native code copy the stored blob past the end of the caller's buffer
+    // Broiler-Falsified-If: buffer and bufferSize reach IMFAttributes::GetBlob(REFGUID, UINT8*, UINT32, UINT32*) in swapped positions, so the blob is copied to the address given by the size
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBlob(ref Guid key, IntPtr buffer, int bufferSize, out int blobSize);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=D95683
-    // Broiler-Falsified-If: a caller copies more than the returned size bytes out of buffer and reads past the end of the CoTaskMemAlloc block
+    // Broiler-Falsified-If: buffer and size reach GetAllocatedBlob(REFGUID, UINT8**, UINT32*) in swapped positions, so the blob pointer is written into the 4-byte size and the caller reads through a truncated address
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAllocatedBlob(ref Guid key, out IntPtr buffer, out int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D93F2C
-    // Broiler-Falsified-If: the AddRef'd interface pointer written to value is not released by the caller, so each call leaks one reference to the stored object
+    // Broiler-Falsified-If: key and interfaceId reach GetUnknown(REFGUID, REFIID, LPVOID*) in swapped positions, so the store looks the IID up as the key and returns an object queried for the key GUID
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetUnknown(ref Guid key, ref Guid interfaceId, out IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=8A63F9
-    // Broiler-Falsified-If: a value pointer that does not address an initialised native-size PROPVARIANT lets native code read past it and copy a garbage string or blob pointer into the store
+    // Broiler-Falsified-If: SetItem is not vtable slot 18, after GetUnknown, so a store request reaches GetUnknown and native code writes an interface pointer through the PROPVARIANT argument
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetItem(ref Guid key, IntPtr value);
@@ -167,19 +167,19 @@ public partial interface IMFAttributes
     int SetString(ref Guid key, [MarshalAs(UnmanagedType.LPWStr)] string value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=643E87
-    // Broiler-Falsified-If: a size larger than the bytes buffer addresses lets native code copy memory past the end of the caller's buffer into the store
+    // Broiler-Falsified-If: buffer and size reach IMFAttributes::SetBlob(REFGUID, const UINT8*, UINT32) in swapped positions, so the store copies the blob from the address given by the size
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetBlob(ref Guid key, IntPtr buffer, int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=EB4C73
-    // Broiler-Falsified-If: a value that is not a live IUnknown pointer, such as one already released, makes native code call AddRef through a freed vtable
+    // Broiler-Falsified-If: SetUnknown is not vtable slot 27, after SetBlob, so a store request reaches SetBlob and native code copies from the IUnknown pointer with an unset size
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUnknown(ref Guid key, IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=52D8D9
-    // Broiler-Falsified-If: a LockStore call is not matched by UnlockStore on every path, so another thread calling any member on the same store blocks indefinitely
+    // Broiler-Falsified-If: LockStore is not vtable slot 28, directly after SetUnknown, so a lock request reaches SetUnknown or UnlockStore and the attribute store is never locked
     // Broiler-Human:        PENDING
     [PreserveSig]
     int LockStore();
@@ -197,7 +197,7 @@ public partial interface IMFAttributes
     int GetCount(out int count);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=57C3C3
-    // Broiler-Falsified-If: a non-null value pointer addressing fewer than 24 bytes on x64 (16 on x86) is overrun when native code copies the indexed item's PROPVARIANT into it
+    // Broiler-Falsified-If: GetItemByIndex is not vtable slot 31, after GetCount, so an indexed read reaches CopyAllItems and native code calls through the GUID out pointer as an IMFAttributes object
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItemByIndex(int index, out Guid key, IntPtr value);

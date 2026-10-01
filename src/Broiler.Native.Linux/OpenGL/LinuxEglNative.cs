@@ -9,8 +9,8 @@
 // Human-reviewed:   0/36
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         36/36
-// Resource impact:  4/10 max
+// Criteria:         36/16
+// Resource impact:  5/10 max
 // Unverified:       36
 //
 // GENERATED - DO NOT EDIT MANUALLY
@@ -20,16 +20,16 @@ using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Linux.OpenGL;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=9489E2
-// Broiler-Falsified-If: a configSize larger than configs.Length lets eglChooseConfig write EGLConfig handles past the end of the pinned managed array
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=9489E2
+// Broiler-Falsified-If: ChooseConfig's configs array is not of pointer-sized EGLConfig handles, so on x86-64 eglChooseConfig writes 8-byte handles past the end of the pinned array
 // Broiler-Human:        PENDING
 public static partial class LinuxEglNative
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=EEE3BF
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EEE3BF
     // Broiler-Falsified-If: EGL_FALSE differs from 0, so a failed eglInitialize, eglMakeCurrent or eglSwapBuffers compares unequal to it and is treated as success
     // Broiler-Human:        PENDING
     public const int EGL_FALSE = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=20CED0
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=20CED0
     // Broiler-Falsified-If: EGL_TRUE differs from 1, so a successful EGL call compared against it is treated as a failure
     // Broiler-Human:        PENDING
     public const int EGL_TRUE = 1;
@@ -38,76 +38,76 @@ public static partial class LinuxEglNative
     // Broiler-Falsified-If: EGL_NONE differs from 0x3038, so attribute lists ending in it are unterminated and eglChooseConfig or eglCreateContext reads attribute pairs past the end of the array
     // Broiler-Human:        PENDING
     public const int EGL_NONE = 0x3038;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=C99A69
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C99A69
     // Broiler-Falsified-If: EGL_RED_SIZE differs from 0x3024, so the 8-bit red request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
     // Broiler-Human:        PENDING
     public const int EGL_RED_SIZE = 0x3024;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F45F72
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F45F72
     // Broiler-Falsified-If: EGL_GREEN_SIZE differs from 0x3023, so the 8-bit green request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
     // Broiler-Human:        PENDING
     public const int EGL_GREEN_SIZE = 0x3023;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=3C817F
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=3C817F
     // Broiler-Falsified-If: EGL_BLUE_SIZE differs from 0x3022, so the 8-bit blue request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
     // Broiler-Human:        PENDING
     public const int EGL_BLUE_SIZE = 0x3022;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=9ADE51
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9ADE51
     // Broiler-Falsified-If: EGL_ALPHA_SIZE differs from 0x3021, so a config without an alpha channel is chosen and read-back pixels lose transparency
     // Broiler-Human:        PENDING
     public const int EGL_ALPHA_SIZE = 0x3021;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=3EB559
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=3EB559
     // Broiler-Falsified-If: EGL_DEPTH_SIZE differs from 0x3025, so the depth request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
     // Broiler-Human:        PENDING
     public const int EGL_DEPTH_SIZE = 0x3025;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1FD37C
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1FD37C
     // Broiler-Falsified-If: EGL_STENCIL_SIZE differs from 0x3026, so the stencil request is applied to another attribute or rejected with EGL_BAD_ATTRIBUTE
     // Broiler-Human:        PENDING
     public const int EGL_STENCIL_SIZE = 0x3026;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AB3532
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AB3532
     // Broiler-Falsified-If: EGL_SURFACE_TYPE differs from 0x3033, so a config that cannot back a window or pbuffer surface is chosen and surface creation fails with EGL_BAD_MATCH
     // Broiler-Human:        PENDING
     public const int EGL_SURFACE_TYPE = 0x3033;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=77486E
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=77486E
     // Broiler-Falsified-If: EGL_RENDERABLE_TYPE differs from 0x3040, so a config without desktop OpenGL support is chosen and eglCreateContext fails with EGL_BAD_CONFIG
     // Broiler-Human:        PENDING
     public const int EGL_RENDERABLE_TYPE = 0x3040;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=9FCA3C
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9FCA3C
     // Broiler-Falsified-If: EGL_WIDTH differs from 0x3057, so eglCreatePbufferSurface rejects the list or creates a pbuffer of the default zero width
     // Broiler-Human:        PENDING
     public const int EGL_WIDTH = 0x3057;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=5C4021
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5C4021
     // Broiler-Falsified-If: EGL_HEIGHT differs from 0x3056, so eglCreatePbufferSurface rejects the list or creates a pbuffer of the default zero height
     // Broiler-Human:        PENDING
     public const int EGL_HEIGHT = 0x3056;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F6E397
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F6E397
     // Broiler-Falsified-If: EGL_CONTEXT_MAJOR_VERSION differs from 0x3098, so the requested OpenGL 3.x context is created as a 1.x context or rejected with EGL_BAD_ATTRIBUTE
     // Broiler-Human:        PENDING
     public const int EGL_CONTEXT_MAJOR_VERSION = 0x3098;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0A6C46
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0A6C46
     // Broiler-Falsified-If: EGL_CONTEXT_MINOR_VERSION differs from 0x30FB, so the minor version request is rejected with EGL_BAD_ATTRIBUTE or ignored
     // Broiler-Human:        PENDING
     public const int EGL_CONTEXT_MINOR_VERSION = 0x30FB;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=8338EC
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=8338EC
     // Broiler-Falsified-If: EGL_CONTEXT_OPENGL_PROFILE_MASK differs from 0x30FD, so the core-profile request is rejected or a compatibility context is created instead
     // Broiler-Human:        PENDING
     public const int EGL_CONTEXT_OPENGL_PROFILE_MASK = 0x30FD;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=55F42F
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=55F42F
     // Broiler-Falsified-If: EGL_PBUFFER_BIT differs from 0x0001, so the offscreen path chooses a config that eglCreatePbufferSurface rejects with EGL_BAD_MATCH
     // Broiler-Human:        PENDING
     public const int EGL_PBUFFER_BIT = 0x0001;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0A0099
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0A0099
     // Broiler-Falsified-If: EGL_WINDOW_BIT differs from 0x0004, so the window path chooses a config that eglCreateWindowSurface rejects with EGL_BAD_MATCH
     // Broiler-Human:        PENDING
     public const int EGL_WINDOW_BIT = 0x0004;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=88F4A0
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=88F4A0
     // Broiler-Falsified-If: EGL_OPENGL_BIT differs from 0x0008, so the chosen config renders only OpenGL ES and the desktop OpenGL context cannot be created on it
     // Broiler-Human:        PENDING
     public const int EGL_OPENGL_BIT = 0x0008;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AA8383
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AA8383
     // Broiler-Falsified-If: EGL_OPENGL_API differs from 0x30A2, so eglBindAPI fails with EGL_BAD_PARAMETER or binds OpenGL ES (0x30A0) instead of desktop OpenGL
     // Broiler-Human:        PENDING
     public const int EGL_OPENGL_API = 0x30A2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F4A90D
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F4A90D
     // Broiler-Falsified-If: EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT differs from 0x00000001, so the profile mask asks for the compatibility profile or an invalid one
     // Broiler-Human:        PENDING
     public const int EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT = 0x00000001;
@@ -136,14 +136,14 @@ public static partial class LinuxEglNative
     [LibraryImport("libEGL.so.1", EntryPoint = "eglBindAPI")]
     public static partial int BindApi(int api);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=7A0D75
-    // Broiler-Falsified-If: a configSize larger than configs.Length lets eglChooseConfig write EGLConfig handles past the end of the pinned array
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=7A0D75
+    // Broiler-Falsified-If: configs is not marshalled as an array of pointer-sized EGLConfig handles, so on x86-64 eglChooseConfig writes 8-byte handles into 4-byte elements and runs past the pinned array
     // Broiler-Human:        PENDING
     [LibraryImport("libEGL.so.1", EntryPoint = "eglChooseConfig")]
     public static partial int ChooseConfig(IntPtr display, int[] attribList, IntPtr[] configs, int configSize, out int numConfig);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=9110AD
-    // Broiler-Falsified-If: an attribList without a trailing EGL_NONE makes eglCreateContext read attribute pairs past the end of the pinned array
+    // Broiler-Falsified-If: attribList and shareContext reach eglCreateContext(EGLDisplay, EGLConfig, EGLContext, const EGLint*) in swapped positions, so EGL walks the share context's memory as an attribute list
     // Broiler-Human:        PENDING
     [LibraryImport("libEGL.so.1", EntryPoint = "eglCreateContext")]
     public static partial IntPtr CreateContext(IntPtr display, IntPtr config, IntPtr shareContext, int[] attribList);
@@ -154,14 +154,14 @@ public static partial class LinuxEglNative
     [LibraryImport("libEGL.so.1", EntryPoint = "eglDestroyContext")]
     public static partial int DestroyContext(IntPtr display, IntPtr context);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=E5C06E
-    // Broiler-Falsified-If: an attribList without a trailing EGL_NONE makes eglCreatePbufferSurface read attribute pairs past the end of the pinned array
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=E5C06E
+    // Broiler-Falsified-If: config and attribList reach eglCreatePbufferSurface(EGLDisplay, EGLConfig, const EGLint*) in swapped positions, so EGL walks the config handle's memory as an attribute list
     // Broiler-Human:        PENDING
     [LibraryImport("libEGL.so.1", EntryPoint = "eglCreatePbufferSurface")]
     public static partial IntPtr CreatePbufferSurface(IntPtr display, IntPtr config, int[] attribList);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=26BB95
-    // Broiler-Falsified-If: an attribList without a trailing EGL_NONE makes eglCreateWindowSurface read attribute pairs past the end of the pinned array
+    // Broiler-Falsified-If: nativeWindow and attribList reach eglCreateWindowSurface(EGLDisplay, EGLConfig, EGLNativeWindowType, const EGLint*) in swapped positions, so EGL walks the X window id as an attribute list and takes the array address as the window
     // Broiler-Human:        PENDING
     [LibraryImport("libEGL.so.1", EntryPoint = "eglCreateWindowSurface")]
     public static partial IntPtr CreateWindowSurface(IntPtr display, IntPtr config, IntPtr nativeWindow, int[] attribList);

@@ -21,13 +21,13 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Direct2D;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=E4A9A2
-// Broiler-Falsified-If: a CreateTextLayoutProc call with textLength greater than text.Length makes IDWriteFactory::CreateTextLayout read UTF-16 units past the marshalled string
+// Broiler-Falsified-If: CreateTextLayoutProc's textLength is not passed as the 32-bit UINT32 directly after the string pointer, so CreateTextLayout reads a length taken from other bits and walks UTF-16 units past the marshalled text
 // Broiler-Human:        PENDING
 public static class DirectWriteTextMetricsProviderApi
 {
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=671FA2
-    // Broiler-Falsified-If: a call with textLength greater than text.Length makes CreateTextLayout read UTF-16 code units past the end of the marshalled string
+    // Broiler-Falsified-If: textLength is not passed as the 32-bit UINT32 directly after the string pointer, so CreateTextLayout reads a length taken from other bits and walks UTF-16 units past the marshalled text
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
     public delegate int CreateTextLayoutProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string text, uint textLength,

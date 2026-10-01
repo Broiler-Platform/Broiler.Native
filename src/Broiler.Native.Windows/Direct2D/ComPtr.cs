@@ -30,7 +30,7 @@ namespace Broiler.Native.Windows.Direct2D;
 /// no <c>unsafe</c> context required.
 /// </remarks>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=2776DD
-// Broiler-Falsified-If: Dispose racing on two threads lets both read the same non-zero pointer and call IUnknown::Release twice for the one owned reference
+// Broiler-Falsified-If: a second Dispose or Release on the same ComPtr calls IUnknown::Release (slot 2) again for the one owned reference, dropping the native count below the references held
 // Broiler-Human:        PENDING
 public sealed class ComPtr : IDisposable
 {

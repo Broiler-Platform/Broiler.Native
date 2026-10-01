@@ -26,7 +26,7 @@ namespace Broiler.Native.Windows.Direct2D;
 public static class Direct2DDeviceApi
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=6E40F2
-    // Broiler-Falsified-If: dxgiDevice is not the IDXGIDevice obtained by QueryInterface from the D3D11 device, so CreateDevice calls IDXGIDevice methods through another interface vtable
+    // Broiler-Falsified-If: dxgiDevice and the ID2D1Device** out reach ID2D1Factory1::CreateDevice(IDXGIDevice*, ID2D1Device**) in swapped positions, so the new device pointer is written over the first bytes of the IDXGIDevice object
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateD2DDeviceProc(IntPtr self, IntPtr dxgiDevice, out IntPtr d2dDevice);

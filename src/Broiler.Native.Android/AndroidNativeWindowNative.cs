@@ -8,8 +8,8 @@
 // Exempt:           0
 // Human-reviewed:   0/10
 // IP risk:          Low
-// Security risk:    High
-// Criteria:         10/10
+// Security risk:    Critical
+// Criteria:         10/8
 // Resource impact:  3/10 max
 // Unverified:       10
 //
@@ -35,24 +35,24 @@ namespace Broiler.Native.Android;
 /// <see cref="Release"/>. A graphics window surface does not take ownership of a
 /// window handed to it, because the host's surface lifecycle already owns it.
 /// </remarks>
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=8121EE
-// Broiler-Falsified-If: a Release not matched by a FromSurface or Acquire reference frees the ANativeWindow while the host Surface still renders to it
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=8121EE
+// Broiler-Falsified-If: FromSurface's JNIEnv* and jobject arguments reach ANativeWindow_fromSurface in swapped order, so the NDK calls through the Surface handle as the JNI function table
 // Broiler-Human:        PENDING
 public static partial class AndroidNativeWindowNative
 {
     /// <summary>Matches <c>WINDOW_FORMAT_RGBA_8888</c>.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0A0115
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0A0115
     // Broiler-Falsified-If: the value is not 1 (WINDOW_FORMAT_RGBA_8888 in the NDK native_window.h), so SetBuffersGeometry requests a buffer format other than 8-bit RGBA with alpha
     // Broiler-Human:        PENDING
     public const int WindowFormatRgba8888 = 1;
 
     /// <summary>Matches <c>WINDOW_FORMAT_RGBX_8888</c>.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D56A1B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D56A1B
     // Broiler-Falsified-If: the value is not 2 (WINDOW_FORMAT_RGBX_8888 in the NDK native_window.h), so SetBuffersGeometry requests a buffer format other than 8-bit RGB with an ignored fourth byte
     // Broiler-Human:        PENDING
     public const int WindowFormatRgbx8888 = 2;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F68393
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=F68393
     // Broiler-Falsified-If: the JNIEnv* and jobject arguments reach ANativeWindow_fromSurface in swapped order, so the Surface handle is dereferenced as the JNI function table
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_fromSurface")]

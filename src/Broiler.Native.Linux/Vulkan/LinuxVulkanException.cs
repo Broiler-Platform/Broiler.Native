@@ -7,7 +7,7 @@
 // Annotated:        3/3
 // Exempt:           0
 // Human-reviewed:   0/3
-// IP risk:          None
+// IP risk:          Low
 // Security risk:    Low
 // Criteria:         2/0
 // Resource impact:  0/10 max
@@ -19,7 +19,7 @@ using System;
 
 namespace Broiler.Native.Linux.Vulkan;
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=69C964
+// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=69C964
 // Broiler-Human:        PENDING
 public sealed class LinuxVulkanException : InvalidOperationException
 {

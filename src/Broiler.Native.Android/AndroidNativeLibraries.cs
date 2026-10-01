@@ -46,7 +46,7 @@ public static class AndroidNativeLibraries
 
     /// <summary>Import name for OpenGL ES. Resolved against <see cref="GlesCandidates"/>.</summary>
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=2716D7
-    // Broiler-Falsified-If: a GLES import bound before EnsureRegistered runs loads by this name alone and fails with DllNotFoundException on a device that only ships libGLESv2.so
+    // Broiler-Falsified-If: the value is not libGLESv3.so, the library the NDK documents for the ES 3.0 entry points this backend imports, so a GLES import bound without the resolver loads by another soname and fails on a device that ships only libGLESv3.so
     // Broiler-Human:        PENDING
     public const string Gles = "libGLESv3.so";
 

@@ -9,8 +9,8 @@
 // Human-reviewed:   0/52
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         52/52
-// Resource impact:  5/10 max
+// Criteria:         52/31
+// Resource impact:  6/10 max
 // Unverified:       52
 //
 // GENERATED - DO NOT EDIT MANUALLY
@@ -34,16 +34,16 @@ namespace Broiler.Native.Android;
 /// An ES 2 fallback would have to draw a textured quad instead, which needs the shader pipeline this
 /// backend otherwise avoids.
 /// </remarks>
-// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=1454CE
-// Broiler-Falsified-If: ReadPixels with GL_RGBA and GL_UNSIGNED_BYTE writes width*height*4 bytes into a pixels buffer the caller sized smaller, overrunning it
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=1454CE
+// Broiler-Falsified-If: the seven arguments reach glReadPixels out of order, so format and type arrive swapped and the driver writes another number of bytes per pixel through the caller's pixels pointer
 // Broiler-Human:        PENDING
 public static partial class AndroidGlesNative
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=18A47D
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=18A47D
     // Broiler-Falsified-If: the value is not 0, the GL_NO_ERROR that glGetError returns when no flag is set, so ThrowIfError throws after a successful operation
     // Broiler-Human:        PENDING
     public const int GL_NO_ERROR = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=486868
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=486868
     // Broiler-Falsified-If: the value is not 0x0DE1 (GL_TEXTURE_2D in gl3.h), so BindTexture and TexImage2D with it raise GL_INVALID_ENUM and the frame is never uploaded
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_2D = 0x0DE1;
@@ -51,7 +51,7 @@ public static partial class AndroidGlesNative
     // Broiler-Falsified-If: the value is not 0x1908 (GL_RGBA), so ReadPixels or TexImage2D moves a different number of bytes per pixel through a buffer the caller sized at four
     // Broiler-Human:        PENDING
     public const int GL_RGBA = 0x1908;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=616C07
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=616C07
     // Broiler-Falsified-If: the value is not 0x8058 (GL_RGBA8), so TexImage2D allocates storage that GL_RGBA with GL_UNSIGNED_BYTE cannot upload into and raises GL_INVALID_OPERATION
     // Broiler-Human:        PENDING
     public const int GL_RGBA8 = 0x8058;
@@ -59,55 +59,55 @@ public static partial class AndroidGlesNative
     // Broiler-Falsified-If: the value is not 0x1401 (GL_UNSIGNED_BYTE), so ReadPixels with GL_RGBA writes more than four bytes per pixel into the caller's buffer, sixteen for GL_FLOAT
     // Broiler-Human:        PENDING
     public const int GL_UNSIGNED_BYTE = 0x1401;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=ED3B88
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=ED3B88
     // Broiler-Falsified-If: the value is not 0x2801 (GL_TEXTURE_MIN_FILTER), so TexParameteri sets another parameter and the texture keeps its mipmapped default minification filter
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_MIN_FILTER = 0x2801;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=464BAE
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=464BAE
     // Broiler-Falsified-If: the value is not 0x2800 (GL_TEXTURE_MAG_FILTER), so TexParameteri with it raises GL_INVALID_ENUM and the next ThrowIfError blames an unrelated operation
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_MAG_FILTER = 0x2800;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E8912E
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E8912E
     // Broiler-Falsified-If: the value is not 0x2802 (GL_TEXTURE_WRAP_S), so horizontal wrapping stays GL_REPEAT and edge texels sample from the opposite side
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_WRAP_S = 0x2802;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0DF071
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0DF071
     // Broiler-Falsified-If: the value is not 0x2803 (GL_TEXTURE_WRAP_T), so vertical wrapping stays GL_REPEAT and edge texels sample from the opposite side
     // Broiler-Human:        PENDING
     public const int GL_TEXTURE_WRAP_T = 0x2803;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6B549F
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6B549F
     // Broiler-Falsified-If: the value is not 0x2601 (GL_LINEAR), so the filter parameters set with it raise GL_INVALID_ENUM or select nearest sampling
     // Broiler-Human:        PENDING
     public const int GL_LINEAR = 0x2601;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=7E8CAD
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7E8CAD
     // Broiler-Falsified-If: the value is not 0x2600 (GL_NEAREST), so BlitFramebuffer with it as the filter raises GL_INVALID_ENUM and the frame is not copied to the window
     // Broiler-Human:        PENDING
     public const int GL_NEAREST = 0x2600;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1CAE98
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1CAE98
     // Broiler-Falsified-If: the value is not 0x812F (GL_CLAMP_TO_EDGE), so the wrap parameters set with it raise GL_INVALID_ENUM and stay GL_REPEAT
     // Broiler-Human:        PENDING
     public const int GL_CLAMP_TO_EDGE = 0x812F;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=63A28A
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=63A28A
     // Broiler-Falsified-If: the value is not 0x8D40 (GL_FRAMEBUFFER), so BindFramebuffer, FramebufferTexture2D and CheckFramebufferStatus with it raise GL_INVALID_ENUM and the texture is never attached
     // Broiler-Human:        PENDING
     public const int GL_FRAMEBUFFER = 0x8D40;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F6251B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F6251B
     // Broiler-Falsified-If: the value is not 0x8CA8 (GL_READ_FRAMEBUFFER), so ReadPixels and BlitFramebuffer read from whichever framebuffer was bound for reading before, not the uploaded frame
     // Broiler-Human:        PENDING
     public const int GL_READ_FRAMEBUFFER = 0x8CA8;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=62E432
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=62E432
     // Broiler-Falsified-If: the value is not 0x8CA9 (GL_DRAW_FRAMEBUFFER), so BlitFramebuffer writes into the offscreen texture instead of the window's default framebuffer
     // Broiler-Human:        PENDING
     public const int GL_DRAW_FRAMEBUFFER = 0x8CA9;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=46BB0D
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=46BB0D
     // Broiler-Falsified-If: the value is not 0x8CE0 (GL_COLOR_ATTACHMENT0), so FramebufferTexture2D attaches the texture elsewhere and the framebuffer has no colour attachment
     // Broiler-Human:        PENDING
     public const int GL_COLOR_ATTACHMENT0 = 0x8CE0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F456FE
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F456FE
     // Broiler-Falsified-If: the value is not 0x8CD5 (GL_FRAMEBUFFER_COMPLETE), so the status of a complete framebuffer does not compare equal to it and every upload is rejected
     // Broiler-Human:        PENDING
     public const int GL_FRAMEBUFFER_COMPLETE = 0x8CD5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DB1E23
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DB1E23
     // Broiler-Falsified-If: the value is not 0x4000 (GL_COLOR_BUFFER_BIT), so Clear and BlitFramebuffer with it act on depth or stencil and the window's colour is neither cleared nor copied
     // Broiler-Human:        PENDING
     public const int GL_COLOR_BUFFER_BIT = 0x4000;
@@ -119,23 +119,23 @@ public static partial class AndroidGlesNative
     // Broiler-Falsified-If: the value is not 0x0CF5 (GL_UNPACK_ALIGNMENT), so the unpack alignment stays 4 and TexImage2D reads padded rows past a tightly sized buffer when a row is not a multiple of 4 bytes
     // Broiler-Human:        PENDING
     public const int GL_UNPACK_ALIGNMENT = 0x0CF5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D94511
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D94511
     // Broiler-Falsified-If: the value is not 0x0C11 (GL_SCISSOR_TEST), so Disable leaves a scissor box set elsewhere active and Clear and BlitFramebuffer touch only part of the window
     // Broiler-Human:        PENDING
     public const int GL_SCISSOR_TEST = 0x0C11;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=FA360B
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=FA360B
     // Broiler-Falsified-If: the value is not 0x1F00 (GL_VENDOR), so GetStringValue returns another driver string or an empty one as the vendor
     // Broiler-Human:        PENDING
     public const uint GL_VENDOR = 0x1F00;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=8CE1CD
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=8CE1CD
     // Broiler-Falsified-If: the value is not 0x1F01 (GL_RENDERER), so GetStringValue returns another driver string or an empty one as the renderer
     // Broiler-Human:        PENDING
     public const uint GL_RENDERER = 0x1F01;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DC1AB2
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=DC1AB2
     // Broiler-Falsified-If: the value is not 0x1F02 (GL_VERSION), so GetStringValue returns another driver string or an empty one as the version
     // Broiler-Human:        PENDING
     public const uint GL_VERSION = 0x1F02;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E87C00
+    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=E87C00
     // Broiler-Falsified-If: the value is not 0x8B8C (GL_SHADING_LANGUAGE_VERSION), so GetStringValue returns another driver string or an empty one as the GLSL version
     // Broiler-Human:        PENDING
     public const uint GL_SHADING_LANGUAGE_VERSION = 0x8B8C;
@@ -164,8 +164,8 @@ public static partial class AndroidGlesNative
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexParameteri")]
     public static partial void TexParameteri(int target, int name, int value);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=A9CDA8
-    // Broiler-Falsified-If: a pixels buffer smaller than width*height*4 bytes for GL_RGBA with GL_UNSIGNED_BYTE, plus GL_UNPACK_ALIGNMENT row padding, is read past its end into the texture
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=A9CDA8
+    // Broiler-Falsified-If: the nine arguments reach glTexImage2D out of order, so format and type arrive swapped and the driver reads another number of bytes per pixel from the caller's pixels pointer
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexImage2D")]
     public static partial void TexImage2D(int target, int level, int internalFormat,
@@ -219,8 +219,8 @@ public static partial class AndroidGlesNative
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glClear")]
     public static partial void Clear(int mask);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=944115
-    // Broiler-Falsified-If: with GL_RGBA and GL_UNSIGNED_BYTE, a pixels buffer smaller than width*height*4 bytes plus GL_PACK_ALIGNMENT row padding is written past its end
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=944115
+    // Broiler-Falsified-If: the seven arguments reach glReadPixels out of order, so format and type arrive swapped and the driver writes another number of bytes per pixel through the caller's pixels pointer
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glReadPixels")]
     public static partial void ReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels);

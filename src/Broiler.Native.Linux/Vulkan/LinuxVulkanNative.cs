@@ -9,7 +9,7 @@
 // Human-reviewed:   0/32
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         32/29
+// Criteria:         32/27
 // Resource impact:  2/10 max
 // Unverified:       32
 //
@@ -23,7 +23,7 @@ using System.Text;
 namespace Broiler.Native.Linux.Vulkan;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=E46435
-// Broiler-Falsified-If: vkGetPhysicalDeviceProperties or a physical-device or queue-family enumeration writes past the HGlobal buffer or managed array it is given
+// Broiler-Falsified-If: vkEnumeratePhysicalDevices or vkGetPhysicalDeviceQueueFamilyProperties receives its count and array arguments in swapped positions, so the driver writes handles or 24-byte entries through the count's address
 // Broiler-Human:        PENDING
 public static partial class LinuxVulkanNative
 {
@@ -53,12 +53,12 @@ public static partial class LinuxVulkanNative
     // Broiler-Human:        PENDING
     public const uint VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO = 3;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=4C65A0
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=4C65A0
     // Broiler-Falsified-If: the value is not 0x1, so a compute-only or transfer-only queue family is selected as the graphics queue for vkCreateDevice and vkGetDeviceQueue
     // Broiler-Human:        PENDING
     public const uint VK_QUEUE_GRAPHICS_BIT = 0x00000001;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=29F334
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=29F334
     // Broiler-Falsified-If: a variant above 7 is accepted and its high bits are shifted out, returning the same version as variant modulo 8
     // Broiler-Human:        PENDING
     public static uint MakeApiVersion(uint variant, int major, int minor, int patch)
@@ -166,28 +166,28 @@ public static partial class LinuxVulkanNative
     private static partial int EnumerateInstanceVersion(out uint apiVersion);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=5CE6EF
-    // Broiler-Falsified-If: an EnabledExtensionCount or EnabledLayerCount larger than the name array it describes makes the loader read name pointers past that allocation
+    // Broiler-Falsified-If: createInfo and allocator reach vkCreateInstance(const VkInstanceCreateInfo*, const VkAllocationCallbacks*, VkInstance*) in swapped positions, so the loader calls through the create-info fields as allocation callbacks
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkCreateInstance")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int CreateInstance(ref VkInstanceCreateInfo createInfo, IntPtr allocator, out IntPtr instance);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=98A399
-    // Broiler-Falsified-If: an instance is destroyed while a VkDevice created from it is still alive, or destroyed twice, so the loader frees dispatch tables still in use
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=98A399
+    // Broiler-Falsified-If: instance and allocator reach vkDestroyInstance(VkInstance, const VkAllocationCallbacks*) in swapped positions, so the loader reads allocation callbacks through the instance handle
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkDestroyInstance")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void DestroyInstance(IntPtr instance, IntPtr allocator);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=0003C3
-    // Broiler-Falsified-If: a physicalDeviceCount larger than physicalDevices.Length lets the loader write VkPhysicalDevice handles past the end of the pinned array
+    // Broiler-Falsified-If: physicalDevices is not marshalled as an out array of pointer-sized handles, so the loader writes 8-byte VkPhysicalDevice handles into narrower elements and runs past the pinned array
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkEnumeratePhysicalDevices")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int EnumeratePhysicalDevices(IntPtr instance, ref uint physicalDeviceCount, [Out] IntPtr[]? physicalDevices);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=8B21E9
-    // Broiler-Falsified-If: a queueFamilyPropertyCount larger than queueFamilyProperties.Length lets the driver write 24-byte entries past the end of the pinned array
+    // Broiler-Falsified-If: the count and the properties array reach vkGetPhysicalDeviceQueueFamilyProperties in swapped positions, so the driver writes the family count through the array and 24-byte entries through the count's address
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceQueueFamilyProperties")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -195,41 +195,41 @@ public static partial class LinuxVulkanNative
         [Out] VkQueueFamilyProperties[]? queueFamilyProperties);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=89BCFE
-    // Broiler-Falsified-If: properties points to fewer bytes than VkPhysicalDeviceProperties (824 on 64-bit), so the driver writes past the allocation
+    // Broiler-Falsified-If: physicalDevice and properties reach vkGetPhysicalDeviceProperties in swapped positions, so the driver writes the 824-byte properties structure over the physical-device object
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceProperties")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     private static partial void GetPhysicalDeviceProperties(IntPtr physicalDevice, IntPtr properties);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=59040F
-    // Broiler-Falsified-If: a QueueCreateInfoCount larger than the VkDeviceQueueCreateInfo entries at PQueueCreateInfos makes the driver read past that allocation
+    // Broiler-Falsified-If: createInfo and allocator reach vkCreateDevice(VkPhysicalDevice, const VkDeviceCreateInfo*, const VkAllocationCallbacks*, VkDevice*) in swapped positions, so the driver calls through the create-info fields as allocation callbacks
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkCreateDevice")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int CreateDevice(IntPtr physicalDevice, ref VkDeviceCreateInfo createInfo, IntPtr allocator, out IntPtr device);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=19195C
-    // Broiler-Falsified-If: a device is destroyed while queue work is still executing because vkDeviceWaitIdle was not called first, so the driver frees resources the GPU is still using
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=19195C
+    // Broiler-Falsified-If: device and allocator reach vkDestroyDevice(VkDevice, const VkAllocationCallbacks*) in swapped positions, so the driver reads allocation callbacks through the device handle
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkDestroyDevice")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void DestroyDevice(IntPtr device, IntPtr allocator);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=933A0D
-    // Broiler-Falsified-If: a queueIndex at or above the QueueCount requested at device creation is passed, and the driver returns an invalid queue handle instead of failing
+    // Broiler-Falsified-If: queueFamilyIndex and queueIndex reach vkGetDeviceQueue(VkDevice, uint32_t, uint32_t, VkQueue*) in swapped positions, so the queue at index 1 of family 0 is requested as index 0 of family 1
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetDeviceQueue")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void GetDeviceQueue(IntPtr device, uint queueFamilyIndex, uint queueIndex, out IntPtr queue);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=3C80E2
-    // Broiler-Falsified-If: DeviceWaitIdle runs while another thread submits to a queue of the same device, which Vulkan requires the caller to synchronize externally
+    // Broiler-Falsified-If: the import binds an export other than vkDeviceWaitIdle, such as vkQueueWaitIdle, so the call returns while work on the device's other queues is still running
     // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkDeviceWaitIdle")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int DeviceWaitIdle(IntPtr device);
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=2B62F4
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=2B62F4
     // Broiler-Falsified-If: Marshal.SizeOf is not 48 on 64-bit or apiVersion is not at offset 44, so the loader reads the requested API version from the wrong bytes
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
@@ -244,7 +244,7 @@ public static partial class LinuxVulkanNative
         public uint ApiVersion;
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D473E7
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=D473E7
     // Broiler-Falsified-If: Marshal.SizeOf is not 64 on 64-bit or ppEnabledExtensionNames is not at offset 56, so the loader treats a count or padding as a pointer
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
@@ -274,7 +274,7 @@ public static partial class LinuxVulkanNative
         public IntPtr PQueuePriorities;
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=CADF59
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=CADF59
     // Broiler-Falsified-If: Marshal.SizeOf is not 72 on 64-bit or pEnabledFeatures is not at offset 64, so the driver dereferences a count or padding as the features pointer
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
@@ -346,7 +346,7 @@ public static partial class LinuxVulkanNative
         };
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=B56DE7
-    // Broiler-Falsified-If: an offset above the allocation size minus 4 reads past the end of the HGlobal buffer, since the offset is not bounded
+    // Broiler-Falsified-If: the value is read at the buffer plus offset times four rather than plus offset, so vendorId at offset 8 is taken from byte 32
     // Broiler-Human:        PENDING
     private static uint ReadUInt32(IntPtr buffer, int offset) =>
         unchecked((uint)Marshal.ReadInt32(buffer, offset));

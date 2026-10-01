@@ -9,7 +9,7 @@
 // Human-reviewed:   0/65
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         65/65
+// Criteria:         65/53
 // Resource impact:  2/10 max
 // Unverified:       65
 //
@@ -275,7 +275,7 @@ public static class D2DNative
     public const int VtblFillGeometry = 23;
 
     /// <summary>Direct2D signals this from EndDraw when target resources must be recreated.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=42D9F6
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=42D9F6
     // Broiler-Falsified-If: the value is not 0x8899000C from d2derr.h, so an EndDraw that reports a lost target surfaces as a generic failure and the device is never recreated
     // Broiler-Human:        PENDING
     public const int D2DERR_RECREATE_TARGET = unchecked((int)0x8899000C);
@@ -291,7 +291,7 @@ public static class D2DNative
         MULTI_THREADED = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=4EA25C
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=4EA25C
     // Broiler-Falsified-If: PREMULTIPLIED is not 1 or IGNORE is not 3 as in dcommon.h, so CreateBitmap treats uploaded premultiplied BGRA pixels as straight alpha, or an opaque surface's alpha channel as meaningful, and composites page images wrongly
     // Broiler-Human:        PENDING
     public enum D2D1_ALPHA_MODE : uint
@@ -302,7 +302,7 @@ public static class D2DNative
         IGNORE = 3,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=FA02ED
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=FA02ED
     // Broiler-Falsified-If: PER_PRIMITIVE is not 0 or ALIASED is not 1 as in d2d1.h, so SetAntialiasMode and PushAxisAlignedClip get the opposite mode or an out-of-range value that fails the frame at EndDraw
     // Broiler-Human:        PENDING
     public enum D2D1_ANTIALIAS_MODE : uint
@@ -311,7 +311,7 @@ public static class D2DNative
         ALIASED = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=B14994
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B14994
     // Broiler-Falsified-If: a member differs from d2d1.h (DEFAULT 0, CLEARTYPE 1, GRAYSCALE 2, ALIASED 3), so SetTextAntialiasMode applies another text antialias mode than the frame options asked for or an out-of-range value that fails the frame at EndDraw
     // Broiler-Human:        PENDING
     public enum D2D1_TEXT_ANTIALIAS_MODE : uint
@@ -322,7 +322,7 @@ public static class D2DNative
         ALIASED = 3,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=7ABC57
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7ABC57
     // Broiler-Falsified-If: CLIP is not 0x2 as in d2d1.h, so DrawText asked to clip draws page text outside its layout rectangle or turns on NO_SNAP (0x1) instead
     // Broiler-Human:        PENDING
     [Flags]
@@ -332,7 +332,7 @@ public static class D2DNative
         CLIP = 0x00000002,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=237502
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=237502
     // Broiler-Falsified-If: NEAREST_NEIGHBOR is not 0 or LINEAR is not 1 as in d2d1.h, so DrawBitmap scales page images with the other filter or an out-of-range mode that fails the frame at EndDraw
     // Broiler-Human:        PENDING
     public enum D2D1_BITMAP_INTERPOLATION_MODE : uint
@@ -341,7 +341,7 @@ public static class D2DNative
         LINEAR = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F54725
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F54725
     // Broiler-Falsified-If: READ is not 1 as in d2d1_1.h, so Map on the CPU_READ readback bitmap asks for WRITE or DISCARD access and fails, and ReadToBitmap throws instead of returning pixels
     // Broiler-Human:        PENDING
     [Flags]
@@ -353,7 +353,7 @@ public static class D2DNative
         DISCARD = 4,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=68A1FB
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=68A1FB
     // Broiler-Falsified-If: TARGET is not 0x1, CANNOT_DRAW is not 0x2 or CPU_READ is not 0x4 as in d2d1_1.h, so CreateBitmap1 makes a target bitmap SetTarget rejects or a readback bitmap Map refuses
     // Broiler-Human:        PENDING
     [Flags]
@@ -366,7 +366,7 @@ public static class D2DNative
         GDI_COMPATIBLE = 0x00000008,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=9CF115
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9CF115
     // Broiler-Falsified-If: WINDING is not 1 as in d2d1.h, so SetFillMode fills the triangle path by the alternate rule and disagrees with the CPU rasterizer's nonzero winding fill
     // Broiler-Human:        PENDING
     [Flags]
@@ -376,7 +376,7 @@ public static class D2DNative
         WINDING = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E6C578
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E6C578
     // Broiler-Falsified-If: FILLED is not 0 as in d2d1.h, so BeginFigure starts a hollow figure and FillGeometry paints nothing for the triangle
     // Broiler-Human:        PENDING
     public enum D2D1_FIGURE_BEGIN : uint
@@ -385,7 +385,7 @@ public static class D2DNative
         HOLLOW = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DF6801
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DF6801
     // Broiler-Falsified-If: CLOSED is not 1 as in d2d1.h, so EndFigure leaves the triangle figure open and a stroke of the path misses its closing edge
     // Broiler-Human:        PENDING
     public enum D2D1_FIGURE_END : uint
@@ -394,7 +394,7 @@ public static class D2DNative
         CLOSED = 1,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=62F884
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=62F884
     // Broiler-Falsified-If: NONE is not 0 as in d2d1_1.h, so CreateDeviceContext asked for no options turns on multithreaded optimizations or rejects the call as an invalid option
     // Broiler-Human:        PENDING
     public enum D2D1_DEVICE_CONTEXT_OPTIONS : uint
@@ -462,7 +462,7 @@ public static class D2DNative
 
     /// <summary>Direct2D uses 32-bit floats and premultiplied colors at the GPU level.</summary>
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=20006A
-    // Broiler-Falsified-If: the struct is not four consecutive floats R, G, B, A (16 bytes) as D3DCOLORVALUE, so Clear and CreateSolidColorBrush read the channels in another order or 4 bytes past the argument
+    // Broiler-Falsified-If: the struct is not four consecutive floats R, G, B, A (16 bytes) as D3DCOLORVALUE, so Clear and CreateSolidColorBrush read the channels in another order
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_COLOR_F
@@ -496,7 +496,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=B27539
-    // Broiler-Falsified-If: the struct is not a 16-byte D2D1_RECT_F followed by RadiusX and RadiusY floats (24 bytes), so FillRoundedRectangle and DrawRoundedRectangle take the radii from the rectangle or read 8 bytes past the argument
+    // Broiler-Falsified-If: the struct is not a 16-byte D2D1_RECT_F followed by RadiusX and RadiusY floats (24 bytes), so FillRoundedRectangle and DrawRoundedRectangle take the radii from the rectangle
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_ROUNDED_RECT

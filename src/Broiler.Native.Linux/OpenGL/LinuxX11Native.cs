@@ -9,7 +9,7 @@
 // Human-reviewed:   0/38
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         38/38
+// Criteria:         38/26
 // Resource impact:  3/10 max
 // Unverified:       38
 //
@@ -21,38 +21,38 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Linux.OpenGL;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=96F4E9
-// Broiler-Falsified-If: XChangeProperty or XSetWMProtocols is handed an element count larger than its managed array, and Xlib reads past the end of the pinned data
+// Broiler-Falsified-If: SetWmProtocols's Atom array does not use pointer-sized elements, so on x86-64 XSetWMProtocols reads 8-byte Atoms from 4-byte elements and runs past the end of the pinned array
 // Broiler-Human:        PENDING
 public static partial class LinuxX11Native
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=5A4444
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5A4444
     // Broiler-Falsified-If: the value is nonzero, so XSync(display, False) discards queued events such as a pending ConfigureNotify and InternAtom only looks up atoms that already exist
     // Broiler-Human:        PENDING
     public const int False = 0;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0B2AC7
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0B2AC7
     // Broiler-Falsified-If: the value differs from X.h's FocusIn (9), so a focus gain read from XNextEvent is never recognised or another event type is taken for one
     // Broiler-Human:        PENDING
     public const int FocusIn = 9;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=513968
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=513968
     // Broiler-Falsified-If: the value differs from X.h's FocusOut (10), so a focus loss read from XNextEvent is never recognised or another event type is taken for one
     // Broiler-Human:        PENDING
     public const int FocusOut = 10;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1108B2
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1108B2
     // Broiler-Falsified-If: the value differs from X.h's MapNotify (19), so the window-mapped event is never recognised and the post-map focus request never runs
     // Broiler-Human:        PENDING
     public const int MapNotify = 19;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DAA504
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DAA504
     // Broiler-Falsified-If: the value differs from X.h's ConfigureNotify (22), so XEvent bytes 56 and 60 of another event type are read as the new window width and height
     // Broiler-Human:        PENDING
     public const int ConfigureNotify = 22;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F416DA
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F416DA
     // Broiler-Falsified-If: the value differs from X.h's ClientMessage (33), so XEvent byte 56 of another event type is compared against WM_DELETE_WINDOW and a close request is missed or invented
     // Broiler-Human:        PENDING
     public const int ClientMessage = 33;
 
     /// <summary>XChangeProperty's PropModeReplace.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=29F3D4
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=29F3D4
     // Broiler-Falsified-If: the value differs from X.h's PropModeReplace (0), so each title change prepends or appends to _NET_WM_NAME instead of replacing it
     // Broiler-Human:        PENDING
     public const int PropModeReplace = 0;
@@ -63,60 +63,60 @@ public static partial class LinuxX11Native
     // Broiler-Human:        PENDING
     public const int Format8 = 8;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6AD7EF
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6AD7EF
     // Broiler-Falsified-If: the value differs from X.h's RevertToParent (2), so XSetInputFocus raises BadValue or focus reverts to the root instead of the parent when the window is unmapped
     // Broiler-Human:        PENDING
     public const int RevertToParent = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=34E752
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=34E752
     // Broiler-Falsified-If: the value is not 0 (X.h's CurrentTime), so XSetInputFocus carries a stale timestamp and the server ignores the focus request
     // Broiler-Human:        PENDING
     public const int CurrentTime = 0;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=027160
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=027160
     // Broiler-Falsified-If: the value differs from X.h's ExposureMask (bit 15), so XSelectInput requests a different event class than Expose
     // Broiler-Human:        PENDING
     public const long ExposureMask = 1L << 15;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F90552
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F90552
     // Broiler-Falsified-If: the value differs from X.h's StructureNotifyMask (bit 17), so ConfigureNotify and MapNotify are never delivered and window resizes go unseen
     // Broiler-Human:        PENDING
     public const long StructureNotifyMask = 1L << 17;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=9A9639
+    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9A9639
     // Broiler-Falsified-If: the value differs from X.h's FocusChangeMask (bit 21), so FocusIn and FocusOut are never delivered to the window
     // Broiler-Human:        PENDING
     public const long FocusChangeMask = 1L << 21;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=929967
-    // Broiler-Falsified-If: a non-zero displayName that does not point to a NUL-terminated byte string is read past its end by XOpenDisplay
+    // Broiler-Falsified-If: displayName is declared narrower than a pointer, so on x86-64 XOpenDisplay reads the display name through a truncated address
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XOpenDisplay")]
     public static partial IntPtr OpenDisplay(IntPtr displayName);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=876CC0
-    // Broiler-Falsified-If: a Display* is passed to any other X call after CloseDisplay returned for it, so Xlib touches freed connection memory
+    // Broiler-Falsified-If: the display argument is declared narrower than a pointer, so on x86-64 XCloseDisplay receives a truncated Display* and frees memory at an unrelated address
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XCloseDisplay")]
     public static partial int CloseDisplay(IntPtr display);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=84D7AA
-    // Broiler-Falsified-If: a null Display* from a failed OpenDisplay reaches XDefaultScreen, which dereferences it without a null test and crashes the process
+    // Broiler-Falsified-If: the import binds XDefaultScreenOfDisplay rather than XDefaultScreen, so a Screen* truncated to int is returned as the screen number
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XDefaultScreen")]
     public static partial int DefaultScreen(IntPtr display);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=0B2C4A
-    // Broiler-Falsified-If: a screenNumber outside 0 to ScreenCount minus 1 is passed, and XRootWindow indexes past Xlib's screen array without a bounds test
+    // Broiler-Falsified-If: the Window return is declared narrower than C unsigned long, so on x86-64 the root window id read back is truncated and XCreateSimpleWindow is given another parent
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XRootWindow")]
     public static partial IntPtr RootWindow(IntPtr display, int screenNumber);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=224BE2
-    // Broiler-Falsified-If: a screenNumber outside 0 to ScreenCount minus 1 is passed, and XBlackPixel indexes past Xlib's screen array without a bounds test
+    // Broiler-Falsified-If: the pixel return is declared narrower than C unsigned long, so on x86-64 the border colour passed on to XCreateSimpleWindow carries undefined upper bits
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XBlackPixel")]
     public static partial IntPtr BlackPixel(IntPtr display, int screenNumber);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=48663B
-    // Broiler-Falsified-If: a screenNumber outside 0 to ScreenCount minus 1 is passed, and XWhitePixel indexes past Xlib's screen array without a bounds test
+    // Broiler-Falsified-If: the pixel return is declared narrower than C unsigned long, so on x86-64 the background colour passed on to XCreateSimpleWindow carries undefined upper bits
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XWhitePixel")]
     public static partial IntPtr WhitePixel(IntPtr display, int screenNumber);
@@ -147,25 +147,25 @@ public static partial class LinuxX11Native
     public static partial int MapWindow(IntPtr display, IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=98C0F3
-    // Broiler-Falsified-If: a zero width or height reaches XResizeWindow, and the resulting BadValue error goes to Xlib's default handler, which exits the process when no custom handler is installed
+    // Broiler-Falsified-If: width and height reach XResizeWindow in swapped positions, so a resize to 800 by 600 is followed by a ConfigureNotify reporting 600 by 800
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XResizeWindow")]
     public static partial int ResizeWindow(IntPtr display, IntPtr window, uint width, uint height);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=79BA88
-    // Broiler-Falsified-If: the window is destroyed after its Display* was closed, so XDestroyWindow writes into freed connection memory
+    // Broiler-Falsified-If: the display and window arguments reach XDestroyWindow(Display*, Window) in swapped positions, so Xlib dereferences the window id as the connection pointer
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XDestroyWindow")]
     public static partial int DestroyWindow(IntPtr display, IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F8DD82
-    // Broiler-Falsified-If: Flush runs on one thread while another thread issues requests on the same Display* without XInitThreads, corrupting Xlib's output buffer
+    // Broiler-Falsified-If: the import binds XSync or another export instead of XFlush, so the call blocks on a server round trip or drops queued events instead of only sending buffered requests
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XFlush")]
     public static partial int Flush(IntPtr display);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B97E6E
-    // Broiler-Falsified-If: Pending and NextEvent run on a thread other than the one issuing requests on the same Display* without XInitThreads, corrupting Xlib's event queue
+    // Broiler-Falsified-If: the import binds XEventsQueued or another export instead of XPending, so events still unread on the connection are not counted and the loop stops reading while events are waiting
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XPending")]
     public static partial int Pending(IntPtr display);
@@ -188,14 +188,14 @@ public static partial class LinuxX11Native
     /// Latin-1, so a document called "Übung.docx" comes out mangled through it.
     /// </summary>
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=618340
-    // Broiler-Falsified-If: an elementCount larger than data.Length, or format 16 or 32 with elementCount equal to the byte length, makes Xlib read past the end of the pinned array (format 32 items are 8-byte C longs on LP64)
+    // Broiler-Falsified-If: data and elementCount reach XChangeProperty in swapped positions, so the element count is dereferenced as the property data and the array address is taken as the count
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XChangeProperty")]
     public static partial int ChangeProperty(IntPtr display, IntPtr window, IntPtr property, IntPtr type,
         int format, int mode, byte[] data, int elementCount);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=D252C5
-    // Broiler-Falsified-If: a count larger than protocols.Length makes XSetWMProtocols read Atom values past the end of the pinned array
+    // Broiler-Falsified-If: protocols is not marshalled as an array of pointer-sized Atoms, so on x86-64 XSetWMProtocols reads 8-byte Atoms from 4-byte elements and runs past the end of the pinned array
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XSetWMProtocols")]
     public static partial int SetWmProtocols(IntPtr display, IntPtr window, IntPtr[] protocols, int count);
@@ -214,7 +214,7 @@ public static partial class LinuxX11Native
         out int rootX, out int rootY, out int winX, out int winY, out uint maskReturn);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B4629B
-    // Broiler-Falsified-If: Sync is called with a nonzero discard, and queued FocusIn, MapNotify and ConfigureNotify events are dropped before the event loop can read them
+    // Broiler-Falsified-If: the import binds an export other than XSync, such as XFlush, so a sync returns before the server has processed the queued requests and the ConfigureNotify they cause is not yet queued
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XSync")]
     public static partial int Sync(IntPtr display, int discard);
@@ -229,7 +229,7 @@ public static partial class LinuxX11Native
     // a BadMatch on a not-yet-viewable window) cannot abort the process. Xlib's
     // default handler calls exit(); returning from a custom handler is ignored.
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=36F83B
-    // Broiler-Falsified-If: the handler pointer comes from a delegate the GC can collect, or one not using the C calling convention, so the next X protocol error calls freed or mismatched thunk code
+    // Broiler-Falsified-If: the handler argument or the previous-handler return is declared narrower than a function pointer, so on x86-64 Xlib installs a truncated handler address and the next protocol error jumps to it
     // Broiler-Human:        PENDING
     [LibraryImport("libX11.so.6", EntryPoint = "XSetErrorHandler")]
     public static partial IntPtr SetErrorHandler(IntPtr handler);
