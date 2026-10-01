@@ -9,7 +9,7 @@
 // Human-reviewed:   0/2
 // IP risk:          Low
 // Security risk:    Low
-// Criteria:         1/0
+// Criteria:         0/0
 // Resource impact:  1/10 max
 // Unverified:       2
 //
@@ -23,7 +23,6 @@ namespace Broiler.Native.Android;
 public sealed record AndroidOpenGlEsDriverInfo(string Vendor, string Renderer, string Version, string ShadingLanguageVersion)
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=345A91
-    // Broiler-Falsified-If: a field is printed under another field's label, such as the renderer string printed under the version label
     // Broiler-Human:        PENDING
     public string ToDiagnosticString() =>
         $"OpenGL ES vendor={Vendor}; renderer={Renderer}; version={Version}; glsl={ShadingLanguageVersion}.";

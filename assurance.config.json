@@ -2,7 +2,8 @@
   "$comment": [
     "Per-declaration assurance for Broiler.Native. Product projects only: the five packable projects eng/pack.ps1 packs and verifies. Broiler.Native.All is a references-only meta-package with no sources. src/tests/Broiler.Native.Tests (IsPackable=false) is not listed, so it is not covered.",
     "No tracked source is generated (the LibraryImport and GeneratedComInterface generators write only to obj/), so nothing is excluded.",
-    "No source here is third-party-derived: the bindings were moved from Broiler.Graphics, Broiler.Input and Broiler.Media (docs/native-api-inventory.md), none of them from files those components mark as HTML Renderer code, so there are no spdxOverrides."
+    "No source here is third-party-derived: the bindings were moved from Broiler.Graphics, Broiler.Input and Broiler.Media (docs/native-api-inventory.md), none of them from files those components mark as HTML Renderer code, so there are no spdxOverrides.",
+    "Named values are watched, not assessed: most of them are defines, IIDs, handles and enums transcribed from platform SDK headers, so they carry no annotation block and the manifest records their fingerprints. The declarations that use them (P/Invoke, COM interfaces, native delegates, struct layouts) are still assessed."
   ],
   "schema": 1,
   "component": "Broiler.Native",
@@ -15,6 +16,7 @@
   ],
   "exclude": [],
   "exemptionPredicate": "owning-component",
+  "namedValues": "watched",
   "spdx": {
     "copyright": ["2026 Broiler Platform contributors"],
     "license": "Apache-2.0"

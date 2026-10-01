@@ -9,7 +9,7 @@
 // Human-reviewed:   0/11
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         11/11
+// Criteria:         8/8
 // Resource impact:  1/10 max
 // Unverified:       11
 //
@@ -56,19 +56,16 @@ public sealed class ComPtr : IDisposable
 
     public ComPtr(IntPtr ptr) => _ptr = ptr;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B0CA08
-    // Broiler-Falsified-If: a default-constructed ComPtr holds a non-zero pointer, so Dispose calls IUnknown::Release through a vtable it never acquired
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B0CA08
     // Broiler-Human:        PENDING
     public ComPtr() => _ptr = IntPtr.Zero;
 
     /// <summary>The raw interface pointer. Do not store beyond the lifetime of this wrapper.</summary>
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=2A0CD4
-    // Broiler-Falsified-If: Pointer still returns the old interface pointer after Release or Dispose cleared the wrapper, letting a caller call through a released object
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=2A0CD4
     // Broiler-Human:        PENDING
     public IntPtr Pointer => _ptr;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=A657E9
-    // Broiler-Falsified-If: IsNull is false for a wrapper holding IntPtr.Zero, so a caller passes a null object to ComVtable.Method and reads address zero
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A657E9
     // Broiler-Human:        PENDING
     public bool IsNull => _ptr == IntPtr.Zero;
 

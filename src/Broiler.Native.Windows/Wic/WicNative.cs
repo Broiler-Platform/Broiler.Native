@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   47
-// Annotated:        47/47
-// Exempt:           0
-// Human-reviewed:   0/47
+// Relevant units:   39
+// Annotated:        39/39
+// Exempt:           8
+// Human-reviewed:   0/39
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         47/41
+// Criteria:         39/39
 // Resource impact:  8/10 max
-// Unverified:       47
+// Unverified:       39
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -263,36 +263,12 @@ public static partial class WicNative
         [PreserveSig]
         int CreateFormatConverter(out IWICFormatConverter ppIFormatConverter);
     }
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=CD41A9
-    // Broiler-Falsified-If: the value is not wincodec.h's WINCODEC_ERR_UNKNOWNIMAGEFORMAT 0x88982F07, so bytes no registered WIC codec recognises are reported as a generic decode failure instead of a missing decoder
-    // Broiler-Human:        PENDING
     public const int WinCodecErrUnknownImageFormat = unchecked((int)0x88982F07);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=215DCE
-    // Broiler-Falsified-If: the value is not wincodec.h's WINCODEC_ERR_COMPONENTNOTFOUND 0x88982F50, so a machine without the optional WebP codec is not recognised as missing a decoder and the image is reported as malformed
-    // Broiler-Human:        PENDING
     public const int WinCodecErrComponentNotFound = unchecked((int)0x88982F50);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=39F404
-    // Broiler-Falsified-If: the value is not wincodec.h's WINCODEC_ERR_INVALIDREGISTRATION 0x88982F8A, so a codec with a broken registration is not recognised as an unavailable decoder and its failure is reported as malformed image data
-    // Broiler-Human:        PENDING
     public const int WinCodecErrInvalidRegistration = unchecked((int)0x88982F8A);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=E1A38A
-    // Broiler-Falsified-If: the value is not wincodec.h's WINCODEC_ERR_COMPONENTINITIALIZEFAILURE 0x88982F8B, so a codec registered but not activatable, as on hosted CI images, is reported as malformed image data instead of an unavailable decoder
-    // Broiler-Human:        PENDING
     public const int WinCodecErrComponentInitializeFailure = unchecked((int)0x88982F8B);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=58F4DA
-    // Broiler-Falsified-If: the value is neither wincodec.h's CLSID_WICImagingFactory1 {cacaf262-9370-4615-a13b-9f5539da4c0a} nor CLSID_WICImagingFactory2, so CoCreateInstance returns REGDB_E_CLASSNOTREG and no image is decoded through WIC
-    // Broiler-Human:        PENDING
     public static readonly Guid ClsidWicImagingFactory = new("cacaf262-9370-4615-a13b-9f5539da4c0a");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=958C80
-    // Broiler-Falsified-If: the value differs from IWICImagingFactory's Guid attribute and wincodec.h's IID_IWICImagingFactory {ec5ec8a9-c395-4314-9c77-54d7a935ff70}, so CoCreateInstance asks the factory for another interface and fails with E_NOINTERFACE
-    // Broiler-Human:        PENDING
     public static readonly Guid IidWicImagingFactory = new("ec5ec8a9-c395-4314-9c77-54d7a935ff70");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B7D3A3
-    // Broiler-Falsified-If: the value is not wincodec.h's GUID_WICPixelFormat32bppRGBA {f5c7ad2d-6a8d-43dd-a7a8-a29935261ae9}, so a successful conversion yields a layout other than straight 8-bit RGBA and the decoded image has swapped or premultiplied channels
-    // Broiler-Human:        PENDING
     public static readonly Guid PixelFormat32bppRgba = new("f5c7ad2d-6a8d-43dd-a7a8-a29935261ae9");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1F1023
-    // Broiler-Falsified-If: the value is not wincodec.h's GUID_WICPixelFormat32bppBGRA {6fddc324-4e03-4bfe-b185-3d77768dc90f}, so the fallback conversion yields a layout other than straight BGRA and the caller's BGRA-to-RGBA swizzle produces wrong colours
-    // Broiler-Human:        PENDING
     public static readonly Guid PixelFormat32bppBgra = new("6fddc324-4e03-4bfe-b185-3d77768dc90f");
 }

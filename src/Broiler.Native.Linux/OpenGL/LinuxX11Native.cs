@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   38
-// Annotated:        38/38
-// Exempt:           4
-// Human-reviewed:   0/38
+// Relevant units:   25
+// Annotated:        25/25
+// Exempt:           17
+// Human-reviewed:   0/25
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         38/26
+// Criteria:         25/25
 // Resource impact:  3/10 max
-// Unverified:       38
+// Unverified:       25
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -25,64 +25,25 @@ namespace Broiler.Native.Linux.OpenGL;
 // Broiler-Human:        PENDING
 public static partial class LinuxX11Native
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5A4444
-    // Broiler-Falsified-If: the value is nonzero, so XSync(display, False) discards queued events such as a pending ConfigureNotify and InternAtom only looks up atoms that already exist
-    // Broiler-Human:        PENDING
     public const int False = 0;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0B2AC7
-    // Broiler-Falsified-If: the value differs from X.h's FocusIn (9), so a focus gain read from XNextEvent is never recognised or another event type is taken for one
-    // Broiler-Human:        PENDING
     public const int FocusIn = 9;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=513968
-    // Broiler-Falsified-If: the value differs from X.h's FocusOut (10), so a focus loss read from XNextEvent is never recognised or another event type is taken for one
-    // Broiler-Human:        PENDING
     public const int FocusOut = 10;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1108B2
-    // Broiler-Falsified-If: the value differs from X.h's MapNotify (19), so the window-mapped event is never recognised and the post-map focus request never runs
-    // Broiler-Human:        PENDING
     public const int MapNotify = 19;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DAA504
-    // Broiler-Falsified-If: the value differs from X.h's ConfigureNotify (22), so XEvent bytes 56 and 60 of another event type are read as the new window width and height
-    // Broiler-Human:        PENDING
     public const int ConfigureNotify = 22;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F416DA
-    // Broiler-Falsified-If: the value differs from X.h's ClientMessage (33), so XEvent byte 56 of another event type is compared against WM_DELETE_WINDOW and a close request is missed or invented
-    // Broiler-Human:        PENDING
     public const int ClientMessage = 33;
 
     /// <summary>XChangeProperty's PropModeReplace.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=29F3D4
-    // Broiler-Falsified-If: the value differs from X.h's PropModeReplace (0), so each title change prepends or appends to _NET_WM_NAME instead of replacing it
-    // Broiler-Human:        PENDING
     public const int PropModeReplace = 0;
 
     /// <summary>A property of 8-bit items, which is what a UTF-8 title is.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=0082CC
-    // Broiler-Falsified-If: the value is not 8, so XChangeProperty given a UTF-8 byte array with its byte length as the element count reads 2 or 8 times that many bytes from the array
-    // Broiler-Human:        PENDING
     public const int Format8 = 8;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6AD7EF
-    // Broiler-Falsified-If: the value differs from X.h's RevertToParent (2), so XSetInputFocus raises BadValue or focus reverts to the root instead of the parent when the window is unmapped
-    // Broiler-Human:        PENDING
     public const int RevertToParent = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=34E752
-    // Broiler-Falsified-If: the value is not 0 (X.h's CurrentTime), so XSetInputFocus carries a stale timestamp and the server ignores the focus request
-    // Broiler-Human:        PENDING
     public const int CurrentTime = 0;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=027160
-    // Broiler-Falsified-If: the value differs from X.h's ExposureMask (bit 15), so XSelectInput requests a different event class than Expose
-    // Broiler-Human:        PENDING
     public const long ExposureMask = 1L << 15;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F90552
-    // Broiler-Falsified-If: the value differs from X.h's StructureNotifyMask (bit 17), so ConfigureNotify and MapNotify are never delivered and window resizes go unseen
-    // Broiler-Human:        PENDING
     public const long StructureNotifyMask = 1L << 17;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9A9639
-    // Broiler-Falsified-If: the value differs from X.h's FocusChangeMask (bit 21), so FocusIn and FocusOut are never delivered to the window
-    // Broiler-Human:        PENDING
     public const long FocusChangeMask = 1L << 21;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=929967

@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   32
-// Annotated:        32/32
-// Exempt:           38
-// Human-reviewed:   0/32
+// Relevant units:   25
+// Annotated:        25/25
+// Exempt:           45
+// Human-reviewed:   0/25
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         32/27
+// Criteria:         21/21
 // Resource impact:  2/10 max
-// Unverified:       32
+// Unverified:       25
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -27,39 +27,17 @@ namespace Broiler.Native.Linux.Vulkan;
 // Broiler-Human:        PENDING
 public static partial class LinuxVulkanNative
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E6373E
-    // Broiler-Falsified-If: the value is not 0 (vulkan_core.h's VK_SUCCESS), so ThrowIfFailed throws on success or lets a failed vkCreateInstance hand back an unset handle
-    // Broiler-Human:        PENDING
     public const int VK_SUCCESS = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1A4D80
-    // Broiler-Falsified-If: the value is not 5 (vulkan_core.h's VK_INCOMPLETE), so ThrowIfFailed lets a different nonzero result such as VK_NOT_READY pass as success
-    // Broiler-Human:        PENDING
     public const int VK_INCOMPLETE = 5;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=748A1F
-    // Broiler-Falsified-If: the value is not 0, so the loader rejects or misreads the VkApplicationInfo that pApplicationInfo points to
-    // Broiler-Human:        PENDING
     public const uint VK_STRUCTURE_TYPE_APPLICATION_INFO = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=414A99
-    // Broiler-Falsified-If: the value is not 1, so vkCreateInstance rejects or misreads the create-info struct by its sType
-    // Broiler-Human:        PENDING
     public const uint VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AFF58A
-    // Broiler-Falsified-If: the value is not 2, so vkCreateDevice rejects or misreads the queue create-info entries by their sType
-    // Broiler-Human:        PENDING
     public const uint VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=649809
-    // Broiler-Falsified-If: the value is not 3, so vkCreateDevice rejects or misreads the device create-info struct by its sType
-    // Broiler-Human:        PENDING
     public const uint VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO = 3;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=4C65A0
-    // Broiler-Falsified-If: the value is not 0x1, so a compute-only or transfer-only queue family is selected as the graphics queue for vkCreateDevice and vkGetDeviceQueue
-    // Broiler-Human:        PENDING
     public const uint VK_QUEUE_GRAPHICS_BIT = 0x00000001;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=29F334
-    // Broiler-Falsified-If: a variant above 7 is accepted and its high bits are shifted out, returning the same version as variant modulo 8
     // Broiler-Human:        PENDING
     public static uint MakeApiVersion(uint variant, int major, int minor, int patch)
     {
@@ -104,7 +82,6 @@ public static partial class LinuxVulkanNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=BD02CB
-    // Broiler-Falsified-If: a version built by MakeApiVersion(0, 1, 3, 250) does not format as 1.3.250
     // Broiler-Human:        PENDING
     public static string FormatApiVersion(uint version)
     {
@@ -316,7 +293,6 @@ public static partial class LinuxVulkanNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4F3114
-    // Broiler-Falsified-If: a code from vulkan_core.h maps to a different name, for example -9 reported as anything but VK_ERROR_INCOMPATIBLE_DRIVER
     // Broiler-Human:        PENDING
     private static string ResultName(int result) =>
         result switch
@@ -352,7 +328,6 @@ public static partial class LinuxVulkanNative
         unchecked((uint)Marshal.ReadInt32(buffer, offset));
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CDA262
-    // Broiler-Falsified-If: VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU (2) is reported as anything other than discrete-gpu
     // Broiler-Human:        PENDING
     private static string FormatPhysicalDeviceType(uint deviceType) =>
         deviceType switch

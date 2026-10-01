@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   8
-// Annotated:        8/8
-// Exempt:           3
-// Human-reviewed:   0/8
+// Relevant units:   5
+// Annotated:        5/5
+// Exempt:           6
+// Human-reviewed:   0/5
 // IP risk:          Low
 // Security risk:    High
-// Criteria:         8/8
+// Criteria:         5/5
 // Resource impact:  2/10 max
-// Unverified:       8
+// Unverified:       5
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -39,21 +39,12 @@ namespace Broiler.Native.Android;
 public static class AndroidNativeLibraries
 {
     /// <summary>Import name for EGL. Resolved against <see cref="EglCandidates"/>.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=15C6CF
-    // Broiler-Falsified-If: the value is not libEGL.so, the soname Android ships EGL under, so an EGL import bound without the resolver fails to load on a device that has EGL
-    // Broiler-Human:        PENDING
     public const string Egl = "libEGL.so";
 
     /// <summary>Import name for OpenGL ES. Resolved against <see cref="GlesCandidates"/>.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=2716D7
-    // Broiler-Falsified-If: the value is not libGLESv3.so, the library the NDK documents for the ES 3.0 entry points this backend imports, so a GLES import bound without the resolver loads by another soname and fails on a device that ships only libGLESv3.so
-    // Broiler-Human:        PENDING
     public const string Gles = "libGLESv3.so";
 
     /// <summary>Import name for the Android native-window API.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0E0F4B
-    // Broiler-Falsified-If: the value is not libandroid.so, the NDK library exporting ANativeWindow_fromSurface, so every window import fails with DllNotFoundException since Resolve has no candidates for it
-    // Broiler-Human:        PENDING
     public const string AndroidRuntime = "libandroid.so";
 
     public static IReadOnlyList<string> EglCandidates { get; } = ["libEGL.so", "libEGL.so.1"];

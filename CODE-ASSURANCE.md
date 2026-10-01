@@ -17,11 +17,11 @@ and the figures below are the measurement of how far from that claim the per-uni
 | Files not covered | 0 |
 | Files carrying an annotation | 42 |
 | Code units | 1413 |
-| Relevant | 1059 |
-| Exempt by predicate | 354 |
-| Annotated | 1059 of 1059 (100%) |
-| Human reviewed | 0 of 1059 (0%) |
-| Unverified | 1059 |
+| Relevant | 649 |
+| Exempt by predicate | 764 |
+| Annotated | 649 of 649 (100%) |
+| Human reviewed | 0 of 649 (0%) |
+| Unverified | 649 |
 
 ## Review states
 
@@ -29,17 +29,17 @@ and the figures below are the measurement of how far from that claim the per-uni
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 1059 |
+| HUMAN_PENDING | 649 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 0 |
 | STALE | 0 |
-| EXEMPT | 354 |
+| EXEMPT | 764 |
 
 ## IP risk
 
 | Value | Units |
 |---|---:|
-| None | 457 |
+| None | 47 |
 | Low | 602 |
 | Medium | 0 |
 | High | 0 |
@@ -50,11 +50,11 @@ and the figures below are the measurement of how far from that claim the per-uni
 
 | Value | Units |
 |---|---:|
-| None | 0 |
-| Low | 61 |
-| Medium | 235 |
-| High | 546 |
-| Critical | 217 |
+| None | 2 |
+| Low | 24 |
+| Medium | 0 |
+| High | 426 |
+| Critical | 197 |
 | *not annotated* | 0 |
 
 ## Resource impact
@@ -62,14 +62,12 @@ and the figures below are the measurement of how far from that claim the per-uni
 | Metric | Value |
 |---|---:|
 | Maximum | 8 / 10 |
-| Average over annotated units | 0.9 / 10 |
-| Units scored | 1059 |
+| Average over annotated units | 1.4 / 10 |
+| Units scored | 649 |
 
 ## High-security review areas
 
 - `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.EGL_DEFAULT_DISPLAY` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.EGL_NONE` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
@@ -87,10 +85,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Android.AndroidEglNative.QuerySurface(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GL_RGBA` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GL_UNSIGNED_BYTE` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GL_PACK_ALIGNMENT` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GL_UNPACK_ALIGNMENT` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidGlesNative.DeleteTextures(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidGlesNative.BindTexture(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
@@ -118,9 +112,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Android.AndroidGlesNative.ThrowIfError(string)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidGlesNative.GetDriverInfo()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.Egl` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.Gles` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.AndroidRuntime` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeLibraries.Resolve(string, Assembly, DllImportSearchPath?)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
@@ -134,9 +125,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Android.AndroidNativeWindowNative.GetFormat(IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeWindowNative.SetBuffersGeometry(IntPtr, int, int, int)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.O_RDONLY` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.O_CLOEXEC` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.EVIOCSCLOCKID` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Open(string, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
@@ -147,7 +135,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.EviocgAbs(ushort)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.PollFd` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.OpenGL.LinuxEglNative.EGL_NONE` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, human line PENDING
@@ -163,10 +150,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.GetError()` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxEglNative.GetProcAddress(string)` in `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_RGBA` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_UNSIGNED_BYTE` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_PACK_ALIGNMENT` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GL_UNPACK_ALIGNMENT` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.LinuxOpenGlFunctions()` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.LoadCurrentContext()` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GetString(uint)` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=Critical, human line PENDING
@@ -196,7 +179,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlGetErrorProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlFunctions.GlGetStringProc` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.OpenGL.LinuxX11Native.Format8` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.OpenDisplay(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.CloseDisplay(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.DefaultScreen(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
@@ -222,12 +204,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.SetErrorHandler(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.XEvent` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_SUCCESS` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_INCOMPLETE` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_STRUCTURE_TYPE_APPLICATION_INFO` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetSupportedInstanceVersion()` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.ThrowIfFailed(int, string)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetPhysicalDeviceInfo(IntPtr)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, human line PENDING
@@ -261,11 +237,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.IStream.Stat(IntPtr, uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.IStream.Clone(out IStream)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.ComNative` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.ComNative.S_OK` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.ComNative.S_FALSE` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.ComNative.RPC_E_CHANGED_MODE` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.ComNative.COINIT_MULTITHREADED` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.ComNative.CLSCTX_INPROC_SERVER` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.ComNative.s_comWrappers` in `src/Broiler.Native.Windows/ComNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.ComNative.CoInitializeEx(IntPtr, uint)` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.ComNative.CoUninitialize()` in `src/Broiler.Native.Windows/ComNative.cs` - Security=High, human line PENDING
@@ -281,9 +252,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.Direct2D.ComPtr.QueryInterfaceProc` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.ComPtr.AddRefProc` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.ComPtr.ReleaseProc` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.ComPtr.ComPtr()` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.ComPtr.Pointer` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.ComPtr.IsNull` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.ComPtr.Attach(IntPtr)` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.ComPtr.AddRef()` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.ComPtr.QueryInterface(in Guid, out IntPtr)` in `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` - Security=Critical, human line PENDING
@@ -292,46 +260,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.Direct2D.ComVtable.Delegates` in `src/Broiler.Native.Windows/Direct2D/ComVtable.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.ComVtable.Method<TDelegate>(IntPtr, int)` in `src/Broiler.Native.Windows/Direct2D/ComVtable.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.D2DNative` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.IID_ID2D1Factory` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.IID_ID2D1Factory1` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.IID_ID2D1Device` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.IID_ID2D1DeviceContext` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreateBitmap` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreateSolidColorBrush` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblDrawRectangle` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblFillRectangle` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblDrawRoundedRectangle` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblFillRoundedRectangle` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblDrawBitmap` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblDrawText` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblSetTransform` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblSetAntialiasMode` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblSetTextAntialiasMode` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblPushAxisAlignedClip` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblPopAxisAlignedClip` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblClear` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblBeginDraw` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblEndDraw` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblSetDpi` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreateBitmapFromDxgiSurface` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblSetTarget` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreateBitmap1` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblBitmapCopyFromBitmap` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblBitmap1Map` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblBitmap1Unmap` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreateDeviceContext` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreateDevice` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblGetFactory` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblCreatePathGeometry` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblPathGeometryOpen` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblPathGeometryGetFigureCount` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblGeometrySinkSetFillMode` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblGeometrySinkBeginFigure` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblGeometrySinkAddLines` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblGeometrySinkEndFigure` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblGeometrySinkClose` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.VtblFillGeometry` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_FACTORY_TYPE` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_SIZE_U` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_MAPPED_RECT` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_PIXEL_FORMAT` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, human line PENDING
@@ -344,22 +272,7 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_MATRIX_3X2_F` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.D2DNative.CreateDeviceContextProc` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.D2DNative.SetTargetProc` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D3D11Native` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D3D11Native.D3D_FEATURE_LEVEL` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D3D11Native.D3D11_CREATE_DEVICE_FLAG` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.D3D11Native.D3D11_SDK_VERSION` in `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DWriteNative` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.IID_IDWriteFactory` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetSystemFontCollection` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetFontFamilyCount` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetFontFamily` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetFamilyNames` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblFindLocaleName` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetStringLength` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetString` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblCreateTextFormat` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblCreateTextLayout` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DWriteNative.VtblGetMetrics` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_TEXT_METRICS` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DWriteNative.CreateTextFormatProc` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.Direct2DDeviceApi` in `src/Broiler.Native.Windows/Direct2D/Direct2DDeviceApi.cs` - Security=High, human line PENDING
@@ -416,17 +329,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.Direct2D.DirectWriteTextMetricsProviderApi.CreateTextLayoutProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DirectWriteTextMetricsProviderApi.GetMetricsProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DxgiNative` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGIFactory1` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGIFactory2` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGIDevice` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGISurface` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.IID_IDXGISwapChain1` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.VtblPresent` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.VtblGetBuffer` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.VtblResizeBuffers` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.VtblCreateSwapChainForHwnd` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.VtblCreateSwapChainForComposition` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_FORMAT` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SAMPLE_DESC` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SWAP_CHAIN_DESC1` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Direct2D.NativeMethods` in `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` - Security=Critical, human line PENDING
@@ -443,31 +345,10 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawMouse` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Input.RawInputReaderNative.RawKeyboard` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Input.RawInputReaderNative.GetRawInputData(IntPtr, uint, IntPtr, ref uint, uint)` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Input.RawInputReaderNative.RidInput` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Input.RawInputReaderNative.RimTypeMouse` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Input.RawInputReaderNative.RimTypeKeyboard` in `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative.RawInputDevice` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Input.RawInputRegistrationNative.RegisterRawInputDevices(RawInputDevice[], uint, uint)` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Input.RawInputRegistrationNative.RidevInputSink` in `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_SOURCE_READER_FIRST_VIDEO_STREAM` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_SOURCE_READER_CURRENT_TYPE_INDEX` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.IMFMediaSourceId` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFMediaTypeVideo` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFVideoFormatRgb32` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFVideoFormatRgb24` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFVideoFormatNv12` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFVideoFormatYuy2` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFVideoFormatMjpg` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFVideoFormatL8` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_GUID` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_MAJOR_TYPE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_SUBTYPE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_FRAME_SIZE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MF_MT_DEFAULT_STRIDE` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFEnumDeviceSources(IMFAttributes, out IntPtr, out uint)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFCreateDeviceSource(IMFAttributes, out IMFMediaSource)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.Capture.WindowsMediaFoundationNative.MFCreateSourceReaderFromMediaSource(IMFMediaSource, IMFAttributes?, out IMFSourceReader)` in `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` - Security=High, human line PENDING
@@ -585,12 +466,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetCount(out int)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.GetItemByIndex(int, out Guid, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.IMFAttributes.CopyAllItems(IMFAttributes)` in `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_FORCEMUTE` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_DISABLE_LOCAL_PLUGINS` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.CLSID_MFMediaEngineClassFactory` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.IID_IMFMediaEngineClassFactory` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaEngine.MediaFoundationNative.MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineNotify` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineNotify.EventNotify(uint, UIntPtr, uint)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngineClassFactory` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
@@ -641,7 +516,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.TransferVideoFrame(IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaEngine.IMFMediaEngine.OnVideoStreamTick(out long)` in `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MF_VERSION` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MFStartup(int, int)` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MFShutdown()` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.MediaFoundation.MediaFoundationPlatformNative.MFCreateAttributes(out IMFAttributes, uint)` in `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` - Security=High, human line PENDING
@@ -650,18 +524,11 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.PerformanceCounterNative.QueryPerformanceCounter(out long)` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.PerformanceCounterNative.QueryPerformanceFrequency(out long)` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.MMDeviceEnumeratorClassId` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.IMMDeviceEnumeratorId` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.IAudioClientId` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.IAudioCaptureClientId` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.PcmSubFormat` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.IeeeFloatSubFormat` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.PropVariantClear(ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.CreateEventW(IntPtr, bool, bool, string?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.SetEvent(IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.CloseHandle(IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.WaitForSingleObject(IntPtr, uint)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wasapi.StorageAccess` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.PropertyKey` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.PropVariant` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WaveFormatEx` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, human line PENDING
@@ -751,8 +618,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateEncoder(ref Guid, IntPtr, out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreatePalette(out IntPtr)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wic.WicNative.IWICImagingFactory.CreateFormatConverter(out IWICFormatConverter)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wic.WicNative.ClsidWicImagingFactory` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.Wic.WicNative.IidWicImagingFactory` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.WindowNative` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.WindowNative.SetWindowLongPtr(IntPtr, int, IntPtr)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.WindowNative.GetWindowLongPtr(IntPtr, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
@@ -823,11 +688,6 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, char*, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, Span<char>)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, StringBuilder, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Windows.WindowNative.GwlUserData` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.WindowNative.IdiApplication` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.WindowNative.WmNccreate` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.WindowNative.WmNcdestroy` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Windows.WindowNative.WmNccalcsize` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, human line PENDING
 - `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, human line PENDING
 
@@ -835,8 +695,8 @@ and the figures below are the measurement of how far from that claim the per-uni
 
 | Metric | Value |
 |---|---:|
-| Units carrying a criterion | 1056 |
-| Units required to carry one | 763 |
+| Units carrying a criterion | 623 |
+| Units required to carry one | 623 |
 | Required and missing | 0 |
 
 A `Broiler-Falsified-If:` line states, at the declaration, the observation that would make
@@ -864,7 +724,14 @@ that the rule is reviewable in one place rather than in several hundred.
 | InsideAssemblyMarker | 0 |
 | FieldDeclaringStorage | 223 |
 | EnumMemberOfADeclaredVocabulary | 107 |
+| NamedValue | 410 |
 | DeclaredInSource | 0 |
+
+`NamedValue` is this component's choice (`"namedValues": "watched"`): a `const`
+field, an enum declaration and a `static readonly` `Guid`, `IntPtr`, `UIntPtr`, `nint` or `nuint`
+stated by literals alone is a value with a name and carries no decision to assess, so it
+carries no annotation. It is still a unit with an entry in `assurance.manifest.json`, so a
+change to its value moves a fingerprint the check compares.
 
 ## Per-unit exemptions
 

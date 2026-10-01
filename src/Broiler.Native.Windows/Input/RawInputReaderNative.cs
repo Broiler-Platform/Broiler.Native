@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   9
-// Annotated:        9/9
-// Exempt:           17
-// Human-reviewed:   0/9
+// Relevant units:   5
+// Annotated:        5/5
+// Exempt:           21
+// Human-reviewed:   0/5
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         9/8
+// Criteria:         5/5
 // Resource impact:  3/10 max
-// Unverified:       9
+// Unverified:       5
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -71,20 +71,8 @@ public static partial class RawInputReaderNative
     // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial uint GetRawInputData(IntPtr rawInput, uint command, IntPtr data, ref uint size, uint headerSize);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=94FC5D
-    // Broiler-Falsified-If: the value is not winuser.h's RID_INPUT 0x10000003, so GetRawInputData reports a header-only size and the payload read after the header runs past the returned bytes
-    // Broiler-Human:        PENDING
     public const uint RidInput = 0x10000003;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DFAAB1
-    // Broiler-Falsified-If: the value is not winuser.h's RIM_TYPEMOUSE 0, so a mouse report is not decoded with the RAWMOUSE layout and raw mouse events are dropped or misread
-    // Broiler-Human:        PENDING
     public const uint RimTypeMouse = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=162CC9
-    // Broiler-Falsified-If: the value is not winuser.h's RIM_TYPEKEYBOARD 1, so a keyboard report is not decoded with the RAWKEYBOARD layout and raw key events are dropped or misread
-    // Broiler-Human:        PENDING
     public const uint RimTypeKeyboard = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=712CB5
-    // Broiler-Falsified-If: the value is not winuser.h's MOUSE_MOVE_ABSOLUTE 0x0001, so a pen tablet's absolute LastX and LastY in 0 to 65535 are treated as relative deltas
-    // Broiler-Human:        PENDING
     public const ushort MouseMoveAbsolute = 0x0001;
 }

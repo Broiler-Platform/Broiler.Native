@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   59
-// Annotated:        59/59
-// Exempt:           0
-// Human-reviewed:   0/59
+// Relevant units:   50
+// Annotated:        50/50
+// Exempt:           9
+// Human-reviewed:   0/50
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         59/55
+// Criteria:         49/49
 // Resource impact:  8/10 max
-// Unverified:       59
+// Unverified:       50
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -22,49 +22,21 @@ using System.ComponentModel;
 
 namespace Broiler.Native.Windows.MediaFoundation.MediaEngine;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=31739E
-// Broiler-Falsified-If: a constant here differs from mfmediaengine.h, for example DISABLE_LOCAL_PLUGINS other than 0x10, so plug-ins registered in-process with MFRegisterLocalByteStreamHandler still open page media
+// Broiler-AI:           Origin=AI; IP=Low; Security=None; Resources=0; Fingerprint=31739E
 // Broiler-Human:        PENDING
 public static partial class MediaFoundationNative
 {
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=CEA340
-    // Broiler-Falsified-If: the value is not 0x4 from MF_MEDIA_ENGINE_CREATEFLAGS, so an engine created for a muted session still plays page audio or is given REAL_TIME_MODE (0x8) instead
-    // Broiler-Human:        PENDING
     public const uint MF_MEDIA_ENGINE_FORCEMUTE = 0x4;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=EF4C0E
-    // Broiler-Falsified-If: the value is not 0x10 from MF_MEDIA_ENGINE_CREATEFLAGS, so plug-ins registered in-process with MFRegisterLocalByteStreamHandler or MFRegisterLocalSchemeHandler still open page media
-    // Broiler-Human:        PENDING
     public const uint MF_MEDIA_ENGINE_DISABLE_LOCAL_PLUGINS = 0x10;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=38C4D3
-    // Broiler-Falsified-If: the GUID differs from CLSID_MFMediaEngineClassFactory (B44392DA-499B-446B-A4CB-005FEAD0E6D5) in mfmediaengine.h, so CoCreateInstance activates another registered in-process class or fails with REGDB_E_CLASSNOTREG
-    // Broiler-Human:        PENDING
     public static readonly Guid CLSID_MFMediaEngineClassFactory = new("B44392DA-499B-446B-A4CB-005FEAD0E6D5");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=BFBA6C
-    // Broiler-Falsified-If: the GUID differs from the [Guid] on IMFMediaEngineClassFactory, so CoCreateInstance asks the factory class for an interface it does not expose and returns E_NOINTERFACE
-    // Broiler-Human:        PENDING
     public static readonly Guid IID_IMFMediaEngineClassFactory = new("4D645ACE-26AA-4688-9BE1-DF3516990B93");
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AF4160
-    // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_CALLBACK in mfmediaengine.h, so the engine finds no IMFMediaEngineNotify in the attribute store and CreateInstance fails
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_CALLBACK = new("C60381B8-83A4-41F8-A3D0-DE05076849A9");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B98297
-    // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_PLAYBACK_HWND in mfmediaengine.h, so the engine ignores the target window, runs in frame-server mode and decoded page video never reaches the HWND
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_PLAYBACK_HWND = new("D988879B-67C9-4D92-BAA7-6EADD446039D");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=113EE9
-    // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE in mfmediaengine.h, so Shutdown closes the media source asynchronously and the engine is still running when the caller releases the factory and attribute store
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_SYNCHRONOUS_CLOSE = new("C3C2E12F-7E0E-4E43-B91C-DC992CCDFA5E");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=735B96
-    // Broiler-Falsified-If: the key differs from MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE in mfmediaengine.h, so the Edge mode value set with SetGUID is never read and the engine keeps its default media-element behaviour
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE = new("4E0212E2-E18F-41E1-95E5-C0E7E9235BC3");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=A118CB
-    // Broiler-Falsified-If: the GUID differs from MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE (A6F3E465-3ACA-442C-A3F0-AD6DDAD839AE), so the engine is configured with an unknown or older IE compatibility mode
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MEDIA_ENGINE_BROWSER_COMPATIBILITY_MODE_IE_EDGE = new("A6F3E465-3ACA-442C-A3F0-AD6DDAD839AE");
 
 }

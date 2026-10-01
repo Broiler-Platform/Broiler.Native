@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   10
-// Annotated:        10/10
-// Exempt:           0
-// Human-reviewed:   0/10
+// Relevant units:   8
+// Annotated:        8/8
+// Exempt:           2
+// Human-reviewed:   0/8
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         10/8
+// Criteria:         8/8
 // Resource impact:  3/10 max
-// Unverified:       10
+// Unverified:       8
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -41,15 +41,9 @@ namespace Broiler.Native.Android;
 public static partial class AndroidNativeWindowNative
 {
     /// <summary>Matches <c>WINDOW_FORMAT_RGBA_8888</c>.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0A0115
-    // Broiler-Falsified-If: the value is not 1 (WINDOW_FORMAT_RGBA_8888 in the NDK native_window.h), so SetBuffersGeometry requests a buffer format other than 8-bit RGBA with alpha
-    // Broiler-Human:        PENDING
     public const int WindowFormatRgba8888 = 1;
 
     /// <summary>Matches <c>WINDOW_FORMAT_RGBX_8888</c>.</summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D56A1B
-    // Broiler-Falsified-If: the value is not 2 (WINDOW_FORMAT_RGBX_8888 in the NDK native_window.h), so SetBuffersGeometry requests a buffer format other than 8-bit RGB with an ignored fourth byte
-    // Broiler-Human:        PENDING
     public const int WindowFormatRgbx8888 = 2;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=F68393

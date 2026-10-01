@@ -9,7 +9,7 @@
 // Human-reviewed:   0/3
 // IP risk:          Low
 // Security risk:    Low
-// Criteria:         3/0
+// Criteria:         0/0
 // Resource impact:  0/10 max
 // Unverified:       3
 //
@@ -21,17 +21,14 @@ namespace Broiler.Native.Android;
 
 /// <summary>An EGL or OpenGL ES operation failed.</summary>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3D13C8
-// Broiler-Falsified-If: the type does not derive from InvalidOperationException, so a caller catching InvalidOperationException for EGL or GLES failures misses it
 // Broiler-Human:        PENDING
 public sealed class AndroidOpenGlEsException : InvalidOperationException
 {
     // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=AECDA5
-    // Broiler-Falsified-If: the message passed is not the exception's Message
     // Broiler-Human:        PENDING
     public AndroidOpenGlEsException(string message) : base(message) { }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=3A5B77
-    // Broiler-Falsified-If: the exception passed is not exposed as InnerException
     // Broiler-Human:        PENDING
     public AndroidOpenGlEsException(string message, Exception innerException) : base(message, innerException) { }
 }

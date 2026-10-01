@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   76
-// Annotated:        76/76
-// Exempt:           38
-// Human-reviewed:   0/76
+// Relevant units:   56
+// Annotated:        56/56
+// Exempt:           58
+// Human-reviewed:   0/56
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         76/63
+// Criteria:         56/56
 // Resource impact:  5/10 max
-// Unverified:       76
+// Unverified:       56
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -26,60 +26,21 @@ namespace Broiler.Native.Windows.Wasapi;
 // Broiler-Human:        PENDING
 public static partial class WindowsWasapiNative
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=598F31
-    // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x004) = 0x88890004 from audioclient.h, so a removed capture endpoint is reported as a generic failure rather than an invalidated device
-    // Broiler-Human:        PENDING
     public const int AUDCLNT_E_DEVICE_INVALIDATED = unchecked((int)0x88890004);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=9E74FF
-    // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x008) = 0x88890008 from audioclient.h, so an Initialize rejected for its format is not recognised as an unsupported format
-    // Broiler-Human:        PENDING
     public const int AUDCLNT_E_UNSUPPORTED_FORMAT = unchecked((int)0x88890008);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=92F951
-    // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x00A) = 0x8889000A from audioclient.h, so an endpoint held in exclusive mode by another process is not reported as busy
-    // Broiler-Human:        PENDING
     public const int AUDCLNT_E_DEVICE_IN_USE = unchecked((int)0x8889000A);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=AACA56
-    // Broiler-Falsified-If: the value is not AUDCLNT_ERR(0x010) = 0x88890010 from audioclient.h, so a stopped Windows Audio service is not recognised as the audio host being unavailable
-    // Broiler-Human:        PENDING
     public const int AUDCLNT_E_SERVICE_NOT_RUNNING = unchecked((int)0x88890010);
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=65462B
-    // Broiler-Falsified-If: the value is not 0 as in winbase.h, so a capture event that WaitForSingleObject reports as signalled is not recognised as signalled
-    // Broiler-Human:        PENDING
     public const uint WAIT_OBJECT_0 = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E2DDDC
-    // Broiler-Falsified-If: the value is not 258 (0x102) as in winerror.h, so a wait that timed out is treated as a signalled event and the capture client is drained with no packet ready
-    // Broiler-Human:        PENDING
     public const uint WAIT_TIMEOUT = 258;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EE48F5
-    // Broiler-Falsified-If: the value is not 0xFFFFFFFF as in winbase.h, so a failed wait on a closed or invalid event handle is treated as a signal and the capture loop spins instead of stopping
-    // Broiler-Human:        PENDING
     public const uint WAIT_FAILED = 0xFFFFFFFF;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=4E9396
-    // Broiler-Falsified-If: the GUID differs from CLSID_MMDeviceEnumerator BCDE0395-E52F-467C-8E3D-C4579291692E in mmdeviceapi.h, so CoCreateInstance activates another class or fails with REGDB_E_CLASSNOTREG
-    // Broiler-Human:        PENDING
     public static readonly Guid MMDeviceEnumeratorClassId = new("BCDE0395-E52F-467C-8E3D-C4579291692E");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=019EC1
-    // Broiler-Falsified-If: the GUID differs from IID_IMMDeviceEnumerator A95664D2-9614-4F35-A746-DE8DB63617E6 in mmdeviceapi.h, so a raw pointer created with it is called through the IMMDeviceEnumerator vtable while pointing at another interface
-    // Broiler-Human:        PENDING
     public static readonly Guid IMMDeviceEnumeratorId = new("A95664D2-9614-4F35-A746-DE8DB63617E6");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=C9CFEC
-    // Broiler-Falsified-If: the GUID differs from IID_IAudioClient 1CB9AD4C-DBFA-4C32-B178-C2F568A703B2 in audioclient.h, so IMMDevice.Activate returns a pointer to another interface that is then called through the IAudioClient vtable
-    // Broiler-Human:        PENDING
     public static readonly Guid IAudioClientId = new("1CB9AD4C-DBFA-4c32-B178-C2F568A703B2");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=BA49A8
-    // Broiler-Falsified-If: the GUID differs from IID_IAudioCaptureClient C8ADBD64-E71E-48A0-A4DE-185C395CD317 in audioclient.h, so IAudioClient.GetService returns E_NOINTERFACE or a pointer to another interface instead of the capture client
-    // Broiler-Human:        PENDING
     public static readonly Guid IAudioCaptureClientId = new("C8ADBD64-E71E-48a0-A4DE-185C395CD317");
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1F686C
-    // Broiler-Falsified-If: the GUID differs from KSDATAFORMAT_SUBTYPE_PCM 00000001-0000-0010-8000-00AA00389B71 in ksmedia.h, so an integer PCM mix format in WAVE_FORMAT_EXTENSIBLE is classified as an unknown sample format
-    // Broiler-Human:        PENDING
     public static readonly Guid PcmSubFormat = new("00000001-0000-0010-8000-00aa00389b71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=8B74E7
-    // Broiler-Falsified-If: the GUID differs from KSDATAFORMAT_SUBTYPE_IEEE_FLOAT 00000003-0000-0010-8000-00AA00389B71 in ksmedia.h, so a WAVE_FORMAT_EXTENSIBLE float mix format is not recognised as 32-bit float samples
-    // Broiler-Human:        PENDING
     public static readonly Guid IeeeFloatSubFormat = new("00000003-0000-0010-8000-00aa00389b71");
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=72B3B6
@@ -116,9 +77,6 @@ public static partial class WindowsWasapiNative
     public static partial uint WaitForSingleObject(IntPtr handle, uint milliseconds);
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6C0BBA
-// Broiler-Falsified-If: Render, Capture and All are not 0, 1 and 2 as in mmdeviceapi.h EDataFlow, so a Capture enumeration or default-endpoint lookup returns render endpoints
-// Broiler-Human:        PENDING
 public enum EDataFlow
 {
     Render = 0,
@@ -126,9 +84,6 @@ public enum EDataFlow
     All = 2,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=502AAE
-// Broiler-Falsified-If: Console, Multimedia and Communications are not 0, 1 and 2 as in mmdeviceapi.h ERole, so GetDefaultAudioEndpoint returns the default endpoint for a different role
-// Broiler-Human:        PENDING
 public enum ERole
 {
     Console = 0,
@@ -136,9 +91,6 @@ public enum ERole
     Communications = 2,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=406EC2
-// Broiler-Falsified-If: a flag differs from DEVICE_STATE_ACTIVE 0x1, DISABLED 0x2, NOTPRESENT 0x4 or UNPLUGGED 0x8 in mmdeviceapi.h, so an Active state mask also enumerates unplugged or disabled endpoints
-// Broiler-Human:        PENDING
 [Flags]
 public enum DeviceState : uint
 {
@@ -149,26 +101,17 @@ public enum DeviceState : uint
     All = 0x0000000F,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6BC679
-// Broiler-Falsified-If: Read is not STGM_READ (0), so OpenPropertyStore asks for write access to the endpoint property store and fails with E_ACCESSDENIED in a non-elevated process
-// Broiler-Human:        PENDING
 public enum StorageAccess
 {
     Read = 0,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AACE47
-// Broiler-Falsified-If: Shared and Exclusive are not 0 and 1 as in audiosessiontypes.h AUDCLNT_SHAREMODE, so Initialize requests exclusive mode and takes the endpoint from other applications
-// Broiler-Human:        PENDING
 public enum AudioClientShareMode
 {
     Shared = 0,
     Exclusive = 1,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=8FB445
-// Broiler-Falsified-If: EventCallback is not AUDCLNT_STREAMFLAGS_EVENTCALLBACK 0x00040000 from audiosessiontypes.h, so Initialize does not enable event-driven buffering and SetEventHandle fails
-// Broiler-Human:        PENDING
 [Flags]
 public enum AudioClientStreamFlags : uint
 {
@@ -176,9 +119,6 @@ public enum AudioClientStreamFlags : uint
     EventCallback = 0x00040000,
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=56809F
-// Broiler-Falsified-If: Silent is not AUDCLNT_BUFFERFLAGS_SILENT 0x2 from audioclient.h, so a packet the audio engine marks as silence is copied and delivered as captured audio
-// Broiler-Human:        PENDING
 [Flags]
 public enum AudioClientBufferFlags : uint
 {

@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   32
-// Annotated:        32/32
-// Exempt:           0
-// Human-reviewed:   0/32
+// Relevant units:   24
+// Annotated:        24/24
+// Exempt:           8
+// Human-reviewed:   0/24
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         32/29
+// Criteria:         24/24
 // Resource impact:  3/10 max
-// Unverified:       32
+// Unverified:       24
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -103,37 +103,13 @@ public partial interface IStream
 // Broiler-Human:        PENDING
 public static partial class ComNative
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AD5C7E
-    // Broiler-Falsified-If: a value other than 0 makes callers that pair a successful CoInitializeEx with CoUninitialize skip it, leaving the thread's apartment initialised after the capture or decode work ends
-    // Broiler-Human:        PENDING
     public const int S_OK = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=72A585
-    // Broiler-Falsified-If: a value other than 1 makes a nested CoInitializeEx on an already initialised thread skip its matching CoUninitialize, leaving the apartment's initialisation count unbalanced
-    // Broiler-Human:        PENDING
     public const int S_FALSE = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=0C6B23
-    // Broiler-Falsified-If: a value other than 0x80070005 makes an OS refusal of camera or microphone access surface as a generic native failure instead of PermissionDenied
-    // Broiler-Human:        PENDING
     public const int E_ACCESSDENIED = unchecked((int)0x80070005);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=A76EE8
-    // Broiler-Falsified-If: a value other than 0x80070490 makes a machine with no default capture endpoint throw instead of reporting that no microphone is present
-    // Broiler-Human:        PENDING
     public const int E_NOTFOUND = unchecked((int)0x80070490);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=84F45B
-    // Broiler-Falsified-If: a value other than 0x80010106 makes COM users on a thread already in a single-threaded apartment fail initialisation instead of continuing without a matching CoUninitialize
-    // Broiler-Human:        PENDING
     public const int RPC_E_CHANGED_MODE = unchecked((int)0x80010106);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6774C3
-    // Broiler-Falsified-If: a value other than 0, such as COINIT_APARTMENTTHREADED (2), puts capture and decode threads in a single-threaded apartment whose interface pointers are then called from other threads
-    // Broiler-Human:        PENDING
     public const uint COINIT_MULTITHREADED = 0x0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E7EBD8
-    // Broiler-Falsified-If: a value other than 1 lets CoCreateInstance activate a local or remote server process instead of the in-process WIC, MMDevice or Media Engine library
-    // Broiler-Human:        PENDING
     public const uint CLSCTX_INPROC_SERVER = 0x1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=FCD1C0
-    // Broiler-Falsified-If: a value other than 0x80004002 makes microphone diagnostics print an unnamed HRESULT for a failed interface query
-    // Broiler-Human:        PENDING
     public const int E_NOINTERFACE = unchecked((int)0x80004002);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=2EB7A1

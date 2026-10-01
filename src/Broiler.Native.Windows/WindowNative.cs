@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   155
-// Annotated:        155/155
-// Exempt:           60
-// Human-reviewed:   0/155
+// Relevant units:   72
+// Annotated:        72/72
+// Exempt:           143
+// Human-reviewed:   0/72
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         155/75
+// Criteria:         70/70
 // Resource impact:  5/10 max
-// Unverified:       155
+// Unverified:       72
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -96,12 +96,10 @@ public static partial class WindowNative
         public readonly int Bottom = bottom;
 
         // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=F4DA91
-        // Broiler-Falsified-If: Width is not Right minus Left, so a client rect from 0 to 1280 reports a width other than 1280
         // Broiler-Human:        PENDING
         public int Width => Right - Left;
 
         // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=800389
-        // Broiler-Falsified-If: Height is not Bottom minus Top, so a client rect from 0 to 720 reports a height other than 720
         // Broiler-Human:        PENDING
         public int Height => Bottom - Top;
     }
@@ -589,340 +587,91 @@ public static partial class WindowNative
         return count;
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=563198
-    // Broiler-Falsified-If: the value is not winerror.h's ERROR_CLASS_ALREADY_EXISTS (1410), so a second window's RegisterClassEx failure for the already-registered class throws Win32Exception instead of reusing the class
-    // Broiler-Human:        PENDING
     public const int ErrorClassAlreadyExists = 1410;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F3FFA5
-    // Broiler-Falsified-If: the value is not winuser.h's CW_USEDEFAULT (0x80000000), so CreateWindowEx places a window without an explicit position at that literal coordinate rather than at the system default
-    // Broiler-Human:        PENDING
     public const int CwUseDefault = unchecked((int)0x80000000);
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0ADB11
-    // Broiler-Falsified-If: the value is not winuser.h's CS_HREDRAW (0x0002), so a width change does not invalidate the whole client area and stale pixels remain in the newly exposed strip
-    // Broiler-Human:        PENDING
     public const uint CsHRedraw = 0x0002;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C43CC5
-    // Broiler-Falsified-If: the value is not winuser.h's CS_VREDRAW (0x0001), so a height change does not invalidate the whole client area and stale pixels remain in the newly exposed strip
-    // Broiler-Human:        PENDING
     public const uint CsVRedraw = 0x0001;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=435859
-    // Broiler-Falsified-If: the value is not winuser.h's WS_OVERLAPPEDWINDOW (0x00CF0000), so the top-level window is created without some of its caption, system menu, sizing border and minimise and maximise boxes
-    // Broiler-Human:        PENDING
     public const uint WsOverlappedWindow = 0x00CF0000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=48284F
-    // Broiler-Falsified-If: the value is not winuser.h's WS_CHILD (0x40000000), so CreateWindowEx makes the render host a top-level window that is neither clipped to nor moved with its owner
-    // Broiler-Human:        PENDING
     public const uint WsChild = 0x40000000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9C8D1D
-    // Broiler-Falsified-If: the value is not winuser.h's WS_VISIBLE (0x10000000), so the render host child is created hidden and never paints
-    // Broiler-Human:        PENDING
     public const uint WsVisible = 0x10000000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=33D697
-    // Broiler-Falsified-If: the value is not winuser.h's WS_CLIPCHILDREN (0x02000000), so painting the top-level window draws over its render host child and every frame flickers
-    // Broiler-Human:        PENDING
     public const uint WsClipChildren = 0x02000000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F377A5
-    // Broiler-Falsified-If: the value is not winuser.h's WS_CLIPSIBLINGS (0x04000000), so overlapping child windows paint over each other
-    // Broiler-Human:        PENDING
     public const uint WsClipSiblings = 0x04000000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B4E022
-    // Broiler-Falsified-If: the value is not winuser.h's WS_THICKFRAME (0x00040000), so masking it out of a non-resizable window's style leaves the sizing border in place or clears another style bit
-    // Broiler-Human:        PENDING
     public const uint WsThickFrame = 0x00040000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EDDF9C
-    // Broiler-Falsified-If: the value is not winuser.h's WS_MAXIMIZEBOX (0x00010000), so masking it out of a non-resizable window's style leaves the maximise button active or clears another style bit
-    // Broiler-Human:        PENDING
     public const uint WsMaximizeBox = 0x00010000;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=794847
-    // Broiler-Falsified-If: the value is not winuser.h's SW_SHOW (5), so the first ShowWindow after CreateWindowEx leaves the window hidden or shows it minimised or maximised
-    // Broiler-Human:        PENDING
     public const int SwShow = 5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EC13C7
-    // Broiler-Falsified-If: the value is not winuser.h's SW_MAXIMIZE (3), so requesting the maximised state sends another show command and the window is not maximised
-    // Broiler-Human:        PENDING
     public const int SwMaximize = 3;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EE6D80
-    // Broiler-Falsified-If: the value is not winuser.h's SW_MINIMIZE (6), so requesting the minimised state sends another show command and the window stays on screen
-    // Broiler-Human:        PENDING
     public const int SwMinimize = 6;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D567AE
-    // Broiler-Falsified-If: the value is not winuser.h's SW_RESTORE (9), so leaving the minimised or maximised state does not restore the window's previous size and position
-    // Broiler-Human:        PENDING
     public const int SwRestore = 9;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=CDC25D
-    // Broiler-Falsified-If: the value is not winuser.h's SIZE_MINIMIZED (1), so the WM_SIZE sent on minimise is not recognised and the surface is resized to a zero client area
-    // Broiler-Human:        PENDING
     public const int SizeMinimized = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=73C692
-    // Broiler-Falsified-If: the value is not winuser.h's SM_CXSCREEN (0), so centring a window with no explicit position uses another metric as the screen width
-    // Broiler-Human:        PENDING
     public const int SmCxScreen = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=43C5AF
-    // Broiler-Falsified-If: the value is not winuser.h's SM_CYSCREEN (1), so centring a window with no explicit position uses another metric as the screen height
-    // Broiler-Human:        PENDING
     public const int SmCyScreen = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E5BE6C
-    // Broiler-Falsified-If: the value is not winuser.h's SM_CXSIZEFRAME (32), so the owner-drawn resize border width adds another metric to SM_CXPADDEDBORDER and no longer matches the native frame
-    // Broiler-Human:        PENDING
     public const int SmCxSizeFrame = 32;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=FE7C5B
-    // Broiler-Falsified-If: the value is not winuser.h's SM_CXPADDEDBORDER (92), so the owner-drawn resize border omits the padded border, or adds another metric, and no longer matches the native frame
-    // Broiler-Human:        PENDING
     public const int SmCxPaddedBorder = 92;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D79778
-    // Broiler-Falsified-If: the value is not winuser.h's GWLP_USERDATA (-21), so the GCHandle stored on WM_NCCREATE overwrites another window slot such as GWLP_WNDPROC (-4) or GWLP_HINSTANCE (-6) and the next message runs through the overwritten slot
-    // Broiler-Human:        PENDING
     public const int GwlUserData = -21;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=9B9195
-    // Broiler-Falsified-If: the value is not winuser.h's GCLP_HICON (-14), so reading the class icon returns another class slot such as GCLP_HCURSOR (-12) and compares unequal to the registered icon
-    // Broiler-Human:        PENDING
     public const int GclpHIcon = -14;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6A46B8
-    // Broiler-Falsified-If: the value is not winuser.h's GCLP_HICONSM (-34), so reading the small class icon returns another class slot and reports a missing or wrong small icon
-    // Broiler-Human:        PENDING
     public const int GclpHIconSm = -34;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=2AEA97
-    // Broiler-Falsified-If: the value is not winuser.h's COLOR_WINDOW (5), so the class background brush is another system colour and the window shows that colour before the first frame
-    // Broiler-Human:        PENDING
     public const int ColorWindow = 5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1F51B8
-    // Broiler-Falsified-If: the value is not wingdi.h's LOGPIXELSX (88), so the GetDeviceCaps DPI fallback returns another device capability and the window is scaled by it
-    // Broiler-Human:        PENDING
     public const int LogPixelsX = 88;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=FD202E
-    // Broiler-Falsified-If: the value is not winuser.h's HTTRANSPARENT (-1), so the render host's border hit test does not pass through to the top-level window and the owner-drawn resize border cannot be dragged
-    // Broiler-Human:        PENDING
     public const int HtTransparent = -1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DDA4ED
-    // Broiler-Falsified-If: the value is not winuser.h's HTCLIENT (1), so the render host compares hit-test results against another area code and either swallows client-area clicks or passes them through to the frame
-    // Broiler-Human:        PENDING
     public const int HtClient = 1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=584B5B
-    // Broiler-Falsified-If: the value is not winuser.h's HTCAPTION (2), so a move drag sends WM_NCLBUTTONDOWN with another hit code and starts a resize, or nothing, instead of moving the window
-    // Broiler-Human:        PENDING
     public const int HtCaption = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D5A456
-    // Broiler-Falsified-If: the value is not winuser.h's HTLEFT (10), so dragging the left owner-drawn border resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtLeft = 10;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EC0570
-    // Broiler-Falsified-If: the value is not winuser.h's HTRIGHT (11), so dragging the right owner-drawn border resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtRight = 11;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C896B1
-    // Broiler-Falsified-If: the value is not winuser.h's HTTOP (12), so dragging the top owner-drawn border resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtTop = 12;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E5E637
-    // Broiler-Falsified-If: the value is not winuser.h's HTTOPLEFT (13), so dragging the top-left owner-drawn corner resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtTopLeft = 13;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C2FCF3
-    // Broiler-Falsified-If: the value is not winuser.h's HTTOPRIGHT (14), so dragging the top-right owner-drawn corner resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtTopRight = 14;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=07F885
-    // Broiler-Falsified-If: the value is not winuser.h's HTBOTTOM (15), so dragging the bottom owner-drawn border resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtBottom = 15;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=38DF7E
-    // Broiler-Falsified-If: the value is not winuser.h's HTBOTTOMLEFT (16), so dragging the bottom-left owner-drawn corner resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtBottomLeft = 16;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=614BB3
-    // Broiler-Falsified-If: the value is not winuser.h's HTBOTTOMRIGHT (17), so dragging the bottom-right owner-drawn corner resizes another edge or does nothing
-    // Broiler-Human:        PENDING
     public const int HtBottomRight = 17;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=6C361E
-    // Broiler-Falsified-If: the value is not winuser.h's ICON_SMALL (0), so WM_SETICON replaces the large icon twice and the caption keeps the class's small icon
-    // Broiler-Human:        PENDING
     public const int IconSmall = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=4D6C98
-    // Broiler-Falsified-If: the value is not winuser.h's ICON_BIG (1), so WM_SETICON replaces the small icon twice and the taskbar and Alt+Tab keep the class's large icon
-    // Broiler-Human:        PENDING
     public const int IconBig = 1;
     /// <summary>
     /// IDI_APPLICATION: the stock application icon when loaded without a module, and the resource
     /// id the C# compiler gives an executable's <c>ApplicationIcon</c> when loaded from one.
     /// </summary>
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=96BA8F
-    // Broiler-Falsified-If: the value is not winuser.h's IDI_APPLICATION (32512), so LoadIcon on the executable module finds no icon resource and the class registers with the generic window glyph
-    // Broiler-Human:        PENDING
     public const int IdiApplication = 32512;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D1227E
-    // Broiler-Falsified-If: the value is not wingdi.h's DIB_RGB_COLORS (0), so CreateDIBSection reads the colour table as DIB_PAL_COLORS palette indices and fails or builds the icon bitmap against the device palette
-    // Broiler-Human:        PENDING
     public const uint DibRgbColors = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C9D0FD
-    // Broiler-Falsified-If: the value is not winuser.h's MONITOR_DEFAULTTONEAREST (2), so a window off every monitor gets a zero HMONITOR from MonitorFromWindow and the maximised work-area clamp is skipped
-    // Broiler-Human:        PENDING
     public const uint MonitorDefaultToNearest = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=905B6E
-    // Broiler-Falsified-If: the value is not winuser.h's WM_NCCREATE (0x0081), so the window procedure reads another message's lParam as a CREATESTRUCT pointer and GCHandle.FromIntPtr resolves a garbage handle
-    // Broiler-Human:        PENDING
     public const uint WmNccreate = 0x0081;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=9A3CC4
-    // Broiler-Falsified-If: the value is not winuser.h's WM_NCDESTROY (0x0082), so the GCHandle in GWLP_USERDATA is freed on another message or never, so later messages resolve a freed handle or the window object leaks
-    // Broiler-Human:        PENDING
     public const uint WmNcdestroy = 0x0082;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1FEEFE
-    // Broiler-Falsified-If: the value is not winuser.h's WM_CREATE (0x0001), so the render host and graphics resources are created on another message or never
-    // Broiler-Human:        PENDING
     public const uint WmCreate = 0x0001;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=BC5922
-    // Broiler-Falsified-If: the value is not winuser.h's WM_DESTROY (0x0002), so graphics resources are not released and PostQuitMessage is not posted when the window that owns the loop is destroyed
-    // Broiler-Human:        PENDING
     public const uint WmDestroy = 0x0002;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=708A97
-    // Broiler-Falsified-If: the value is not winuser.h's WM_SIZE (0x0005), so the surface is not resized and the frame is stretched after the window is resized
-    // Broiler-Human:        PENDING
     public const uint WmSize = 0x0005;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7458AF
-    // Broiler-Falsified-If: the value is not winuser.h's WM_COMMAND (0x0111), so menu and accelerator commands arriving while the window closes are not suppressed
-    // Broiler-Human:        PENDING
     public const uint WmCommand = 0x0111;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DE53C7
-    // Broiler-Falsified-If: the value is not winuser.h's WM_PAINT (0x000F), so the window procedure never validates the client area and user32 resends WM_PAINT in a busy loop
-    // Broiler-Human:        PENDING
     public const uint WmPaint = 0x000F;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C2853A
-    // Broiler-Falsified-If: the value is not winuser.h's WM_ERASEBKGND (0x0014), so the render host's background erase is not suppressed and each frame flickers through the class brush
-    // Broiler-Human:        PENDING
     public const uint WmEraseBkgnd = 0x0014;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E8068D
-    // Broiler-Falsified-If: the value is not winuser.h's WM_DPICHANGED (0x02E0), so moving the window to a monitor with another scale does not resize the surface and the frame renders at the old DPI
-    // Broiler-Human:        PENDING
     public const uint WmDpiChanged = 0x02E0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=89F5F6
-    // Broiler-Falsified-If: the value is not winuser.h's WM_TIMER (0x0113), so the animation timer's ticks reach DefWindowProc and animations never advance
-    // Broiler-Human:        PENDING
     public const uint WmTimer = 0x0113;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AB91DA
-    // Broiler-Falsified-If: the value is not winuser.h's WM_MOUSEMOVE (0x0200), so pointer moves over the render host are not reported and hover and drag never update
-    // Broiler-Human:        PENDING
     public const uint WmMouseMove = 0x0200;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=A70806
-    // Broiler-Falsified-If: the value is not winuser.h's WM_LBUTTONDOWN (0x0201), so left-button presses over the render host are not reported as pointer-down
-    // Broiler-Human:        PENDING
     public const uint WmLButtonDown = 0x0201;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=87A58A
-    // Broiler-Falsified-If: the value is not winuser.h's WM_LBUTTONUP (0x0202), so left-button releases are not reported and a drag started with the left button never ends
-    // Broiler-Human:        PENDING
     public const uint WmLButtonUp = 0x0202;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=35F273
-    // Broiler-Falsified-If: the value is not winuser.h's WM_RBUTTONDOWN (0x0204), so right-button presses over the render host are not reported as pointer-down
-    // Broiler-Human:        PENDING
     public const uint WmRButtonDown = 0x0204;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=389F9F
-    // Broiler-Falsified-If: the value is not winuser.h's WM_RBUTTONUP (0x0205), so right-button releases are not reported and a context-menu gesture never completes
-    // Broiler-Human:        PENDING
     public const uint WmRButtonUp = 0x0205;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=8D5BF1
-    // Broiler-Falsified-If: the value is not winuser.h's WM_MBUTTONDOWN (0x0207), so middle-button presses over the render host are not reported as pointer-down
-    // Broiler-Human:        PENDING
     public const uint WmMButtonDown = 0x0207;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=947FD5
-    // Broiler-Falsified-If: the value is not winuser.h's WM_MBUTTONUP (0x0208), so middle-button releases are not reported and a middle-button gesture never ends
-    // Broiler-Human:        PENDING
     public const uint WmMButtonUp = 0x0208;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=2E8C7B
-    // Broiler-Falsified-If: the value is not winuser.h's WM_MOUSEWHEEL (0x020A), so vertical wheel input is not reported and content does not scroll
-    // Broiler-Human:        PENDING
     public const uint WmMouseWheel = 0x020A;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=4BB58B
-    // Broiler-Falsified-If: the value is not winuser.h's WM_MOUSEHWHEEL (0x020E), so horizontal wheel input is not reported and content does not scroll sideways
-    // Broiler-Human:        PENDING
     public const uint WmMouseHWheel = 0x020E;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=A5ED52
-    // Broiler-Falsified-If: the value is not winuser.h's WM_MOUSELEAVE (0x02A3), so the pointer leaving the render host is not reported and hover state sticks
-    // Broiler-Human:        PENDING
     public const uint WmMouseLeave = 0x02A3;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=59D4F4
-    // Broiler-Falsified-If: the value is not winuser.h's WM_KEYDOWN (0x0100), so key presses are not reported to the window's key handlers
-    // Broiler-Human:        PENDING
     public const uint WmKeyDown = 0x0100;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5469E2
-    // Broiler-Falsified-If: the value is not winuser.h's WM_KEYUP (0x0101), so key releases are not reported and a released key still reads as held in the handlers
-    // Broiler-Human:        PENDING
     public const uint WmKeyUp = 0x0101;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DD18B3
-    // Broiler-Falsified-If: the value is not winuser.h's WM_CHAR (0x0102), so translated character input is not reported and text cannot be typed
-    // Broiler-Human:        PENDING
     public const uint WmChar = 0x0102;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=951DB1
-    // Broiler-Falsified-If: the value is not winuser.h's WM_SYSKEYDOWN (0x0104), so Alt-modified key presses are not reported to the window's key handlers
-    // Broiler-Human:        PENDING
     public const uint WmSysKeyDown = 0x0104;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=C29429
-    // Broiler-Falsified-If: the value is not winuser.h's WM_SETFOCUS (0x0007), so a handler for keyboard focus arriving runs on another message or never
-    // Broiler-Human:        PENDING
     public const uint WmSetFocus = 0x0007;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=64C94B
-    // Broiler-Falsified-If: the value is not winuser.h's WM_CLOSE (0x0010), so the close button does not raise the close request and a secondary window is destroyed under its owner
-    // Broiler-Human:        PENDING
     public const uint WmClose = 0x0010;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=D310EC
-    // Broiler-Falsified-If: the value is not winuser.h's WM_SETICON (0x0080), so the caption and taskbar keep their old icons and the replaced icons are destroyed while still set on the window
-    // Broiler-Human:        PENDING
     public const uint WmSetIcon = 0x0080;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B5DCC0
-    // Broiler-Falsified-If: the value is not winuser.h's WM_GETICON (0x007F), so reading a window's icon returns another message's result instead of the HICON set through WM_SETICON
-    // Broiler-Human:        PENDING
     public const uint WmGetIcon = 0x007F;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=91C039
-    // Broiler-Falsified-If: the value is not winuser.h's WM_NCCALCSIZE (0x0083), so owner-drawn chrome does not report the whole window as client area and Windows draws its own caption and border over the UI's title bar
-    // Broiler-Human:        PENDING
     public const uint WmNccalcsize = 0x0083;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=4D8EEB
-    // Broiler-Falsified-If: the value is not winuser.h's WM_NCHITTEST (0x0084), so the owner-drawn frame is never hit-tested and its resize border cannot be dragged
-    // Broiler-Human:        PENDING
     public const uint WmNchittest = 0x0084;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=55BAC8
-    // Broiler-Falsified-If: the value is not winuser.h's WM_NCACTIVATE (0x0086), so activating or deactivating the window lets DefWindowProc repaint the native caption over the owner-drawn title bar
-    // Broiler-Human:        PENDING
     public const uint WmNcactivate = 0x0086;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=2E49A0
-    // Broiler-Falsified-If: the value is not winuser.h's WM_NCLBUTTONDOWN (0x00A1), so a move or resize drag sends another message and DefWindowProc never enters its move or size loop
-    // Broiler-Human:        PENDING
     public const uint WmNcLButtonDown = 0x00A1;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=BF9AF2
-    // Broiler-Falsified-If: the value is not winuser.h's MK_LBUTTON (0x0001), so the left-button state in a mouse message's wParam is decoded as another button and drags report the wrong buttons
-    // Broiler-Human:        PENDING
     public const int MkLButton = 0x0001;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EC2C68
-    // Broiler-Falsified-If: the value is not winuser.h's MK_CONTROL (0x0008), so Ctrl held during a wheel or click is decoded as another key and Ctrl+wheel zoom does not trigger
-    // Broiler-Human:        PENDING
     public const int MkControl = 0x0008;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=DF5B3C
-    // Broiler-Falsified-If: the value is not winuser.h's MK_SHIFT (0x0004), so Shift held during a click is decoded as another key and Shift+click does not extend a selection
-    // Broiler-Human:        PENDING
     public const int MkShift = 0x0004;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E958D6
-    // Broiler-Falsified-If: the value is not winuser.h's MK_RBUTTON (0x0002), so the right-button state in a mouse message's wParam is decoded as another button
-    // Broiler-Human:        PENDING
     public const int MkRButton = 0x0002;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=8DD374
-    // Broiler-Falsified-If: the value is not winuser.h's MK_MBUTTON (0x0010), so the middle-button state in a mouse message's wParam is decoded as another button
-    // Broiler-Human:        PENDING
     public const int MkMButton = 0x0010;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=0A938A
-    // Broiler-Falsified-If: the value is not winuser.h's VK_CONTROL (0x11), so GetKeyState reports another key's state as the Ctrl modifier
-    // Broiler-Human:        PENDING
     public const int VkControl = 0x11;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=08A3D7
-    // Broiler-Falsified-If: the value is not winuser.h's VK_SHIFT (0x10), so GetKeyState reports another key's state as the Shift modifier
-    // Broiler-Human:        PENDING
     public const int VkShift = 0x10;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=EE1A5E
-    // Broiler-Falsified-If: the value is not winuser.h's VK_MENU (0x12), so GetKeyState reports another key's state as the Alt modifier
-    // Broiler-Human:        PENDING
     public const int VkMenu = 0x12;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F3C491
-    // Broiler-Falsified-If: the value is not winuser.h's WHEEL_DELTA (120), so one notch of the wheel scrolls by a fraction or a multiple of a line step
-    // Broiler-Human:        PENDING
     public const int WheelDelta = 120;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=E93D95
-    // Broiler-Falsified-If: the value is not winuser.h's TME_LEAVE (0x00000002), so TrackMouseEvent arms hover or another notification and WM_MOUSELEAVE is never posted
-    // Broiler-Human:        PENDING
     public const uint TmeLeave = 0x00000002;
 }

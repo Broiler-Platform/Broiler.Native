@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   110
-// Annotated:        110/110
-// Exempt:           7
-// Human-reviewed:   0/110
+// Relevant units:   87
+// Annotated:        87/87
+// Exempt:           30
+// Human-reviewed:   0/87
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         110/104
+// Criteria:         87/87
 // Resource impact:  7/10 max
-// Unverified:       110
+// Unverified:       87
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -27,96 +27,30 @@ namespace Broiler.Native.Windows.MediaFoundation.Capture;
 public static partial class WindowsMediaFoundationNative
 {
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=3AD40B
-    // Broiler-Falsified-If: the value differs from 0xFFFFFFFC in mfreadwrite.h, so ReadSample and SetCurrentMediaType address a stream other than the first video stream
-    // Broiler-Human:        PENDING
     public const int MF_SOURCE_READER_FIRST_VIDEO_STREAM = unchecked((int)0xFFFFFFFC);
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=2509CB
-    // Broiler-Falsified-If: the value differs from 0xFFFFFFFF in mfreadwrite.h, so GetNativeMediaType returns an enumerated native type instead of the current one
-    // Broiler-Human:        PENDING
     public const int MF_SOURCE_READER_CURRENT_TYPE_INDEX = unchecked((int)0xFFFFFFFF);
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=ED103B
-    // Broiler-Falsified-If: the value differs from the IMFMediaSource IID 279A808D-AEC7-40C8-9C6B-A6B492C78A66, so ActivateObject returns a pointer to another interface that is then called through IMFMediaSource vtable slots
-    // Broiler-Human:        PENDING
     public static readonly Guid IMFMediaSourceId = new("279A808D-AEC7-40C8-9C6B-A6B492C78A66");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=FAAD7A
-    // Broiler-Falsified-If: the value differs from MFMediaType_Video 73646976-0000-0010-8000-00AA00389B71 in mfapi.h, so a video media type is rejected as non-video or another major type is accepted as video frames
-    // Broiler-Human:        PENDING
     public static readonly Guid MFMediaTypeVideo = new("73646976-0000-0010-8000-00AA00389B71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E64E37
-    // Broiler-Falsified-If: the value is not the media-type GUID built from D3DFMT_X8R8G8B8 (22, 0x16), so frames of another subtype are read as 4 bytes per pixel
-    // Broiler-Human:        PENDING
     public static readonly Guid MFVideoFormatRgb32 = new("00000016-0000-0010-8000-00AA00389B71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=718C4A
-    // Broiler-Falsified-If: the value is not the media-type GUID built from D3DFMT_R8G8B8 (20, 0x14), so frames of another subtype are read as 3 bytes per pixel
-    // Broiler-Human:        PENDING
     public static readonly Guid MFVideoFormatRgb24 = new("00000014-0000-0010-8000-00AA00389B71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=82DCC0
-    // Broiler-Falsified-If: the value is not the media-type GUID built from FourCC NV12 (0x3231564E), so frames of another subtype are split into a luma plane and an interleaved chroma plane
-    // Broiler-Human:        PENDING
     public static readonly Guid MFVideoFormatNv12 = new("3231564E-0000-0010-8000-00AA00389B71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E0932E
-    // Broiler-Falsified-If: the value is not the media-type GUID built from FourCC YUY2 (0x32595559), so frames of another subtype are read as packed 4:2:2 at 2 bytes per pixel
-    // Broiler-Human:        PENDING
     public static readonly Guid MFVideoFormatYuy2 = new("32595559-0000-0010-8000-00AA00389B71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D7648A
-    // Broiler-Falsified-If: the value is not the media-type GUID built from FourCC MJPG (0x47504A4D), so compressed JPEG frames are reported as an uncompressed subtype or the reverse
-    // Broiler-Human:        PENDING
     public static readonly Guid MFVideoFormatMjpg = new("47504A4D-0000-0010-8000-00AA00389B71");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F2951E
-    // Broiler-Falsified-If: the value is not the media-type GUID built from D3DFMT_L8 (50, 0x32), so frames of another subtype are read as 1 byte per pixel
-    // Broiler-Human:        PENDING
     public static readonly Guid MFVideoFormatL8 = new("00000032-0000-0010-8000-00AA00389B71");
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=0BEB7E
-    // Broiler-Falsified-If: the value differs from C60AC5FE-252A-478F-A0EF-BC8FA5F7CAD3 in mfidl.h, so MFEnumDeviceSources and MFCreateDeviceSource receive no source-type filter and do not select video capture devices
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE = new("C60AC5FE-252A-478F-A0EF-BC8FA5F7CAD3");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=F8C1D8
-    // Broiler-Falsified-If: the value differs from 8AC3587A-4AE7-42D8-99E0-0A6013EEF90F in mfidl.h, so the source-type filter selects audio capture devices or none instead of video capture devices
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_GUID = new("8AC3587A-4AE7-42D8-99E0-0A6013EEF90F");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=2EFB1C
-    // Broiler-Falsified-If: the value differs from 60D0E559-52F8-4FA2-BBCE-ACDB34A8EC01 in mfidl.h, so GetAllocatedString returns another attribute's string as the camera's display name or none at all
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_FRIENDLY_NAME = new("60D0E559-52F8-4FA2-BBCE-ACDB34A8EC01");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=D2B752
-    // Broiler-Falsified-If: the value differs from 58F0AAD8-22BF-4F8A-BB3D-D2C4978C6E2F in mfidl.h, so the symbolic link read from an enumerated device or passed to MFCreateDeviceSource does not identify the camera the caller selected
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK = new("58F0AAD8-22BF-4F8A-BB3D-D2C4978C6E2F");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=F471DD
-    // Broiler-Falsified-If: the value differs from 44D1A9BC-2999-4238-AE43-0730CEB2AB1B in mfidl.h, so a camera meant to be opened for shared access through the frame server is opened exclusively
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_FRAMESERVER_SHARE_MODE = new("44D1A9BC-2999-4238-AE43-0730CEB2AB1B");
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=BEC5C8
-    // Broiler-Falsified-If: the value differs from 48EBA18E-F8C9-4687-BF11-0A74C9F96A8F in mfapi.h, so a media type's major type is read from another attribute and non-video types pass as video
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_MAJOR_TYPE = new("48EBA18E-F8C9-4687-BF11-0A74C9F96A8F");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=3EFFFC
-    // Broiler-Falsified-If: the value differs from F7E34C9A-42E8-4714-B74B-CB29D72C35E5 in mfapi.h, so the pixel format of negotiated frames is read from another attribute and frame bytes are laid out by the wrong format
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_SUBTYPE = new("F7E34C9A-42E8-4714-B74B-CB29D72C35E5");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=48EB75
-    // Broiler-Falsified-If: the value differs from 1652C33D-D6B2-4012-B834-72030849A37D in mfapi.h, so width and height are unpacked from another UINT64 attribute and plane sizes disagree with the locked buffer length
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_FRAME_SIZE = new("1652C33D-D6B2-4012-B834-72030849A37D");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=7B01F0
-    // Broiler-Falsified-If: the value differs from C459A2E8-3D2C-4E44-B132-FEE5156C7BB0 in mfapi.h, so the reported frame-rate numerator and denominator come from another attribute
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_FRAME_RATE = new("C459A2E8-3D2C-4E44-B132-FEE5156C7BB0");
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=1D27BE
-    // Broiler-Falsified-If: the value differs from 644B4E48-1E02-4516-B0EB-C01CA9D49AC6 in mfapi.h, so the row pitch, including the negative pitch of a bottom-up RGB frame, is read from another attribute
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_MT_DEFAULT_STRIDE = new("644B4E48-1E02-4516-B0EB-C01CA9D49AC6");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=1B6B07
-    // Broiler-Falsified-If: the value differs from 0F81DA2C-B537-4672-A8B2-A681B17307A3 in mfreadwrite.h, so the source reader inserts no video processor and refuses an output subtype the camera does not produce natively
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING = new("0F81DA2C-B537-4672-A8B2-A681B17307A3");
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=29ABF8
-    // Broiler-Falsified-If: the value differs from 56B67165-219E-456D-A22E-2D3004C7FE56 in mfreadwrite.h, so releasing the source reader also shuts down the media source the caller still owns
-    // Broiler-Human:        PENDING
     public static readonly Guid MF_SOURCE_READER_DISCONNECT_MEDIASOURCE_ON_SHUTDOWN = new("56B67165-219E-456D-A22E-2D3004C7FE56");
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=8E6AB1
@@ -140,9 +74,6 @@ public static partial class WindowsMediaFoundationNative
 
 }
 
-// Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=5FD83E
-// Broiler-Falsified-If: a member differs from its MF_SOURCE_READERF value in mfreadwrite.h (Error 0x1, EndOfStream 0x2, StreamTick 0x100), so a reader error or end of stream returned by ReadSample is handled as an ordinary frame
-// Broiler-Human:        PENDING
 [Flags]
 public enum SourceReaderFlags
 {

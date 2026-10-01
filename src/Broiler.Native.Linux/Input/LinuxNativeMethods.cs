@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   27
-// Annotated:        27/27
-// Exempt:           3
-// Human-reviewed:   0/27
+// Relevant units:   10
+// Annotated:        10/10
+// Exempt:           20
+// Human-reviewed:   0/10
 // IP risk:          Low
 // Security risk:    Critical
-// Criteria:         27/13
+// Criteria:         10/10
 // Resource impact:  3/10 max
-// Unverified:       27
+// Unverified:       10
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -26,76 +26,25 @@ namespace Broiler.Native.Linux.Input;
 // Broiler-Human:        PENDING
 public static partial class LinuxNativeMethods
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=C25069
-    // Broiler-Falsified-If: O_RDONLY differs from 0, so open(2) asks for write access to the evdev node and fails with EACCES for a user who may only read input devices
-    // Broiler-Human:        PENDING
     public const int O_RDONLY = 0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=22552B
-    // Broiler-Falsified-If: O_NONBLOCK differs from 0x800 (04000 octal on x86-64 and arm64), so a read on an idle event device blocks the read loop instead of returning EAGAIN
-    // Broiler-Human:        PENDING
     public const int O_NONBLOCK = 0x800;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=69C944
-    // Broiler-Falsified-If: O_CLOEXEC differs from 0x80000 (02000000 octal), so the evdev descriptor is inherited by child processes the host spawns
-    // Broiler-Human:        PENDING
     public const int O_CLOEXEC = 0x80000;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=B28418
-    // Broiler-Falsified-If: POLLIN differs from 0x0001, so poll(2) never reports the event device readable and the read loop only wakes on its timeout
-    // Broiler-Human:        PENDING
     public const short POLLIN = 0x0001;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=AC1DCE
-    // Broiler-Falsified-If: POLLERR differs from 0x0008, so an event device in an error state is not recognised in revents and the loop keeps polling a dead descriptor
-    // Broiler-Human:        PENDING
     public const short POLLERR = 0x0008;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=06CE9C
-    // Broiler-Falsified-If: POLLHUP differs from 0x0010, so an unplugged event device is not recognised in revents and is not reported as removed
-    // Broiler-Human:        PENDING
     public const short POLLHUP = 0x0010;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=06ECDE
-    // Broiler-Falsified-If: POLLNVAL differs from 0x0020, so polling a closed descriptor is not recognised in revents and the loop spins on it
-    // Broiler-Human:        PENDING
     public const short POLLNVAL = 0x0020;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=BC45A0
-    // Broiler-Falsified-If: EINTR differs from 4, so a poll or read interrupted by a signal is reported as a device fault instead of being retried
-    // Broiler-Human:        PENDING
     public const int EINTR = 4;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=F96002
-    // Broiler-Falsified-If: EIO differs from 5, so a read that fails after the device is unplugged is classified as a generic fault instead of a removed device
-    // Broiler-Human:        PENDING
     public const int EIO = 5;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=14B507
-    // Broiler-Falsified-If: EAGAIN differs from 11, so a nonblocking read with no pending events is reported as a fault and stops the read loop
-    // Broiler-Human:        PENDING
     public const int EAGAIN = 11;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=10AC33
-    // Broiler-Falsified-If: EACCES differs from 13, so an open refused by the input group permissions is not classified as permission denied
-    // Broiler-Human:        PENDING
     public const int EACCES = 13;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=1FA33E
-    // Broiler-Falsified-If: EBUSY differs from 16, so a device another process holds is not classified as busy
-    // Broiler-Human:        PENDING
     public const int EBUSY = 16;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=D76B4A
-    // Broiler-Falsified-If: ENODEV differs from 19, so a read on a removed event device is not classified as a removed device and recovery is skipped
-    // Broiler-Human:        PENDING
     public const int ENODEV = 19;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=61565D
-    // Broiler-Falsified-If: ENOENT differs from 2, so opening a missing /dev/input node is not classified as device not found
-    // Broiler-Human:        PENDING
     public const int ENOENT = 2;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=8E279A
-    // Broiler-Falsified-If: EPERM differs from 1, so an open refused by a seat or container policy is not classified as permission denied
-    // Broiler-Human:        PENDING
     public const int EPERM = 1;
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=136EA3
-    // Broiler-Falsified-If: EVIOCSCLOCKID differs from 0x400445a0, the encoding of _IOW('E', 0xa0, int), so the clock switch fails with EINVAL and event timestamps stay on CLOCK_REALTIME
-    // Broiler-Human:        PENDING
     private const nuint EVIOCSCLOCKID = 0x400445a0;
-    // Broiler-AI:           Origin=AI; IP=None; Security=Medium; Resources=0; Fingerprint=80FE56
-    // Broiler-Falsified-If: CLOCK_MONOTONIC differs from 1, so EVIOCSCLOCKID selects another clock or fails and event timestamps jump when the wall clock is adjusted
-    // Broiler-Human:        PENDING
     private const int CLOCK_MONOTONIC = 1;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B96AC4
