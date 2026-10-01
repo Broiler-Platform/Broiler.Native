@@ -101,6 +101,13 @@ public struct PropertyKey(Guid formatId, uint propertyId)
     public uint PropertyId = propertyId;
 }
 
+/// <summary>The propidl.h PROPVARIANT: an 8-byte header and a value union.</summary>
+/// <remarks>
+/// The union's widest members, BLOB and the counted arrays, are a ULONG and a pointer, so it is
+/// two pointers wide: 16 bytes on 64-bit and 8 on 32-bit, making the struct 24 or 16 bytes. Native
+/// code writes all of it (IPropertyStore.GetValue fills it, PropVariantClear zeroes it), so a
+/// shorter managed struct lets those calls overwrite whatever follows it.
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct PropVariant
 {
@@ -109,6 +116,7 @@ public struct PropVariant
     private ushort _reserved2;
     private ushort _reserved3;
     public IntPtr PointerValue;
+    private IntPtr _unionTail;
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 2)]

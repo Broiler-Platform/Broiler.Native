@@ -155,6 +155,25 @@ internal class Program
                 Size<D2DNative.D2D1_MATRIX_3X2_F>(24);
                 Size<DWriteNative.DWRITE_TEXT_METRICS>(36);
                 Size<LinuxNativeMethods.PollFd>(8);
+                Size<PropVariant>(nint.Size == 8 ? 24 : 16);
+            }),
+
+            ("PropVariantClear stays inside a PropVariant", () =>
+            {
+                Check(Marshal.OffsetOf<PropVariant>(nameof(PropVariant.PointerValue)) == 8,
+                    "The PROPVARIANT union starts after its 8-byte header.");
+                if (!OperatingSystem.IsWindows()) return;
+
+                // ole32 zeroes a whole native PROPVARIANT, so a managed struct that is
+                // shorter than one loses whatever sits after it.
+                const ulong guard = 0x5A5A_5A5A_5A5A_5A5AUL;
+                var holder = new GuardedPropVariant { Guard = guard };
+                holder.Value.ValueType = 31; // VT_LPWSTR, which PropVariantClear frees.
+                holder.Value.PointerValue = Marshal.StringToCoTaskMemUni("Broiler");
+                Check(WindowsWasapiNative.PropVariantClear(ref holder.Value) == 0, "PropVariantClear failed.");
+                Check(holder.Value.ValueType == 0 && holder.Value.PointerValue == nint.Zero,
+                    "PropVariantClear must leave VT_EMPTY.");
+                Check(holder.Guard == guard, "PropVariantClear wrote past the end of PropVariant.");
             }),
 
             ("Media Engine callback remains visible to COM", () =>
@@ -304,5 +323,12 @@ internal class Program
 
         static void Size<T>(int expected) where T : struct =>
             Check(Marshal.SizeOf<T>() == expected, $"{typeof(T).FullName}: expected ABI size {expected}, got {Marshal.SizeOf<T>()}.");
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct GuardedPropVariant
+    {
+        public PropVariant Value;
+        public ulong Guard;
     }
 }
