@@ -1,3 +1,20 @@
+// SPDX-FileCopyrightText: 2026 Broiler Platform contributors
+// SPDX-License-Identifier: Apache-2.0
+//
+// Broiler Code Assurance
+// ----------------------
+// Relevant units:   3
+// Annotated:        3/3
+// Exempt:           44
+// Human-reviewed:   0/3
+// IP risk:          Low
+// Security risk:    High
+// Criteria:         3/3
+// Resource impact:  0/10 max
+// Unverified:       3
+//
+// GENERATED - DO NOT EDIT MANUALLY
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -8,6 +25,9 @@ namespace Broiler.Native.Windows.Direct2D;
 /// Structures use <see cref="StructLayoutAttribute"/> with sequential layout so they
 /// can be marshalled blittably.
 /// </summary>
+// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=AC7CA2
+// Broiler-Falsified-If: a structure here is not laid out as in dxgi1_2.h, for example DXGI_SWAP_CHAIN_DESC1 not being 48 bytes, so CreateSwapChainForHwnd reads the sample description and the later fields at shifted offsets
+// Broiler-Human:        PENDING
 public static class DxgiNative
 {
     // ---- Interface IIDs --------------------------------------------------------------------------
@@ -85,6 +105,9 @@ public static class DxgiNative
 
     // ---- Structures ------------------------------------------------------------------------------
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=A550C9
+    // Broiler-Falsified-If: Marshal.SizeOf is not 8 or Quality is not at offset 4, the layout of DXGI_SAMPLE_DESC { UINT Count; UINT Quality; } in dxgicommon.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DXGI_SAMPLE_DESC
     {
@@ -92,6 +115,9 @@ public static class DxgiNative
         public uint Quality;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DBD1C7
+    // Broiler-Falsified-If: Marshal.SizeOf is not 48, Stereo is not a 4-byte BOOL at offset 12, or SampleDesc is not at offset 16, the layout of DXGI_SWAP_CHAIN_DESC1 in dxgi1_2.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DXGI_SWAP_CHAIN_DESC1
     {

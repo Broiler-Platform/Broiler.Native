@@ -1,0 +1,35 @@
+{
+  "$comment": [
+    "Per-declaration assurance for Broiler.Native. Product projects only: the five packable projects eng/pack.ps1 packs and verifies. Broiler.Native.All is a references-only meta-package with no sources. src/tests/Broiler.Native.Tests (IsPackable=false) is not listed, so it is not covered.",
+    "No tracked source is generated (the LibraryImport and GeneratedComInterface generators write only to obj/), so nothing is excluded.",
+    "No source here is third-party-derived: the bindings were moved from Broiler.Graphics, Broiler.Input and Broiler.Media (docs/native-api-inventory.md), none of them from files those components mark as HTML Renderer code, so there are no spdxOverrides.",
+    "Named values are watched, not assessed: most of them are defines, IIDs, handles and enums transcribed from platform SDK headers, so they carry no annotation block and the manifest records their fingerprints. The declarations that use them (P/Invoke, COM interfaces, native delegates, struct layouts) are still assessed.",
+    "A falsification criterion is written only for Security=High or Critical, and the check reports one on a block assessed None, Low or Medium."
+  ],
+  "schema": 1,
+  "component": "Broiler.Native",
+  "projects": [
+    "src/Broiler.Native/Broiler.Native.csproj",
+    "src/Broiler.Native.Windows/Broiler.Native.Windows.csproj",
+    "src/Broiler.Native.Linux/Broiler.Native.Linux.csproj",
+    "src/Broiler.Native.Android/Broiler.Native.Android.csproj",
+    "src/Broiler.Native.All/Broiler.Native.All.csproj"
+  ],
+  "exclude": [],
+  "exemptionPredicate": "owning-component",
+  "namedValues": "watched",
+  "criteriaBelowHigh": "refused",
+  "spdx": {
+    "copyright": ["2026 Broiler Platform contributors"],
+    "license": "Apache-2.0"
+  },
+  "spdxOverrides": [],
+  "artefacts": {
+    "report": "CODE-ASSURANCE.md",
+    "humanReview": "HUMAN_REVIEW.md",
+    "manifest": "assurance.manifest.json"
+  },
+  "forbidDirectives": false,
+  "forgeryVocabulary": "narrow",
+  "regenerateCommand": "dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native"
+}

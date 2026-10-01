@@ -1,9 +1,29 @@
+// SPDX-FileCopyrightText: 2026 Broiler Platform contributors
+// SPDX-License-Identifier: Apache-2.0
+//
+// Broiler Code Assurance
+// ----------------------
+// Relevant units:   10
+// Annotated:        10/10
+// Exempt:           20
+// Human-reviewed:   0/10
+// IP risk:          Low
+// Security risk:    Critical
+// Criteria:         10/10
+// Resource impact:  3/10 max
+// Unverified:       10
+//
+// GENERATED - DO NOT EDIT MANUALLY
+
 using System;
 using System.Buffers.Binary;
 using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Linux.Input;
 
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=C79A53
+// Broiler-Falsified-If: Read differs from ssize_t read(size_t count; int fd, void buf[count], size_t count) in unistd.h as read(2) gives it, or a caller passes a count larger than its buffer
+// Broiler-Human:        PENDING
 public static partial class LinuxNativeMethods
 {
     public const int O_RDONLY = 0;
@@ -27,21 +47,39 @@ public static partial class LinuxNativeMethods
     private const nuint EVIOCSCLOCKID = 0x400445a0;
     private const int CLOCK_MONOTONIC = 1;
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B96AC4
+    // Broiler-Falsified-If: pathname reaches int open(const char *path, int flags, ...) in fcntl.h, the open(2) prototype, as other than the NUL-terminated UTF-8 bytes of the managed string, for example cut short at an embedded NUL
+    // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "open", SetLastError = true)]
     public static partial int Open([MarshalAs(UnmanagedType.LPUTF8Str)] string pathname, int flags);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=B87244
+    // Broiler-Falsified-If: differs from ssize_t read(size_t count; int fd, void buf[count], size_t count) in unistd.h as read(2) gives it, or count is larger than the length of buffer
+    // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "read", SetLastError = true)]
     public static partial nint Read(int fd, byte[] buffer, nuint count);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=D0C8DE
+    // Broiler-Falsified-If: differs from int poll(struct pollfd *fds, nfds_t nfds, int timeout) in poll.h as poll(2) gives it, or nfds is larger than the length of fds
+    // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "poll", SetLastError = true)]
     public static partial int Poll([In, Out] PollFd[] fds, nuint nfds, int timeout);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=E09054
+    // Broiler-Falsified-If: differs from int ioctl(int fd, unsigned long op, ...) in sys/ioctl.h as ioctl(2) gives it for glibc, or the third argument is not a pointer to the int that EVIOCSCLOCKID, _IOW('E', 0xa0, int) in linux/input.h, reads
+    // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "ioctl", SetLastError = true)]
     private static partial int IoctlClockId(int fd, nuint request, ref int clockId);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=7FA6C0
+    // Broiler-Falsified-If: differs from int ioctl(int fd, unsigned long op, ...) in sys/ioctl.h as ioctl(2) gives it for glibc, or absInfo is shorter than the 24-byte struct input_absinfo of six __s32 fields that EVIOCGABS(abs), _IOR('E', 0x40 + (abs), struct input_absinfo) in linux/input.h, writes through the third argument
+    // Broiler-Human:        PENDING
     [LibraryImport("libc", EntryPoint = "ioctl", SetLastError = true)]
     private static partial int IoctlAbsInfo(int fd, nuint request, byte[] absInfo);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=3DDB0B
+    // Broiler-Falsified-If: an EVIOCSCLOCKID ioctl that fails with -1 makes the method return true, so callers treat CLOCK_REALTIME event timestamps as monotonic
+    // Broiler-Human:        PENDING
     public static bool TrySetMonotonicClock(int fd)
     {
         int clockId = CLOCK_MONOTONIC;
@@ -52,6 +90,9 @@ public static partial class LinuxNativeMethods
     /// Reads a `struct input_absinfo` for an absolute axis via EVIOCGABS so
     /// touchpad deltas can be normalized against the pad's real range/resolution.
     /// </summary>
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=77BE13
+    // Broiler-Falsified-If: the buffer allocated here is shorter than the 24-byte size EviocgAbs encodes in the request, so the kernel copy of struct input_absinfo runs past the end of the array
+    // Broiler-Human:        PENDING
     public static bool TryGetAbsInfo(int fd, ushort absCode, out int minimum, out int maximum, out int resolution)
     {
         minimum = 0;
@@ -72,8 +113,14 @@ public static partial class LinuxNativeMethods
 
     // EVIOCGABS(abs) = _IOR('E', 0x40 + abs, struct input_absinfo)
     // _IOC(dir=2 read, type='E'=0x45, nr=0x40+abs, size=24).
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=817AD7
+    // Broiler-Falsified-If: an abs argument above ABS_MAX (0x3f) is encoded without rejection, and 0xC6 yields 0x80184506, which is EVIOCGNAME(24) rather than an EVIOCGABS request
+    // Broiler-Human:        PENDING
     private static nuint EviocgAbs(ushort abs) => (2u << 30) | (24u << 16) | ((uint)'E' << 8) | (0x40u + abs);
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=D2661F
+    // Broiler-Falsified-If: Marshal.SizeOf of PollFd is not 8, or Marshal.OffsetOf puts Events and Revents anywhere but 4 and 6, against struct pollfd { int fd; short events; short revents; } in asm-generic/poll.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct PollFd
     {

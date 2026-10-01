@@ -1,3 +1,20 @@
+// SPDX-FileCopyrightText: 2026 Broiler Platform contributors
+// SPDX-License-Identifier: Apache-2.0
+//
+// Broiler Code Assurance
+// ----------------------
+// Relevant units:   25
+// Annotated:        25/25
+// Exempt:           45
+// Human-reviewed:   0/25
+// IP risk:          Low
+// Security risk:    Critical
+// Criteria:         21/21
+// Resource impact:  2/10 max
+// Unverified:       25
+//
+// GENERATED - DO NOT EDIT MANUALLY
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -5,6 +22,9 @@ using System.Text;
 
 namespace Broiler.Native.Linux.Vulkan;
 
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=E46435
+// Broiler-Falsified-If: an import here differs from its prototype in vulkan/vulkan_core.h, where VkInstance, VkPhysicalDevice, VkDevice and VkQueue are pointer handles, VkResult is an enum, and counts, versions and indices are uint32_t
+// Broiler-Human:        PENDING
 public static partial class LinuxVulkanNative
 {
     public const int VK_SUCCESS = 0;
@@ -17,6 +37,8 @@ public static partial class LinuxVulkanNative
 
     public const uint VK_QUEUE_GRAPHICS_BIT = 0x00000001;
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=29F334
+    // Broiler-Human:        PENDING
     public static uint MakeApiVersion(uint variant, int major, int minor, int patch)
     {
         if (major < 0 || major > 127)
@@ -31,6 +53,9 @@ public static partial class LinuxVulkanNative
         return (variant << 29) | ((uint)major << 22) | ((uint)minor << 12) | (uint)patch;
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=06A932
+    // Broiler-Falsified-If: a Vulkan 1.0 loader that does not export vkEnumerateInstanceVersion makes the method throw instead of returning version 1.0.0
+    // Broiler-Human:        PENDING
     public static uint GetSupportedInstanceVersion()
     {
         try
@@ -45,6 +70,9 @@ public static partial class LinuxVulkanNative
         }
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=1B627A
+    // Broiler-Falsified-If: a negative VkResult such as VK_ERROR_INITIALIZATION_FAILED (-3) returns without throwing, so the caller goes on to use the out handle of a failed call
+    // Broiler-Human:        PENDING
     public static void ThrowIfFailed(int result, string operation)
     {
         if (result is VK_SUCCESS or VK_INCOMPLETE)
@@ -53,6 +81,8 @@ public static partial class LinuxVulkanNative
         throw new LinuxVulkanException($"{operation} failed with Vulkan result {ResultName(result)} ({result}).");
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=BD02CB
+    // Broiler-Human:        PENDING
     public static string FormatApiVersion(uint version)
     {
         uint major = (version >> 22) & 0x7F;
@@ -61,6 +91,9 @@ public static partial class LinuxVulkanNative
         return $"{major}.{minor}.{patch}";
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=1AD6E2
+    // Broiler-Falsified-If: the 256-byte deviceName copy starts at an offset other than 20 of VkPhysicalDeviceProperties, so the reported name includes deviceType bytes or runs into pipelineCacheUUID
+    // Broiler-Human:        PENDING
     public static LinuxVulkanDeviceInfo GetPhysicalDeviceInfo(IntPtr physicalDevice)
     {
         if (physicalDevice == IntPtr.Zero)
@@ -102,47 +135,80 @@ public static partial class LinuxVulkanNative
         }
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=205D93
+    // Broiler-Falsified-If: differs from VkResult vkEnumerateInstanceVersion(uint32_t* pApiVersion) in vulkan/vulkan_core.h
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkEnumerateInstanceVersion")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     private static partial int EnumerateInstanceVersion(out uint apiVersion);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=5CE6EF
+    // Broiler-Falsified-If: differs from VkResult vkCreateInstance(const VkInstanceCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkInstance* pInstance) in vulkan/vulkan_core.h, or the VkInstanceCreateInfo passed by ref is not the 64 bytes that header lays out on 64-bit
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkCreateInstance")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int CreateInstance(ref VkInstanceCreateInfo createInfo, IntPtr allocator, out IntPtr instance);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=98A399
+    // Broiler-Falsified-If: differs from void vkDestroyInstance(VkInstance instance, const VkAllocationCallbacks* pAllocator) in vulkan/vulkan_core.h
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkDestroyInstance")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void DestroyInstance(IntPtr instance, IntPtr allocator);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=0003C3
+    // Broiler-Falsified-If: physicalDeviceCount is larger than physicalDevices.Length on entry to VkResult vkEnumeratePhysicalDevices(VkInstance instance, uint32_t* pPhysicalDeviceCount, VkPhysicalDevice* pPhysicalDevices) in vulkan/vulkan_core.h, which writes up to that many pointer-sized handles
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkEnumeratePhysicalDevices")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int EnumeratePhysicalDevices(IntPtr instance, ref uint physicalDeviceCount, [Out] IntPtr[]? physicalDevices);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=8B21E9
+    // Broiler-Falsified-If: queueFamilyPropertyCount is larger than queueFamilyProperties.Length on entry to void vkGetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, uint32_t* pQueueFamilyPropertyCount, VkQueueFamilyProperties* pQueueFamilyProperties) in vulkan/vulkan_core.h, which writes up to that many 24-byte entries
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceQueueFamilyProperties")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void GetPhysicalDeviceQueueFamilyProperties(IntPtr physicalDevice, ref uint queueFamilyPropertyCount,
         [Out] VkQueueFamilyProperties[]? queueFamilyProperties);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=89BCFE
+    // Broiler-Falsified-If: the buffer passed as properties is smaller than 824 bytes, the 64-bit size of the VkPhysicalDeviceProperties that void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* pProperties) in vulkan/vulkan_core.h writes
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetPhysicalDeviceProperties")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     private static partial void GetPhysicalDeviceProperties(IntPtr physicalDevice, IntPtr properties);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=59040F
+    // Broiler-Falsified-If: differs from VkResult vkCreateDevice(VkPhysicalDevice physicalDevice, const VkDeviceCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDevice* pDevice) in vulkan/vulkan_core.h, or the VkDeviceCreateInfo passed by ref is not the 72 bytes that header lays out on 64-bit
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkCreateDevice")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int CreateDevice(IntPtr physicalDevice, ref VkDeviceCreateInfo createInfo, IntPtr allocator, out IntPtr device);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=19195C
+    // Broiler-Falsified-If: differs from void vkDestroyDevice(VkDevice device, const VkAllocationCallbacks* pAllocator) in vulkan/vulkan_core.h
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkDestroyDevice")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void DestroyDevice(IntPtr device, IntPtr allocator);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=933A0D
+    // Broiler-Falsified-If: differs from void vkGetDeviceQueue(VkDevice device, uint32_t queueFamilyIndex, uint32_t queueIndex, VkQueue* pQueue) in vulkan/vulkan_core.h
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkGetDeviceQueue")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void GetDeviceQueue(IntPtr device, uint queueFamilyIndex, uint queueIndex, out IntPtr queue);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=3C80E2
+    // Broiler-Falsified-If: differs from VkResult vkDeviceWaitIdle(VkDevice device) in vulkan/vulkan_core.h
+    // Broiler-Human:        PENDING
     [LibraryImport("libvulkan.so.1", EntryPoint = "vkDeviceWaitIdle")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int DeviceWaitIdle(IntPtr device);
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=2B62F4
+    // Broiler-Falsified-If: Marshal.SizeOf is not 48 on 64-bit, the size of VkApplicationInfo in vulkan/vulkan_core.h, or ApiVersion is not at offset 44
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct VkApplicationInfo
     {
@@ -155,6 +221,9 @@ public static partial class LinuxVulkanNative
         public uint ApiVersion;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=D473E7
+    // Broiler-Falsified-If: Marshal.SizeOf is not 64 on 64-bit, the size of VkInstanceCreateInfo in vulkan/vulkan_core.h, or PpEnabledExtensionNames is not at offset 56
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct VkInstanceCreateInfo
     {
@@ -168,6 +237,9 @@ public static partial class LinuxVulkanNative
         public IntPtr PpEnabledExtensionNames;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=3020AD
+    // Broiler-Falsified-If: Marshal.SizeOf is not 40 on 64-bit, the size of VkDeviceQueueCreateInfo in vulkan/vulkan_core.h, or PQueuePriorities is not at offset 32
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct VkDeviceQueueCreateInfo
     {
@@ -179,6 +251,9 @@ public static partial class LinuxVulkanNative
         public IntPtr PQueuePriorities;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=CADF59
+    // Broiler-Falsified-If: Marshal.SizeOf is not 72 on 64-bit, the size of VkDeviceCreateInfo in vulkan/vulkan_core.h, or PEnabledFeatures is not at offset 64
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct VkDeviceCreateInfo
     {
@@ -194,6 +269,9 @@ public static partial class LinuxVulkanNative
         public IntPtr PEnabledFeatures;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=243E73
+    // Broiler-Falsified-If: Marshal.SizeOf is not 24, the size of VkQueueFamilyProperties in vulkan/vulkan_core.h, or MinImageTransferGranularity is not at offset 12
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct VkQueueFamilyProperties
     {
@@ -203,6 +281,9 @@ public static partial class LinuxVulkanNative
         public VkExtent3D MinImageTransferGranularity;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=BD2FAE
+    // Broiler-Falsified-If: Marshal.SizeOf is not 12, the size of VkExtent3D in vulkan/vulkan_core.h with its uint32_t width, height and depth
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct VkExtent3D
     {
@@ -211,6 +292,8 @@ public static partial class LinuxVulkanNative
         public uint Depth;
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4F3114
+    // Broiler-Human:        PENDING
     private static string ResultName(int result) =>
         result switch
         {
@@ -238,9 +321,14 @@ public static partial class LinuxVulkanNative
             _ => "UNKNOWN",
         };
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=B56DE7
+    // Broiler-Falsified-If: the value is read at the buffer plus offset times four rather than plus offset, so vendorId at offset 8 is taken from byte 32
+    // Broiler-Human:        PENDING
     private static uint ReadUInt32(IntPtr buffer, int offset) =>
         unchecked((uint)Marshal.ReadInt32(buffer, offset));
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CDA262
+    // Broiler-Human:        PENDING
     private static string FormatPhysicalDeviceType(uint deviceType) =>
         deviceType switch
         {

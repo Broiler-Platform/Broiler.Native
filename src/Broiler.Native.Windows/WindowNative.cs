@@ -1,11 +1,34 @@
+// SPDX-FileCopyrightText: 2026 Broiler Platform contributors
+// SPDX-License-Identifier: Apache-2.0
+//
+// Broiler Code Assurance
+// ----------------------
+// Relevant units:   72
+// Annotated:        72/72
+// Exempt:           143
+// Human-reviewed:   0/72
+// IP risk:          Low
+// Security risk:    Critical
+// Criteria:         70/70
+// Resource impact:  5/10 max
+// Unverified:       72
+//
+// GENERATED - DO NOT EDIT MANUALLY
+
 using System.Text;
 using System;
 using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Windows;
 
+// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=3B0E79
+// Broiler-Falsified-If: GetWindowText(IntPtr, Span<char>) passes a count other than text.Length to GetWindowTextW, so a title longer than the span is written past its end
+// Broiler-Human:        PENDING
 public static partial class WindowNative
 {
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=16DDCC
+    // Broiler-Falsified-If: on a 64-bit process the call reaches SetWindowLongW rather than SetWindowLongPtrW, so the GCHandle pointer stored at GWLP_USERDATA keeps only its low 32 bits and GCHandle.FromIntPtr later resolves a truncated handle
+    // Broiler-Human:        PENDING
     public static IntPtr SetWindowLongPtr(IntPtr hwnd, int index, IntPtr value)
     {
         return IntPtr.Size == 8
@@ -13,6 +36,9 @@ public static partial class WindowNative
             : new IntPtr(SetWindowLong32(hwnd, index, value.ToInt32()));
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=DD2B69
+    // Broiler-Falsified-If: on a 64-bit process the call reaches GetWindowLongW rather than GetWindowLongPtrW, so the GWLP_USERDATA pointer read back is sign-extended from 32 bits and GCHandle.FromIntPtr dereferences a different handle
+    // Broiler-Human:        PENDING
     public static IntPtr GetWindowLongPtr(IntPtr hwnd, int index)
     {
         return IntPtr.Size == 8
@@ -20,6 +46,9 @@ public static partial class WindowNative
             : new IntPtr(GetWindowLong32(hwnd, index));
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D4D0DB
+    // Broiler-Falsified-If: on a 64-bit process the call reaches GetClassLongW rather than GetClassLongPtrW, so the GCLP_HICON value read back loses its high 32 bits and no longer equals the icon the class registered
+    // Broiler-Human:        PENDING
     public static IntPtr GetClassLongPtr(IntPtr hwnd, int index)
     {
         return IntPtr.Size == 8
@@ -27,9 +56,15 @@ public static partial class WindowNative
             : new IntPtr(GetClassLong32(hwnd, index));
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=AE2EBF
+    // Broiler-Falsified-If: differs from typedef LRESULT (CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM) in winuser.h, CALLBACK being stdcall on 32-bit x86
+    // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Winapi)]
     public delegate IntPtr WndProc(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=637957
+    // Broiler-Falsified-If: Marshal.SizeOf is not 80 on 64-bit (48 on 32-bit) or, on 64-bit, LpfnWndProc is not at offset 8 and LpszClassName at 64, the layout of WNDCLASSEXW in winuser.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct WNDCLASSEX
     {
@@ -49,6 +84,9 @@ public static partial class WindowNative
         public IntPtr HIconSm;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=563E6D
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 or Left, Top, Right and Bottom are not at offsets 0, 4, 8 and 12, the layout of RECT (LONG left, top, right, bottom) in windef.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public readonly struct RECT(int left, int top, int right, int bottom)
     {
@@ -57,11 +95,18 @@ public static partial class WindowNative
         public readonly int Right = right;
         public readonly int Bottom = bottom;
 
+        // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=F4DA91
+        // Broiler-Human:        PENDING
         public int Width => Right - Left;
 
+        // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=800389
+        // Broiler-Human:        PENDING
         public int Height => Bottom - Top;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=AA2E46
+    // Broiler-Falsified-If: Marshal.SizeOf is not 8 or Y is not at offset 4, the layout of POINT (LONG x, LONG y) in windef.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct POINT
     {
@@ -69,6 +114,9 @@ public static partial class WindowNative
         public int Y;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E547C3
+    // Broiler-Falsified-If: Marshal.SizeOf is not 24 on 64-bit (16 on 32-bit) or HwndTrack is not at offset 8, the layout of TRACKMOUSEEVENT (DWORD cbSize, DWORD dwFlags, HWND hwndTrack, DWORD dwHoverTime) in winuser.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct TRACKMOUSEEVENT
     {
@@ -78,6 +126,9 @@ public static partial class WindowNative
         public uint DwHoverTime;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=2C3C7D
+    // Broiler-Falsified-If: Marshal.SizeOf is not 48 on 64-bit (28 on 32-bit) or, on 64-bit, LParam is not at offset 24 and Pt at 36, the layout of MSG (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam, DWORD time, POINT pt) in winuser.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct MSG
     {
@@ -89,6 +140,9 @@ public static partial class WindowNative
         public POINT Pt;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=39F0BA
+    // Broiler-Falsified-If: Marshal.SizeOf is not 80 on 64-bit (48 on 32-bit), LpCreateParams is not at offset 0 or, on 64-bit, LpszName is not at 56, the layout of CREATESTRUCTW in winuser.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct CREATESTRUCT
     {
@@ -106,186 +160,345 @@ public static partial class WindowNative
         public uint DwExStyle;
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=150856
+    // Broiler-Falsified-If: differs from HMODULE GetModuleHandleW(LPCWSTR lpModuleName) in libloaderapi.h, where moduleName must arrive as a UTF-16 pointer and a null moduleName as a null pointer rather than an empty string
+    // Broiler-Human:        PENDING
     [LibraryImport("kernel32.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "GetModuleHandleW")]
     public static partial IntPtr GetModuleHandle(string? moduleName);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=2D2FB1
+    // Broiler-Falsified-If: differs from ATOM RegisterClassExW(CONST WNDCLASSEXW *) in winuser.h, CharSet.Unicode binding the W export and the struct passed by pointer with UTF-16 lpszMenuName and lpszClassName
+    // Broiler-Human:        PENDING
     [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
     public static extern ushort RegisterClassEx(ref WNDCLASSEX windowClass);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=B8CB64
+    // Broiler-Falsified-If: differs from HWND CreateWindowExW(DWORD dwExStyle, LPCWSTR lpClassName, LPCWSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam) in winuser.h, both strings passed as UTF-16
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "CreateWindowExW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
     public static partial IntPtr CreateWindowEx(uint exStyle, string className, string windowName, uint style,
         int x, int y, int width, int height, IntPtr hwndParent, IntPtr menu, IntPtr instance, IntPtr param);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C0C181
+    // Broiler-Falsified-If: differs from BOOL AdjustWindowRectEx(LPRECT lpRect, DWORD dwStyle, BOOL bMenu, DWORD dwExStyle) in winuser.h, with bMenu and the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool AdjustWindowRectEx(ref RECT rect, uint style, [MarshalAs(UnmanagedType.Bool)] bool menu, uint exStyle);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=6C102F
+    // Broiler-Falsified-If: differs from BOOL AdjustWindowRectExForDpi(LPRECT lpRect, DWORD dwStyle, BOOL bMenu, DWORD dwExStyle, UINT dpi) in winuser.h, with bMenu and the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool AdjustWindowRectExForDpi(ref RECT rect, uint style, [MarshalAs(UnmanagedType.Bool)] bool menu, uint exStyle, uint dpi);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=BF4309
+    // Broiler-Falsified-If: differs from int GetSystemMetrics(int nIndex) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial int GetSystemMetrics(int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=BCA376
+    // Broiler-Falsified-If: differs from BOOL ShowWindow(HWND hWnd, int nCmdShow) in winuser.h, with the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool ShowWindow(IntPtr hwnd, int commandShow);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=59BCAA
+    // Broiler-Falsified-If: differs from BOOL UpdateWindow(HWND hWnd) in winuser.h, with the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool UpdateWindow(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=91B735
+    // Broiler-Falsified-If: differs from BOOL GetMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax) in winuser.h, whose BOOL result can be -1 and so must stay an int rather than a marshalled bool
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "GetMessageW")]
     public static partial int GetMessage(out MSG message, IntPtr hwnd, uint filterMin, uint filterMax);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=9CEEB7
+    // Broiler-Falsified-If: differs from BOOL TranslateMessage(CONST MSG *lpMsg) in winuser.h, the MSG passed by pointer and the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool TranslateMessage(ref MSG message);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=4EEAC8
+    // Broiler-Falsified-If: differs from LRESULT DispatchMessageW(CONST MSG *lpMsg) in winuser.h, the MSG passed by pointer
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "DispatchMessageW")]
     public static partial IntPtr DispatchMessage(ref MSG message);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=6D1BFB
+    // Broiler-Falsified-If: differs from LRESULT DefWindowProcW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "DefWindowProcW")]
     public static partial IntPtr DefWindowProc(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=28D17C
+    // Broiler-Falsified-If: differs from VOID PostQuitMessage(int nExitCode) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial void PostQuitMessage(int exitCode);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=785298
+    // Broiler-Falsified-If: differs from BOOL PostMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "PostMessageW")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool PostMessage(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=11E879
+    // Broiler-Falsified-If: differs from BOOL InvalidateRect(HWND hWnd, CONST RECT *lpRect, BOOL bErase) in winuser.h, with bErase and the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool InvalidateRect(IntPtr hwnd, IntPtr rect, [MarshalAs(UnmanagedType.Bool)] bool erase);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=3194D3
+    // Broiler-Falsified-If: differs from BOOL ValidateRect(HWND hWnd, CONST RECT *lpRect) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool ValidateRect(IntPtr hwnd, IntPtr rect);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=19633F
+    // Broiler-Falsified-If: differs from BOOL MoveWindow(HWND hWnd, int X, int Y, int nWidth, int nHeight, BOOL bRepaint) in winuser.h, with bRepaint and the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool MoveWindow(IntPtr hwnd, int x, int y, int width, int height, [MarshalAs(UnmanagedType.Bool)] bool repaint);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=005B01
+    // Broiler-Falsified-If: differs from BOOL DestroyWindow(HWND hWnd) in winuser.h, imported with SetLastError so the error code read after a failure is this call's own
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool DestroyWindow(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=E7F331
+    // Broiler-Falsified-If: differs from HWND GetParent(HWND hWnd) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial IntPtr GetParent(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=3A2024
+    // Broiler-Falsified-If: differs from UINT_PTR SetTimer(HWND hWnd, UINT_PTR nIDEvent, UINT uElapse, TIMERPROC lpTimerFunc) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial UIntPtr SetTimer(IntPtr hwnd, nuint eventId, uint elapseMs, IntPtr timerFunc);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=24FCA7
+    // Broiler-Falsified-If: differs from BOOL KillTimer(HWND hWnd, UINT_PTR uIDEvent) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool KillTimer(IntPtr hwnd, nuint eventId);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=AD9CC7
+    // Broiler-Falsified-If: differs from HWND SetFocus(HWND hWnd) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial IntPtr SetFocus(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=54C5B0
+    // Broiler-Falsified-If: differs from SHORT GetKeyState(int nVirtKey) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial short GetKeyState(int virtualKey);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D0E8CE
+    // Broiler-Falsified-If: differs from BOOL ScreenToClient(HWND hWnd, LPPOINT lpPoint) in winuser.h, the 8-byte POINT passed by pointer and written back
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool ScreenToClient(IntPtr hwnd, ref POINT point);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=0C9D2E
+    // Broiler-Falsified-If: differs from BOOL TrackMouseEvent(LPTRACKMOUSEEVENT lpEventTrack) in winuser.h, the TRACKMOUSEEVENT passed by pointer
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool TrackMouseEvent(ref TRACKMOUSEEVENT trackMouseEvent);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=212BE0
+    // Broiler-Falsified-If: differs from BOOL GetClientRect(HWND hWnd, LPRECT lpRect) in winuser.h, the 16-byte RECT passed as an out pointer
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool GetClientRect(IntPtr hwnd, out RECT rect);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=81749E
+    // Broiler-Falsified-If: differs from UINT GetDpiForWindow(HWND hwnd) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial uint GetDpiForWindow(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=58339A
+    // Broiler-Falsified-If: differs from HDC GetDC(HWND hWnd) in winuser.h, whose returned DC the caller holds until ReleaseDC
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial IntPtr GetDC(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=089DAA
+    // Broiler-Falsified-If: differs from int ReleaseDC(HWND hWnd, HDC hDC) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial int ReleaseDC(IntPtr hwnd, IntPtr hdc);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=A5C5DC
+    // Broiler-Falsified-If: differs from int GetDeviceCaps(HDC hdc, int index) in wingdi.h
+    // Broiler-Human:        PENDING
     [LibraryImport("gdi32.dll")]
     public static partial int GetDeviceCaps(IntPtr hdc, int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=178AF0
+    // Broiler-Falsified-If: differs from HCURSOR LoadCursorW(HINSTANCE hInstance, LPCWSTR lpCursorName) in winuser.h, with lpCursorName carried as a MAKEINTRESOURCE integer in a pointer-sized IntPtr rather than a marshalled string
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "LoadCursorW")]
     public static partial IntPtr LoadCursor(IntPtr instance, IntPtr cursorName);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=C66880
+    // Broiler-Falsified-If: differs from HICON LoadIconW(HINSTANCE hInstance, LPCWSTR lpIconName) in winuser.h, with lpIconName carried as a MAKEINTRESOURCE integer in a pointer-sized IntPtr rather than a marshalled string
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "LoadIconW")]
     public static partial IntPtr LoadIcon(IntPtr instance, IntPtr iconName);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=CDE6AD
+    // Broiler-Falsified-If: differs from HBRUSH GetSysColorBrush(int nIndex) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial IntPtr GetSysColorBrush(int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=0ACA59
+    // Broiler-Falsified-If: differs from LONG_PTR SetWindowLongPtrW(HWND hWnd, int nIndex, LONG_PTR dwNewLong) in winuser.h, which declares that export only under _WIN64
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "SetWindowLongPtrW")]
     public static partial IntPtr SetWindowLongPtr64(IntPtr hwnd, int index, IntPtr value);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B10A49
+    // Broiler-Falsified-If: differs from LONG SetWindowLongW(HWND hWnd, int nIndex, LONG dwNewLong) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "SetWindowLongW")]
     public static partial int SetWindowLong32(IntPtr hwnd, int index, int value);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=5B314E
+    // Broiler-Falsified-If: differs from LONG_PTR GetWindowLongPtrW(HWND hWnd, int nIndex) in winuser.h, which declares that export only under _WIN64
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "GetWindowLongPtrW")]
     public static partial IntPtr GetWindowLongPtr64(IntPtr hwnd, int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EDCE2B
+    // Broiler-Falsified-If: differs from LONG GetWindowLongW(HWND hWnd, int nIndex) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "GetWindowLongW")]
     public static partial int GetWindowLong32(IntPtr hwnd, int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=3B4FE6
+    // Broiler-Falsified-If: differs from ULONG_PTR GetClassLongPtrW(HWND hWnd, int nIndex) in winuser.h, which declares that export only under _WIN64
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "GetClassLongPtrW")]
     public static partial IntPtr GetClassLongPtr64(IntPtr hwnd, int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=3B5E17
+    // Broiler-Falsified-If: differs from DWORD GetClassLongW(HWND hWnd, int nIndex) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "GetClassLongW")]
     public static partial int GetClassLong32(IntPtr hwnd, int index);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=D43A2E
+    // Broiler-Falsified-If: differs from BOOL SetWindowTextW(HWND hWnd, LPCWSTR lpString) in winuser.h, the title passed as a null-terminated UTF-16 string
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "SetWindowTextW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool SetWindowText(IntPtr hwnd, string title);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=A75408
+    // Broiler-Falsified-If: differs from LRESULT SendMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
     public static partial IntPtr SendMessage(IntPtr hwnd, uint message, IntPtr wParam, IntPtr lParam);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=4BCCEF
+    // Broiler-Falsified-If: differs from BOOL ReleaseCapture(VOID) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool ReleaseCapture();
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=A814E8
+    // Broiler-Falsified-If: differs from BOOL IsIconic(HWND hWnd) in winuser.h, with the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool IsIconic(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=6E1CF7
+    // Broiler-Falsified-If: differs from BOOL IsZoomed(HWND hWnd) in winuser.h, with the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool IsZoomed(IntPtr hwnd);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=7E4EBC
+    // Broiler-Falsified-If: differs from BOOL GetWindowRect(HWND hWnd, LPRECT lpRect) in winuser.h, the 16-byte RECT passed as an out pointer
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool GetWindowRect(IntPtr hwnd, out RECT rect);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=E8219B
+    // Broiler-Falsified-If: differs from HMONITOR MonitorFromWindow(HWND hwnd, DWORD dwFlags) in winuser.h
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll")]
     public static partial IntPtr MonitorFromWindow(IntPtr hwnd, uint flags);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=7EA744
+    // Broiler-Falsified-If: differs from BOOL GetMonitorInfoW(HMONITOR hMonitor, LPMONITORINFO lpmi) in winuser.h, the 40-byte MONITORINFO passed by pointer, which a cbSize of 104 (MONITORINFOEXW) would overrun
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "GetMonitorInfoW")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool GetMonitorInfo(IntPtr monitor, ref MONITORINFO info);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=9BE911
+    // Broiler-Falsified-If: differs from BOOL DestroyIcon(HICON hIcon) in winuser.h, with the result marshalled as a 4-byte BOOL
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool DestroyIcon(IntPtr icon);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=86BA93
+    // Broiler-Falsified-If: differs from HICON CreateIconIndirect(PICONINFO piconinfo) in winuser.h, the ICONINFO passed by pointer and the returned HICON held by the caller until DestroyIcon
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial IntPtr CreateIconIndirect(ref ICONINFO iconInfo);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=9DDFFE
+    // Broiler-Falsified-If: differs from HBITMAP CreateDIBSection(HDC hdc, CONST BITMAPINFO *pbmi, UINT usage, VOID **ppvBits, HANDLE hSection, DWORD offset) in wingdi.h, where passing only the 40-byte BITMAPINFOHEADER holds only while biBitCount is above 8 and biCompression is BI_RGB
+    // Broiler-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial IntPtr CreateDIBSection(IntPtr hdc, ref BITMAPINFOHEADER header, uint usage, 
         out IntPtr bits, IntPtr section, uint offset);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=C60669
+    // Broiler-Falsified-If: differs from HBITMAP CreateBitmap(int nWidth, int nHeight, UINT nPlanes, UINT nBitCount, CONST VOID *lpBits) in wingdi.h
+    // Broiler-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial IntPtr CreateBitmap(int width, int height, uint planes, uint bitsPerPixel, IntPtr bits);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C1D6A1
+    // Broiler-Falsified-If: differs from BOOL DeleteObject(HGDIOBJ ho) in wingdi.h
+    // Broiler-Human:        PENDING
     [LibraryImport("gdi32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool DeleteObject(IntPtr gdiObject);
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=85EE60
+    // Broiler-Falsified-If: Marshal.SizeOf is not 40 or RcWork is not at offset 20 and DwFlags at 36, the layout of MONITORINFO (DWORD cbSize, RECT rcMonitor, RECT rcWork, DWORD dwFlags) in winuser.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct MONITORINFO
     {
@@ -295,6 +508,9 @@ public static partial class WindowNative
         public uint DwFlags;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=3ED120
+    // Broiler-Falsified-If: Marshal.SizeOf is not 32 on 64-bit (20 on 32-bit) or HbmMask is not at offset 16 (12 on 32-bit), the layout of ICONINFO (BOOL fIcon, DWORD xHotspot, DWORD yHotspot, HBITMAP hbmMask, HBITMAP hbmColor) in winuser.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct ICONINFO
     {
@@ -305,6 +521,9 @@ public static partial class WindowNative
         public IntPtr HbmColor;
     }
 
+    // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=C8BD94
+    // Broiler-Falsified-If: Marshal.SizeOf is not 40 or BiBitCount is not at offset 14 and BiCompression at 16, the layout of BITMAPINFOHEADER in wingdi.h
+    // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct BITMAPINFOHEADER
     {
@@ -321,13 +540,22 @@ public static partial class WindowNative
         public uint BiClrImportant;
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=F83A05
+    // Broiler-Falsified-If: differs from BOOL SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT value) in winuser.h, the context passed as the pointer-sized handle windef.h declares
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool SetProcessDpiAwarenessContext(IntPtr dpiContext);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=139E0E
+    // Broiler-Falsified-If: differs from int GetWindowTextW(HWND hWnd, LPWSTR lpString, int nMaxCount) in winuser.h, where nMaxCount counts the UTF-16 chars lpString can hold, terminator included
+    // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", EntryPoint = "GetWindowTextW", SetLastError = true)]
     public static unsafe partial int GetWindowText(IntPtr hwnd, char* lpString, int maxCount);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=E80171
+    // Broiler-Falsified-If: the count passed to GetWindowTextW is not text.Length, so a title longer than the span is written past the end of the pinned span
+    // Broiler-Human:        PENDING
     public static unsafe int GetWindowText(IntPtr hwnd, Span<char> text)
     {
         if (text.IsEmpty) return 0;
@@ -337,6 +565,9 @@ public static partial class WindowNative
         }
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=6D9166
+    // Broiler-Falsified-If: a maxCount different from the length of the char[] it pins lets GetWindowTextW write past the array's end
+    // Broiler-Human:        PENDING
     public static int GetWindowText(IntPtr hwnd, StringBuilder text, int maxCount)
     {
         if (maxCount <= 0) return 0;
