@@ -36,7 +36,7 @@ namespace Broiler.Native.Android;
 /// window handed to it, because the host's surface lifecycle already owns it.
 /// </remarks>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=8121EE
-// Broiler-Falsified-If: FromSurface's JNIEnv* and jobject arguments reach ANativeWindow_fromSurface in swapped order, so the NDK calls through the Surface handle as the JNI function table
+// Broiler-Falsified-If: an import here differs from its prototype in android/native_window.h or android/native_window_jni.h, where the window is ANativeWindow*, env and surface are JNIEnv* and jobject, and widths, heights, formats and results are int32_t
 // Broiler-Human:        PENDING
 public static partial class AndroidNativeWindowNative
 {
@@ -47,43 +47,43 @@ public static partial class AndroidNativeWindowNative
     public const int WindowFormatRgbx8888 = 2;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=F68393
-    // Broiler-Falsified-If: the JNIEnv* and jobject arguments reach ANativeWindow_fromSurface in swapped order, so the Surface handle is dereferenced as the JNI function table
+    // Broiler-Falsified-If: the reference that ANativeWindow* ANativeWindow_fromSurface(JNIEnv* env, jobject surface) in android/native_window_jni.h acquires on the returned window is not dropped by exactly one Release
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_fromSurface")]
     public static partial IntPtr FromSurface(IntPtr jniEnvironment, IntPtr surface);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=F2F5A1
-    // Broiler-Falsified-If: Acquire does not add a reference, so a window released once by its other owner is freed while this caller still holds it
+    // Broiler-Falsified-If: a reference added by void ANativeWindow_acquire(ANativeWindow* window) in android/native_window.h is not dropped by exactly one Release
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_acquire")]
     public static partial void Acquire(IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=8A97DE
-    // Broiler-Falsified-If: a window obtained from FromSurface keeps its extra reference after one Release call, so the ANativeWindow and its buffer queue outlive the host Surface
+    // Broiler-Falsified-If: Release drops a reference its caller did not take through FromSurface or Acquire, against void ANativeWindow_release(ANativeWindow* window) in android/native_window.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_release")]
     public static partial void Release(IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=914A39
-    // Broiler-Falsified-If: for a window whose buffers were set to 640 by 480, GetWidth returns a value other than 640
+    // Broiler-Falsified-If: differs from int32_t ANativeWindow_getWidth(ANativeWindow* window) in android/native_window.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getWidth")]
     public static partial int GetWidth(IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=ABB058
-    // Broiler-Falsified-If: for a window whose buffers were set to 640 by 480, GetHeight returns a value other than 480
+    // Broiler-Falsified-If: differs from int32_t ANativeWindow_getHeight(ANativeWindow* window) in android/native_window.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getHeight")]
     public static partial int GetHeight(IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=16B613
-    // Broiler-Falsified-If: after SetBuffersGeometry with WindowFormatRgba8888 succeeds, GetFormat returns a value other than 1
+    // Broiler-Falsified-If: differs from int32_t ANativeWindow_getFormat(ANativeWindow* window) in android/native_window.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_getFormat")]
     public static partial int GetFormat(IntPtr window);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=5A7772
-    // Broiler-Falsified-If: a 640 by 480 geometry returns 0 but GetWidth and GetHeight then report 480 by 640, showing the width and height reach the NDK swapped
+    // Broiler-Falsified-If: differs from int32_t ANativeWindow_setBuffersGeometry(ANativeWindow* window, int32_t width, int32_t height, int32_t format) in android/native_window.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.AndroidRuntime, EntryPoint = "ANativeWindow_setBuffersGeometry")]
     public static partial int SetBuffersGeometry(IntPtr window, int width, int height, int format);

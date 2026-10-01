@@ -26,7 +26,7 @@ namespace Broiler.Native.Windows.Direct2D;
 /// All members are <c>public</c>. <see cref="LibraryImport"/> is used for AOT/trimming friendliness.
 /// </summary>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=C630AC
-// Broiler-Falsified-If: D3D11CreateDevice receives pFeatureLevels and featureLevels in swapped positions, so the level count is dereferenced as the D3D_FEATURE_LEVEL array
+// Broiler-Falsified-If: an entry point here differs from its prototype: D3D11CreateDevice in d3d11.h, CreateDXGIFactory1 in dxgi.h, D2D1CreateFactory in d2d1.h or DWriteCreateFactory in dwrite.h
 // Broiler-Human:        PENDING
 public static partial class NativeMethods
 {
@@ -38,7 +38,7 @@ public static partial class NativeMethods
     /// hardware/WARP capabilities for the installed Direct3D runtime.
     /// </summary>
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=B9D586
-    // Broiler-Falsified-If: pFeatureLevels and featureLevels reach D3D11CreateDevice in swapped positions, so the level count is dereferenced as the D3D_FEATURE_LEVEL array
+    // Broiler-Falsified-If: differs from HRESULT D3D11CreateDevice(IDXGIAdapter* pAdapter, D3D_DRIVER_TYPE DriverType, HMODULE Software, UINT Flags, CONST D3D_FEATURE_LEVEL* pFeatureLevels, UINT FeatureLevels, UINT SDKVersion, ID3D11Device** ppDevice, D3D_FEATURE_LEVEL* pFeatureLevel, ID3D11DeviceContext** ppImmediateContext) in d3d11.h, which reads FeatureLevels entries from pFeatureLevels
     // Broiler-Human:        PENDING
     [LibraryImport("d3d11.dll")]
     public static partial int D3D11CreateDevice(IntPtr pAdapter, D3D11Native.D3D_DRIVER_TYPE driverType, IntPtr software,
@@ -49,7 +49,7 @@ public static partial class NativeMethods
 
     /// <summary>Creates a DXGI 1.1 factory. <paramref name="riid"/> is typically IID_IDXGIFactory1.</summary>
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=260F5E
-    // Broiler-Falsified-If: riid is passed as the 16-byte GUID value instead of a REFIID pointer, so dxgi.dll reads the first bytes of the IID as an address
+    // Broiler-Falsified-If: differs from HRESULT CreateDXGIFactory1(REFIID riid, void **ppFactory) in dxgi.h
     // Broiler-Human:        PENDING
     [LibraryImport("dxgi.dll")]
     public static partial int CreateDXGIFactory1(in Guid riid, out IntPtr ppFactory);
@@ -60,7 +60,7 @@ public static partial class NativeMethods
     /// Creates a Direct2D factory. The options blob is optional (pass <see cref="IntPtr.Zero"/>).
     /// </summary>
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=3563F3
-    // Broiler-Falsified-If: riid and pFactoryOptions reach D2D1CreateFactory(D2D1_FACTORY_TYPE, REFIID, const D2D1_FACTORY_OPTIONS*, void**) in swapped positions, so d2d1.dll reads the factory options from the IID and dereferences the options pointer as the IID
+    // Broiler-Falsified-If: differs from HRESULT D2D1CreateFactory(D2D1_FACTORY_TYPE factoryType, REFIID riid, CONST D2D1_FACTORY_OPTIONS *pFactoryOptions, void **ppIFactory) in d2d1.h
     // Broiler-Human:        PENDING
     [LibraryImport("d2d1.dll")]
     public static partial int D2D1CreateFactory(D2DNative.D2D1_FACTORY_TYPE factoryType, in Guid riid, IntPtr pFactoryOptions,
@@ -70,7 +70,7 @@ public static partial class NativeMethods
 
     /// <summary>Creates a DirectWrite factory. <paramref name="iid"/> is IID_IDWriteFactory.</summary>
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=F2E7BF
-    // Broiler-Falsified-If: iid is passed as the 16-byte GUID value instead of a REFIID pointer, so dwrite.dll reads the first bytes of the IID as an address
+    // Broiler-Falsified-If: differs from HRESULT DWriteCreateFactory(DWRITE_FACTORY_TYPE factoryType, REFIID iid, IUnknown **factory) in dwrite.h
     // Broiler-Human:        PENDING
     [LibraryImport("dwrite.dll")]
     public static partial int DWriteCreateFactory(DWriteNative.DWRITE_FACTORY_TYPE factoryType, in Guid iid, out IntPtr factory);

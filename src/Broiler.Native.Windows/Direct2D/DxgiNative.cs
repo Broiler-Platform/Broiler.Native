@@ -106,7 +106,7 @@ public static class DxgiNative
     // ---- Structures ------------------------------------------------------------------------------
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=A550C9
-    // Broiler-Falsified-If: Count and Quality are in the opposite order to dxgicommon.h, so a descriptor asking for Count 1 and Quality 0 reaches DXGI as Count 0 and swap-chain creation fails
+    // Broiler-Falsified-If: Marshal.SizeOf is not 8 or Quality is not at offset 4, the layout of DXGI_SAMPLE_DESC { UINT Count; UINT Quality; } in dxgicommon.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DXGI_SAMPLE_DESC
@@ -116,7 +116,7 @@ public static class DxgiNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=DBD1C7
-    // Broiler-Falsified-If: Marshal.SizeOf is not 48 or Stereo is not a 4-byte BOOL, so CreateSwapChainForHwnd reads SampleDesc and the later fields at shifted offsets
+    // Broiler-Falsified-If: Marshal.SizeOf is not 48, Stereo is not a 4-byte BOOL at offset 12, or SampleDesc is not at offset 16, the layout of DXGI_SWAP_CHAIN_DESC1 in dxgi1_2.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DXGI_SWAP_CHAIN_DESC1

@@ -20,19 +20,19 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=641D5D
-// Broiler-Falsified-If: either kernel32 import declares its LARGE_INTEGER out parameter narrower than 8 bytes, so the call writes past the managed slot in the caller's frame
+// Broiler-Falsified-If: either import differs from BOOL QueryPerformanceCounter(LARGE_INTEGER* lpPerformanceCount) or BOOL QueryPerformanceFrequency(LARGE_INTEGER* lpFrequency) in profileapi.h
 // Broiler-Human:        PENDING
 public static partial class PerformanceCounterNative
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=F43BED
-    // Broiler-Falsified-If: the out parameter is narrower than the 8-byte LARGE_INTEGER, so kernel32 writes past the managed slot and the tick count read back wraps within minutes of boot
+    // Broiler-Falsified-If: differs from BOOL QueryPerformanceCounter(LARGE_INTEGER* lpPerformanceCount) in profileapi.h, the 8-byte LARGE_INTEGER passed as an out pointer
     // Broiler-Human:        PENDING
     [LibraryImport("kernel32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool QueryPerformanceCounter(out long performanceCount);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=96C697
-    // Broiler-Falsified-If: the out parameter is narrower than the 8-byte LARGE_INTEGER, so kernel32 writes eight bytes into a smaller managed slot and corrupts the adjacent value in the caller's frame
+    // Broiler-Falsified-If: differs from BOOL QueryPerformanceFrequency(LARGE_INTEGER* lpFrequency) in profileapi.h, the 8-byte LARGE_INTEGER passed as an out pointer
     // Broiler-Human:        PENDING
     [LibraryImport("kernel32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]

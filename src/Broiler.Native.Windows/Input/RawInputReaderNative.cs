@@ -21,12 +21,12 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Input;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=33D29B
-// Broiler-Falsified-If: GetRawInputData passes data and size to user32 in swapped positions, so the RAWINPUT is written through the size's address and the byte count into the caller's buffer
+// Broiler-Falsified-If: a struct or the import differs from its winuser.h counterpart: RAWINPUTHEADER, RAWMOUSE, RAWKEYBOARD or UINT GetRawInputData(HRAWINPUT, UINT, LPVOID, PUINT, UINT)
 // Broiler-Human:        PENDING
 public static partial class RawInputReaderNative
 {
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=777845
-    // Broiler-Falsified-If: Marshal.SizeOf is not sizeof(RAWINPUTHEADER), 24 bytes on x64 and 16 on x86, so GetRawInputData rejects the header size and the payload is read from the wrong offset
+    // Broiler-Falsified-If: Marshal.SizeOf is not 24 on 64-bit (16 on 32-bit) or Device is not at offset 8, the layout of RAWINPUTHEADER (DWORD dwType, DWORD dwSize, HANDLE hDevice, WPARAM wParam) in winuser.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct RawInputHeader
@@ -38,7 +38,7 @@ public static partial class RawInputReaderNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=42EB0C
-    // Broiler-Falsified-If: ButtonFlags is read from offset 2, which is padding, instead of usButtonFlags at offset 4, so a left-button press arrives in ButtonData and the wheel delta at offset 6 is never read
+    // Broiler-Falsified-If: Marshal.OffsetOf of ButtonFlags is not 4 or of ButtonData not 6, where RAWMOUSE in winuser.h puts usButtonFlags and usButtonData in a union with ULONG ulButtons after USHORT usFlags
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct RawMouse
@@ -53,7 +53,7 @@ public static partial class RawInputReaderNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=09BBF5
-    // Broiler-Falsified-If: VKey is not read from offset 6 of RAWKEYBOARD (MakeCode 0, Flags 2, Reserved 4, VKey 6, Message 8, ExtraInformation 12), so a key press reports another field as its virtual-key code
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 or VKey is not at offset 6 and Message at 8, the layout of RAWKEYBOARD (USHORT MakeCode, Flags, Reserved, VKey, UINT Message, ULONG ExtraInformation) in winuser.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct RawKeyboard
@@ -67,7 +67,7 @@ public static partial class RawInputReaderNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=DCA974
-    // Broiler-Falsified-If: data and size reach GetRawInputData(HRAWINPUT, UINT, LPVOID, PUINT, UINT) in swapped positions, so user32 writes the RAWINPUT through the size's address and the byte count into the caller's buffer
+    // Broiler-Falsified-If: differs from UINT GetRawInputData(HRAWINPUT hRawInput, UINT uiCommand, LPVOID pData, PUINT pcbSize, UINT cbSizeHeader) in winuser.h, where pcbSize is the byte size of pData and cbSizeHeader must be sizeof(RAWINPUTHEADER)
     // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     public static partial uint GetRawInputData(IntPtr rawInput, uint command, IntPtr data, ref uint size, uint headerSize);

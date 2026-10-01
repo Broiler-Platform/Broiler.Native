@@ -35,7 +35,7 @@ namespace Broiler.Native.Android;
 /// backend otherwise avoids.
 /// </remarks>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=1454CE
-// Broiler-Falsified-If: the seven arguments reach glReadPixels out of order, so format and type arrive swapped and the driver writes another number of bytes per pixel through the caller's pixels pointer
+// Broiler-Falsified-If: an import here differs from its prototype in GLES3/gl3.h, where GLenum, GLuint and GLbitfield are unsigned int, GLint and GLsizei are int, and GLfloat is khronos_float_t
 // Broiler-Human:        PENDING
 public static partial class AndroidGlesNative
 {
@@ -66,142 +66,142 @@ public static partial class AndroidGlesNative
     public const uint GL_SHADING_LANGUAGE_VERSION = 0x8B8C;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=AD9690
-    // Broiler-Falsified-If: a count above 1 makes glGenTextures write count names through the single out uint, past the caller's 4-byte slot
+    // Broiler-Falsified-If: count is other than 1 although textures is one GLuint, through which void glGenTextures(GLsizei n, GLuint *textures) in GLES3/gl3.h writes n names
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGenTextures")]
     public static partial void GenTextures(int count, out uint textures);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=0A6CA2
-    // Broiler-Falsified-If: a count above 1 makes glDeleteTextures read count names past the single ref uint and delete whatever textures the adjacent bytes name
+    // Broiler-Falsified-If: count is other than 1 although textures is one GLuint, from which void glDeleteTextures(GLsizei n, const GLuint *textures) in GLES3/gl3.h reads n names
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glDeleteTextures")]
     public static partial void DeleteTextures(int count, ref uint textures);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=38241C
-    // Broiler-Falsified-If: the target and texture name reach glBindTexture swapped, so binding texture 1 to GL_TEXTURE_2D raises GL_INVALID_ENUM and binds nothing
+    // Broiler-Falsified-If: differs from void glBindTexture(GLenum target, GLuint texture) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glBindTexture")]
     public static partial void BindTexture(int target, uint texture);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=A34865
-    // Broiler-Falsified-If: the parameter name and value reach glTexParameteri swapped, so setting GL_TEXTURE_MIN_FILTER to GL_LINEAR raises GL_INVALID_ENUM and the filter stays mipmapped
+    // Broiler-Falsified-If: differs from void glTexParameteri(GLenum target, GLenum pname, GLint param) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexParameteri")]
     public static partial void TexParameteri(int target, int name, int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=A9CDA8
-    // Broiler-Falsified-If: the nine arguments reach glTexImage2D out of order, so format and type arrive swapped and the driver reads another number of bytes per pixel from the caller's pixels pointer
+    // Broiler-Falsified-If: a non-null pixels points at fewer bytes than width by height pixels of format and type take with GL_UNPACK_ALIGNMENT row padding, against void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void *pixels) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glTexImage2D")]
     public static partial void TexImage2D(int target, int level, int internalFormat,
         int width, int height, int border, int format, int type, IntPtr pixels);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=4EFD10
-    // Broiler-Falsified-If: a count above 1 makes glGenFramebuffers write count names through the single out uint, past the caller's 4-byte slot
+    // Broiler-Falsified-If: count is other than 1 although framebuffers is one GLuint, through which void glGenFramebuffers(GLsizei n, GLuint *framebuffers) in GLES3/gl3.h writes n names
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGenFramebuffers")]
     public static partial void GenFramebuffers(int count, out uint framebuffers);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=9D2CF0
-    // Broiler-Falsified-If: a count above 1 makes glDeleteFramebuffers read count names past the single ref uint and delete whatever framebuffers the adjacent bytes name
+    // Broiler-Falsified-If: count is other than 1 although framebuffers is one GLuint, from which void glDeleteFramebuffers(GLsizei n, const GLuint *framebuffers) in GLES3/gl3.h reads n names
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glDeleteFramebuffers")]
     public static partial void DeleteFramebuffers(int count, ref uint framebuffers);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=BC9CAF
-    // Broiler-Falsified-If: the target and framebuffer name reach glBindFramebuffer swapped, so binding framebuffer 1 to GL_READ_FRAMEBUFFER raises GL_INVALID_ENUM and leaves the default bound
+    // Broiler-Falsified-If: differs from void glBindFramebuffer(GLenum target, GLuint framebuffer) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glBindFramebuffer")]
     public static partial void BindFramebuffer(int target, uint framebuffer);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EC63D1
-    // Broiler-Falsified-If: the texture name and level reach glFramebufferTexture2D in swapped positions, so attaching texture 3 at level 0 leaves the framebuffer incomplete
+    // Broiler-Falsified-If: differs from void glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glFramebufferTexture2D")]
     public static partial void FramebufferTexture2D(int target, int attachment, int textureTarget, uint texture, int level);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=3C9771
-    // Broiler-Falsified-If: the GLenum status comes back through a return other than a 32-bit unsigned value, so a complete framebuffer does not compare equal to GL_FRAMEBUFFER_COMPLETE
+    // Broiler-Falsified-If: differs from GLenum glCheckFramebufferStatus(GLenum target) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glCheckFramebufferStatus")]
     public static partial uint CheckFramebufferStatus(int target);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=71E586
-    // Broiler-Falsified-If: the x, y, width and height reach glViewport in another order, so a 1080 by 1920 viewport is set as 1920 by 1080
+    // Broiler-Falsified-If: differs from void glViewport(GLint x, GLint y, GLsizei width, GLsizei height) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glViewport")]
     public static partial void Viewport(int x, int y, int width, int height);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D00842
-    // Broiler-Falsified-If: the four float components reach glClearColor in an order other than red, green, blue, alpha, so a clear to opaque red reads back as another colour
+    // Broiler-Falsified-If: differs from void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glClearColor")]
     public static partial void ClearColor(float red, float green, float blue, float alpha);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=10E14B
-    // Broiler-Falsified-If: the mask reaches glClear as a value other than the bitfield passed, so a GL_COLOR_BUFFER_BIT clear leaves the colour buffer unchanged
+    // Broiler-Falsified-If: differs from void glClear(GLbitfield mask) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glClear")]
     public static partial void Clear(int mask);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=944115
-    // Broiler-Falsified-If: the seven arguments reach glReadPixels out of order, so format and type arrive swapped and the driver writes another number of bytes per pixel through the caller's pixels pointer
+    // Broiler-Falsified-If: pixels points at fewer bytes than width by height pixels of format and type take with GL_PACK_ALIGNMENT row padding, against void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *pixels) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glReadPixels")]
     public static partial void ReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels);
 
     /// <summary>OpenGL ES 3.0 and later only.</summary>
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=EFD1E6
-    // Broiler-Falsified-If: the ten arguments reach glBlitFramebuffer out of order, so a 640 by 480 source blitted to 1280 by 960 copies another rectangle or treats the filter as the mask
+    // Broiler-Falsified-If: differs from void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glBlitFramebuffer")]
     public static partial void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, 
         int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=8D640E
-    // Broiler-Falsified-If: the name and value reach glPixelStorei swapped, so GL_PACK_ALIGNMENT stays 4 and ReadPixels pads rows past a buffer sized for alignment 1
+    // Broiler-Falsified-If: differs from void glPixelStorei(GLenum pname, GLint param) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glPixelStorei")]
     public static partial void PixelStorei(int name, int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=E9E50C
-    // Broiler-Falsified-If: the import binds to an entry point other than glEnable, so Enable(GL_SCISSOR_TEST) leaves scissoring off
+    // Broiler-Falsified-If: differs from void glEnable(GLenum cap) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glEnable")]
     public static partial void Enable(int capability);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D5E5DF
-    // Broiler-Falsified-If: the import binds to an entry point other than glDisable, so Disable(GL_SCISSOR_TEST) leaves a scissor box clipping the clear and the blit
+    // Broiler-Falsified-If: differs from void glDisable(GLenum cap) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glDisable")]
     public static partial void Disable(int capability);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=5190C4
-    // Broiler-Falsified-If: the x, y, width and height reach glScissor in another order, so a 100 by 50 box at the origin clips a 50 by 100 region instead
+    // Broiler-Falsified-If: differs from void glScissor(GLint x, GLint y, GLsizei width, GLsizei height) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glScissor")]
     public static partial void Scissor(int x, int y, int width, int height);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=17C3C7
-    // Broiler-Falsified-If: the import binds to an entry point other than glFlush, for example glFinish, so the call blocks until the GPU drains instead of returning after submission
+    // Broiler-Falsified-If: differs from void glFlush(void) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glFlush")]
     public static partial void Flush();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=539514
-    // Broiler-Falsified-If: Finish returns while commands issued before it are still executing on the GPU
+    // Broiler-Falsified-If: differs from void glFinish(void) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glFinish")]
     public static partial void Finish();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=F60C77
-    // Broiler-Falsified-If: after a call that raises GL_INVALID_ENUM, the first GetError returns something other than 0x500
+    // Broiler-Falsified-If: differs from GLenum glGetError(void) in GLES3/gl3.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGetError")]
     public static partial int GetError();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D8D88A
-    // Broiler-Falsified-If: the const GLubyte* result is declared narrower than a pointer, so on arm64 GetStringValue reads a driver string from a truncated address
+    // Broiler-Falsified-If: the result of const GLubyte *glGetString(GLenum name) in GLES3/gl3.h, a string the GL owns, is marshalled as a managed string and freed instead of returned as a pointer
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Gles, EntryPoint = "glGetString")]
     public static partial IntPtr GetString(uint name);

@@ -22,7 +22,7 @@ namespace Broiler.Native.Windows.MediaFoundation;
 
 /// <summary>Media Foundation platform startup, attribute creation, and error codes.</summary>
 // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=48313E
-// Broiler-Falsified-If: an mfplat.dll import differs from its mfapi.h prototype in pointer width, so a 64-bit caller of MFCreateAttributes wraps and Releases a truncated IMFAttributes address
+// Broiler-Falsified-If: one of its mfplat.dll imports differs from the mfapi.h prototype it binds, STDAPI MFStartup(ULONG Version, DWORD dwFlags), STDAPI MFShutdown() or STDAPI MFCreateAttributes(IMFAttributes **ppMFAttributes, UINT32 cInitialSize)
 // Broiler-Human:        PENDING
 public static partial class MediaFoundationPlatformNative
 {
@@ -45,25 +45,25 @@ public static partial class MediaFoundationPlatformNative
     public const int MF_E_UNSUPPORTED_CAPTURE_DEVICE_PRESENT = unchecked((int)0xC00DABED);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=FB247B
-    // Broiler-Falsified-If: the import declares a calling convention other than the WINAPI default that STDAPI requires, so on 32-bit x86 the version and flags arguments are popped by both sides and the caller's stack is unbalanced after MFStartup returns
+    // Broiler-Falsified-If: differs from STDAPI MFStartup(ULONG Version, DWORD dwFlags) in mfapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("mfplat.dll")]
     public static partial int MFStartup(int version, int flags);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=344711
-    // Broiler-Falsified-If: the import binds to an export other than mfplat.dll's MFShutdown, so the platform reference a successful MFStartup takes is never dropped and Media Foundation work-queue threads outlive the last disposed scope
+    // Broiler-Falsified-If: differs from STDAPI MFShutdown() in mfapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("mfplat.dll")]
     public static partial int MFShutdown();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=A9BFE4
-    // Broiler-Falsified-If: the typed overload wraps the IMFAttributes** result without releasing the reference MFCreateAttributes returned, so each attribute store created through it outlives the release of its wrapper
+    // Broiler-Falsified-If: differs from STDAPI MFCreateAttributes(IMFAttributes **ppMFAttributes, UINT32 cInitialSize) in mfapi.h, or the reference written to attributes is not Released once its managed wrapper holds it
     // Broiler-Human:        PENDING
     [LibraryImport("mfplat.dll")]
     public static partial int MFCreateAttributes(out IMFAttributes attributes, uint initialSize);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=E28897
-    // Broiler-Falsified-If: the out parameter is narrower than pointer width, so on 64-bit the upper half of the returned IMFAttributes pointer is dropped and the caller wraps and Releases a truncated address
+    // Broiler-Falsified-If: differs from STDAPI MFCreateAttributes(IMFAttributes **ppMFAttributes, UINT32 cInitialSize) in mfapi.h, or the caller does not Release the IMFAttributes written to attributes
     // Broiler-Human:        PENDING
     [LibraryImport("mfplat.dll")]
     public static partial int MFCreateAttributes(out IntPtr attributes, uint initialSize);

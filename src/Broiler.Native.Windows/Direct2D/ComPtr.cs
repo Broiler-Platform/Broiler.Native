@@ -35,19 +35,19 @@ namespace Broiler.Native.Windows.Direct2D;
 public sealed class ComPtr : IDisposable
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=0E802B
-    // Broiler-Falsified-If: on 32-bit x86 a call through this delegate leaves the stack unbalanced or returns a garbage result, showing its convention or parameters differ from IUnknown::QueryInterface(this, REFIID, void**)
+    // Broiler-Falsified-If: differs from HRESULT (STDMETHODCALLTYPE *QueryInterface)(IUnknown *This, REFIID riid, void **ppvObject), slot 0 of IUnknownVtbl in unknwnbase.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     private delegate int QueryInterfaceProc(IntPtr self, ref Guid iid, out IntPtr result);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=BE262F
-    // Broiler-Falsified-If: on 32-bit x86 a call through this delegate leaves the stack unbalanced, showing its convention or parameters differ from IUnknown::AddRef(this)
+    // Broiler-Falsified-If: differs from ULONG (STDMETHODCALLTYPE *AddRef)(IUnknown *This), slot 1 of IUnknownVtbl in unknwnbase.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     private delegate uint AddRefProc(IntPtr self);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=CAFAC2
-    // Broiler-Falsified-If: on 32-bit x86 a call through this delegate leaves the stack unbalanced, showing its convention or parameters differ from IUnknown::Release(this)
+    // Broiler-Falsified-If: differs from ULONG (STDMETHODCALLTYPE *Release)(IUnknown *This), slot 2 of IUnknownVtbl in unknwnbase.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     private delegate uint ReleaseProc(IntPtr self);

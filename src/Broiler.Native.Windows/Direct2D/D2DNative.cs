@@ -250,7 +250,7 @@ public static class D2DNative
     // ---- Value structures ------------------------------------------------------------------------
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=9B8A78
-    // Broiler-Falsified-If: the struct is not two consecutive 32-bit unsigned integers, Width then Height (8 bytes), so CreateBitmap reads more or wider rows from the pinned source buffer than the caller sized from Width and Height
+    // Broiler-Falsified-If: Marshal.SizeOf is not 8 or Height is not at offset 4, the layout of D2D_SIZE_U { UINT32 width; UINT32 height; } in dcommon.h that d2d1.h names D2D1_SIZE_U
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_SIZE_U
@@ -260,7 +260,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=A8FA51
-    // Broiler-Falsified-If: on x64 Bits is not at offset 8 after the 32-bit Pitch and 4 bytes of padding (16 bytes in all), so the readback copy after Map walks Pitch times height bytes from a pointer that is not the mapped bitmap
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 on 64-bit or Bits is not at offset 8, the layout of D2D1_MAPPED_RECT { UINT32 pitch; BYTE *bits; } in d2d1_1.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_MAPPED_RECT
@@ -271,7 +271,7 @@ public static class D2DNative
 
     /// <summary>A DXGI format paired with how its alpha channel is interpreted.</summary>
     // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=89F880
-    // Broiler-Falsified-If: Format and AlphaMode are not two consecutive 32-bit fields in that order (8 bytes), so CreateBitmap takes the alpha mode as the DXGI format and reads more bytes per pixel than the caller's pitch-by-height source buffer holds
+    // Broiler-Falsified-If: Marshal.SizeOf is not 8 or AlphaMode is not at offset 4, the layout of D2D1_PIXEL_FORMAT { DXGI_FORMAT format; D2D1_ALPHA_MODE alphaMode; } in dcommon.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_PIXEL_FORMAT
@@ -281,7 +281,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=D33E87
-    // Broiler-Falsified-If: the struct is not an 8-byte D2D1_PIXEL_FORMAT followed by DpiX and DpiY floats (16 bytes), so CreateBitmap takes its pixel format from the wrong bytes and sizes its read of the source buffer from a wrong bytes-per-pixel
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 or DpiX is not at offset 8, the layout of D2D1_BITMAP_PROPERTIES { D2D1_PIXEL_FORMAT pixelFormat; FLOAT dpiX; FLOAT dpiY; } in d2d1.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_BITMAP_PROPERTIES
@@ -292,7 +292,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=651843
-    // Broiler-Falsified-If: on x64 ColorContext is not at offset 24 after BitmapOptions and 4 bytes of padding (32 bytes in all), so CreateBitmap1 or CreateBitmapFromDxgiSurface dereferences a garbage ID2D1ColorContext pointer
+    // Broiler-Falsified-If: Marshal.SizeOf is not 32 on 64-bit or ColorContext is not at offset 24, the layout of D2D1_BITMAP_PROPERTIES1 { D2D1_PIXEL_FORMAT pixelFormat; FLOAT dpiX; FLOAT dpiY; D2D1_BITMAP_OPTIONS bitmapOptions; ID2D1ColorContext *colorContext; } in d2d1_1.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_BITMAP_PROPERTIES1
@@ -306,7 +306,7 @@ public static class D2DNative
 
     /// <summary>Direct2D uses 32-bit floats and premultiplied colors at the GPU level.</summary>
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=20006A
-    // Broiler-Falsified-If: the struct is not four consecutive floats R, G, B, A (16 bytes) as D3DCOLORVALUE, so Clear and CreateSolidColorBrush read the channels in another order
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 or R, G, B and A are not at offsets 0, 4, 8 and 12, the layout of D3DCOLORVALUE { float r; float g; float b; float a; } in dxgitype.h that d2dbasetypes.h names D2D_COLOR_F
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_COLOR_F
@@ -318,7 +318,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=FDCA31
-    // Broiler-Falsified-If: the struct is not two consecutive 32-bit floats, X then Y (8 bytes), so AddLines reads pointsCount entries at the native 8-byte stride past the end of a managed array laid out with another element size
+    // Broiler-Falsified-If: Marshal.SizeOf is not 8 or Y is not at offset 4, the layout of D2D_POINT_2F { FLOAT x; FLOAT y; } in dcommon.h that d2d1.h names D2D1_POINT_2F
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_POINT_2F
@@ -328,7 +328,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=5A4C8B
-    // Broiler-Falsified-If: the struct is not four floats Left, Top, Right, Bottom in that order (16 bytes), so FillRectangle, PushAxisAlignedClip and the DrawText layout rectangle receive swapped edges and paint or clip page content in the wrong place
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 or Left, Top, Right and Bottom are not at offsets 0, 4, 8 and 12, the layout of D2D_RECT_F { FLOAT left; FLOAT top; FLOAT right; FLOAT bottom; } in dcommon.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_RECT_F
@@ -340,7 +340,7 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=B27539
-    // Broiler-Falsified-If: the struct is not a 16-byte D2D1_RECT_F followed by RadiusX and RadiusY floats (24 bytes), so FillRoundedRectangle and DrawRoundedRectangle take the radii from the rectangle
+    // Broiler-Falsified-If: Marshal.SizeOf is not 24 or RadiusX is not at offset 16, the layout of D2D1_ROUNDED_RECT { D2D1_RECT_F rect; FLOAT radiusX; FLOAT radiusY; } in d2d1.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_ROUNDED_RECT
@@ -352,7 +352,7 @@ public static class D2DNative
 
     /// <summary>Direct2D's 3x2 transform (row-major, translation in the last row).</summary>
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=440448
-    // Broiler-Falsified-If: the six floats are not in the d2d1.h _11, _12, _21, _22, _31, _32 order, so SetTransform applies a transposed matrix or takes the translation from the shear terms and page content is drawn in the wrong place
+    // Broiler-Falsified-If: Marshal.SizeOf is not 24 or M11, M12, M21, M22, Dx and Dy are not at offsets 0 to 20 in steps of 4, the m11, m12, m21, m22, dx, dy order of D2D_MATRIX_3X2_F in dcommon.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct D2D1_MATRIX_3X2_F
@@ -366,13 +366,13 @@ public static class D2DNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=F3DA9B
-    // Broiler-Falsified-If: the 32-bit options argument or the ID2D1DeviceContext** out parameter differs from ID2D1Device::CreateDeviceContext in d2d1_1.h, so the new context is written through a mismatched argument and its +1 reference is never released
+    // Broiler-Falsified-If: differs from slot 4 of ID2D1Device, HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, ID2D1DeviceContext **deviceContext) in d2d1_1.h, with this as the explicit first argument
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateDeviceContextProc(IntPtr self, D2DNative.D2D1_DEVICE_CONTEXT_OPTIONS options, out IntPtr deviceContext);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=307319
-    // Broiler-Falsified-If: the void return or the single ID2D1Image* argument differs from ID2D1DeviceContext::SetTarget in d2d1_1.h, so the target bitmap lands in the wrong argument slot and the context keeps drawing to the previous target
+    // Broiler-Falsified-If: differs from slot 74 of ID2D1DeviceContext, void SetTarget(ID2D1Image *image) in d2d1_1.h, with this as the explicit first argument
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void SetTargetProc(IntPtr self, IntPtr image);

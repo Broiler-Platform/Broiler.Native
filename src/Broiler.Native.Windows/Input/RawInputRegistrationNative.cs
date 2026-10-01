@@ -21,12 +21,12 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Input;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=B1A9F1
-// Broiler-Falsified-If: RegisterRawInputDevices passes deviceCount and rawInputDeviceSize to user32 in swapped positions, so user32 walks as many entries as the struct size names past the pinned array
+// Broiler-Falsified-If: its import differs from BOOL RegisterRawInputDevices(PCRAWINPUTDEVICE pRawInputDevices, UINT uiNumDevices, UINT cbSize) in winuser.h
 // Broiler-Human:        PENDING
 public static partial class RawInputRegistrationNative
 {
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=BCE2F9
-    // Broiler-Falsified-If: TargetWindow is not at offset 8 on x64 or 4 on x86 as in RAWINPUTDEVICE, so user32 reads hwndTarget from the wrong bytes and WM_INPUT goes to another window or none
+    // Broiler-Falsified-If: Marshal.SizeOf is not 16 on 64-bit (12 on 32-bit) or TargetWindow is not at offset 8, the layout of RAWINPUTDEVICE (USHORT usUsagePage, USHORT usUsage, DWORD dwFlags, HWND hwndTarget) in winuser.h
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct RawInputDevice
@@ -38,7 +38,7 @@ public static partial class RawInputRegistrationNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=261907
-    // Broiler-Falsified-If: deviceCount and rawInputDeviceSize reach RegisterRawInputDevices(PCRAWINPUTDEVICE, UINT, UINT) in swapped positions, so user32 walks as many entries as the struct size names past the pinned array
+    // Broiler-Falsified-If: differs from BOOL RegisterRawInputDevices(PCRAWINPUTDEVICE pRawInputDevices, UINT uiNumDevices, UINT cbSize) in winuser.h, where uiNumDevices counts the array's entries and cbSize must be sizeof(RAWINPUTDEVICE)
     // Broiler-Human:        PENDING
     [LibraryImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]

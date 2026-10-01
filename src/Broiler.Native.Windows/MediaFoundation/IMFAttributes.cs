@@ -22,188 +22,188 @@ using System.Runtime.InteropServices.Marshalling;
 namespace Broiler.Native.Windows.MediaFoundation;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=782571
-// Broiler-Falsified-If: a member out of mfobjects.h vtable order (GetItem at slot 3 through CopyAllItems at slot 32) sends a call to a native method whose arguments differ, so a PROPVARIANT, GUID or pointer is written through an out sized for something else
+// Broiler-Falsified-If: the member order differs from IMFAttributes in mfobjects.h, whose vtable runs from GetItem at slot 3 to CopyAllItems at slot 32 after the three IUnknown slots
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("2CD2D921-C447-44A7-A13C-4ADABFC247E3")]
 public partial interface IMFAttributes
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=CE6DAE
-    // Broiler-Falsified-If: GetItem is not vtable slot 3, directly after IUnknown, so a lookup reaches GetItemType and the PROPVARIANT the caller then reads holds only a 4-byte type code
+    // Broiler-Falsified-If: is not slot 3 of IMFAttributes, HRESULT GetItem(REFGUID guidKey, PROPVARIANT *pValue) in mfobjects.h, or value addresses fewer than the 24 bytes a PROPVARIANT from propidl.h takes on 64-bit
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItem(ref Guid key, IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=14817B
-    // Broiler-Falsified-If: GetItemType is not vtable slot 4, directly after GetItem, so a call reaches GetItem and native code writes a whole PROPVARIANT through the 4-byte type out
+    // Broiler-Falsified-If: is not slot 4 of IMFAttributes, HRESULT GetItemType(REFGUID guidKey, MF_ATTRIBUTE_TYPE *pType) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItemType(ref Guid key, out int type);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=E2FA0C
-    // Broiler-Falsified-If: CompareItem is not vtable slot 5, after GetItemType, so a comparison reaches Compare and native code calls through the PROPVARIANT pointer as an IMFAttributes object
+    // Broiler-Falsified-If: is not slot 5 of IMFAttributes, HRESULT CompareItem(REFGUID guidKey, REFPROPVARIANT Value, BOOL *pbResult) in mfobjects.h, or result is marshalled narrower than the 4-byte BOOL
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CompareItem(ref Guid key, IntPtr value, [MarshalAs(UnmanagedType.Bool)] out bool result);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=FC95C3
-    // Broiler-Falsified-If: result is marshalled as a 1-byte bool rather than a 4-byte BOOL, so native code writes 3 bytes past the managed out slot
+    // Broiler-Falsified-If: is not slot 6 of IMFAttributes, HRESULT Compare(IMFAttributes *pTheirs, MF_ATTRIBUTES_MATCH_TYPE MatchType, BOOL *pbResult) in mfobjects.h, or result is marshalled narrower than the 4-byte BOOL
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Compare(IMFAttributes attributes, int matchType, [MarshalAs(UnmanagedType.Bool)] out bool result);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=22EFE5
-    // Broiler-Falsified-If: GetUINT32 is not vtable slot 7, so a call reaches GetUINT64 and native code writes 8 bytes through the 4-byte value out
+    // Broiler-Falsified-If: is not slot 7 of IMFAttributes, HRESULT GetUINT32(REFGUID guidKey, UINT32 *punValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetUINT32(ref Guid key, out int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B0164D
-    // Broiler-Falsified-If: value is declared narrower than 8 bytes, so native code writes the UINT64 past the managed out slot
+    // Broiler-Falsified-If: is not slot 8 of IMFAttributes, HRESULT GetUINT64(REFGUID guidKey, UINT64 *punValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetUINT64(ref Guid key, out long value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=E83B03
-    // Broiler-Falsified-If: GetDouble is not vtable slot 9, so a call reaches GetGUID and native code writes 16 bytes through the 8-byte double out
+    // Broiler-Falsified-If: is not slot 9 of IMFAttributes, HRESULT GetDouble(REFGUID guidKey, double *pfValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetDouble(ref Guid key, out double value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=04EAF7
-    // Broiler-Falsified-If: GetGUID is not vtable slot 10, so a call reaches GetDouble or GetStringLength and the 16-byte out receives a value of another attribute type
+    // Broiler-Falsified-If: is not slot 10 of IMFAttributes, HRESULT GetGUID(REFGUID guidKey, GUID *pguidValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetGUID(ref Guid key, out Guid value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=CC6026
-    // Broiler-Falsified-If: GetStringLength is not vtable slot 11, so a call reaches GetGUID and native code writes 16 bytes through the 4-byte length out
+    // Broiler-Falsified-If: is not slot 11 of IMFAttributes, HRESULT GetStringLength(REFGUID guidKey, UINT32 *pcchLength) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetStringLength(ref Guid key, out int length);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=77BE94
-    // Broiler-Falsified-If: value and size reach IMFAttributes::GetString(REFGUID, LPWSTR, UINT32, UINT32*) in swapped positions, so the string is written to the address given by the capacity
+    // Broiler-Falsified-If: is not slot 12 of IMFAttributes, HRESULT GetString(REFGUID guidKey, LPWSTR pwszValue, UINT32 cchBufSize, UINT32 *pcchLength) in mfobjects.h, or size is larger than the number of WCHARs the buffer at value holds
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetString(ref Guid key, IntPtr value, int size, out int length);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=028D50
-    // Broiler-Falsified-If: value and length reach GetAllocatedString(REFGUID, LPWSTR*, UINT32*) in swapped positions, so the string pointer is written into the 4-byte length and the caller frees a truncated address
+    // Broiler-Falsified-If: is not slot 13 of IMFAttributes, HRESULT GetAllocatedString(REFGUID guidKey, LPWSTR *ppwszValue, UINT32 *pcchLength) in mfobjects.h, or the string written to value is not released with CoTaskMemFree
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAllocatedString(ref Guid key, out IntPtr value, out int length);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=689F15
-    // Broiler-Falsified-If: GetBlobSize is not vtable slot 14, so a call reaches GetAllocatedString and native code writes a pointer through the 4-byte size out
+    // Broiler-Falsified-If: is not slot 14 of IMFAttributes, HRESULT GetBlobSize(REFGUID guidKey, UINT32 *pcbBlobSize) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBlobSize(ref Guid key, out int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=DF996E
-    // Broiler-Falsified-If: buffer and bufferSize reach IMFAttributes::GetBlob(REFGUID, UINT8*, UINT32, UINT32*) in swapped positions, so the blob is copied to the address given by the size
+    // Broiler-Falsified-If: is not slot 15 of IMFAttributes, HRESULT GetBlob(REFGUID guidKey, UINT8 *pBuf, UINT32 cbBufSize, UINT32 *pcbBlobSize) in mfobjects.h, or bufferSize is larger than the number of bytes the buffer at buffer holds
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetBlob(ref Guid key, IntPtr buffer, int bufferSize, out int blobSize);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=D95683
-    // Broiler-Falsified-If: buffer and size reach GetAllocatedBlob(REFGUID, UINT8**, UINT32*) in swapped positions, so the blob pointer is written into the 4-byte size and the caller reads through a truncated address
+    // Broiler-Falsified-If: is not slot 16 of IMFAttributes, HRESULT GetAllocatedBlob(REFGUID guidKey, UINT8 **ppBuf, UINT32 *pcbSize) in mfobjects.h, or the blob written to buffer is not released with CoTaskMemFree
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetAllocatedBlob(ref Guid key, out IntPtr buffer, out int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D93F2C
-    // Broiler-Falsified-If: key and interfaceId reach GetUnknown(REFGUID, REFIID, LPVOID*) in swapped positions, so the store looks the IID up as the key and returns an object queried for the key GUID
+    // Broiler-Falsified-If: is not slot 17 of IMFAttributes, HRESULT GetUnknown(REFGUID guidKey, REFIID riid, LPVOID *ppv) in mfobjects.h, or the caller does not Release the interface reference written to value
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetUnknown(ref Guid key, ref Guid interfaceId, out IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=8A63F9
-    // Broiler-Falsified-If: SetItem is not vtable slot 18, after GetUnknown, so a store request reaches GetUnknown and native code writes an interface pointer through the PROPVARIANT argument
+    // Broiler-Falsified-If: is not slot 18 of IMFAttributes, HRESULT SetItem(REFGUID guidKey, REFPROPVARIANT Value) in mfobjects.h, or value addresses fewer than the 24 bytes a PROPVARIANT from propidl.h takes on 64-bit
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetItem(ref Guid key, IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=74315D
-    // Broiler-Falsified-If: DeleteItem is not vtable slot 19, directly after SetItem, so a call carrying only a key reaches SetItem and native code reads a PROPVARIANT through an unset argument
+    // Broiler-Falsified-If: is not slot 19 of IMFAttributes, HRESULT DeleteItem(REFGUID guidKey) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int DeleteItem(ref Guid key);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=B3EEDA
-    // Broiler-Falsified-If: DeleteAllItems is not vtable slot 20, so a call with no arguments reaches DeleteItem or SetUINT32 and native code dereferences an unset key pointer
+    // Broiler-Falsified-If: is not slot 20 of IMFAttributes, HRESULT DeleteAllItems(void) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int DeleteAllItems();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=ACC7DC
-    // Broiler-Falsified-If: SetUINT32 is not vtable slot 21, so a call reaches SetUINT64 and the key is stored as a UINT64 that a later GetUINT32 rejects as the wrong type
+    // Broiler-Falsified-If: is not slot 21 of IMFAttributes, HRESULT SetUINT32(REFGUID guidKey, UINT32 unValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUINT32(ref Guid key, int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=D8F6A0
-    // Broiler-Falsified-If: value is declared narrower than 8 bytes, so a packed MF_MT_FRAME_SIZE or MF_MT_FRAME_RATE pair loses its high 32 bits when stored
+    // Broiler-Falsified-If: is not slot 22 of IMFAttributes, HRESULT SetUINT64(REFGUID guidKey, UINT64 unValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUINT64(ref Guid key, long value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=0AB870
-    // Broiler-Falsified-If: SetDouble is not vtable slot 23, so the double travels in a floating-point register while native code reads an integer register and stores an unrelated value
+    // Broiler-Falsified-If: is not slot 23 of IMFAttributes, HRESULT SetDouble(REFGUID guidKey, double fValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetDouble(ref Guid key, double value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=4C3268
-    // Broiler-Falsified-If: SetGUID is not vtable slot 24, so a call reaches SetString and native code reads the 16-byte GUID as a NUL-terminated UTF-16 string past its end
+    // Broiler-Falsified-If: is not slot 24 of IMFAttributes, HRESULT SetGUID(REFGUID guidKey, REFGUID guidValue) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetGUID(ref Guid key, ref Guid value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=C88CB0
-    // Broiler-Falsified-If: value is marshalled as an ANSI LPStr instead of LPWStr, so native code reads single-byte text as UTF-16 and runs past the marshalled buffer looking for a 2-byte terminator
+    // Broiler-Falsified-If: is not slot 25 of IMFAttributes, HRESULT SetString(REFGUID guidKey, LPCWSTR wszValue) in mfobjects.h, or value reaches it as anything but NUL-terminated UTF-16
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetString(ref Guid key, [MarshalAs(UnmanagedType.LPWStr)] string value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=643E87
-    // Broiler-Falsified-If: buffer and size reach IMFAttributes::SetBlob(REFGUID, const UINT8*, UINT32) in swapped positions, so the store copies the blob from the address given by the size
+    // Broiler-Falsified-If: is not slot 26 of IMFAttributes, HRESULT SetBlob(REFGUID guidKey, const UINT8 *pBuf, UINT32 cbBufSize) in mfobjects.h, or size is larger than the number of bytes the buffer at buffer holds
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetBlob(ref Guid key, IntPtr buffer, int size);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=EB4C73
-    // Broiler-Falsified-If: SetUnknown is not vtable slot 27, after SetBlob, so a store request reaches SetBlob and native code copies from the IUnknown pointer with an unset size
+    // Broiler-Falsified-If: is not slot 27 of IMFAttributes, HRESULT SetUnknown(REFGUID guidKey, IUnknown *pUnknown) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetUnknown(ref Guid key, IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=52D8D9
-    // Broiler-Falsified-If: LockStore is not vtable slot 28, directly after SetUnknown, so a lock request reaches SetUnknown or UnlockStore and the attribute store is never locked
+    // Broiler-Falsified-If: is not slot 28 of IMFAttributes, HRESULT LockStore(void) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int LockStore();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B80F37
-    // Broiler-Falsified-If: UnlockStore is not vtable slot 29, directly after LockStore, so an unlock reaches GetCount, which writes through an unset argument and leaves the store locked
+    // Broiler-Falsified-If: is not slot 29 of IMFAttributes, HRESULT UnlockStore(void) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int UnlockStore();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C12DCA
-    // Broiler-Falsified-If: GetCount is not vtable slot 30, so a call reaches GetItemByIndex and native code takes the count out pointer as an index and writes a GUID through an unset argument
+    // Broiler-Falsified-If: is not slot 30 of IMFAttributes, HRESULT GetCount(UINT32 *pcItems) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetCount(out int count);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=57C3C3
-    // Broiler-Falsified-If: GetItemByIndex is not vtable slot 31, after GetCount, so an indexed read reaches CopyAllItems and native code calls through the GUID out pointer as an IMFAttributes object
+    // Broiler-Falsified-If: is not slot 31 of IMFAttributes, HRESULT GetItemByIndex(UINT32 unIndex, GUID *pguidKey, PROPVARIANT *pValue) in mfobjects.h, or value addresses fewer than the 24 bytes a PROPVARIANT from propidl.h takes on 64-bit
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetItemByIndex(int index, out Guid key, IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=F083D6
-    // Broiler-Falsified-If: CopyAllItems is not the last member at vtable slot 32, so IMFActivate.ActivateObject and IMFMediaType.GetMajorType in the derived interfaces dispatch to the wrong native slot
+    // Broiler-Falsified-If: is not slot 32 of IMFAttributes, HRESULT CopyAllItems(IMFAttributes *pDest) in mfobjects.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CopyAllItems(IMFAttributes destination);

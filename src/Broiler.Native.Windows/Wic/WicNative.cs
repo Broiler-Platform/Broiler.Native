@@ -22,243 +22,243 @@ using System.Runtime.InteropServices.Marshalling;
 namespace Broiler.Native.Windows.Wic;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=8; Fingerprint=5EFA14
-// Broiler-Falsified-If: CopyPixels on a frame or format converter receives cbStride, cbBufferSize and pbBuffer out of order, so the codec writes decoded page-image rows to an address given by a size value
+// Broiler-Falsified-If: a nested interface differs from its wincodec.h declaration of IWICBitmapFrameDecode, IWICFormatConverter, IWICBitmapDecoder or IWICImagingFactory in slot order or in a member prototype
 // Broiler-Human:        PENDING
 public static partial class WicNative
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=8; Fingerprint=1783FD
-    // Broiler-Falsified-If: a member is out of wincodec.h order (IWICBitmapSource's GetSize to CopyPixels at slots 3-7, then GetMetadataQueryReader, GetColorContexts, GetThumbnail), so a call reaches a native method with another argument list that writes through its stride, size or index argument as a pointer
+    // Broiler-Falsified-If: its vtable is not the IWICBitmapFrameDecode order of wincodec.h, IWICBitmapSource GetSize at slot 3 through CopyPixels at slot 7, then GetMetadataQueryReader at slot 8 through GetThumbnail at slot 10
     // Broiler-Human:        PENDING
     [GeneratedComInterface]
     [Guid("3b16811b-6a43-4ec9-a813-3d930c13b940")]
     public partial interface IWICBitmapFrameDecode
     {
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=7C536B
-        // Broiler-Falsified-If: GetSize is not vtable slot 3, the first IWICBitmapSource member, so a call reaches GetPixelFormat and native code writes a 16-byte GUID through the 4-byte width out
+        // Broiler-Falsified-If: is not slot 3 of IWICBitmapFrameDecode, HRESULT GetSize(UINT *puiWidth, UINT *puiHeight) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetSize(out uint puiWidth, out uint puiHeight);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=69EFDA
-        // Broiler-Falsified-If: GetPixelFormat is not vtable slot 4, directly after GetSize, so a call reaches GetResolution and native code writes a second double through an unset argument register
+        // Broiler-Falsified-If: is not slot 4 of IWICBitmapFrameDecode, HRESULT GetPixelFormat(WICPixelFormatGUID *pPixelFormat) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetPixelFormat(out Guid pPixelFormat);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=2054F8
-        // Broiler-Falsified-If: pDpiX or pDpiY is declared as a 4-byte float or int rather than an 8-byte double, so native code writes 8 bytes into a 4-byte managed out slot
+        // Broiler-Falsified-If: is not slot 5 of IWICBitmapFrameDecode, HRESULT GetResolution(double *pDpiX, double *pDpiY) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetResolution(out double pDpiX, out double pDpiY);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=ACA555
-        // Broiler-Falsified-If: CopyPalette is not vtable slot 6 of IWICBitmapSource, after GetResolution, so the palette pointer reaches CopyPixels as its rectangle and the codec writes pixel rows through unset arguments
+        // Broiler-Falsified-If: is not slot 6 of IWICBitmapFrameDecode, HRESULT CopyPalette(IWICPalette *pIPalette) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CopyPalette(IntPtr pIPalette);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=8; Fingerprint=19BB8D
-        // Broiler-Falsified-If: cbStride, cbBufferSize and pbBuffer reach IWICBitmapSource::CopyPixels(const WICRect*, UINT, UINT, BYTE*) in another order, so the codec writes decoded page-image rows to the address given by a size value
+        // Broiler-Falsified-If: is not slot 7 of IWICBitmapFrameDecode, HRESULT CopyPixels(const WICRect *prc, UINT cbStride, UINT cbBufferSize, BYTE *pbBuffer) of IWICBitmapSource in wincodec.h, or pbBuffer holds fewer than the cbBufferSize bytes passed with it
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CopyPixels(IntPtr prc, uint cbStride, uint cbBufferSize, IntPtr pbBuffer);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=5B4345
-        // Broiler-Falsified-If: GetMetadataQueryReader is not vtable slot 8, the first after the IWICBitmapSource methods, so the call reaches GetColorContexts with the out pointer as its count and native code dereferences unset array arguments
+        // Broiler-Falsified-If: is not slot 8 of IWICBitmapFrameDecode, HRESULT GetMetadataQueryReader(IWICMetadataQueryReader **ppIMetadataQueryReader) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetMetadataQueryReader(out IntPtr ppIMetadataQueryReader);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=2E33A1
-        // Broiler-Falsified-If: GetColorContexts is not vtable slot 9, after GetMetadataQueryReader, so the count and array pointer reach GetThumbnail and a bitmap-source pointer is written through the count value as an address
+        // Broiler-Falsified-If: is not slot 9 of IWICBitmapFrameDecode, HRESULT GetColorContexts(UINT cCount, IWICColorContext **ppIColorContexts, UINT *pcActualCount) in wincodec.h, or ppIColorContexts holds fewer than cCount pointers
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetColorContexts(uint cCount, IntPtr ppIColorContexts, out uint pcActualCount);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=F83FCD
-        // Broiler-Falsified-If: GetThumbnail is not vtable slot 10, after GetColorContexts, so the call reaches GetColorContexts with the out pointer as its count and native code dereferences unset array arguments
+        // Broiler-Falsified-If: is not slot 10 of IWICBitmapFrameDecode, HRESULT GetThumbnail(IWICBitmapSource **ppIThumbnail) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetThumbnail(out IntPtr ppIThumbnail);
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=8; Fingerprint=EBC48E
-    // Broiler-Falsified-If: a member is out of wincodec.h order (IWICBitmapSource's GetSize to CopyPixels at slots 3-7, then Initialize at 8 and CanConvert at 9), so a call reaches a native method with another argument list that writes through one of its integer arguments as a pointer
+    // Broiler-Falsified-If: its vtable is not the IWICFormatConverter order of wincodec.h, IWICBitmapSource GetSize at slot 3 through CopyPixels at slot 7, then Initialize at slot 8 and CanConvert at slot 9
     // Broiler-Human:        PENDING
     [GeneratedComInterface]
     [Guid("00000301-a8f2-4877-ba0a-fd2b6645fb94")]
     public partial interface IWICFormatConverter
     {
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=7C536B
-        // Broiler-Falsified-If: GetSize is not vtable slot 3, the first IWICBitmapSource member, so a call reaches GetPixelFormat and native code writes a 16-byte GUID through the 4-byte width out that sizes the caller's pixel buffer
+        // Broiler-Falsified-If: is not slot 3 of IWICFormatConverter, HRESULT GetSize(UINT *puiWidth, UINT *puiHeight) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetSize(out uint puiWidth, out uint puiHeight);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=69EFDA
-        // Broiler-Falsified-If: GetPixelFormat is not vtable slot 4, directly after GetSize, so a call reaches GetResolution and native code writes a second double through an unset argument register
+        // Broiler-Falsified-If: is not slot 4 of IWICFormatConverter, HRESULT GetPixelFormat(WICPixelFormatGUID *pPixelFormat) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetPixelFormat(out Guid pPixelFormat);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=2054F8
-        // Broiler-Falsified-If: pDpiX or pDpiY is declared as a 4-byte float or int rather than an 8-byte double, so native code writes 8 bytes into a 4-byte managed out slot
+        // Broiler-Falsified-If: is not slot 5 of IWICFormatConverter, HRESULT GetResolution(double *pDpiX, double *pDpiY) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetResolution(out double pDpiX, out double pDpiY);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=ACA555
-        // Broiler-Falsified-If: CopyPalette is not vtable slot 6 of IWICBitmapSource, after GetResolution, so the palette pointer reaches CopyPixels as its rectangle and the codec writes pixel rows through unset arguments
+        // Broiler-Falsified-If: is not slot 6 of IWICFormatConverter, HRESULT CopyPalette(IWICPalette *pIPalette) of IWICBitmapSource in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CopyPalette(IntPtr pIPalette);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=8; Fingerprint=19BB8D
-        // Broiler-Falsified-If: cbStride, cbBufferSize and pbBuffer reach IWICBitmapSource::CopyPixels(const WICRect*, UINT, UINT, BYTE*) in another order, so the codec writes converted page-image rows to the address given by a size value
+        // Broiler-Falsified-If: is not slot 7 of IWICFormatConverter, HRESULT CopyPixels(const WICRect *prc, UINT cbStride, UINT cbBufferSize, BYTE *pbBuffer) of IWICBitmapSource in wincodec.h, or pbBuffer holds fewer than the cbBufferSize bytes passed with it
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CopyPixels(IntPtr prc, uint cbStride, uint cbBufferSize, IntPtr pbBuffer);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=F22BAE
-        // Broiler-Falsified-If: pISource is marshalled as a pointer to an interface whose slots 3-7 are not IWICBitmapSource's GetSize to CopyPixels, so the converter pulls the source's size and pixels through the wrong native methods
+        // Broiler-Falsified-If: is not slot 8 of IWICFormatConverter, HRESULT Initialize(IWICBitmapSource *pISource, REFWICPixelFormatGUID dstFormat, WICBitmapDitherType dither, IWICPalette *pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int Initialize(IWICBitmapFrameDecode pISource, ref Guid dstFormat, int dither, IntPtr pIPalette,
             double alphaThresholdPercent, int paletteTranslate);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C957AB
-        // Broiler-Falsified-If: pfCanConvert is marshalled as a 1-byte bool rather than a 4-byte BOOL, so native code writes 3 bytes past the managed out slot
+        // Broiler-Falsified-If: is not slot 9 of IWICFormatConverter, HRESULT CanConvert(REFWICPixelFormatGUID srcPixelFormat, REFWICPixelFormatGUID dstPixelFormat, BOOL *pfCanConvert) in wincodec.h, or pfCanConvert is received in other than the 4 bytes of a BOOL
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CanConvert(ref Guid srcPixelFormat, ref Guid dstPixelFormat, out int pfCanConvert);
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=7; Fingerprint=F3A325
-    // Broiler-Falsified-If: a member is out of wincodec.h order (QueryCapability at slot 3 through GetFrame at slot 13), so a GetFrame call reaches GetFrameCount and native code writes the count through the frame index taken as a pointer
+    // Broiler-Falsified-If: its vtable is not the IWICBitmapDecoder order of wincodec.h, QueryCapability at slot 3 through GetFrame at slot 13
     // Broiler-Human:        PENDING
     [GeneratedComInterface]
     [Guid("9edde9e7-8dee-47ea-99df-e6faf2ed44bf")]
     public partial interface IWICBitmapDecoder
     {
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=E9B82A
-        // Broiler-Falsified-If: QueryCapability is not vtable slot 3, so a probe of page-supplied bytes reaches Initialize and the decoder binds to the stream with the capability out pointer taken as its cache option
+        // Broiler-Falsified-If: is not slot 3 of IWICBitmapDecoder, HRESULT QueryCapability(IStream *pIStream, DWORD *pdwCapability) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int QueryCapability(IStream pIStream, out uint pdwCapability);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=7; Fingerprint=BFEDCC
-        // Broiler-Falsified-If: Initialize is not vtable slot 4, directly after QueryCapability, so a call reaches GetContainerFormat and native code writes a 16-byte GUID over the page-supplied IStream object its first argument points to
+        // Broiler-Falsified-If: is not slot 4 of IWICBitmapDecoder, HRESULT Initialize(IStream *pIStream, WICDecodeOptions cacheOptions) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int Initialize(IStream pIStream, int cacheOptions);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=DCE272
-        // Broiler-Falsified-If: the container-format out is declared narrower than the 16-byte GUID, so native code writes the GUID_ContainerFormat value past the managed out slot
+        // Broiler-Falsified-If: is not slot 5 of IWICBitmapDecoder, HRESULT GetContainerFormat(GUID *pguidContainerFormat) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetContainerFormat(out Guid pguidContainerFormat);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=51BF48
-        // Broiler-Falsified-If: GetDecoderInfo is not vtable slot 6, after GetContainerFormat, so the call reaches GetContainerFormat and a 16-byte GUID is written through the 8-byte pointer out
+        // Broiler-Falsified-If: is not slot 6 of IWICBitmapDecoder, HRESULT GetDecoderInfo(IWICBitmapDecoderInfo **ppIDecoderInfo) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetDecoderInfo(out IntPtr ppIDecoderInfo);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=ACA555
-        // Broiler-Falsified-If: CopyPalette is not vtable slot 7 of IWICBitmapDecoder, after GetDecoderInfo, so the palette pointer reaches GetMetadataQueryReader as its out argument and a reader pointer is written into the palette object
+        // Broiler-Falsified-If: is not slot 7 of IWICBitmapDecoder, HRESULT CopyPalette(IWICPalette *pIPalette) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CopyPalette(IntPtr pIPalette);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=5B4345
-        // Broiler-Falsified-If: GetMetadataQueryReader is not vtable slot 8 of IWICBitmapDecoder, after CopyPalette, so the call reaches GetPreview and a bitmap source is returned where a metadata reader is expected
+        // Broiler-Falsified-If: is not slot 8 of IWICBitmapDecoder, HRESULT GetMetadataQueryReader(IWICMetadataQueryReader **ppIMetadataQueryReader) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetMetadataQueryReader(out IntPtr ppIMetadataQueryReader);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=E2D6CB
-        // Broiler-Falsified-If: GetPreview is not vtable slot 9, after GetMetadataQueryReader, so the call reaches GetColorContexts with the out pointer as its count and native code dereferences unset array arguments
+        // Broiler-Falsified-If: is not slot 9 of IWICBitmapDecoder, HRESULT GetPreview(IWICBitmapSource **ppIBitmapSource) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetPreview(out IntPtr ppIBitmapSource);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=2E33A1
-        // Broiler-Falsified-If: GetColorContexts is not vtable slot 10 of IWICBitmapDecoder, after GetPreview, so the count and array pointer reach GetThumbnail and a bitmap-source pointer is written through the count value as an address
+        // Broiler-Falsified-If: is not slot 10 of IWICBitmapDecoder, HRESULT GetColorContexts(UINT cCount, IWICColorContext **ppIColorContexts, UINT *pcActualCount) in wincodec.h, or ppIColorContexts holds fewer than cCount pointers
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetColorContexts(uint cCount, IntPtr ppIColorContexts, out uint pcActualCount);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=F83FCD
-        // Broiler-Falsified-If: GetThumbnail is not vtable slot 11 of IWICBitmapDecoder, after GetColorContexts, so the call reaches GetFrameCount and a 4-byte count is written into the 8-byte pointer out the caller then dereferences
+        // Broiler-Falsified-If: is not slot 11 of IWICBitmapDecoder, HRESULT GetThumbnail(IWICBitmapSource **ppIThumbnail) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetThumbnail(out IntPtr ppIThumbnail);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=C7763B
-        // Broiler-Falsified-If: GetFrameCount is not vtable slot 12, directly before GetFrame, so a count query reaches GetThumbnail and native code writes an 8-byte interface pointer through the 4-byte count out
+        // Broiler-Falsified-If: is not slot 12 of IWICBitmapDecoder, HRESULT GetFrameCount(UINT *pCount) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetFrameCount(out uint pCount);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=7; Fingerprint=ABCC93
-        // Broiler-Falsified-If: GetFrame is not vtable slot 13, the last IWICBitmapDecoder member, so the call reaches GetFrameCount and native code writes the frame count through the frame index taken as a pointer
+        // Broiler-Falsified-If: is not slot 13 of IWICBitmapDecoder, HRESULT GetFrame(UINT index, IWICBitmapFrameDecode **ppIBitmapFrame) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int GetFrame(uint index, out IWICBitmapFrameDecode ppIBitmapFrame);
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=7; Fingerprint=A8CD55
-    // Broiler-Falsified-If: a member is out of wincodec.h order (CreateDecoderFromFilename at slot 3 through CreateFormatConverter at slot 10), so CreateDecoderFromStream reaches CreateDecoderFromFilename and native code reads the IStream pointer as a NUL-terminated UTF-16 file name
+    // Broiler-Falsified-If: its first slots are not the IWICImagingFactory order of wincodec.h, CreateDecoderFromFilename at slot 3 through CreateFormatConverter at slot 10
     // Broiler-Human:        PENDING
     [GeneratedComInterface]
     [Guid("ec5ec8a9-c395-4314-9c77-54d7a935ff70")]
     public partial interface IWICImagingFactory
     {
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=7; Fingerprint=777C84
-        // Broiler-Falsified-If: wzFilename is marshalled as an ANSI LPStr instead of LPWStr, so native code reads single-byte text as UTF-16 and opens a path other than the one passed, or runs past the marshalled buffer looking for a 2-byte terminator
+        // Broiler-Falsified-If: is not slot 3 of IWICImagingFactory, HRESULT CreateDecoderFromFilename(LPCWSTR wzFilename, const GUID *pguidVendor, DWORD dwDesiredAccess, WICDecodeOptions metadataOptions, IWICBitmapDecoder **ppIDecoder) in wincodec.h, or wzFilename is marshalled as other than NUL-terminated UTF-16
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateDecoderFromFilename([MarshalAs(UnmanagedType.LPWStr)] string wzFilename, IntPtr pguidVendor,
             uint dwDesiredAccess, int metadataOptions, out IWICBitmapDecoder ppIDecoder);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=7; Fingerprint=A96950
-        // Broiler-Falsified-If: pIStream is marshalled as an IUnknown or other interface pointer instead of the IStream obtained for IID_IStream, so the codec's Read and Seek calls on page-supplied image bytes dispatch through the wrong vtable slots
+        // Broiler-Falsified-If: is not slot 4 of IWICImagingFactory, HRESULT CreateDecoderFromStream(IStream *pIStream, const GUID *pguidVendor, WICDecodeOptions metadataOptions, IWICBitmapDecoder **ppIDecoder) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateDecoderFromStream(IStream pIStream, IntPtr pguidVendor, int metadataOptions, out IWICBitmapDecoder ppIDecoder);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=7; Fingerprint=0FCBE9
-        // Broiler-Falsified-If: hFile is declared narrower than the pointer-sized ULONG_PTR, so on 64-bit the factory reads a truncated handle and decodes from whichever file that value names in the process
+        // Broiler-Falsified-If: is not slot 5 of IWICImagingFactory, HRESULT CreateDecoderFromFileHandle(ULONG_PTR hFile, const GUID *pguidVendor, WICDecodeOptions metadataOptions, IWICBitmapDecoder **ppIDecoder) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateDecoderFromFileHandle(IntPtr hFile, IntPtr pguidVendor, int metadataOptions, out IWICBitmapDecoder ppIDecoder);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=84A58A
-        // Broiler-Falsified-If: CreateComponentInfo is not vtable slot 6, after CreateDecoderFromFileHandle, so the CLSID pointer reaches CreateDecoderFromFileHandle as a file handle
+        // Broiler-Falsified-If: is not slot 6 of IWICImagingFactory, HRESULT CreateComponentInfo(REFCLSID clsidComponent, IWICComponentInfo **ppIInfo) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateComponentInfo(ref Guid clsidComponent, out IntPtr ppIInfo);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=B0ED40
-        // Broiler-Falsified-If: guidContainerFormat is passed by value rather than as a REFGUID pointer, so native code dereferences the first 8 bytes of the GUID as an address
+        // Broiler-Falsified-If: is not slot 7 of IWICImagingFactory, HRESULT CreateDecoder(REFGUID guidContainerFormat, const GUID *pguidVendor, IWICBitmapDecoder **ppIDecoder) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateDecoder(ref Guid guidContainerFormat, IntPtr pguidVendor, out IWICBitmapDecoder ppIDecoder);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=F89366
-        // Broiler-Falsified-If: CreateEncoder is not vtable slot 8, after CreateDecoder, so an encoder request reaches CreateDecoder and a decoder is returned where an encoder is expected
+        // Broiler-Falsified-If: is not slot 8 of IWICImagingFactory, HRESULT CreateEncoder(REFGUID guidContainerFormat, const GUID *pguidVendor, IWICBitmapEncoder **ppIEncoder) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateEncoder(ref Guid guidContainerFormat, IntPtr pguidVendor, out IntPtr ppIEncoder);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=592ED9
-        // Broiler-Falsified-If: CreatePalette is not vtable slot 9, after CreateEncoder, so the call reaches CreateFormatConverter and a converter is returned where a palette is expected
+        // Broiler-Falsified-If: is not slot 9 of IWICImagingFactory, HRESULT CreatePalette(IWICPalette **ppIPalette) in wincodec.h, whose reference arrives as a raw IntPtr that no marshaller releases
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreatePalette(out IntPtr ppIPalette);
 
         // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=903F42
-        // Broiler-Falsified-If: CreateFormatConverter is not vtable slot 10, so the call reaches CreatePalette and the returned IWICPalette fails the cast to IWICFormatConverter, making every converted decode throw
+        // Broiler-Falsified-If: is not slot 10 of IWICImagingFactory, HRESULT CreateFormatConverter(IWICFormatConverter **ppIFormatConverter) in wincodec.h
         // Broiler-Human:        PENDING
         [PreserveSig]
         int CreateFormatConverter(out IWICFormatConverter ppIFormatConverter);

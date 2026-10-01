@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Linux.OpenGL;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=B1E919
-// Broiler-Falsified-If: GlReadPixelsProc's seven declared parameters differ in order from glReadPixels(x, y, width, height, format, type, pixels), so format and type arrive swapped and the driver writes another number of bytes per pixel through the pixels pointer
+// Broiler-Falsified-If: GlReadPixelsProc differs from void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *pixels) in GL/glcorearb.h
 // Broiler-Human:        PENDING
 public sealed class LinuxOpenGlFunctions
 {
@@ -192,133 +192,133 @@ public sealed class LinuxOpenGlFunctions
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=A6564B
-    // Broiler-Falsified-If: n greater than 1 makes glGenTextures write n texture names through the out pointer to a single uint, overwriting the caller's memory after it
+    // Broiler-Falsified-If: differs from void glGenTextures(GLsizei n, GLuint *textures) in GL/glcorearb.h, or n is greater than the 1 GLuint its out parameter holds
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlGenTexturesProc(int n, out uint textures);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=987158
-    // Broiler-Falsified-If: n greater than 1 makes glDeleteTextures read n names through the ref pointer to a single uint and delete textures named by whatever memory follows it
+    // Broiler-Falsified-If: differs from void glDeleteTextures(GLsizei n, const GLuint *textures) in GL/glcorearb.h, or n is greater than the 1 GLuint its ref parameter holds
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlDeleteTexturesProc(int n, ref uint textures);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=86B3EB
-    // Broiler-Falsified-If: the declared parameters differ from glBindTexture(GLenum target, GLuint texture), for example a 64-bit texture name, so on 32-bit x86 the driver reads the name from the wrong stack slot
+    // Broiler-Falsified-If: differs from void glBindTexture(GLenum target, GLuint texture) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlBindTextureProc(int target, uint texture);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=72149D
-    // Broiler-Falsified-If: the declared parameters differ from glTexParameteri(GLenum, GLenum, GLint), for example a float param, so the filter or wrap value arrives in a floating-point register the driver never reads
+    // Broiler-Falsified-If: differs from void glTexParameteri(GLenum target, GLenum pname, GLint param) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlTexParameteriProc(int target, int pname, int param);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=53B054
-    // Broiler-Falsified-If: the nine declared parameters differ in order from glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels), so format and type arrive swapped and the driver reads another number of bytes per pixel from the pixels pointer
+    // Broiler-Falsified-If: differs from void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void *pixels) in GL/glcorearb.h, or pixels points to fewer bytes than width, height, format, type and GL_UNPACK_ALIGNMENT describe
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlTexImage2DProc(int target, int level, int internalFormat, int width, int height, int border, int format, int type, IntPtr pixels);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=918023
-    // Broiler-Falsified-If: n greater than 1 makes glGenFramebuffers write n framebuffer names through the out pointer to a single uint, overwriting the caller's memory after it
+    // Broiler-Falsified-If: differs from void glGenFramebuffers(GLsizei n, GLuint *framebuffers) in GL/glcorearb.h, or n is greater than the 1 GLuint its out parameter holds
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlGenFramebuffersProc(int n, out uint framebuffers);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=74B8E4
-    // Broiler-Falsified-If: n greater than 1 makes glDeleteFramebuffers read n names through the ref pointer to a single uint and delete framebuffers named by whatever memory follows it
+    // Broiler-Falsified-If: differs from void glDeleteFramebuffers(GLsizei n, const GLuint *framebuffers) in GL/glcorearb.h, or n is greater than the 1 GLuint its ref parameter holds
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlDeleteFramebuffersProc(int n, ref uint framebuffers);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=E22C59
-    // Broiler-Falsified-If: the declared parameters differ from glBindFramebuffer(GLenum target, GLuint framebuffer), for example a 64-bit framebuffer name, so on 32-bit x86 the driver reads the name from the wrong stack slot
+    // Broiler-Falsified-If: differs from void glBindFramebuffer(GLenum target, GLuint framebuffer) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlBindFramebufferProc(int target, uint framebuffer);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=89CAEA
-    // Broiler-Falsified-If: the five declared parameters differ in order from glFramebufferTexture2D(target, attachment, textarget, texture, level), so the texture name is passed as the mip level and the attachment stays empty
+    // Broiler-Falsified-If: differs from void glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlFramebufferTexture2DProc(int target, int attachment, int textureTarget, uint texture, int level);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=7B20CF
-    // Broiler-Falsified-If: the return type is not the 32-bit unsigned GLenum of glCheckFramebufferStatus, so the returned status never equals GL_FRAMEBUFFER_COMPLETE (0x8CD5) and a complete framebuffer is rejected
+    // Broiler-Falsified-If: differs from GLenum glCheckFramebufferStatus(GLenum target) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate uint GlCheckFramebufferStatusProc(int target);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=45AE3A
-    // Broiler-Falsified-If: the declared parameters differ from glViewport(GLint x, GLint y, GLsizei width, GLsizei height), for example width and height swapped, so a non-square surface renders into a transposed viewport
+    // Broiler-Falsified-If: differs from void glViewport(GLint x, GLint y, GLsizei width, GLsizei height) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlViewportProc(int x, int y, int width, int height);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=181780
-    // Broiler-Falsified-If: a component is declared as double instead of the gl.h GLfloat, so the driver reads red, green, blue and alpha from the wrong floating-point registers or stack slots
+    // Broiler-Falsified-If: differs from void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlClearColorProc(float red, float green, float blue, float alpha);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=ED39A6
-    // Broiler-Falsified-If: the mask is not passed as the 32-bit GLbitfield of glClear(GLbitfield mask), so GL_COLOR_BUFFER_BIT arrives as a different bit set and the colour buffer is not cleared
+    // Broiler-Falsified-If: differs from void glClear(GLbitfield mask) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlClearProc(int mask);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=6; Fingerprint=4D8968
-    // Broiler-Falsified-If: the seven declared parameters differ in order from glReadPixels(x, y, width, height, format, type, pixels), so format and type arrive swapped and the driver writes another number of bytes per pixel through the pixels pointer
+    // Broiler-Falsified-If: differs from void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *pixels) in GL/glcorearb.h, or pixels points to fewer bytes than width, height, format, type and GL_PACK_ALIGNMENT describe
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlReadPixelsProc(int x, int y, int width, int height, int format, int type, IntPtr pixels);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=4; Fingerprint=2FE5E1
-    // Broiler-Falsified-If: the ten declared parameters differ in order from glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter), so the source and destination rectangles are swapped or the filter is read as a coordinate
+    // Broiler-Falsified-If: differs from void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlBlitFramebufferProc(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=C7EF03
-    // Broiler-Falsified-If: the declared parameters differ from glPixelStorei(GLenum pname, GLint param), for example param before pname, so the row alignment of 1 is never set and later pixel transfers assume padded rows
+    // Broiler-Falsified-If: differs from void glPixelStorei(GLenum pname, GLint param) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlPixelStoreiProc(int pname, int param);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=DE694A
-    // Broiler-Falsified-If: the cap is not passed as the 32-bit GLenum of glEnable(GLenum cap), so GL_SCISSOR_TEST is not enabled and a later glClear covers the whole framebuffer
+    // Broiler-Falsified-If: differs from void glEnable(GLenum cap) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlEnableProc(int cap);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=524E32
-    // Broiler-Falsified-If: the cap is not passed as the 32-bit GLenum of glDisable(GLenum cap), so GL_SCISSOR_TEST stays enabled and later clears and blits are clipped to a stale rectangle
+    // Broiler-Falsified-If: differs from void glDisable(GLenum cap) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlDisableProc(int cap);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EB992B
-    // Broiler-Falsified-If: the declared parameters differ from glScissor(GLint x, GLint y, GLsizei width, GLsizei height), for example width and height swapped, so a clear meant for one rectangle paints a transposed one
+    // Broiler-Falsified-If: differs from void glScissor(GLint x, GLint y, GLsizei width, GLsizei height) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlScissorProc(int x, int y, int width, int height);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=89AA1E
-    // Broiler-Falsified-If: the delegate declares an argument or result that glFlush(void) does not have, so the call marshals a value the driver entry never takes or returns a register value it never set
+    // Broiler-Falsified-If: differs from void glFlush(void) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void GlFlushProc();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=8ACE41
-    // Broiler-Falsified-If: the return type is not the 32-bit unsigned GLenum of glGetError(void), so an error such as GL_OUT_OF_MEMORY (0x0505) reaches ThrowIfError truncated or as zero
+    // Broiler-Falsified-If: differs from GLenum glGetError(void) in GL/glcorearb.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate uint GlGetErrorProc();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C7F9A4
-    // Broiler-Falsified-If: the const GLubyte pointer return is declared as a 32-bit int, so on 64-bit Linux the driver's string address is truncated before GetString reads it
+    // Broiler-Falsified-If: differs from const GLubyte *glGetString(GLenum name) in GL/glcorearb.h, or its return is marshalled as a string, which frees memory the GL implementation owns
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate IntPtr GlGetStringProc(uint name);

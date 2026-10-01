@@ -104,7 +104,7 @@ public static class DWriteNative
     }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=71E01C
-    // Broiler-Falsified-If: Marshal.SizeOf is not the 36 bytes IDWriteTextLayout::GetMetrics writes, or LineCount is not at offset 32 after seven floats and MaxBidiReorderingDepth
+    // Broiler-Falsified-If: Marshal.SizeOf is not 36 or LineCount is not at offset 32, the layout of DWRITE_TEXT_METRICS in dwrite.h, seven FLOATs from left to layoutHeight then UINT32 maxBidiReorderingDepth and UINT32 lineCount
     // Broiler-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DWRITE_TEXT_METRICS
@@ -121,7 +121,7 @@ public static class DWriteNative
     }
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=3000F3
-    // Broiler-Falsified-If: fontFamilyName or localeName is marshalled as ANSI instead of NUL-terminated UTF-16, so a non-ASCII page-supplied family name reaches CreateTextFormat mangled
+    // Broiler-Falsified-If: differs from slot 15 of IDWriteFactory, HRESULT CreateTextFormat(WCHAR const* fontFamilyName, IDWriteFontCollection* fontCollection, DWRITE_FONT_WEIGHT fontWeight, DWRITE_FONT_STYLE fontStyle, DWRITE_FONT_STRETCH fontStretch, FLOAT fontSize, WCHAR const* localeName, IDWriteTextFormat** textFormat) in dwrite.h, or fontFamilyName or localeName does not reach it as a NUL-terminated UTF-16 string
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
     public delegate int CreateTextFormatProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string fontFamilyName, IntPtr fontCollection,

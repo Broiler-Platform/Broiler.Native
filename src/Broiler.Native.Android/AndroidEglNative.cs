@@ -31,7 +31,7 @@ namespace Broiler.Native.Android;
 /// produces an <c>eglChooseConfig</c> or <c>eglCreateContext</c> failure that is hard to read.
 /// </remarks>
 // Broiler-AI:           Origin=AI; Spec=ADR-0001; IP=Low; Security=Critical; Resources=5; Fingerprint=CCDC42
-// Broiler-Falsified-If: ChooseConfig's configs array is not of pointer-sized EGLConfig handles, so on a 64-bit device eglChooseConfig writes 8-byte handles past the end of the pinned array
+// Broiler-Falsified-If: an import here differs from its prototype in EGL/egl.h, where EGLDisplay, EGLConfig, EGLSurface and EGLContext are void *, EGLBoolean and EGLenum are unsigned int, and Android's EGL/eglplatform.h makes EGLNativeWindowType struct ANativeWindow * and EGLint khronos_int32_t
 // Broiler-Human:        PENDING
 public static partial class AndroidEglNative
 {
@@ -74,97 +74,97 @@ public static partial class AndroidEglNative
     public const int EGL_BAD_NATIVE_WINDOW = 0x300B;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=885D32
-    // Broiler-Falsified-If: the displayId argument or the EGLDisplay return is declared narrower than a native pointer, so a 64-bit device passes or receives a truncated display handle
+    // Broiler-Falsified-If: differs from EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id) in EGL/egl.h, EGLNativeDisplayType being void * on Android in EGL/eglplatform.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglGetDisplay")]
     public static partial IntPtr GetDisplay(IntPtr displayId);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=B5AA7C
-    // Broiler-Falsified-If: the major or minor out parameter is not a 32-bit int, so the EGLint writes of eglInitialize overrun or truncate the managed locals
+    // Broiler-Falsified-If: differs from EGLBoolean eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglInitialize")]
     public static partial int Initialize(IntPtr display, out int major, out int minor);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=365B80
-    // Broiler-Falsified-If: the EGLBoolean return of eglTerminate is not read as a 32-bit value, so an EGL_FALSE for an invalid display reads as success
+    // Broiler-Falsified-If: differs from EGLBoolean eglTerminate(EGLDisplay dpy) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglTerminate")]
     public static partial int Terminate(IntPtr display);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D9992F
-    // Broiler-Falsified-If: the EGLenum api argument is not passed as a 32-bit value, so EGL_OPENGL_ES_API reaches eglBindAPI as a different enum and the call fails with EGL_BAD_PARAMETER
+    // Broiler-Falsified-If: differs from EGLBoolean eglBindAPI(EGLenum api) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglBindAPI")]
     public static partial int BindApi(int api);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=314663
-    // Broiler-Falsified-If: configs is not marshalled as an array of pointer-sized EGLConfig handles, so on a 64-bit device eglChooseConfig writes 8-byte handles into 4-byte elements and runs past the pinned array
+    // Broiler-Falsified-If: configSize exceeds configs.Length, the number of void * EGLConfig slots that EGLBoolean eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config) in EGL/egl.h may fill
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglChooseConfig")]
     public static partial int ChooseConfig(IntPtr display, int[] attribList, IntPtr[] configs, int configSize, out int numConfig);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D9277A
-    // Broiler-Falsified-If: the out value is not a 32-bit int, so the EGLint that eglGetConfigAttrib writes for EGL_NATIVE_VISUAL_ID is truncated or overruns the managed local
+    // Broiler-Falsified-If: differs from EGLBoolean eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglGetConfigAttrib")]
     public static partial int GetConfigAttrib(IntPtr display, IntPtr config, int attribute, out int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=B24254
-    // Broiler-Falsified-If: attribList and shareContext reach eglCreateContext(EGLDisplay, EGLConfig, EGLContext, const EGLint*) in swapped positions, so EGL walks the share context's memory as an attribute list
+    // Broiler-Falsified-If: attribList is not ended by EGL_NONE, the terminator that EGLContext eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list) in EGL/egl.h reads up to
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglCreateContext")]
     public static partial IntPtr CreateContext(IntPtr display, IntPtr config, IntPtr shareContext, int[] attribList);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=4D4D42
-    // Broiler-Falsified-If: the display and context arguments are in a different order than eglDestroyContext(EGLDisplay, EGLContext), so the call fails with EGL_BAD_DISPLAY and the context leaks
+    // Broiler-Falsified-If: differs from EGLBoolean eglDestroyContext(EGLDisplay dpy, EGLContext ctx) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglDestroyContext")]
     public static partial int DestroyContext(IntPtr display, IntPtr context);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=7ACFAF
-    // Broiler-Falsified-If: config and attribList reach eglCreatePbufferSurface(EGLDisplay, EGLConfig, const EGLint*) in swapped positions, so EGL walks the config handle's memory as an attribute list
+    // Broiler-Falsified-If: attribList is not ended by EGL_NONE, the terminator that EGLSurface eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list) in EGL/egl.h reads up to
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglCreatePbufferSurface")]
     public static partial IntPtr CreatePbufferSurface(IntPtr display, IntPtr config, int[] attribList);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=DAD63B
-    // Broiler-Falsified-If: nativeWindow and attribList reach eglCreateWindowSurface(EGLDisplay, EGLConfig, EGLNativeWindowType, const EGLint*) in swapped positions, so EGL walks the ANativeWindow as an attribute list and takes the array as the window
+    // Broiler-Falsified-If: a non-null attribList is not ended by EGL_NONE, the terminator that EGLSurface eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list) in EGL/egl.h reads up to
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglCreateWindowSurface")]
     public static partial IntPtr CreateWindowSurface(IntPtr display, IntPtr config, IntPtr nativeWindow, int[]? attribList);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=A060B1
-    // Broiler-Falsified-If: the display and surface arguments are in a different order than eglDestroySurface(EGLDisplay, EGLSurface), so the call fails with EGL_BAD_DISPLAY and the window buffers leak
+    // Broiler-Falsified-If: differs from EGLBoolean eglDestroySurface(EGLDisplay dpy, EGLSurface surface) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglDestroySurface")]
     public static partial int DestroySurface(IntPtr display, IntPtr surface);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=BA9F32
-    // Broiler-Falsified-If: the draw and read arguments are in a different order than eglMakeCurrent(dpy, draw, read, ctx), so a context bound with distinct draw and read surfaces renders into the read surface
+    // Broiler-Falsified-If: differs from EGLBoolean eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglMakeCurrent")]
     public static partial int MakeCurrent(IntPtr display, IntPtr draw, IntPtr read, IntPtr context);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=1968CA
-    // Broiler-Falsified-If: the EGLBoolean return of eglSwapBuffers is not read as a 32-bit value, so an EGL_FALSE for a surface whose ANativeWindow was destroyed is taken as a presented frame
+    // Broiler-Falsified-If: differs from EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglSwapBuffers")]
     public static partial int SwapBuffers(IntPtr display, IntPtr surface);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=2D465B
-    // Broiler-Falsified-If: the interval argument is not passed as a 32-bit EGLint, so eglSwapInterval receives a different interval and vsync is not turned on or off as asked
+    // Broiler-Falsified-If: differs from EGLBoolean eglSwapInterval(EGLDisplay dpy, EGLint interval) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglSwapInterval")]
     public static partial int SwapInterval(IntPtr display, int interval);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=6B6DBC
-    // Broiler-Falsified-If: the out value is not a 32-bit int, so the EGLint that eglQuerySurface writes for EGL_WIDTH or EGL_HEIGHT is truncated or overruns the managed local
+    // Broiler-Falsified-If: differs from EGLBoolean eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglQuerySurface")]
     public static partial int QuerySurface(IntPtr display, IntPtr surface, int attribute, out int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B71C87
-    // Broiler-Falsified-If: the EGLint return of eglGetError is not read as a 32-bit value, so EGL_CONTEXT_LOST arrives as a different code and a lost context is not reported as one
+    // Broiler-Falsified-If: differs from EGLint eglGetError(void) in EGL/egl.h
     // Broiler-Human:        PENDING
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglGetError")]
     public static partial int GetError();

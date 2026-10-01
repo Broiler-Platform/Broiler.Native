@@ -24,74 +24,74 @@ using Broiler.Native.Windows.Wic;
 namespace Broiler.Native.Windows;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=72C7E0
-// Broiler-Falsified-If: a member declared out of objidl.h IStream order (Read, Write, Seek, SetSize, CopyTo, Commit, Revert, LockRegion, UnlockRegion, Stat, Clone after IUnknown) sends a call such as Read with a caller buffer to a different native slot
+// Broiler-Falsified-If: the member order differs from ISequentialStream then IStream in objidlbase.h, whose vtable runs from Read at slot 3 to Clone at slot 13 after the three IUnknown slots
 // Broiler-Human:        PENDING
 [GeneratedComInterface]
 [Guid("0000000c-0000-0000-C000-000000000046")]
 public partial interface IStream
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=EBC476
-    // Broiler-Falsified-If: Read is not vtable slot 3, the first ISequentialStream method after IUnknown, so a read request reaches Write and the stream copies cb bytes out of the caller's buffer instead of into it
+    // Broiler-Falsified-If: is not slot 3 of IStream, HRESULT Read(void *pv, ULONG cb, ULONG *pcbRead) of ISequentialStream in objidlbase.h, which writes up to cb bytes at pv
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Read(IntPtr pv, uint cb, out uint pcbRead);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=2AC1C9
-    // Broiler-Falsified-If: Write is not vtable slot 4, directly after Read, so a write request reaches Read and the stream copies cb bytes into the caller's buffer instead of out of it
+    // Broiler-Falsified-If: is not slot 4 of IStream, HRESULT Write(const void *pv, ULONG cb, ULONG *pcbWritten) of ISequentialStream in objidlbase.h, which reads cb bytes at pv
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Write(IntPtr pv, uint cb, out uint pcbWritten);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=2AF8C4
-    // Broiler-Falsified-If: Seek(-1, STREAM_SEEK_CUR) does not move the position back by one byte, showing dlibMove is not passed as a signed 64-bit LARGE_INTEGER
+    // Broiler-Falsified-If: is not slot 5 of IStream, HRESULT Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin, ULARGE_INTEGER *plibNewPosition) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Seek(long dlibMove, uint dwOrigin, out ulong plibNewPosition);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=107363
-    // Broiler-Falsified-If: SetSize(n) followed by a seek to the end reports a position other than n, showing libNewSize does not reach IStream::SetSize as a 64-bit ULARGE_INTEGER
+    // Broiler-Falsified-If: is not slot 6 of IStream, HRESULT SetSize(ULARGE_INTEGER libNewSize) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetSize(ulong libNewSize);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=8B6736
-    // Broiler-Falsified-If: after CopyTo of n bytes between two HGlobal streams pcbRead or pcbWritten differs from n, showing the two ULARGE_INTEGER out pointers are swapped or narrowed
+    // Broiler-Falsified-If: is not slot 7 of IStream, HRESULT CopyTo(IStream *pstm, ULARGE_INTEGER cb, ULARGE_INTEGER *pcbRead, ULARGE_INTEGER *pcbWritten) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int CopyTo(IStream pstm, ulong cb, out ulong pcbRead, out ulong pcbWritten);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=6A4557
-    // Broiler-Falsified-If: Commit(STGC_DEFAULT) on a CreateStreamOnHGlobal stream returns a failure or changes its size or position, showing the call reaches a slot other than IStream::Commit
+    // Broiler-Falsified-If: is not slot 8 of IStream, HRESULT Commit(DWORD grfCommitFlags) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Commit(uint grfCommitFlags);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=94840D
-    // Broiler-Falsified-If: Revert on a CreateStreamOnHGlobal stream returns a failure or changes its size or seek position, showing the call reaches a slot other than IStream::Revert
+    // Broiler-Falsified-If: is not slot 9 of IStream, HRESULT Revert(void) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Revert();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=DD2680
-    // Broiler-Falsified-If: LockRegion on a CreateStreamOnHGlobal stream returns something other than STG_E_INVALIDFUNCTION (0x80030001), showing the call reaches a slot other than IStream::LockRegion
+    // Broiler-Falsified-If: is not slot 10 of IStream, HRESULT LockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int LockRegion(ulong libOffset, ulong cb, uint dwLockType);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=0DB8D7
-    // Broiler-Falsified-If: UnlockRegion on a CreateStreamOnHGlobal stream returns something other than STG_E_INVALIDFUNCTION (0x80030001), showing the call reaches a slot other than IStream::UnlockRegion
+    // Broiler-Falsified-If: is not slot 11 of IStream, HRESULT UnlockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType) in objidlbase.h
     // Broiler-Human:        PENDING
     [PreserveSig]
     int UnlockRegion(ulong libOffset, ulong cb, uint dwLockType);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=D1A188
-    // Broiler-Falsified-If: Stat is not vtable slot 12, after UnlockRegion, so a stat request reaches Clone and an IStream pointer is written into the STATSTG buffer
+    // Broiler-Falsified-If: is not slot 12 of IStream, HRESULT Stat(STATSTG *pstatstg, DWORD grfStatFlag) in objidlbase.h, or pstatstg addresses fewer than the 80 bytes a STATSTG takes on 64-bit
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Stat(IntPtr pstatstg, uint grfStatFlag);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=C91B52
-    // Broiler-Falsified-If: moving the seek pointer of the stream returned by Clone also moves the original's, or the clone does not read the original's bytes, showing the call reaches a slot other than IStream::Clone
+    // Broiler-Falsified-If: is not slot 13 of IStream, HRESULT Clone(IStream **ppstm) in objidlbase.h, or the reference written to *ppstm is still held after the returned wrapper is released
     // Broiler-Human:        PENDING
     [PreserveSig]
     int Clone(out IStream ppstm);
@@ -118,44 +118,44 @@ public static partial class ComNative
     private static readonly StrategyBasedComWrappers s_comWrappers = new();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=29F17C
-    // Broiler-Falsified-If: CoInitializeEx with COINIT_MULTITHREADED on a thread already in a single-threaded apartment returns something other than RPC_E_CHANGED_MODE, showing the HRESULT is not returned unchanged
+    // Broiler-Falsified-If: differs from HRESULT CoInitializeEx(LPVOID pvReserved, DWORD dwCoInit) in combaseapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int CoInitializeEx(IntPtr reserved, uint coInit);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=1CDFE8
-    // Broiler-Falsified-If: the import binds an export other than ole32's CoUninitialize, so the thread's apartment initialisation count is not lowered and a later CoInitializeEx on it still returns S_FALSE
+    // Broiler-Falsified-If: differs from void CoUninitialize(void) in combaseapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial void CoUninitialize();
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=396F43
-    // Broiler-Falsified-If: the import binds an export other than ole32's CoTaskMemFree, such as GlobalFree, so a string returned by IMMDevice.GetId is released to another heap
+    // Broiler-Falsified-If: differs from void CoTaskMemFree(LPVOID pv) in combaseapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial void CoTaskMemFree(IntPtr value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=F9E5E6
-    // Broiler-Falsified-If: rclsid or riid is passed by value rather than as a REFCLSID or REFIID pointer, so ole32 reads the first bytes of the GUID as an address
+    // Broiler-Falsified-If: differs from HRESULT CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter, DWORD dwClsContext, REFIID riid, LPVOID *ppv) in combaseapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int CoCreateInstance(in Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, in Guid riid, out IntPtr ppv);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=4C1BCE
-    // Broiler-Falsified-If: the object returned on success is not a built-in runtime-callable wrapper, so ComNative.ReleaseComObject leaves the activation's native reference held until finalization
+    // Broiler-Falsified-If: differs from HRESULT CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter, DWORD dwClsContext, REFIID riid, LPVOID *ppv) in combaseapi.h, or the reference written to *ppv is still held after ComNative.ReleaseComObject releases the returned runtime-callable wrapper
     // Broiler-Human:        PENDING
     [DllImport("ole32.dll")]
     public static extern int CoCreateInstance(ref Guid classId, IntPtr outerUnknown, uint classContext,
         ref Guid interfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object? instance);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=DE546D
-    // Broiler-Falsified-If: after a successful call the activation's own +1 out reference is still held once the managed IWICImagingFactory wrapper has been collected, showing the generated marshaller kept it as well as the wrapper's reference
+    // Broiler-Falsified-If: differs from HRESULT CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter, DWORD dwClsContext, REFIID riid, LPVOID *ppv) in combaseapi.h, or the reference written to *ppv is still held once the returned IWICImagingFactory wrapper has been collected
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int CoCreateInstance(in Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, in Guid riid, out WicNative.IWICImagingFactory ppv);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=B90342
-    // Broiler-Falsified-If: fDeleteOnRelease is not marshalled as a 4-byte BOOL, so a false request reaches ole32 with stray upper bytes and the stream frees an HGLOBAL the caller still owns
+    // Broiler-Falsified-If: fDeleteOnRelease is not marshalled as the 4-byte BOOL of HRESULT CreateStreamOnHGlobal(HGLOBAL hGlobal, BOOL fDeleteOnRelease, LPSTREAM *ppstm) in combaseapi.h
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int CreateStreamOnHGlobal(IntPtr hGlobal, [MarshalAs(UnmanagedType.Bool)] bool fDeleteOnRelease, out IStream ppstm);

@@ -21,12 +21,12 @@ using System.Runtime.InteropServices;
 namespace Broiler.Native.Windows.Direct2D;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=A189CB
-// Broiler-Falsified-If: CreateD2DDeviceProc differs from ID2D1Factory1::CreateDevice(IDXGIDevice*, ID2D1Device**), so the new device pointer is written through the wrong argument
+// Broiler-Falsified-If: CreateD2DDeviceProc, the one delegate here, is not slot 17 of ID2D1Factory1, HRESULT CreateDevice(IDXGIDevice *dxgiDevice, ID2D1Device **d2dDevice) in d2d1_1.h
 // Broiler-Human:        PENDING
 public static class Direct2DDeviceApi
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=6E40F2
-    // Broiler-Falsified-If: dxgiDevice and the ID2D1Device** out reach ID2D1Factory1::CreateDevice(IDXGIDevice*, ID2D1Device**) in swapped positions, so the new device pointer is written over the first bytes of the IDXGIDevice object
+    // Broiler-Falsified-If: CreateD2DDeviceProc is not slot 17 of ID2D1Factory1, HRESULT CreateDevice(IDXGIDevice *dxgiDevice, ID2D1Device **d2dDevice) in d2d1_1.h
     // Broiler-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int CreateD2DDeviceProc(IntPtr self, IntPtr dxgiDevice, out IntPtr d2dDevice);
