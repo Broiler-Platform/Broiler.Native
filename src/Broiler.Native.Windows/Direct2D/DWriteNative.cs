@@ -8,7 +8,7 @@
 // Exempt:           41
 // Human-reviewed:   0/3
 // IP risk:          Low
-// Security risk:    Critical
+// Security risk:    High
 // Criteria:         3/3
 // Resource impact:  2/10 max
 // Unverified:       3
@@ -23,8 +23,8 @@ namespace Broiler.Native.Windows.Direct2D;
 /// <summary>
 /// DirectWrite interface IDs and enums needed to create a factory and text formats.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=564421
-// Broiler-Falsified-If: a slot constant here differs from its dwrite.h vtable index (GetString 8, CreateTextLayout 18), so ComVtable.Method hands a caller buffer and length to a native method with a different parameter list
+// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=564421
+// Broiler-Falsified-If: a structure here is not laid out as in dwrite.h, for example DWRITE_TEXT_METRICS not being the 36 bytes IDWriteTextLayout::GetMetrics writes, so the measured sizes and LineCount are read from the wrong bytes
 // Broiler-Human:        PENDING
 public static class DWriteNative
 {

@@ -8,7 +8,7 @@
 // Exempt:           44
 // Human-reviewed:   0/3
 // IP risk:          Low
-// Security risk:    Critical
+// Security risk:    High
 // Criteria:         3/3
 // Resource impact:  0/10 max
 // Unverified:       3
@@ -25,8 +25,8 @@ namespace Broiler.Native.Windows.Direct2D;
 /// Structures use <see cref="StructLayoutAttribute"/> with sequential layout so they
 /// can be marshalled blittably.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=AC7CA2
-// Broiler-Falsified-If: DXGI_FORMAT.B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a value naming a wider format such as R16G16B16A16_UNORM (11) makes CreateBitmap read 8 bytes per pixel from a source buffer the caller sized at 4
+// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=AC7CA2
+// Broiler-Falsified-If: a structure here is not laid out as in dxgi1_2.h, for example DXGI_SWAP_CHAIN_DESC1 not being 48 bytes, so CreateSwapChainForHwnd reads the sample description and the later fields at shifted offsets
 // Broiler-Human:        PENDING
 public static class DxgiNative
 {

@@ -26,7 +26,7 @@ namespace Broiler.Native.Windows.Direct2D;
 /// the vtable call sites are filled in.
 /// </summary>
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=5336C0
-// Broiler-Falsified-If: a slot constant here does not match the d2d1.h or d2d1_1.h vtable order, for example VtblCreateBitmap1 not being 57, so a caller's source pointer, pitch and size go to a different native method that reads outside the pixel buffer
+// Broiler-Falsified-If: a structure here is not laid out as in d2d1.h and d2d1_1.h, for example D2D1_MAPPED_RECT without Bits at offset 8 on x64, so the readback after Map copies Pitch times height bytes from a pointer that is not the mapped bitmap
 // Broiler-Human:        PENDING
 public static class D2DNative
 {

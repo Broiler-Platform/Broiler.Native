@@ -105,7 +105,7 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/Direct2D/ComVtable.cs` | 3 | 3 | 0 | 3 | Low | Critical | 3/3 |
 | `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` | 131 | 13 | 118 | 13 | Low | Critical | 13/13 |
 | `src/Broiler.Native.Windows/Direct2D/D3D11Native.cs` | 22 | 1 | 21 | 1 | Low | None | 0/0 |
-| `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` | 44 | 3 | 41 | 3 | Low | Critical | 3/3 |
+| `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` | 44 | 3 | 41 | 3 | Low | High | 3/3 |
 | `src/Broiler.Native.Windows/Direct2D/Direct2DDeviceApi.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
 | `src/Broiler.Native.Windows/Direct2D/Direct2DImageStoreApi.cs` | 2 | 2 | 0 | 2 | Low | Critical | 2/2 |
 | `src/Broiler.Native.Windows/Direct2D/Direct2DOffscreenSurfaceApi.cs` | 5 | 5 | 0 | 5 | Low | Critical | 5/5 |
@@ -113,7 +113,7 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/Direct2D/Direct2DSurfaceApi.cs` | 8 | 8 | 0 | 8 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Direct2D/DirectWriteFontFamiliesApi.cs` | 8 | 8 | 0 | 8 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` | 3 | 3 | 0 | 3 | Low | Critical | 3/3 |
-| `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` | 47 | 3 | 44 | 3 | Low | Critical | 3/3 |
+| `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` | 47 | 3 | 44 | 3 | Low | High | 3/3 |
 | `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` | 7 | 7 | 0 | 7 | Low | Critical | 7/7 |
 | `src/Broiler.Native.Windows/HwndNative.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
 | `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` | 26 | 5 | 21 | 5 | Low | Critical | 5/5 |
@@ -528,7 +528,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Direct2D.ComVtable.Method<TDelegate>(IntPtr, int)` in `src/Broiler.Native.Windows/Direct2D/ComVtable.cs` - Security=Critical, Spec=none cited, `22A61E`, PENDING
   - Falsified if: the function returned for slot n is not the pointer stored at the vtable plus n times IntPtr.Size, for example slot 2 on x64 yields the entry at byte 8 instead of byte 16
 - `Broiler.Native.Windows.Direct2D.D2DNative` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `5336C0`, PENDING
-  - Falsified if: a slot constant here does not match the d2d1.h or d2d1_1.h vtable order, for example VtblCreateBitmap1 not being 57, so a caller's source pointer, pitch and size go to a different native method that reads outside the pixel buffer
+  - Falsified if: a structure here is not laid out as in d2d1.h and d2d1_1.h, for example D2D1_MAPPED_RECT without Bits at offset 8 on x64, so the readback after Map copies Pitch times height bytes from a pointer that is not the mapped bitmap
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_SIZE_U` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `9B8A78`, PENDING
   - Falsified if: the struct is not two consecutive 32-bit unsigned integers, Width then Height (8 bytes), so CreateBitmap reads more or wider rows from the pinned source buffer than the caller sized from Width and Height
 - `Broiler.Native.Windows.Direct2D.D2DNative.D2D1_MAPPED_RECT` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=Critical, Spec=none cited, `A8FA51`, PENDING
@@ -553,8 +553,8 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the 32-bit options argument or the ID2D1DeviceContext** out parameter differs from ID2D1Device::CreateDeviceContext in d2d1_1.h, so the new context is written through a mismatched argument and its +1 reference is never released
 - `Broiler.Native.Windows.Direct2D.D2DNative.SetTargetProc` in `src/Broiler.Native.Windows/Direct2D/D2DNative.cs` - Security=High, Spec=none cited, `307319`, PENDING
   - Falsified if: the void return or the single ID2D1Image* argument differs from ID2D1DeviceContext::SetTarget in d2d1_1.h, so the target bitmap lands in the wrong argument slot and the context keeps drawing to the previous target
-- `Broiler.Native.Windows.Direct2D.DWriteNative` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=Critical, Spec=none cited, `564421`, PENDING
-  - Falsified if: a slot constant here differs from its dwrite.h vtable index (GetString 8, CreateTextLayout 18), so ComVtable.Method hands a caller buffer and length to a native method with a different parameter list
+- `Broiler.Native.Windows.Direct2D.DWriteNative` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `564421`, PENDING
+  - Falsified if: a structure here is not laid out as in dwrite.h, for example DWRITE_TEXT_METRICS not being the 36 bytes IDWriteTextLayout::GetMetrics writes, so the measured sizes and LineCount are read from the wrong bytes
 - `Broiler.Native.Windows.Direct2D.DWriteNative.DWRITE_TEXT_METRICS` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `71E01C`, PENDING
   - Falsified if: Marshal.SizeOf is not the 36 bytes IDWriteTextLayout::GetMetrics writes, or LineCount is not at offset 32 after seven floats and MaxBidiReorderingDepth
 - `Broiler.Native.Windows.Direct2D.DWriteNative.CreateTextFormatProc` in `src/Broiler.Native.Windows/Direct2D/DWriteNative.cs` - Security=High, Spec=none cited, `3000F3`, PENDING
@@ -665,8 +665,8 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: textLength is not passed as the 32-bit UINT32 directly after the string pointer, so CreateTextLayout reads a length taken from other bits and walks UTF-16 units past the marshalled text
 - `Broiler.Native.Windows.Direct2D.DirectWriteTextMetricsProviderApi.GetMetricsProc` in `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` - Security=High, Spec=none cited, `ED31D6`, PENDING
   - Falsified if: metrics is not an out pointer to the 36-byte DWRITE_TEXT_METRICS, so the width and line count GetMetrics writes land in the wrong fields or past the struct
-- `Broiler.Native.Windows.Direct2D.DxgiNative` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=Critical, Spec=none cited, `AC7CA2`, PENDING
-  - Falsified if: DXGI_FORMAT.B8G8R8A8_UNORM is not 87 or R8G8B8A8_UNORM is not 28 as in dxgiformat.h, so a value naming a wider format such as R16G16B16A16_UNORM (11) makes CreateBitmap read 8 bytes per pixel from a source buffer the caller sized at 4
+- `Broiler.Native.Windows.Direct2D.DxgiNative` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `AC7CA2`, PENDING
+  - Falsified if: a structure here is not laid out as in dxgi1_2.h, for example DXGI_SWAP_CHAIN_DESC1 not being 48 bytes, so CreateSwapChainForHwnd reads the sample description and the later fields at shifted offsets
 - `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SAMPLE_DESC` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `A550C9`, PENDING
   - Falsified if: Count and Quality are in the opposite order to dxgicommon.h, so a descriptor asking for Count 1 and Quality 0 reaches DXGI as Count 0 and swap-chain creation fails
 - `Broiler.Native.Windows.Direct2D.DxgiNative.DXGI_SWAP_CHAIN_DESC1` in `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` - Security=High, Spec=none cited, `DBD1C7`, PENDING
