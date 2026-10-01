@@ -50,9 +50,9 @@ did, which is the narrower and the more useful of the two.
 | Metric | Value |
 |---|---:|
 | Files scanned | 42 |
-| Code units | 1413 |
+| Code units | 1414 |
 | Relevant | 649 |
-| Exempt | 764 |
+| Exempt | 765 |
 | Assessed | 649 of 649 (100%) |
 | Human reviewed | 0 of 649 (0%) |
 | Unverified | 649 |
@@ -71,7 +71,7 @@ annotations and the current fingerprints; nothing stores them.
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 0 |
 | STALE | 0 |
-| EXEMPT | 764 |
+| EXEMPT | 765 |
 
 ## 5. Aliases In The Tree
 
@@ -123,7 +123,7 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` | 59 | 50 | 9 | 50 | Low | Critical | 49/49 |
 | `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` | 22 | 5 | 17 | 5 | Low | High | 5/5 |
 | `src/Broiler.Native.Windows/PerformanceCounterNative.cs` | 3 | 3 | 0 | 3 | Low | High | 3/3 |
-| `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 114 | 56 | 58 | 56 | Low | Critical | 56/56 |
+| `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 115 | 56 | 59 | 56 | Low | Critical | 56/56 |
 | `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 39 | 8 | 39 | Low | Critical | 39/39 |
 | `src/Broiler.Native.Windows/WindowNative.cs` | 215 | 72 | 143 | 72 | Low | Critical | 70/70 |
 | `src/Broiler.Native/NativeLibraryProbe.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
@@ -1056,9 +1056,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.PerformanceCounterNative.QueryPerformanceFrequency(out long)` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, Spec=none cited, `96C697`, PENDING
   - Falsified if: differs from BOOL QueryPerformanceFrequency(LARGE_INTEGER* lpFrequency) in profileapi.h, the 8-byte LARGE_INTEGER passed as an out pointer
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `C217C8`, PENDING
-  - Falsified if: a member differs from its prototype in combaseapi.h (PropVariantClear), synchapi.h (CreateEventW, SetEvent, WaitForSingleObject) or handleapi.h (CloseHandle), as PropVariantClear does on x64 by passing the 16-byte PropVariant for a 24-byte PROPVARIANT
+  - Falsified if: a member differs from its prototype in combaseapi.h (PropVariantClear), synchapi.h (CreateEventW, SetEvent, WaitForSingleObject) or handleapi.h (CloseHandle)
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.PropVariantClear(ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `72B3B6`, PENDING
-  - Falsified if: differs from WINOLEAPI PropVariantClear(PROPVARIANT *pvar) in combaseapi.h, whose pvar is the 24-byte x64 PROPVARIANT of propidl.h while Marshal.SizeOf of the PropVariant passed is 16
+  - Falsified if: differs from WINOLEAPI PropVariantClear(PROPVARIANT *pvar) in combaseapi.h, whose pvar is the 24-byte x64 PROPVARIANT of propidl.h, so the PropVariant passed must be 24 bytes there
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.CreateEventW(IntPtr, bool, bool, string?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `7EA6F8`, PENDING
   - Falsified if: differs from HANDLE CreateEventW(LPSECURITY_ATTRIBUTES lpEventAttributes, BOOL bManualReset, BOOL bInitialState, LPCWSTR lpName) in synchapi.h, or passes a BOOL in other than 4 bytes or lpName in other than UTF-16, or a NULL return leaves the last error uncaptured
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.SetEvent(IntPtr)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `E6D39B`, PENDING
@@ -1070,7 +1070,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.PropertyKey` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `B090C8`, PENDING
   - Falsified if: Marshal.SizeOf of PropertyKey is not 20 or Marshal.OffsetOf its PropertyId is not 16, the layout of PROPERTYKEY (GUID fmtid, DWORD pid) in wtypes.h
 - `Broiler.Native.Windows.Wasapi.PropVariant` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `6295F8`, PENDING
-  - Falsified if: Marshal.SizeOf of PropVariant is not 24 on 64-bit and 16 on 32-bit, the size of PROPVARIANT in propidl.h, whose value union holds the ULONG-plus-pointer BLOB; today it is 16 and 12
+  - Falsified if: Marshal.SizeOf of PropVariant is not 24 on 64-bit and 16 on 32-bit, the size of PROPVARIANT in propidl.h, whose value union holds the ULONG-plus-pointer BLOB
 - `Broiler.Native.Windows.Wasapi.WaveFormatEx` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `6A0461`, PENDING
   - Falsified if: Marshal.SizeOf of WaveFormatEx is not 18, or Marshal.OffsetOf SamplesPerSec and Size are not 4 and 16, the byte-packed WAVEFORMATEX of mmreg.h
 - `Broiler.Native.Windows.Wasapi.WaveFormatExtensible` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `DE61A8`, PENDING
@@ -1110,9 +1110,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.GetAt(uint, out PropertyKey)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `53B7D0`, PENDING
   - Falsified if: is not slot 4 of IPropertyStore, HRESULT GetAt(DWORD iProp, PROPERTYKEY *pkey) in propsys.h, or PropertyKey is not the 20 bytes pkey receives
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.GetValue(ref PropertyKey, out PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `2E7085`, PENDING
-  - Falsified if: is not slot 5 of IPropertyStore, HRESULT GetValue(REFPROPERTYKEY key, PROPVARIANT *pv) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT pv receives, as its 16 bytes are today
+  - Falsified if: is not slot 5 of IPropertyStore, HRESULT GetValue(REFPROPERTYKEY key, PROPVARIANT *pv) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT pv receives
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.SetValue(ref PropertyKey, ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `7DEB4C`, PENDING
-  - Falsified if: is not slot 6 of IPropertyStore, HRESULT SetValue(REFPROPERTYKEY key, REFPROPVARIANT propvar) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT propvar is read as, as its 16 bytes are today
+  - Falsified if: is not slot 6 of IPropertyStore, HRESULT SetValue(REFPROPERTYKEY key, REFPROPVARIANT propvar) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT propvar is read as
 - `Broiler.Native.Windows.Wasapi.IPropertyStore.Commit()` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `8609BA`, PENDING
   - Falsified if: is not slot 7 of IPropertyStore, HRESULT Commit(void) in propsys.h
 - `Broiler.Native.Windows.Wasapi.IMMNotificationClient` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=High, Spec=none cited, `2B52F8`, PENDING

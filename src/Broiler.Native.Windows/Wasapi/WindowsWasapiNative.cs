@@ -5,7 +5,7 @@
 // ----------------------
 // Relevant units:   56
 // Annotated:        56/56
-// Exempt:           58
+// Exempt:           59
 // Human-reviewed:   0/56
 // IP risk:          Low
 // Security risk:    Critical
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace Broiler.Native.Windows.Wasapi;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=C217C8
-// Broiler-Falsified-If: a member differs from its prototype in combaseapi.h (PropVariantClear), synchapi.h (CreateEventW, SetEvent, WaitForSingleObject) or handleapi.h (CloseHandle), as PropVariantClear does on x64 by passing the 16-byte PropVariant for a 24-byte PROPVARIANT
+// Broiler-Falsified-If: a member differs from its prototype in combaseapi.h (PropVariantClear), synchapi.h (CreateEventW, SetEvent, WaitForSingleObject) or handleapi.h (CloseHandle)
 // Broiler-Human:        PENDING
 public static partial class WindowsWasapiNative
 {
@@ -44,7 +44,7 @@ public static partial class WindowsWasapiNative
     public static readonly Guid IeeeFloatSubFormat = new("00000003-0000-0010-8000-00aa00389b71");
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=72B3B6
-    // Broiler-Falsified-If: differs from WINOLEAPI PropVariantClear(PROPVARIANT *pvar) in combaseapi.h, whose pvar is the 24-byte x64 PROPVARIANT of propidl.h while Marshal.SizeOf of the PropVariant passed is 16
+    // Broiler-Falsified-If: differs from WINOLEAPI PropVariantClear(PROPVARIANT *pvar) in combaseapi.h, whose pvar is the 24-byte x64 PROPVARIANT of propidl.h, so the PropVariant passed must be 24 bytes there
     // Broiler-Human:        PENDING
     [LibraryImport("ole32.dll")]
     public static partial int PropVariantClear(ref PropVariant value);
@@ -139,8 +139,15 @@ public struct PropertyKey(Guid formatId, uint propertyId)
     public uint PropertyId = propertyId;
 }
 
+/// <summary>The propidl.h PROPVARIANT: an 8-byte header and a value union.</summary>
+/// <remarks>
+/// The union's widest members, BLOB and the counted arrays, are a ULONG and a pointer, so it is
+/// two pointers wide: 16 bytes on 64-bit and 8 on 32-bit, making the struct 24 or 16 bytes. Native
+/// code writes all of it (IPropertyStore.GetValue fills it, PropVariantClear zeroes it), so a
+/// shorter managed struct lets those calls overwrite whatever follows it.
+/// </remarks>
 // Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=6295F8
-// Broiler-Falsified-If: Marshal.SizeOf of PropVariant is not 24 on 64-bit and 16 on 32-bit, the size of PROPVARIANT in propidl.h, whose value union holds the ULONG-plus-pointer BLOB; today it is 16 and 12
+// Broiler-Falsified-If: Marshal.SizeOf of PropVariant is not 24 on 64-bit and 16 on 32-bit, the size of PROPVARIANT in propidl.h, whose value union holds the ULONG-plus-pointer BLOB
 // Broiler-Human:        PENDING
 [StructLayout(LayoutKind.Sequential)]
 public struct PropVariant
@@ -150,6 +157,7 @@ public struct PropVariant
     private ushort _reserved2;
     private ushort _reserved3;
     public IntPtr PointerValue;
+    private IntPtr _unionTail;
 }
 
 // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=6A0461
@@ -289,13 +297,13 @@ public partial interface IPropertyStore
     int GetAt(uint propertyIndex, out PropertyKey key);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=2E7085
-    // Broiler-Falsified-If: is not slot 5 of IPropertyStore, HRESULT GetValue(REFPROPERTYKEY key, PROPVARIANT *pv) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT pv receives, as its 16 bytes are today
+    // Broiler-Falsified-If: is not slot 5 of IPropertyStore, HRESULT GetValue(REFPROPERTYKEY key, PROPVARIANT *pv) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT pv receives
     // Broiler-Human:        PENDING
     [PreserveSig]
     int GetValue(ref PropertyKey key, out PropVariant value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=7DEB4C
-    // Broiler-Falsified-If: is not slot 6 of IPropertyStore, HRESULT SetValue(REFPROPERTYKEY key, REFPROPVARIANT propvar) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT propvar is read as, as its 16 bytes are today
+    // Broiler-Falsified-If: is not slot 6 of IPropertyStore, HRESULT SetValue(REFPROPERTYKEY key, REFPROPVARIANT propvar) in propsys.h, or PropVariant is smaller than the 24-byte x64 PROPVARIANT propvar is read as
     // Broiler-Human:        PENDING
     [PreserveSig]
     int SetValue(ref PropertyKey key, ref PropVariant value);

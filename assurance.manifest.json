@@ -60,7 +60,7 @@
     { "file": "src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs", "fingerprint": "DA4440" },
     { "file": "src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs", "fingerprint": "FA5210" },
     { "file": "src/Broiler.Native.Windows/PerformanceCounterNative.cs", "fingerprint": "C50C19" },
-    { "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "fingerprint": "D48652" },
+    { "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "fingerprint": "890E3A" },
     { "file": "src/Broiler.Native.Windows/Wic/WicNative.cs", "fingerprint": "83C683" },
     { "file": "src/Broiler.Native.Windows/WindowNative.cs", "fingerprint": "D26396" },
     { "file": "src/Broiler.Native/NativeLibraryProbe.cs", "fingerprint": "B33BDC" }
@@ -1175,6 +1175,7 @@
     { "name": "Broiler.Native.Windows.Wasapi.PropVariant._reserved1", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": true, "exemption": "FieldDeclaringStorage", "fingerprint": "05CB75" },
     { "name": "Broiler.Native.Windows.Wasapi.PropVariant._reserved2", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": true, "exemption": "FieldDeclaringStorage", "fingerprint": "3DC3EA" },
     { "name": "Broiler.Native.Windows.Wasapi.PropVariant._reserved3", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": true, "exemption": "FieldDeclaringStorage", "fingerprint": "5D3DFC" },
+    { "name": "Broiler.Native.Windows.Wasapi.PropVariant._unionTail", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": true, "exemption": "FieldDeclaringStorage", "fingerprint": "F7404F" },
     { "name": "Broiler.Native.Windows.Wasapi.PropertyKey", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": false, "exemption": "None", "fingerprint": "B090C8" },
     { "name": "Broiler.Native.Windows.Wasapi.PropertyKey.FormatId", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": true, "exemption": "FieldDeclaringStorage", "fingerprint": "290B16" },
     { "name": "Broiler.Native.Windows.Wasapi.PropertyKey.PropertyId", "file": "src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs", "exempt": true, "exemption": "FieldDeclaringStorage", "fingerprint": "FBB361" },
