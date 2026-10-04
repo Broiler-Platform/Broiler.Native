@@ -13,15 +13,15 @@ and the figures below are the measurement of how far from that claim the per-uni
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 42 |
+| Files scanned | 47 |
 | Files not covered | 0 |
-| Files carrying an annotation | 42 |
-| Code units | 1414 |
-| Relevant | 649 |
-| Exempt by predicate | 765 |
-| Annotated | 649 of 649 (100%) |
-| Human reviewed | 0 of 649 (0%) |
-| Unverified | 649 |
+| Files carrying an annotation | 47 |
+| Code units | 1840 |
+| Relevant | 818 |
+| Exempt by predicate | 1022 |
+| Annotated | 818 of 818 (100%) |
+| Human reviewed | 0 of 818 (0%) |
+| Unverified | 818 |
 
 ## Review states
 
@@ -29,18 +29,18 @@ and the figures below are the measurement of how far from that claim the per-uni
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 649 |
+| HUMAN_PENDING | 818 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 0 |
 | STALE | 0 |
-| EXEMPT | 765 |
+| EXEMPT | 1022 |
 
 ## IP risk
 
 | Value | Units |
 |---|---:|
 | None | 47 |
-| Low | 602 |
+| Low | 771 |
 | Medium | 0 |
 | High | 0 |
 | Unknown | 0 |
@@ -51,7 +51,7 @@ and the figures below are the measurement of how far from that claim the per-uni
 | Value | Units |
 |---|---:|
 | None | 2 |
-| Low | 24 |
+| Low | 193 |
 | Medium | 0 |
 | High | 428 |
 | Critical | 195 |
@@ -62,8 +62,8 @@ and the figures below are the measurement of how far from that claim the per-uni
 | Metric | Value |
 |---|---:|
 | Maximum | 8 / 10 |
-| Average over annotated units | 1.4 / 10 |
-| Units scored | 649 |
+| Average over annotated units | 1.1 / 10 |
+| Units scored | 818 |
 
 ## High-security review areas
 
@@ -717,15 +717,15 @@ that the rule is reviewable in one place rather than in several hundred.
 
 | Case | Units |
 |---|---:|
-| TrivialPropertyOrAccessor | 2 |
-| ParameterAssigningConstructor | 1 |
+| TrivialPropertyOrAccessor | 20 |
+| ParameterAssigningConstructor | 3 |
 | TrivialExpressionBodiedMember | 21 |
 | CompilerSuppliedRecordOrEnumMember | 0 |
 | DelegatingOverrideOrOperator | 0 |
 | InsideAssemblyMarker | 0 |
-| FieldDeclaringStorage | 224 |
-| EnumMemberOfADeclaredVocabulary | 107 |
-| NamedValue | 410 |
+| FieldDeclaringStorage | 271 |
+| EnumMemberOfADeclaredVocabulary | 156 |
+| NamedValue | 551 |
 | DeclaredInSource | 0 |
 
 `NamedValue` is this component's choice (`"namedValues": "watched"`): a `const`
@@ -755,14 +755,14 @@ through a `<Compile Include>` it states, is left out of the record.
 ## Change detection
 
 `assurance.manifest.json` lists **every** code unit in the 5 covered assemblies -
-1414 of them, exempt and relevant alike - with the fingerprint of its declaration.
+1840 of them, exempt and relevant alike - with the fingerprint of its declaration.
 This manifest is a change-detection record, not a review. A unit listed there is watched, not reviewed:
 the entry records what the declaration's tokens hashed to when the generator last ran, and
 nothing else. What the manifest adds is that a unit the exemption predicate treats as
 trivial is no longer invisible: a semantic change to one moves a value in a generated file
 the check compares byte for byte. `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native` holds the manifest to the tree.
 
-Beside the units it lists **every covered file** - 42 of them - with a
+Beside the units it lists **every covered file** - 47 of them - with a
 fingerprint over the complete token stream of its compilation unit. A unit entry exists only
 for a declaration kind the scanner enumerates, and an enumeration is a whitelist: an
 `[assembly: ...]` attribute is a member of nothing and can be in no unit at all.

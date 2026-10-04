@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   72
-// Annotated:        72/72
-// Exempt:           143
-// Human-reviewed:   0/72
+// Relevant units:   86
+// Annotated:        86/86
+// Exempt:           183
+// Human-reviewed:   0/86
 // IP risk:          Low
 // Security risk:    Critical
 // Criteria:         70/70
 // Resource impact:  5/10 max
-// Unverified:       72
+// Unverified:       86
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -587,6 +587,94 @@ public static partial class WindowNative
         return count;
     }
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5F72E7
+    // Broiler-Human:        PENDING
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MINMAXINFO
+    {
+        public POINT ptReserved;
+        public POINT ptMaxSize;
+        public POINT ptMaxPosition;
+        public POINT ptMinTrackSize;
+        public POINT ptMaxTrackSize;
+    }
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CF5D9B
+    // Broiler-Human:        PENDING
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct HIGHCONTRAST
+    {
+        public uint cbSize;
+        public uint dwFlags;
+        public IntPtr lpszDefaultScheme;
+    }
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=69D7DD
+    // Broiler-Human:        PENDING
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    public delegate IntPtr SubclassProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam, nuint uIdSubclass, nuint dwRefData);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=7504B9
+    // Broiler-Human:        PENDING
+    [LibraryImport("comctl32.dll", EntryPoint = "SetWindowSubclass", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool SetSubclass(IntPtr hWnd, IntPtr pfnSubclass, nuint uIdSubclass, nuint dwRefData);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=08FAEF
+    // Broiler-Human:        PENDING
+    public static bool SetWindowSubclass(IntPtr hWnd, SubclassProc callback, nuint id, nuint data) =>
+        SetSubclass(hWnd, Marshal.GetFunctionPointerForDelegate(callback), id, data);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=7ABDD6
+    // Broiler-Human:        PENDING
+    [LibraryImport("comctl32.dll", EntryPoint = "RemoveWindowSubclass", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool RemoveSubclass(IntPtr hWnd, IntPtr pfnSubclass, nuint uIdSubclass);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=61E11C
+    // Broiler-Human:        PENDING
+    public static bool RemoveWindowSubclass(IntPtr hWnd, SubclassProc callback, nuint id) =>
+        RemoveSubclass(hWnd, Marshal.GetFunctionPointerForDelegate(callback), id);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=C54513
+    // Broiler-Human:        PENDING
+    [LibraryImport("comctl32.dll", SetLastError = true)]
+    public static partial IntPtr DefSubclassProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=AE7924
+    // Broiler-Human:        PENDING
+    [LibraryImport("user32.dll", SetLastError = true)]
+    public static partial IntPtr GetFocus();
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CCFDDC
+    // Broiler-Human:        PENDING
+    [LibraryImport("user32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool ClientToScreen(IntPtr hwnd, ref POINT lpPoint);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=9CC26C
+    // Broiler-Human:        PENDING
+    [LibraryImport("user32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool SetWindowPos(IntPtr hwnd, IntPtr insertAfter, int x, int y, int width, int height, uint flags);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6884C1
+    // Broiler-Human:        PENDING
+    [LibraryImport("user32.dll")]
+    public static partial uint GetSysColor(int index);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=900E14
+    // Broiler-Human:        PENDING
+    [LibraryImport("user32.dll", EntryPoint = "SystemParametersInfoW", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool SystemParametersInfo(uint uiAction, uint uiParam, ref HIGHCONTRAST pvParam, uint fWinIni);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CF689C
+    // Broiler-Human:        PENDING
+    [LibraryImport("user32.dll", EntryPoint = "SystemParametersInfoW", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool SystemParametersInfo(uint uiAction, uint uiParam, [MarshalAs(UnmanagedType.Bool)] ref bool pvParam, uint fWinIni);
+
     public const int ErrorClassAlreadyExists = 1410;
     public const int CwUseDefault = unchecked((int)0x80000000);
     public const uint CsHRedraw = 0x0002;
@@ -674,4 +762,36 @@ public static partial class WindowNative
     public const int VkMenu = 0x12;
     public const int WheelDelta = 120;
     public const uint TmeLeave = 0x00000002;
+    public const uint WmActivate = 0x0006;
+    public const uint WmKillFocus = 0x0008;
+    public const uint WmDeadChar = 0x0103;
+    public const uint WmSysKeyUp = 0x0105;
+    public const uint WmSysChar = 0x0106;
+    public const uint WmSysDeadChar = 0x0107;
+    public const uint WmUniChar = 0x0109;
+    public const uint WmGetMinMaxInfo = 0x0024;
+    public const uint SwpNoZOrder = 0x0004;
+    public const uint SwpNoActivate = 0x0010;
+    public const uint SwpNoMove = 0x0002;
+    public const uint SwpNoSize = 0x0001;
+    public const int GwlStyle = -16;
+    public const int GwlExStyle = -20;
+    public const int VkLButton = 0x01;
+    public const int VkRButton = 0x02;
+    public const int VkMButton = 0x04;
+    public const int WaInactive = 0;
+    public const int WaActive = 1;
+    public const int WaClickActive = 2;
+    public const int ColorWindowText = 8;
+    public const int ColorHighlight = 13;
+    public const int ColorHighlightText = 14;
+    public const int ColorBtnFace = 15;
+    public const int ColorButtonFace = 15;
+    public const int ColorGrayText = 17;
+    public const int ColorBtnText = 18;
+    public const int ColorButtonText = 18;
+    public const int ColorHotLight = 26;
+    public const uint SpiGetHighContrast = 0x0042;
+    public const uint HcfHighContrastOn = 0x00000001;
+    public const uint SpiGetClientAreaAnimation = 0x1042;
 }

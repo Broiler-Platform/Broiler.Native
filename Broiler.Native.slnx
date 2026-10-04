@@ -10,6 +10,9 @@
     <File Path="LICENSE" />
   </Folder>
   <Folder Name="/solution items/docs/">
+    <File Path="docs/consumer-guide.md" />
+    <File Path="docs/developer-guide.md" />
+    <File Path="docs/packaging.md" />
     <File Path="docs/native-api-inventory.md" />
     <File Path="docs/roadmap.md" />
     <File Path="docs/adr/0001-native-api-ownership.md" />

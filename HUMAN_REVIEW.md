@@ -5,7 +5,7 @@ GENERATED - DO NOT EDIT MANUALLY. Regenerate with
 `CODE-ASSURANCE.md`, `assurance.manifest.json` and every generated source header from the
 product tree.
 
-> **Status: PENDING.** Human-reviewed: 0 of 649 relevant units. `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native --release`
+> **Status: PENDING.** Human-reviewed: 0 of 818 relevant units. `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native --release`
 > fails while any relevant unit is without a decision bound to its current fingerprint.
 
 ## 1. How To Use This File
@@ -49,13 +49,13 @@ did, which is the narrower and the more useful of the two.
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 42 |
-| Code units | 1414 |
-| Relevant | 649 |
-| Exempt | 765 |
-| Assessed | 649 of 649 (100%) |
-| Human reviewed | 0 of 649 (0%) |
-| Unverified | 649 |
+| Files scanned | 47 |
+| Code units | 1840 |
+| Relevant | 818 |
+| Exempt | 1022 |
+| Assessed | 818 of 818 (100%) |
+| Human reviewed | 0 of 818 (0%) |
+| Unverified | 818 |
 | Aliases naming a decision | 0 |
 
 ## 4. Review States
@@ -67,11 +67,11 @@ annotations and the current fingerprints; nothing stores them.
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 649 |
+| HUMAN_PENDING | 818 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 0 |
 | STALE | 0 |
-| EXEMPT | 765 |
+| EXEMPT | 1022 |
 
 ## 5. Aliases In The Tree
 
@@ -96,10 +96,12 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlDriverInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlException.cs` | 3 | 3 | 0 | 3 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` | 96 | 29 | 67 | 29 | Low | Critical | 29/29 |
-| `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` | 42 | 25 | 17 | 25 | Low | Critical | 25/25 |
+| `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` | 91 | 38 | 53 | 38 | Low | Critical | 25/25 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanDeviceInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanException.cs` | 3 | 3 | 0 | 3 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` | 70 | 25 | 45 | 25 | Low | Critical | 21/21 |
+| `src/Broiler.Native.Windows/Accessibility/UiaNative.cs` | 289 | 118 | 171 | 118 | Low | Low | 0/0 |
+| `src/Broiler.Native.Windows/ClipboardNative.cs` | 14 | 12 | 2 | 12 | Low | Low | 0/0 |
 | `src/Broiler.Native.Windows/ComNative.cs` | 32 | 24 | 8 | 24 | Low | Critical | 24/24 |
 | `src/Broiler.Native.Windows/Direct2D/ComPtr.cs` | 14 | 11 | 3 | 11 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Direct2D/ComVtable.cs` | 3 | 3 | 0 | 3 | Low | Critical | 3/3 |
@@ -115,17 +117,20 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/Direct2D/DirectWriteTextMetricsProviderApi.cs` | 3 | 3 | 0 | 3 | Low | Critical | 3/3 |
 | `src/Broiler.Native.Windows/Direct2D/DxgiNative.cs` | 47 | 3 | 44 | 3 | Low | High | 3/3 |
 | `src/Broiler.Native.Windows/Direct2D/NativeMethods.cs` | 7 | 7 | 0 | 7 | Low | Critical | 7/7 |
+| `src/Broiler.Native.Windows/DwmNative.cs` | 3 | 2 | 1 | 2 | Low | Low | 0/0 |
 | `src/Broiler.Native.Windows/HwndNative.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
+| `src/Broiler.Native.Windows/Input/ImmNative.cs` | 11 | 4 | 7 | 4 | Low | Low | 0/0 |
 | `src/Broiler.Native.Windows/Input/RawInputReaderNative.cs` | 26 | 5 | 21 | 5 | Low | Critical | 5/5 |
 | `src/Broiler.Native.Windows/Input/RawInputRegistrationNative.cs` | 14 | 3 | 11 | 3 | Low | Critical | 3/3 |
 | `src/Broiler.Native.Windows/MediaFoundation/Capture/WindowsMediaFoundationNative.cs` | 117 | 87 | 30 | 87 | Low | Critical | 87/87 |
 | `src/Broiler.Native.Windows/MediaFoundation/IMFAttributes.cs` | 31 | 31 | 0 | 31 | Low | Critical | 31/31 |
 | `src/Broiler.Native.Windows/MediaFoundation/MediaEngine/MediaFoundationNative.cs` | 59 | 50 | 9 | 50 | Low | Critical | 49/49 |
 | `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` | 22 | 5 | 17 | 5 | Low | High | 5/5 |
+| `src/Broiler.Native.Windows/OleAutNative.cs` | 6 | 6 | 0 | 6 | Low | Low | 0/0 |
 | `src/Broiler.Native.Windows/PerformanceCounterNative.cs` | 3 | 3 | 0 | 3 | Low | High | 3/3 |
 | `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 115 | 56 | 59 | 56 | Low | Critical | 56/56 |
 | `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 39 | 8 | 39 | Low | Critical | 39/39 |
-| `src/Broiler.Native.Windows/WindowNative.cs` | 215 | 72 | 143 | 72 | Low | Critical | 70/70 |
+| `src/Broiler.Native.Windows/WindowNative.cs` | 269 | 86 | 183 | 86 | Low | Critical | 70/70 |
 | `src/Broiler.Native/NativeLibraryProbe.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
 
 ## 7. Decisions Recorded
@@ -1405,5 +1410,5 @@ An assessment is a comment, so changing one moves no fingerprint anywhere, and n
 mechanical checks that it is right; the check holds its values to their vocabularies and no
 further.
 
-649 of the 649 assessed units declare `Origin=AI`. Reading a declaration is the only thing
+818 of the 818 assessed units declare `Origin=AI`. Reading a declaration is the only thing
 that makes it read.

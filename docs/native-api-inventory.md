@@ -1,6 +1,6 @@
 # Native API extraction inventory
 
-The canonical sibling Graphics, Input, and Media source trees were scanned for
+The canonical sibling Graphics, Input, Media, and Hosting source trees were scanned for
 P/Invoke, COM imports, generated COM contracts, unmanaged function declarations,
 native layouts, function loading, and native library probing. Nested submodule
 copies inside Graphics are separate checkouts and were not edited.
@@ -52,6 +52,17 @@ Graphics. Associated native driver descriptions and native exceptions move here.
 | `Broiler.Graphics/src/Broiler.Graphics.Linux.OpenGL/LinuxOpenGlException.cs` | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlException.cs` |
 | `Broiler.Graphics/src/Broiler.Graphics.Linux.Vulkan/LinuxVulkanDeviceInfo.cs` | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanDeviceInfo.cs` |
 | `Broiler.Graphics/src/Broiler.Graphics.Linux.Vulkan/LinuxVulkanException.cs` | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanException.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/Accessibility/AutomationMarshalling.cs` | `src/Broiler.Native.Windows/OleAutNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/Accessibility/AutomationVariant.cs` | `src/Broiler.Native.Windows/Accessibility/UiaNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/Accessibility/NativeProviderInterfaces.cs` | `src/Broiler.Native.Windows/Accessibility/UiaNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/Accessibility/UiaNative.cs` | `src/Broiler.Native.Windows/Accessibility/UiaNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/ClipboardNative.cs` | `src/Broiler.Native.Windows/ClipboardNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/DwmNative.cs` | `src/Broiler.Native.Windows/DwmNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/Input/InputNative.cs` | `src/Broiler.Native.Windows/Input/ImmNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/WindowsSystemColors.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/WindowsTheme.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Windows/WindowsWindowSizing.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
+| `Broiler.Hosting/src/Broiler.Hosting.Linux/LinuxX11Clipboard.cs` | `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` |
 
 Additional consolidation:
 

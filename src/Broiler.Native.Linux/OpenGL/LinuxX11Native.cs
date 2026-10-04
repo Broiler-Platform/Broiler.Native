@@ -3,15 +3,15 @@
 //
 // Broiler Code Assurance
 // ----------------------
-// Relevant units:   25
-// Annotated:        25/25
-// Exempt:           17
-// Human-reviewed:   0/25
+// Relevant units:   38
+// Annotated:        38/38
+// Exempt:           53
+// Human-reviewed:   0/38
 // IP risk:          Low
 // Security risk:    Critical
 // Criteria:         25/25
 // Resource impact:  3/10 max
-// Unverified:       25
+// Unverified:       38
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -45,6 +45,18 @@ public static partial class LinuxX11Native
     public const long ExposureMask = 1L << 15;
     public const long StructureNotifyMask = 1L << 17;
     public const long FocusChangeMask = 1L << 21;
+
+    public const int SelectionClear = 29;
+    public const int SelectionRequest = 30;
+    public const int SelectionNotify = 31;
+    public const int PropertyNotify = 28;
+
+    public const int PropertyNewValue = 0;
+    public const int PropertyDelete = 1;
+    public const long PropertyChangeMask = 1L << 22;
+
+    public const int XaAtom = 4;
+    public const int XaString = 31;
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=929967
     // Broiler-Falsified-If: differs from Display *XOpenDisplay(_Xconst char *display_name) in X11/Xlib.h
@@ -186,6 +198,69 @@ public static partial class LinuxX11Native
     [LibraryImport("libX11.so.6", EntryPoint = "XGetInputFocus")]
     public static partial int GetInputFocus(IntPtr display, out IntPtr focusReturn, out int revertToReturn);
 
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=532BDD
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XSetSelectionOwner")]
+    public static partial int SetSelectionOwner(IntPtr display, IntPtr selection, IntPtr owner, IntPtr time);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D22241
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XGetSelectionOwner")]
+    public static partial IntPtr GetSelectionOwner(IntPtr display, IntPtr selection);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5CD1C1
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XConvertSelection")]
+    public static partial int ConvertSelection(IntPtr display, IntPtr selection, IntPtr target, IntPtr property, IntPtr requestor, IntPtr time);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=15C52D
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XChangeProperty")]
+    public static partial int ChangeProperty(IntPtr display, IntPtr window, IntPtr property, IntPtr type,
+        int format, int mode, IntPtr[] data, int elementCount);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6E7416
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XDeleteProperty")]
+    public static partial int DeleteProperty(IntPtr display, IntPtr window, IntPtr property);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=47A3EE
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XGetWindowProperty")]
+    public static partial int GetWindowProperty(
+        IntPtr display,
+        IntPtr window,
+        IntPtr property,
+        IntPtr offset,
+        IntPtr length,
+        int delete,
+        IntPtr requestedType,
+        out IntPtr actualType,
+        out int actualFormat,
+        out IntPtr items,
+        out IntPtr bytesAfter,
+        out IntPtr value);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B7BA32
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XSendEvent")]
+    public static partial int SendEvent(IntPtr display, IntPtr window, int propagate, long mask, ref XEvent sendEvent);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=09E92C
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XMaxRequestSize")]
+    public static partial long MaxRequestSize(IntPtr display);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=1C2D8D
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XExtendedMaxRequestSize")]
+    public static partial long ExtendedMaxRequestSize(IntPtr display);
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4C1527
+    // Broiler-Human:        PENDING
+    [LibraryImport("libX11.so.6", EntryPoint = "XFree")]
+    public static partial int Free(IntPtr data);
+
     // Installs an error handler so a premature/best-effort XSetInputFocus (e.g.
     // a BadMatch on a not-yet-viewable window) cannot abort the process. Xlib's
     // default handler calls exit(); returning from a custom handler is ignored.
@@ -216,5 +291,53 @@ public static partial class LinuxX11Native
 
         [FieldOffset(60)]
         public int ConfigureHeight;
+    }
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8A6F1E
+    // Broiler-Human:        PENDING
+    [StructLayout(LayoutKind.Sequential)]
+    public struct XSelectionRequestEvent
+    {
+        public int Type;
+        public IntPtr Serial;
+        public int SendEvent;
+        public IntPtr Display;
+        public IntPtr Owner;
+        public IntPtr Requestor;
+        public IntPtr Selection;
+        public IntPtr Target;
+        public IntPtr Property;
+        public IntPtr Time;
+    }
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=379F58
+    // Broiler-Human:        PENDING
+    [StructLayout(LayoutKind.Sequential)]
+    public struct XSelectionEvent
+    {
+        public int Type;
+        public IntPtr Serial;
+        public int SendEvent;
+        public IntPtr Display;
+        public IntPtr Requestor;
+        public IntPtr Selection;
+        public IntPtr Target;
+        public IntPtr Property;
+        public IntPtr Time;
+    }
+
+    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=26B460
+    // Broiler-Human:        PENDING
+    [StructLayout(LayoutKind.Sequential)]
+    public struct XPropertyEvent
+    {
+        public int Type;
+        public IntPtr Serial;
+        public int SendEvent;
+        public IntPtr Display;
+        public IntPtr Window;
+        public IntPtr Atom;
+        public IntPtr Time;
+        public int State;
     }
 }
