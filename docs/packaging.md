@@ -42,12 +42,12 @@ before Graphics. DOM is independent.
 ## CI and Publish
 
 CI builds and tests `Release` on Ubuntu and Windows. Windows packs and attaches the
-complete package set as `nuget-packages`. Publish calls this same CI workflow with
+complete package set as `nuget-packages` after verifying a fresh consumer restore
+from NuGet.org; this is the no-push pack dry run. Publish calls this same CI workflow with
 the resolved version and downloads its validated artifacts; it does not rebuild them.
 
-Run **Publish** manually via workflow dispatch (`dry-run=true` is the default): it selects
-a version, runs CI, packs, and verifies a fresh consumer restore against NuGet.org
-without pushing anything. The restore uses an isolated cache, the local release
+Run **Publish** manually via workflow dispatch: it selects a version, runs CI, packs,
+verifies a fresh consumer restore against NuGet.org, and pushes. There is no dry-run mode. The restore uses an isolated cache, the local release
 artifacts, and NuGet.org for dependencies. It catches missing transitive dependencies
 before upload. You can also run it locally:
 
@@ -64,7 +64,7 @@ errors stop the run. Publish runs are serialized within the repository.
 A tag `v0.1.0-preview.N` publishes that exact version to NuGet.org after the same
 checks. Only `X.Y.Z-preview.N` versions on the configured release line are accepted;
 stable and other prerelease formats are rejected. After a partial upload, use a
-new preview rather than reusing the old tag. Dry runs do not reserve a version.
+new preview rather than reusing the old tag.
 
 Publishing to NuGet.org requires the repository secret `NUGET_API_KEY` (or `NUGET_TOKEN`).
 Symbol packages (`.snupkg`) are attached to the workflow artifact and pushed alongside

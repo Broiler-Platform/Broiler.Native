@@ -249,7 +249,7 @@ The repository uses GitHub Actions for continuous integration and publishing exc
 - Runs on every push to `main` and on pull requests.
 - Matrix builds across `ubuntu-latest` and `windows-latest`.
 - Runs unit tests and version resolution tests.
-- Windows runner packs and validates all 5 packages, uploading them as the `nuget-packages` artifact.
+- Windows runner packs and validates all 5 packages, verifies a fresh consumer restore from NuGet.org (the no-push pack dry run), and uploads them as the `nuget-packages` artifact.
 
 ### Publishing (`publish.yml`)
 
@@ -270,8 +270,7 @@ The publishing workflow is fully automated and targets NuGet.org:
 
 - **Manual Workflow Dispatch**:
   - In the GitHub Actions UI, navigate to **Publish** and click **Run workflow**.
-  - Set `dry-run: true` to test the entire process (version selection, pack, verification) without pushing to NuGet.org.
-  - Set `dry-run: false` to publish live.
+  - Every run publishes live; there is no dry-run mode. Use CI to validate packing without pushing.
   - Optionally provide `version-suffix` to specify a manual preview identifier.
 - **Git Tag**:
-  - Pushing a tag formatted as `vX.Y.Z-preview.N` automatically executes a live release to NuGet.org with `dry-run: false`.
+  - Pushing a tag formatted as `vX.Y.Z-preview.N` automatically executes a live release to NuGet.org.
