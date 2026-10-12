@@ -7,10 +7,12 @@ using System.Runtime.InteropServices.Marshalling;
 using Broiler.Native;
 using Broiler.Native.Android;
 using Broiler.Native.Linux.Input;
+using Broiler.Native.Linux.Printing;
 using Broiler.Native.Windows;
 using Broiler.Native.Windows.Direct2D;
 using Broiler.Native.Windows.Wasapi;
 using Broiler.Native.Windows.Input;
+using Broiler.Native.Windows.Printing;
 using Broiler.Native.Windows.MediaFoundation.MediaEngine;
 using Broiler.Native.Windows.MediaFoundation;
 using Broiler.Native.Windows.MediaFoundation.Capture;
@@ -156,6 +158,62 @@ internal class Program
                 Size<DWriteNative.DWRITE_TEXT_METRICS>(36);
                 Size<LinuxNativeMethods.PollFd>(8);
                 Size<PropVariant>(nint.Size == 8 ? 24 : 16);
+            }),
+
+            ("Print ABI layouts match winspool.h, wingdi.h and cups.h", () =>
+            {
+                Size<PRINTER_INFO_4W>(nint.Size == 8 ? 24 : 12);
+                Size<DOCINFOW>(nint.Size == 8 ? 40 : 20);
+                Size<DEVMODEW>(220);
+                Check(Marshal.OffsetOf<DEVMODEW>(nameof(DEVMODEW.Size)) == 68, "dmSize is at 68.");
+                Check(Marshal.OffsetOf<DEVMODEW>(nameof(DEVMODEW.Fields)) == 72, "dmFields is at 72.");
+                Check(Marshal.OffsetOf<DEVMODEW>(nameof(DEVMODEW.Orientation)) == 76, "dmOrientation is at 76.");
+                Check(Marshal.OffsetOf<DEVMODEW>(nameof(DEVMODEW.Copies)) == 86, "dmCopies is at 86.");
+                Check(Marshal.OffsetOf<DEVMODEW>(nameof(DEVMODEW.Duplex)) == 94, "dmDuplex is at 94.");
+                Check(Marshal.OffsetOf<DEVMODEW>(nameof(DEVMODEW.Collate)) == 100, "dmCollate is at 100.");
+                if (nint.Size == 8)
+                {
+                    Size<CupsDest>(32);
+                    Size<CupsOption>(16);
+                    Check(Marshal.OffsetOf<CupsDest>(nameof(CupsDest.Options)) == 24, "cups_dest_t options is at 24.");
+                }
+
+                Size<CupsSize>(152);
+            }),
+
+            ("The spooler reports the size a device mode needs", () =>
+            {
+                if (!OperatingSystem.IsWindows()) return;
+
+                // Any installed printer will do; a machine with none has nothing to check.
+                PrintSpoolerNative.EnumPrinters(PrintSpoolerNative.PRINTER_ENUM_LOCAL | PrintSpoolerNative.PRINTER_ENUM_CONNECTIONS,
+                    null, 4, IntPtr.Zero, 0, out uint needed, out _);
+                if (needed == 0) return;
+
+                IntPtr buffer = Marshal.AllocHGlobal((int)needed);
+                try
+                {
+                    Check(PrintSpoolerNative.EnumPrinters(PrintSpoolerNative.PRINTER_ENUM_LOCAL | PrintSpoolerNative.PRINTER_ENUM_CONNECTIONS,
+                        null, 4, buffer, needed, out _, out uint returned), "EnumPrintersW failed with the size it asked for.");
+                    if (returned == 0) return;
+
+                    var first = Marshal.PtrToStructure<PRINTER_INFO_4W>(buffer);
+                    string name = Marshal.PtrToStringUni(first.PrinterName)!;
+                    Check(PrintSpoolerNative.OpenPrinter(name, out IntPtr printer, IntPtr.Zero), $"OpenPrinterW failed for {name}.");
+                    try
+                    {
+                        int size = PrintSpoolerNative.DocumentProperties(IntPtr.Zero, printer, name, IntPtr.Zero, IntPtr.Zero, 0);
+                        Check(size >= Marshal.SizeOf<DEVMODEW>(), $"A device mode is at least the public DEVMODEW; {name} reported {size}.");
+                    }
+                    finally
+                    {
+                        PrintSpoolerNative.ClosePrinter(printer);
+                    }
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(buffer);
+                }
             }),
 
             ("PropVariantClear stays inside a PropVariant", () =>
