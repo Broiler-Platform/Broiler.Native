@@ -1,13 +1,13 @@
 # Broiler.Native Code Assurance
 
 GENERATED - DO NOT EDIT MANUALLY. Regenerate with
-`dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native`, which rewrites this file,
+`dotnet tool run broiler-review -- assurance generate --root .`, which rewrites this file,
 `HUMAN_REVIEW.md`, `assurance.manifest.json` and every generated source header from the
 product tree.
 
-**No code unit in this component carries a decision on its human line yet.** This report
-records that absence precisely. It is not a claim that the code is reviewed, assured or safe,
-and the figures below are the measurement of how far from that claim the per-unit record is.
+**Human-reviewed: 9 of 818 relevant units.** This report records what the
+annotations state and no more. A decision recorded here is one person's, bound to one
+version of one declaration, and it is not a claim that the code is assured or safe.
 
 ## Summary
 
@@ -20,8 +20,8 @@ and the figures below are the measurement of how far from that claim the per-uni
 | Relevant | 818 |
 | Exempt by predicate | 1022 |
 | Annotated | 818 of 818 (100%) |
-| Human reviewed | 0 of 818 (0%) |
-| Unverified | 818 |
+| Human reviewed | 9 of 818 (1%) |
+| Unverified | 809 |
 
 ## Review states
 
@@ -29,9 +29,9 @@ and the figures below are the measurement of how far from that claim the per-uni
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 818 |
+| HUMAN_PENDING | 809 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
-| VERIFIED | 0 |
+| VERIFIED | 9 |
 | STALE | 0 |
 | EXEMPT | 1022 |
 
@@ -68,13 +68,13 @@ and the figures below are the measurement of how far from that claim the per-uni
 ## High-security review areas
 
 - `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.BindApi(int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=885D32
+- `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=B5AA7C
+- `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=365B80
+- `Broiler.Native.Android.AndroidEglNative.BindApi(int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=D9992F
+- `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=314663
+- `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=D9277A
+- `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=B24254
 - `Broiler.Native.Android.AndroidEglNative.DestroyContext(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidEglNative.CreatePbufferSurface(IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidEglNative.CreateWindowSurface(IntPtr, IntPtr, IntPtr, int[]?)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
@@ -688,8 +688,8 @@ and the figures below are the measurement of how far from that claim the per-uni
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, char*, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, Span<char>)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, StringBuilder, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, human line PENDING
-- `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, human line PENDING
+- `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, human line MaiRat; Fingerprint=82A0F5
+- `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, human line MaiRat; Fingerprint=A7B31A
 
 ## Falsification criteria
 
@@ -702,7 +702,7 @@ and the figures below are the measurement of how far from that claim the per-uni
 A `Broiler-Falsified-If:` line states, at the declaration, the observation that would make
 the unit wrong. `Security=High` says a unit is risky, which is a set and not a test; the
 criterion is the test. It is required where `Security` is `High` or `Critical` and written
-nowhere else: `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native` names every unit that owes one and carries none, and
+nowhere else: `dotnet tool run broiler-review -- assurance check --root .` names every unit that owes one and carries none, and
 every unit below `High` that carries one.
 
 The line is a comment, so it is outside every fingerprint by construction: rewording a
@@ -760,7 +760,7 @@ This manifest is a change-detection record, not a review. A unit listed there is
 the entry records what the declaration's tokens hashed to when the generator last ran, and
 nothing else. What the manifest adds is that a unit the exemption predicate treats as
 trivial is no longer invisible: a semantic change to one moves a value in a generated file
-the check compares byte for byte. `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native` holds the manifest to the tree.
+the check compares byte for byte. `dotnet tool run broiler-review -- assurance check --root .` holds the manifest to the tree.
 
 Beside the units it lists **every covered file** - 47 of them - with a
 fingerprint over the complete token stream of its compilation unit. A unit entry exists only
@@ -772,15 +772,15 @@ no file fingerprint - which is what lets one generation be a fixed point.
 
 ## Verification
 
-The generator and the check are one computation: `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native` works out what the
+The generator and the check are one computation: `dotnet tool run broiler-review -- assurance check --root .` works out what the
 generator would write and compares it with the tree byte for byte, so a record edited by
 hand, or left behind by code that moved, is reported rather than trusted.
 
 | Mode | Command | Effect |
 |---|---|---|
-| Generate | `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native` | Fills every `Fingerprint=TBF`, refreshes a decision the code has outrun into `STALE; Previous=...`, rewrites the generated headers, `HUMAN_REVIEW.md`, `assurance.manifest.json` and this file. |
-| Check | `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native` | Reports every generated artefact that is not byte-identical to what the generator would produce, every relevant unit with no annotation, every annotation this system cannot read, every fingerprint out of date and every unit at the top of the security vocabulary without a criterion, or below it with one. |
-| Release | `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native --release` | The check, and additionally every relevant unit left in a state that blocks a release. |
+| Generate | `dotnet tool run broiler-review -- assurance generate --root .` | Fills every `Fingerprint=TBF`, refreshes a decision the code has outrun into `STALE; Previous=...`, rewrites the generated headers, `HUMAN_REVIEW.md`, `assurance.manifest.json` and this file. |
+| Check | `dotnet tool run broiler-review -- assurance check --root .` | Reports every generated artefact that is not byte-identical to what the generator would produce, every relevant unit with no annotation, every annotation this system cannot read, every fingerprint out of date and every unit at the top of the security vocabulary without a criterion, or below it with one. |
+| Release | `dotnet tool run broiler-review -- assurance check --root . --release` | The check, and additionally every relevant unit left in a state that blocks a release. |
 
 The fingerprint is six hex characters - 24 bits - of SHA-256 over the declaration's token
 texts, joined by single spaces. Trivia is excluded because a token's text is its own

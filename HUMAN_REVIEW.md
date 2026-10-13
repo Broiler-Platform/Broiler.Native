@@ -1,11 +1,11 @@
 # Human Review: Broiler.Native
 
 GENERATED - DO NOT EDIT MANUALLY. Regenerate with
-`dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native`, which rewrites this file,
+`dotnet tool run broiler-review -- assurance generate --root .`, which rewrites this file,
 `CODE-ASSURANCE.md`, `assurance.manifest.json` and every generated source header from the
 product tree.
 
-> **Status: PENDING.** Human-reviewed: 0 of 818 relevant units. `dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance check --root Broiler.Native --release`
+> **Status: PARTIAL.** Human-reviewed: 9 of 818 relevant units. `dotnet tool run broiler-review -- assurance check --root . --release`
 > fails while any relevant unit is without a decision bound to its current fingerprint.
 
 ## 1. How To Use This File
@@ -54,9 +54,9 @@ did, which is the narrower and the more useful of the two.
 | Relevant | 818 |
 | Exempt | 1022 |
 | Assessed | 818 of 818 (100%) |
-| Human reviewed | 0 of 818 (0%) |
-| Unverified | 818 |
-| Aliases naming a decision | 0 |
+| Human reviewed | 9 of 818 (1%) |
+| Unverified | 809 |
+| Aliases naming a decision | 1 |
 
 ## 4. Review States
 
@@ -67,16 +67,21 @@ annotations and the current fingerprints; nothing stores them.
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 818 |
+| HUMAN_PENDING | 809 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
-| VERIFIED | 0 |
+| VERIFIED | 9 |
 | STALE | 0 |
 | EXEMPT | 1022 |
 
 ## 5. Aliases In The Tree
 
-No alias appears on a human line anywhere in the product tree. Nobody has recorded a
-decision about any unit of this component.
+Read out of the human lines, never registered. `Current` counts the units whose decision
+names the fingerprint the declaration carries now; `Outrun` counts the units whose
+declaration has changed since.
+
+| Alias | Units | Files | Current | Outrun |
+|---|---:|---:|---:|---:|
+| MaiRat | 9 | 2 | 9 | 0 |
 
 ## 6. Coverage By File
 
@@ -85,7 +90,7 @@ relevant units in a state that blocks a release.
 
 | File | Units | Relevant | Exempt | Unverified | IP risk | Security risk | Criteria |
 |---|---:|---:|---:|---:|---|---|---:|
-| `src/Broiler.Native.Android/AndroidEglNative.cs` | 46 | 17 | 29 | 17 | Low | Critical | 17/17 |
+| `src/Broiler.Native.Android/AndroidEglNative.cs` | 46 | 17 | 29 | 10 | Low | Critical | 17/17 |
 | `src/Broiler.Native.Android/AndroidGlesNative.cs` | 52 | 27 | 25 | 27 | Low | Critical | 27/27 |
 | `src/Broiler.Native.Android/AndroidNativeLibraries.cs` | 11 | 5 | 6 | 5 | Low | High | 5/5 |
 | `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` | 10 | 8 | 2 | 8 | Low | Critical | 8/8 |
@@ -131,12 +136,22 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 115 | 56 | 59 | 56 | Low | Critical | 56/56 |
 | `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 39 | 8 | 39 | Low | Critical | 39/39 |
 | `src/Broiler.Native.Windows/WindowNative.cs` | 269 | 86 | 183 | 86 | Low | Critical | 70/70 |
-| `src/Broiler.Native/NativeLibraryProbe.cs` | 2 | 2 | 0 | 2 | Low | High | 2/2 |
+| `src/Broiler.Native/NativeLibraryProbe.cs` | 2 | 2 | 0 | 0 | Low | High | 2/2 |
 
 ## 7. Decisions Recorded
 
-No unit in this component carries a decision on its human line. Every one of them reads
-`PENDING`.
+One entry per unit whose human line names an alias, with the line exactly as the source
+states it.
+
+- `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=885D32
+- `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=B5AA7C
+- `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=365B80
+- `Broiler.Native.Android.AndroidEglNative.BindApi(int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=D9992F
+- `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=314663
+- `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=D9277A
+- `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=B24254
+- `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - MaiRat; Fingerprint=82A0F5
+- `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - MaiRat; Fingerprint=A7B31A
 
 ## 8. Decisions The Code Has Outrun
 
@@ -150,19 +165,19 @@ written out, so a unit that becomes `High` joins it at the next generation.
 
 - `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=ADR-0001, `CCDC42`, PENDING
   - Falsified if: an import here differs from its prototype in EGL/egl.h, where EGLDisplay, EGLConfig, EGLSurface and EGLContext are void *, EGLBoolean and EGLenum are unsigned int, and Android's EGL/eglplatform.h makes EGLNativeWindowType struct ANativeWindow * and EGLint khronos_int32_t
-- `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `885D32`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `885D32`, MaiRat; Fingerprint=885D32
   - Falsified if: differs from EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id) in EGL/egl.h, EGLNativeDisplayType being void * on Android in EGL/eglplatform.h
-- `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `B5AA7C`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `B5AA7C`, MaiRat; Fingerprint=B5AA7C
   - Falsified if: differs from EGLBoolean eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor) in EGL/egl.h
-- `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `365B80`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `365B80`, MaiRat; Fingerprint=365B80
   - Falsified if: differs from EGLBoolean eglTerminate(EGLDisplay dpy) in EGL/egl.h
-- `Broiler.Native.Android.AndroidEglNative.BindApi(int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `D9992F`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.BindApi(int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `D9992F`, MaiRat; Fingerprint=D9992F
   - Falsified if: differs from EGLBoolean eglBindAPI(EGLenum api) in EGL/egl.h
-- `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `314663`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `314663`, MaiRat; Fingerprint=314663
   - Falsified if: configSize exceeds configs.Length, the number of void * EGLConfig slots that EGLBoolean eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config) in EGL/egl.h may fill
-- `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `D9277A`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `D9277A`, MaiRat; Fingerprint=D9277A
   - Falsified if: differs from EGLBoolean eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value) in EGL/egl.h
-- `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `B24254`, PENDING
+- `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=none cited, `B24254`, MaiRat; Fingerprint=B24254
   - Falsified if: attribList is not ended by EGL_NONE, the terminator that EGLContext eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list) in EGL/egl.h reads up to
 - `Broiler.Native.Android.AndroidEglNative.DestroyContext(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `4D4D42`, PENDING
   - Falsified if: differs from EGLBoolean eglDestroyContext(EGLDisplay dpy, EGLContext ctx) in EGL/egl.h
@@ -1390,9 +1405,9 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the count passed to GetWindowTextW is not text.Length, so a title longer than the span is written past the end of the pinned span
 - `Broiler.Native.Windows.WindowNative.GetWindowText(IntPtr, StringBuilder, int)` in `src/Broiler.Native.Windows/WindowNative.cs` - Security=Critical, Spec=none cited, `6D9166`, PENDING
   - Falsified if: a maxCount different from the length of the char[] it pins lets GetWindowTextW write past the array's end
-- `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, Spec=none cited, `82A0F5`, PENDING
+- `Broiler.Native.NativeLibraryProbe` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, Spec=none cited, `82A0F5`, MaiRat; Fingerprint=82A0F5
   - Falsified if: a probe through IsAvailable leaves a library the process had not loaded before still mapped after the call returns, true or false
-- `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, Spec=none cited, `A7B31A`, PENDING
+- `Broiler.Native.NativeLibraryProbe.IsAvailable(string)` in `src/Broiler.Native/NativeLibraryProbe.cs` - Security=High, Spec=none cited, `A7B31A`, MaiRat; Fingerprint=A7B31A
   - Falsified if: the success path returns true without passing the TryLoad handle to NativeLibrary.Free, so a library the process had not loaded stays mapped
 
 ## 10. What This Record Does Not Say

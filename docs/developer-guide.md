@@ -251,6 +251,55 @@ The repository uses GitHub Actions for continuous integration and publishing exc
 - Runs unit tests and version resolution tests.
 - Windows runner packs and validates all 5 packages, verifies a fresh consumer restore from NuGet.org (the no-push pack dry run), and uploads them as the `nuget-packages` artifact.
 
+### Review assurance (`review.yml`)
+
+The separate [Review workflow](../.github/workflows/review.yml) runs on pushes to
+`main`, pull requests and manual dispatch. It restores Broiler.SDK
+`0.1.0-preview.2` from NuGet.org using the committed `.config/dotnet-tools.json`
+manifest; no Broiler.Code checkout is needed.
+
+`assurance check` validates annotation syntax and canonical formatting, reviewer
+aliases, declaration and file fingerprints, the manifest, generated headers and
+reports, and the required falsification criteria. Violations fail the job and
+appear as GitHub annotations. The run summary reports coverage and the
+`review-assurance` artifact contains the JSON diagnostics and status output,
+including when the check fails. CI checks the committed files without rewriting
+them. This validates review annotation style, not general C# formatting.
+
+To record a human review, replace `PENDING` on the declaration you reviewed with
+your alias. A GitHub username such as `MaiRat` is valid, without an `@` prefix:
+
+```csharp
+// Broiler-Human:        MaiRat
+```
+
+From the repository root, run:
+
+```sh
+dotnet tool restore --configfile NuGet.config
+dotnet tool run broiler-review -- assurance generate --root .
+dotnet tool run broiler-review -- assurance check --root .
+dotnet tool run broiler-review -- assurance status --root .
+```
+
+The generator binds the existing approval to the declaration by adding
+`; Fingerprint=<six hex>` and refreshes the source headers, `HUMAN_REVIEW.md`,
+`CODE-ASSURANCE.md` and `assurance.manifest.json`. Commit those generated changes
+with your review. It binds a bare alias only when the AI fingerprint still
+matches the code you reviewed; a later code change makes the approval stale.
+Only the human reviewer should renew that approval after reviewing the change.
+
+`Broiler-Human-Notes:` is an ordinary comment preserved by the tool, not a
+structured review field or part of the fingerprint. To record your own risk or
+resource assessment, use `IP=`, `Security=` or `Resources=` on the human line.
+Aliases are recorded as written; the tool does not authenticate a GitHub identity.
+
+The workflow allows `PENDING` reviews, so incremental review can continue. It
+checks consistency, not full approval coverage; a recorded `STALE` state can
+remain after regeneration. Use `assurance check --root . --release` locally when
+every relevant declaration must have a current human approval. That stricter
+coverage gate is not enabled by this workflow.
+
 ### Publishing (`publish.yml`)
 
 The publishing workflow is fully automated and targets NuGet.org:

@@ -6,12 +6,12 @@
 // Relevant units:   17
 // Annotated:        17/17
 // Exempt:           29
-// Human-reviewed:   0/17
+// Human-reviewed:   7/17
 // IP risk:          Low
 // Security risk:    Critical
 // Criteria:         17/17
 // Resource impact:  5/10 max
-// Unverified:       17
+// Unverified:       10
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -75,43 +75,45 @@ public static partial class AndroidEglNative
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=885D32
     // Broiler-Falsified-If: differs from EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id) in EGL/egl.h, EGLNativeDisplayType being void * on Android in EGL/eglplatform.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=885D32
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglGetDisplay")]
     public static partial IntPtr GetDisplay(IntPtr displayId);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=B5AA7C
     // Broiler-Falsified-If: differs from EGLBoolean eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=B5AA7C
+    // Broiler-Human-Notes:  In EMScripten, the return type is EGLBoolean, which is an unsigned int. In .NET, we use int to represent this value.
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglInitialize")]
     public static partial int Initialize(IntPtr display, out int major, out int minor);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=365B80
     // Broiler-Falsified-If: differs from EGLBoolean eglTerminate(EGLDisplay dpy) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=365B80
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglTerminate")]
     public static partial int Terminate(IntPtr display);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D9992F
     // Broiler-Falsified-If: differs from EGLBoolean eglBindAPI(EGLenum api) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=D9992F
+    // Broiler-Human-Notes:  In EMScripten, EGLenum is an unsigned int. In .NET, we use int to represent this value.
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglBindAPI")]
     public static partial int BindApi(int api);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=314663
     // Broiler-Falsified-If: configSize exceeds configs.Length, the number of void * EGLConfig slots that EGLBoolean eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config) in EGL/egl.h may fill
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=314663
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglChooseConfig")]
     public static partial int ChooseConfig(IntPtr display, int[] attribList, IntPtr[] configs, int configSize, out int numConfig);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=D9277A
     // Broiler-Falsified-If: differs from EGLBoolean eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=D9277A
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglGetConfigAttrib")]
     public static partial int GetConfigAttrib(IntPtr display, IntPtr config, int attribute, out int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=B24254
     // Broiler-Falsified-If: attribList is not ended by EGL_NONE, the terminator that EGLContext eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list) in EGL/egl.h reads up to
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat; Fingerprint=B24254
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglCreateContext")]
     public static partial IntPtr CreateContext(IntPtr display, IntPtr config, IntPtr shareContext, int[] attribList);
 

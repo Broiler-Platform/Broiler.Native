@@ -31,5 +31,5 @@
   },
   "forbidDirectives": false,
   "forgeryVocabulary": "narrow",
-  "regenerateCommand": "dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Native"
+  "regenerateCommand": "dotnet tool run broiler-review -- assurance generate --root ."
 }

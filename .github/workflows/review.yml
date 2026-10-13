@@ -1,0 +1,63 @@
+name: Review
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: review-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  assurance:
+    name: Review annotations and fingerprints
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore pinned Broiler.SDK from NuGet.org
+        id: restore
+        run: dotnet tool restore --configfile NuGet.config
+
+      # Check the committed tree without regenerating away stale evidence.
+      # Pending human reviews are allowed while coverage is being built up.
+      - name: Check review format, fingerprints, criteria and generated records
+        run: >
+          dotnet tool run broiler-review -- assurance check --root .
+          --json artifacts/review/assurance-check.json --annotation-limit 20
+
+      - name: Report review coverage
+        if: ${{ !cancelled() && steps.restore.outcome == 'success' }}
+        run: |
+          mkdir -p artifacts/review
+          dotnet tool run broiler-review -- assurance status --root . > artifacts/review/status.txt
+          {
+            echo '### Broiler.Native review assurance'
+            echo
+            echo '```text'
+            cat artifacts/review/status.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload review diagnostics
+        if: ${{ !cancelled() && steps.restore.outcome == 'success' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: review-assurance
+          path: artifacts/review/
+          if-no-files-found: warn
