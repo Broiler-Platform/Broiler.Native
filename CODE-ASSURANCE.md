@@ -5,7 +5,7 @@ GENERATED - DO NOT EDIT MANUALLY. Regenerate with
 `HUMAN_REVIEW.md`, `assurance.manifest.json` and every generated source header from the
 product tree.
 
-**Human-reviewed: 9 of 818 relevant units.** This report records what the
+**Human-reviewed: 9 of 857 relevant units.** This report records what the
 annotations state and no more. A decision recorded here is one person's, bound to one
 version of one declaration, and it is not a claim that the code is assured or safe.
 
@@ -13,15 +13,15 @@ version of one declaration, and it is not a claim that the code is assured or sa
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 47 |
+| Files scanned | 50 |
 | Files not covered | 0 |
-| Files carrying an annotation | 47 |
-| Code units | 1840 |
-| Relevant | 818 |
-| Exempt by predicate | 1022 |
-| Annotated | 818 of 818 (100%) |
-| Human reviewed | 9 of 818 (1%) |
-| Unverified | 809 |
+| Files carrying an annotation | 50 |
+| Code units | 1977 |
+| Relevant | 857 |
+| Exempt by predicate | 1120 |
+| Annotated | 857 of 857 (100%) |
+| Human reviewed | 9 of 857 (1%) |
+| Unverified | 848 |
 
 ## Review states
 
@@ -29,18 +29,18 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 809 |
+| HUMAN_PENDING | 848 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 9 |
 | STALE | 0 |
-| EXEMPT | 1022 |
+| EXEMPT | 1120 |
 
 ## IP risk
 
 | Value | Units |
 |---|---:|
-| None | 47 |
-| Low | 771 |
+| None | 53 |
+| Low | 804 |
 | Medium | 0 |
 | High | 0 |
 | Unknown | 0 |
@@ -52,9 +52,9 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | None | 2 |
 | Low | 193 |
-| Medium | 0 |
-| High | 428 |
-| Critical | 195 |
+| Medium | 1 |
+| High | 446 |
+| Critical | 215 |
 | *not annotated* | 0 |
 
 ## Resource impact
@@ -63,7 +63,7 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | Maximum | 8 / 10 |
 | Average over annotated units | 1.1 / 10 |
-| Units scored | 818 |
+| Units scored | 857 |
 
 ## High-security review areas
 
@@ -203,6 +203,23 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.GetInputFocus(IntPtr, out IntPtr, out int)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.SetErrorHandler(IntPtr)` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.XEvent` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.GetDests(IntPtr, out IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.FreeDests(int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.GetOption(string, int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.AddOption(string, string, int, ref IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.FreeOptions(int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.CopyDestInfo(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.FreeDestInfo(IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.GetDestMediaCount(IntPtr, IntPtr, IntPtr, uint)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.GetDestMediaByIndex(IntPtr, IntPtr, IntPtr, int, uint, out CupsSize)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.GetDestMediaDefault(IntPtr, IntPtr, IntPtr, uint, out CupsSize)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.CheckDestSupported(IntPtr, IntPtr, IntPtr, string, string?)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.PrintFile(IntPtr, string, string, string, int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsNative.LastErrorString()` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsDest` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsOption` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Printing.CupsSize` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetSupportedInstanceVersion()` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.ThrowIfFailed(int, string)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
@@ -523,6 +540,27 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Windows.PerformanceCounterNative` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.PerformanceCounterNative.QueryPerformanceCounter(out long)` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.PerformanceCounterNative.QueryPerformanceFrequency(out long)` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.CreateDC(string?, string, string?, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.DeleteDC(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.StartDoc(IntPtr, in DOCINFOW)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.EndDoc(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.AbortDoc(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.StartPage(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.EndPage(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.StretchDIBits(IntPtr, int, int, int, int, int, int, int, int, byte*, in WindowNative.BITMAPINFOHEADER, uint, uint)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.SetStretchBltMode(IntPtr, int)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.SetBrushOrgEx(IntPtr, int, int, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.DOCINFOW` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.DEVMODEW` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.EnumPrinters(uint, string?, uint, IntPtr, uint, out uint, out uint)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.GetDefaultPrinter(char*, ref uint)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.OpenPrinter(string, out IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.ClosePrinter(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.DocumentProperties(IntPtr, IntPtr, string, IntPtr, IntPtr, uint)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.DeviceCapabilities(string, string?, ushort, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Printing.PRINTER_INFO_4W` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.PropVariantClear(ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.CreateEventW(IntPtr, bool, bool, string?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
@@ -695,8 +733,8 @@ version of one declaration, and it is not a claim that the code is assured or sa
 
 | Metric | Value |
 |---|---:|
-| Units carrying a criterion | 623 |
-| Units required to carry one | 623 |
+| Units carrying a criterion | 661 |
+| Units required to carry one | 661 |
 | Required and missing | 0 |
 
 A `Broiler-Falsified-If:` line states, at the declaration, the observation that would make
@@ -723,9 +761,9 @@ that the rule is reviewable in one place rather than in several hundred.
 | CompilerSuppliedRecordOrEnumMember | 0 |
 | DelegatingOverrideOrOperator | 0 |
 | InsideAssemblyMarker | 0 |
-| FieldDeclaringStorage | 271 |
+| FieldDeclaringStorage | 311 |
 | EnumMemberOfADeclaredVocabulary | 156 |
-| NamedValue | 551 |
+| NamedValue | 609 |
 | DeclaredInSource | 0 |
 
 `NamedValue` is this component's choice (`"namedValues": "watched"`): a `const`
@@ -755,14 +793,14 @@ through a `<Compile Include>` it states, is left out of the record.
 ## Change detection
 
 `assurance.manifest.json` lists **every** code unit in the 5 covered assemblies -
-1840 of them, exempt and relevant alike - with the fingerprint of its declaration.
+1977 of them, exempt and relevant alike - with the fingerprint of its declaration.
 This manifest is a change-detection record, not a review. A unit listed there is watched, not reviewed:
 the entry records what the declaration's tokens hashed to when the generator last ran, and
 nothing else. What the manifest adds is that a unit the exemption predicate treats as
 trivial is no longer invisible: a semantic change to one moves a value in a generated file
 the check compares byte for byte. `dotnet tool run broiler-review -- assurance check --root .` holds the manifest to the tree.
 
-Beside the units it lists **every covered file** - 47 of them - with a
+Beside the units it lists **every covered file** - 50 of them - with a
 fingerprint over the complete token stream of its compilation unit. A unit entry exists only
 for a declaration kind the scanner enumerates, and an enumeration is a whitelist: an
 `[assembly: ...]` attribute is a member of nothing and can be in no unit at all.

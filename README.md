@@ -1,6 +1,6 @@
 # Broiler.Native
 
-Shared native API bindings for `Broiler.Graphics`, `Broiler.Input`, and `Broiler.Media`.
+Shared native API bindings for `Broiler.Graphics`, `Broiler.Input`, `Broiler.Media`, and `Broiler.Hosting`.
 The component owns native entry points, ABI structures, constants, COM contracts,
 function delegates, and library probing. It has no dependency on those consumers.
 
@@ -9,8 +9,8 @@ function delegates, and library probing. It has no dependency on those consumers
 | Package | Target | Description |
 | :--- | :--- | :--- |
 | [`Broiler.Native`](src/Broiler.Native) | Any (`net10.0`) | Lightweight core with `NativeLibraryProbe` for non-throwing library probing. Zero external dependencies. |
-| [`Broiler.Native.Windows`](src/Broiler.Native.Windows) | Windows (`net10.0`) | Win32 windowing, performance counters, Raw Input, DirectX (D2D, DWrite, DXGI, D3D11), WIC, WASAPI, Media Foundation. |
-| [`Broiler.Native.Linux`](src/Broiler.Native.Linux) | Linux (`net10.0`) | libc/evdev input, `poll`, X11, EGL/OpenGL dynamic loading and driver queries, Vulkan device enumeration. |
+| [`Broiler.Native.Windows`](src/Broiler.Native.Windows) | Windows (`net10.0`) | Win32 windowing, performance counters, Raw Input, DirectX (D2D, DWrite, DXGI, D3D11), WIC, WASAPI, Media Foundation, and printing (the winspool.drv spooler and gdi32 printer device contexts). |
+| [`Broiler.Native.Linux`](src/Broiler.Native.Linux) | Linux (`net10.0`) | libc/evdev input, `poll`, X11, EGL/OpenGL dynamic loading and driver queries, Vulkan device enumeration, and printing through the CUPS client library (`libcups.so.2`, probe before use). |
 | [`Broiler.Native.Android`](src/Broiler.Native.Android) | Android (`net10.0`) | EGL, OpenGL ES 2.0 / 3.0, `ANativeWindow`, and assembly-scoped dynamic soname resolver. |
 | [`Broiler.Native.All`](src/Broiler.Native.All) | Any (`net10.0`) | Convenience meta-package referencing all platform packages for multi-target or cross-platform codebases. |
 

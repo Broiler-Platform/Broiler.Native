@@ -5,7 +5,7 @@ GENERATED - DO NOT EDIT MANUALLY. Regenerate with
 `CODE-ASSURANCE.md`, `assurance.manifest.json` and every generated source header from the
 product tree.
 
-> **Status: PARTIAL.** Human-reviewed: 9 of 818 relevant units. `dotnet tool run broiler-review -- assurance check --root . --release`
+> **Status: PARTIAL.** Human-reviewed: 9 of 857 relevant units. `dotnet tool run broiler-review -- assurance check --root . --release`
 > fails while any relevant unit is without a decision bound to its current fingerprint.
 
 ## 1. How To Use This File
@@ -49,13 +49,13 @@ did, which is the narrower and the more useful of the two.
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 47 |
-| Code units | 1840 |
-| Relevant | 818 |
-| Exempt | 1022 |
-| Assessed | 818 of 818 (100%) |
-| Human reviewed | 9 of 818 (1%) |
-| Unverified | 809 |
+| Files scanned | 50 |
+| Code units | 1977 |
+| Relevant | 857 |
+| Exempt | 1120 |
+| Assessed | 857 of 857 (100%) |
+| Human reviewed | 9 of 857 (1%) |
+| Unverified | 848 |
 | Aliases naming a decision | 1 |
 
 ## 4. Review States
@@ -67,11 +67,11 @@ annotations and the current fingerprints; nothing stores them.
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 809 |
+| HUMAN_PENDING | 848 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 9 |
 | STALE | 0 |
-| EXEMPT | 1022 |
+| EXEMPT | 1120 |
 
 ## 5. Aliases In The Tree
 
@@ -102,6 +102,7 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlException.cs` | 3 | 3 | 0 | 3 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` | 96 | 29 | 67 | 29 | Low | Critical | 29/29 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` | 91 | 38 | 53 | 38 | Low | Critical | 25/25 |
+| `src/Broiler.Native.Linux/Printing/CupsNative.cs` | 37 | 18 | 19 | 18 | Low | Critical | 17/17 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanDeviceInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanException.cs` | 3 | 3 | 0 | 3 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` | 70 | 25 | 45 | 25 | Low | Critical | 21/21 |
@@ -133,6 +134,8 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/MediaFoundation/MediaFoundationPlatformNative.cs` | 22 | 5 | 17 | 5 | Low | High | 5/5 |
 | `src/Broiler.Native.Windows/OleAutNative.cs` | 6 | 6 | 0 | 6 | Low | Low | 0/0 |
 | `src/Broiler.Native.Windows/PerformanceCounterNative.cs` | 3 | 3 | 0 | 3 | Low | High | 3/3 |
+| `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` | 71 | 13 | 58 | 13 | Low | Critical | 13/13 |
+| `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` | 29 | 8 | 21 | 8 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 115 | 56 | 59 | 56 | Low | Critical | 56/56 |
 | `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 39 | 8 | 39 | Low | Critical | 39/39 |
 | `src/Broiler.Native.Windows/WindowNative.cs` | 269 | 86 | 183 | 86 | Low | Critical | 70/70 |
@@ -435,6 +438,40 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: handler is not a function of the XErrorHandler type int (*)(Display *display, XErrorEvent *error_event) that stays callable while installed, against XErrorHandler XSetErrorHandler(XErrorHandler handler) in X11/Xlib.h
 - `Broiler.Native.Linux.OpenGL.LinuxX11Native.XEvent` in `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` - Security=High, Spec=none cited, `803926`, PENDING
   - Falsified if: Marshal.SizeOf is not 192 on 64-bit, the size of union _XEvent with its long pad[24] in X11/Xlib.h, or ConfigureWidth, ConfigureHeight and ClientMessageData0 are not at offsets 56, 60 and 56, where XConfigureEvent puts width and height and XClientMessageEvent puts data.l[0]
+- `Broiler.Native.Linux.Printing.CupsNative` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `C74984`, PENDING
+  - Falsified if: an import here differs from its prototype in cups/cups.h, where http_t, cups_dest_t, cups_dinfo_t and cups_option_t are passed by pointer and strings are NUL-terminated UTF-8
+- `Broiler.Native.Linux.Printing.CupsNative.GetDests(IntPtr, out IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `1AFC3D`, PENDING
+  - Falsified if: differs from int cupsGetDests2(http_t *http, cups_dest_t **dests) in cups/cups.h, or the array it returns reaches no cupsFreeDests with the count it returned
+- `Broiler.Native.Linux.Printing.CupsNative.FreeDests(int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `B65EF9`, PENDING
+  - Falsified if: differs from void cupsFreeDests(int num_dests, cups_dest_t *dests) in cups/cups.h, or the count passed is not the one cupsGetDests2 returned with that array
+- `Broiler.Native.Linux.Printing.CupsNative.GetOption(string, int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `8EE546`, PENDING
+  - Falsified if: differs from const char *cupsGetOption(const char *name, int num_options, cups_option_t *options) in cups/cups.h, or the returned pointer, which the options own, is freed or read after they are
+- `Broiler.Native.Linux.Printing.CupsNative.AddOption(string, string, int, ref IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `0DC047`, PENDING
+  - Falsified if: differs from int cupsAddOption(const char *name, const char *value, int num_options, cups_option_t **options) in cups/cups.h, where the call may reallocate the array, or the array reaches no cupsFreeOptions
+- `Broiler.Native.Linux.Printing.CupsNative.FreeOptions(int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `AAB2B1`, PENDING
+  - Falsified if: differs from void cupsFreeOptions(int num_options, cups_option_t *options) in cups/cups.h, or the count is not the last one cupsAddOption returned for that array
+- `Broiler.Native.Linux.Printing.CupsNative.CopyDestInfo(IntPtr, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `E2408E`, PENDING
+  - Falsified if: differs from cups_dinfo_t *cupsCopyDestInfo(http_t *http, cups_dest_t *dest) in cups/cups.h, or a returned info reaches no cupsFreeDestInfo
+- `Broiler.Native.Linux.Printing.CupsNative.FreeDestInfo(IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, Spec=none cited, `C2810A`, PENDING
+  - Falsified if: differs from void cupsFreeDestInfo(cups_dinfo_t *dinfo) in cups/cups.h, or an info is freed twice
+- `Broiler.Native.Linux.Printing.CupsNative.GetDestMediaCount(IntPtr, IntPtr, IntPtr, uint)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, Spec=none cited, `226A00`, PENDING
+  - Falsified if: differs from int cupsGetDestMediaCount(http_t *http, cups_dest_t *dest, cups_dinfo_t *dinfo, unsigned flags) in cups/cups.h
+- `Broiler.Native.Linux.Printing.CupsNative.GetDestMediaByIndex(IntPtr, IntPtr, IntPtr, int, uint, out CupsSize)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `D6814B`, PENDING
+  - Falsified if: differs from int cupsGetDestMediaByIndex(http_t *http, cups_dest_t *dest, cups_dinfo_t *dinfo, int n, unsigned flags, cups_size_t *size) in cups/cups.h, written into a CupsSize of 152 bytes
+- `Broiler.Native.Linux.Printing.CupsNative.GetDestMediaDefault(IntPtr, IntPtr, IntPtr, uint, out CupsSize)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `BA4649`, PENDING
+  - Falsified if: differs from int cupsGetDestMediaDefault(http_t *http, cups_dest_t *dest, cups_dinfo_t *dinfo, unsigned flags, cups_size_t *size) in cups/cups.h, written into a CupsSize of 152 bytes
+- `Broiler.Native.Linux.Printing.CupsNative.CheckDestSupported(IntPtr, IntPtr, IntPtr, string, string?)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, Spec=none cited, `CE7E70`, PENDING
+  - Falsified if: differs from int cupsCheckDestSupported(http_t *http, cups_dest_t *dest, cups_dinfo_t *dinfo, const char *option, const char *value) in cups/cups.h
+- `Broiler.Native.Linux.Printing.CupsNative.PrintFile(IntPtr, string, string, string, int, IntPtr)` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `945619`, PENDING
+  - Falsified if: differs from int cupsPrintFile2(http_t *http, const char *name, const char *filename, const char *title, int num_options, cups_option_t *options) in cups/cups.h, whose zero return is a failure cupsLastErrorString describes
+- `Broiler.Native.Linux.Printing.CupsNative.LastErrorString()` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, Spec=none cited, `4DFCCA`, PENDING
+  - Falsified if: differs from const char *cupsLastErrorString(void) in cups/cups.h, or the returned pointer, which libcups owns per thread, is freed
+- `Broiler.Native.Linux.Printing.CupsDest` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `684C2A`, PENDING
+  - Falsified if: Marshal.SizeOf is not 32 on 64-bit, with name at 0, instance at 8, is_default at 16, num_options at 20 and options at 24, the layout of cups_dest_t in cups/cups.h
+- `Broiler.Native.Linux.Printing.CupsOption` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, Spec=none cited, `192CA9`, PENDING
+  - Falsified if: Marshal.SizeOf is not 16 on 64-bit, with name at 0 and value at 8, the layout of cups_option_t in cups/cups.h
+- `Broiler.Native.Linux.Printing.CupsSize` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `78193F`, PENDING
+  - Falsified if: Marshal.SizeOf is not 152, with media a 128-byte char array at 0 and width, length, bottom, left, right and top ints from 128, the layout of cups_size_t in cups/cups.h
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `E46435`, PENDING
   - Falsified if: an import here differs from its prototype in vulkan/vulkan_core.h, where VkInstance, VkPhysicalDevice, VkDevice and VkQueue are pointer handles, VkResult is an enum, and counts, versions and indices are uint32_t
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetSupportedInstanceVersion()` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `06A932`, PENDING
@@ -1075,6 +1112,48 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: differs from BOOL QueryPerformanceCounter(LARGE_INTEGER* lpPerformanceCount) in profileapi.h, the 8-byte LARGE_INTEGER passed as an out pointer
 - `Broiler.Native.Windows.PerformanceCounterNative.QueryPerformanceFrequency(out long)` in `src/Broiler.Native.Windows/PerformanceCounterNative.cs` - Security=High, Spec=none cited, `96C697`, PENDING
   - Falsified if: differs from BOOL QueryPerformanceFrequency(LARGE_INTEGER* lpFrequency) in profileapi.h, the 8-byte LARGE_INTEGER passed as an out pointer
+- `Broiler.Native.Windows.Printing.PrintDeviceNative` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `7D93A1`, PENDING
+  - Falsified if: a binding below differs from its wingdi.h prototype, or a DC from CreateDCW reaches no DeleteDC
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.CreateDC(string?, string, string?, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, Spec=none cited, `795966`, PENDING
+  - Falsified if: differs from HDC CreateDCW(LPCWSTR pwszDriver, LPCWSTR pwszDevice, LPCWSTR pszPort, const DEVMODEW *pdm) in wingdi.h, or pdm is not NULL and not a DEVMODEW the printer's driver produced at the size DocumentPropertiesW reported
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.DeleteDC(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `767842`, PENDING
+  - Falsified if: differs from BOOL DeleteDC(HDC hdc) in wingdi.h, or a DC is deleted twice
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.StartDoc(IntPtr, in DOCINFOW)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, Spec=none cited, `CF9414`, PENDING
+  - Falsified if: differs from int StartDocW(HDC hdc, const DOCINFOW *lpdi) in wingdi.h, or the strings DOCINFOW points to are freed before the call returns
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.EndDoc(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `9F565D`, PENDING
+  - Falsified if: differs from int EndDoc(HDC hdc) in wingdi.h
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.AbortDoc(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `F1ABA4`, PENDING
+  - Falsified if: differs from int AbortDoc(HDC hdc) in wingdi.h
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.StartPage(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `00D264`, PENDING
+  - Falsified if: differs from int StartPage(HDC hdc) in wingdi.h
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.EndPage(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `C69AB4`, PENDING
+  - Falsified if: differs from int EndPage(HDC hdc) in wingdi.h
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.StretchDIBits(IntPtr, int, int, int, int, int, int, int, int, byte*, in WindowNative.BITMAPINFOHEADER, uint, uint)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, Spec=none cited, `3D9BA0`, PENDING
+  - Falsified if: differs from int StretchDIBits(HDC hdc, int xDest, int yDest, int DestWidth, int DestHeight, int xSrc, int ySrc, int SrcWidth, int SrcHeight, const VOID *lpBits, const BITMAPINFO *lpbmi, UINT iUsage, DWORD rop) in wingdi.h, where passing only the 40-byte BITMAPINFOHEADER holds only for 32 bits per pixel BI_RGB, or bits holds fewer than abs(biHeight) rows of biWidth * 4 bytes
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.SetStretchBltMode(IntPtr, int)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `27CA80`, PENDING
+  - Falsified if: differs from int SetStretchBltMode(HDC hdc, int mode) in wingdi.h
+- `Broiler.Native.Windows.Printing.PrintDeviceNative.SetBrushOrgEx(IntPtr, int, int, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `69DC6D`, PENDING
+  - Falsified if: differs from BOOL SetBrushOrgEx(HDC hdc, int x, int y, LPPOINT lppt) in wingdi.h with lppt passed NULL
+- `Broiler.Native.Windows.Printing.DOCINFOW` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=High, Spec=none cited, `001F3D`, PENDING
+  - Falsified if: Marshal.SizeOf is not 40 on 64-bit and 20 on 32-bit, with lpszDocName at one pointer (after cbSize and its padding), lpszOutput at two, lpszDatatype at three and fwType after it, the layout of DOCINFOW in wingdi.h
+- `Broiler.Native.Windows.Printing.DEVMODEW` in `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` - Security=Critical, Spec=none cited, `2E053C`, PENDING
+  - Falsified if: Marshal.SizeOf is not 220, or dmSize is not at 68, dmFields at 72, dmOrientation at 76, dmPaperSize at 78, dmCopies at 86, dmPrintQuality at 90, dmColor at 92, dmDuplex at 94, dmYResolution at 96 and dmCollate at 100, the printer layout of DEVMODEW in wingdi.h
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, Spec=none cited, `AC3395`, PENDING
+  - Falsified if: a binding below differs from its winspool.h prototype, or a caller sizes a buffer from a count other than the pcbNeeded or return value the previous call reported
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.EnumPrinters(uint, string?, uint, IntPtr, uint, out uint, out uint)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, Spec=none cited, `759BB3`, PENDING
+  - Falsified if: differs from BOOL EnumPrintersW(DWORD Flags, LPWSTR Name, DWORD Level, LPBYTE pPrinterEnum, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned) in winspool.h, or cbBuf is larger than the buffer pPrinterEnum points to
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.GetDefaultPrinter(char*, ref uint)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, Spec=none cited, `AD85EE`, PENDING
+  - Falsified if: differs from BOOL GetDefaultPrinterW(LPWSTR pszBuffer, LPDWORD pcchBuffer) in winspool.h, where pcchBuffer counts UTF-16 chars including the terminator, or the count passed exceeds the buffer
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.OpenPrinter(string, out IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, Spec=none cited, `FAE754`, PENDING
+  - Falsified if: differs from BOOL OpenPrinterW(LPWSTR pPrinterName, LPHANDLE phPrinter, LPPRINTER_DEFAULTSW pDefault) in winspool.h with pDefault passed NULL, or an opened handle reaches no ClosePrinter
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.ClosePrinter(IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, Spec=none cited, `CF9236`, PENDING
+  - Falsified if: differs from BOOL ClosePrinter(HANDLE hPrinter) in winspool.h, or a handle is closed twice
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.DocumentProperties(IntPtr, IntPtr, string, IntPtr, IntPtr, uint)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, Spec=none cited, `EAC497`, PENDING
+  - Falsified if: differs from LONG DocumentPropertiesW(HWND hWnd, HANDLE hPrinter, LPWSTR pDeviceName, PDEVMODEW pDevModeOutput, PDEVMODEW pDevModeInput, DWORD fMode) in winspool.h, or with DM_OUT_BUFFER the output buffer is smaller than the size the same call returned with fMode 0
+- `Broiler.Native.Windows.Printing.PrintSpoolerNative.DeviceCapabilities(string, string?, ushort, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=Critical, Spec=none cited, `B3BFBC`, PENDING
+  - Falsified if: differs from int DeviceCapabilitiesW(LPCWSTR pDevice, LPCWSTR pPort, WORD fwCapability, LPWSTR pOutput, const DEVMODEW *pDevMode) in winspool.h, or pOutput is smaller than the element count the call returns with pOutput NULL times that capability's element size
+- `Broiler.Native.Windows.Printing.PRINTER_INFO_4W` in `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` - Security=High, Spec=none cited, `511DF3`, PENDING
+  - Falsified if: Marshal.SizeOf is not 24 on 64-bit and 12 on 32-bit, with pPrinterName at 0, pServerName at one pointer and Attributes at two, the layout of PRINTER_INFO_4W in winspool.h
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `C217C8`, PENDING
   - Falsified if: a member differs from its prototype in combaseapi.h (PropVariantClear), synchapi.h (CreateEventW, SetEvent, WaitForSingleObject) or handleapi.h (CloseHandle)
 - `Broiler.Native.Windows.Wasapi.WindowsWasapiNative.PropVariantClear(ref PropVariant)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `72B3B6`, PENDING
@@ -1425,5 +1504,5 @@ An assessment is a comment, so changing one moves no fingerprint anywhere, and n
 mechanical checks that it is right; the check holds its values to their vocabularies and no
 further.
 
-818 of the 818 assessed units declare `Origin=AI`. Reading a declaration is the only thing
+857 of the 857 assessed units declare `Origin=AI`. Reading a declaration is the only thing
 that makes it read.
