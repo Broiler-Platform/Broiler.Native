@@ -119,55 +119,55 @@ public static partial class AndroidEglNative
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=4D4D42
     // Broiler-Falsified-If: differs from EGLBoolean eglDestroyContext(EGLDisplay dpy, EGLContext ctx) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglDestroyContext")]
     public static partial int DestroyContext(IntPtr display, IntPtr context);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=5; Fingerprint=7ACFAF
     // Broiler-Falsified-If: attribList is not ended by EGL_NONE, the terminator that EGLSurface eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list) in EGL/egl.h reads up to
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglCreatePbufferSurface")]
     public static partial IntPtr CreatePbufferSurface(IntPtr display, IntPtr config, int[] attribList);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=4; Fingerprint=DAD63B
     // Broiler-Falsified-If: a non-null attribList is not ended by EGL_NONE, the terminator that EGLSurface eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list) in EGL/egl.h reads up to
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglCreateWindowSurface")]
     public static partial IntPtr CreateWindowSurface(IntPtr display, IntPtr config, IntPtr nativeWindow, int[]? attribList);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=A060B1
     // Broiler-Falsified-If: differs from EGLBoolean eglDestroySurface(EGLDisplay dpy, EGLSurface surface) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglDestroySurface")]
     public static partial int DestroySurface(IntPtr display, IntPtr surface);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=BA9F32
     // Broiler-Falsified-If: differs from EGLBoolean eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglMakeCurrent")]
     public static partial int MakeCurrent(IntPtr display, IntPtr draw, IntPtr read, IntPtr context);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=3; Fingerprint=1968CA
     // Broiler-Falsified-If: differs from EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglSwapBuffers")]
     public static partial int SwapBuffers(IntPtr display, IntPtr surface);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=2D465B
     // Broiler-Falsified-If: differs from EGLBoolean eglSwapInterval(EGLDisplay dpy, EGLint interval) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglSwapInterval")]
     public static partial int SwapInterval(IntPtr display, int interval);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=6B6DBC
     // Broiler-Falsified-If: differs from EGLBoolean eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglQuerySurface")]
     public static partial int QuerySurface(IntPtr display, IntPtr surface, int attribute, out int value);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=B71C87
     // Broiler-Falsified-If: differs from EGLint eglGetError(void) in EGL/egl.h
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport(AndroidNativeLibraries.Egl, EntryPoint = "eglGetError")]
     public static partial int GetError();
 }

@@ -20,14 +20,14 @@ using System;
 namespace Broiler.Native.Linux.OpenGL;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3783A6
-// Broiler-Human:        PENDING
+// Broiler-Human:        MaiRat
 public sealed class LinuxOpenGlException : InvalidOperationException
 {
     // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=17299A
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     public LinuxOpenGlException(string message) : base(message) { }
 
     // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=0F8965
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     public LinuxOpenGlException(string message, Exception innerException) : base(message, innerException) { }
 }

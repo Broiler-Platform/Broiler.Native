@@ -18,11 +18,11 @@
 namespace Broiler.Native.Linux.Vulkan;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=844002
-// Broiler-Human:        PENDING
+// Broiler-Human:        MaiRat
 public sealed record LinuxVulkanDeviceInfo(string Name, string DeviceType, string ApiVersion, string DriverVersion, uint VendorId, uint DeviceId)
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=7DD4B0
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     public string ToDiagnosticString() =>
         $"Vulkan device={Name}; type={DeviceType}; api={ApiVersion}; driver={DriverVersion}; vendor=0x{VendorId:X4}; device=0x{DeviceId:X4}.";
 }

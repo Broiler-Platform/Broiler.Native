@@ -18,11 +18,11 @@
 namespace Broiler.Native.Linux.OpenGL;
 
 // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=1A8EF8
-// Broiler-Human:        PENDING
+// Broiler-Human:        MaiRat
 public sealed record LinuxOpenGlDriverInfo(string Vendor, string Renderer, string Version, string ShadingLanguageVersion)
 {
     // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=77BC4A
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     public string ToDiagnosticString() =>
         $"OpenGL vendor={Vendor}; renderer={Renderer}; version={Version}; glsl={ShadingLanguageVersion}.";
 }

@@ -49,13 +49,13 @@ public static partial class LinuxNativeMethods
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=B96AC4
     // Broiler-Falsified-If: pathname reaches int open(const char *path, int flags, ...) in fcntl.h, the open(2) prototype, as other than the NUL-terminated UTF-8 bytes of the managed string, for example cut short at an embedded NUL
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport("libc", EntryPoint = "open", SetLastError = true)]
     public static partial int Open([MarshalAs(UnmanagedType.LPUTF8Str)] string pathname, int flags);
 
     // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=3; Fingerprint=B87244
     // Broiler-Falsified-If: differs from ssize_t read(size_t count; int fd, void buf[count], size_t count) in unistd.h as read(2) gives it, or count is larger than the length of buffer
-    // Broiler-Human:        PENDING
+    // Broiler-Human:        MaiRat
     [LibraryImport("libc", EntryPoint = "read", SetLastError = true)]
     public static partial nint Read(int fd, byte[] buffer, nuint count);
 
