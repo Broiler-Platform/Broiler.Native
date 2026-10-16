@@ -5,7 +5,7 @@ GENERATED - DO NOT EDIT MANUALLY. Regenerate with
 `HUMAN_REVIEW.md`, `assurance.manifest.json` and every generated source header from the
 product tree.
 
-**Human-reviewed: 9 of 857 relevant units.** This report records what the
+**Human-reviewed: 53 of 857 relevant units.** This report records what the
 annotations state and no more. A decision recorded here is one person's, bound to one
 version of one declaration, and it is not a claim that the code is assured or safe.
 
@@ -20,8 +20,8 @@ version of one declaration, and it is not a claim that the code is assured or sa
 | Relevant | 857 |
 | Exempt by predicate | 1120 |
 | Annotated | 857 of 857 (100%) |
-| Human reviewed | 9 of 857 (1%) |
-| Unverified | 848 |
+| Human reviewed | 53 of 857 (6%) |
+| Unverified | 804 |
 
 ## Review states
 
@@ -29,9 +29,9 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 848 |
+| HUMAN_PENDING | 804 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
-| VERIFIED | 9 |
+| VERIFIED | 53 |
 | STALE | 0 |
 | EXEMPT | 1120 |
 
@@ -75,42 +75,42 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Android.AndroidEglNative.ChooseConfig(IntPtr, int[], IntPtr[], int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=314663
 - `Broiler.Native.Android.AndroidEglNative.GetConfigAttrib(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=D9277A
 - `Broiler.Native.Android.AndroidEglNative.CreateContext(IntPtr, IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=B24254
-- `Broiler.Native.Android.AndroidEglNative.DestroyContext(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.CreatePbufferSurface(IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.CreateWindowSurface(IntPtr, IntPtr, IntPtr, int[]?)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.DestroySurface(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.MakeCurrent(IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.SwapBuffers(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.SwapInterval(IntPtr, int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.QuerySurface(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Android.AndroidEglNative.DestroyContext(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=4D4D42
+- `Broiler.Native.Android.AndroidEglNative.CreatePbufferSurface(IntPtr, IntPtr, int[])` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=7ACFAF
+- `Broiler.Native.Android.AndroidEglNative.CreateWindowSurface(IntPtr, IntPtr, IntPtr, int[]?)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=DAD63B
+- `Broiler.Native.Android.AndroidEglNative.DestroySurface(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=A060B1
+- `Broiler.Native.Android.AndroidEglNative.MakeCurrent(IntPtr, IntPtr, IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=BA9F32
+- `Broiler.Native.Android.AndroidEglNative.SwapBuffers(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=1968CA
+- `Broiler.Native.Android.AndroidEglNative.SwapInterval(IntPtr, int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=2D465B
+- `Broiler.Native.Android.AndroidEglNative.QuerySurface(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=6B6DBC
+- `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=B71C87
 - `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.DeleteTextures(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.BindTexture(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.TexParameteri(int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.TexImage2D(int, int, int, int, int, int, int, int, IntPtr)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GenFramebuffers(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.DeleteFramebuffers(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.BindFramebuffer(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.FramebufferTexture2D(int, int, int, uint, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.CheckFramebufferStatus(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Viewport(int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.ClearColor(float, float, float, float)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Clear(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.ReadPixels(int, int, int, int, int, int, IntPtr)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.BlitFramebuffer(int, int, int, int, int, int, int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.PixelStorei(int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Enable(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Disable(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Scissor(int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Flush()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.Finish()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GetError()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GetString(uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GetStringValue(uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.ThrowIfError(string)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidGlesNative.GetDriverInfo()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=AD9690
+- `Broiler.Native.Android.AndroidGlesNative.DeleteTextures(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=0A6CA2
+- `Broiler.Native.Android.AndroidGlesNative.BindTexture(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=38241C
+- `Broiler.Native.Android.AndroidGlesNative.TexParameteri(int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=A34865
+- `Broiler.Native.Android.AndroidGlesNative.TexImage2D(int, int, int, int, int, int, int, int, IntPtr)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=A9CDA8
+- `Broiler.Native.Android.AndroidGlesNative.GenFramebuffers(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=4EFD10
+- `Broiler.Native.Android.AndroidGlesNative.DeleteFramebuffers(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=9D2CF0
+- `Broiler.Native.Android.AndroidGlesNative.BindFramebuffer(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=BC9CAF
+- `Broiler.Native.Android.AndroidGlesNative.FramebufferTexture2D(int, int, int, uint, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=EC63D1
+- `Broiler.Native.Android.AndroidGlesNative.CheckFramebufferStatus(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=3C9771
+- `Broiler.Native.Android.AndroidGlesNative.Viewport(int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=71E586
+- `Broiler.Native.Android.AndroidGlesNative.ClearColor(float, float, float, float)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=D00842
+- `Broiler.Native.Android.AndroidGlesNative.Clear(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=10E14B
+- `Broiler.Native.Android.AndroidGlesNative.ReadPixels(int, int, int, int, int, int, IntPtr)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=944115
+- `Broiler.Native.Android.AndroidGlesNative.BlitFramebuffer(int, int, int, int, int, int, int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=EFD1E6
+- `Broiler.Native.Android.AndroidGlesNative.PixelStorei(int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=8D640E
+- `Broiler.Native.Android.AndroidGlesNative.Enable(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=E9E50C
+- `Broiler.Native.Android.AndroidGlesNative.Disable(int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=D5E5DF
+- `Broiler.Native.Android.AndroidGlesNative.Scissor(int, int, int, int)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=5190C4
+- `Broiler.Native.Android.AndroidGlesNative.Flush()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=17C3C7
+- `Broiler.Native.Android.AndroidGlesNative.Finish()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=539514
+- `Broiler.Native.Android.AndroidGlesNative.GetError()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=F60C77
+- `Broiler.Native.Android.AndroidGlesNative.GetString(uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=D8D88A
+- `Broiler.Native.Android.AndroidGlesNative.GetStringValue(uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=46DE45
+- `Broiler.Native.Android.AndroidGlesNative.ThrowIfError(string)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=A25A60
+- `Broiler.Native.Android.AndroidGlesNative.GetDriverInfo()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=10652C
 - `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
@@ -125,8 +125,8 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Android.AndroidNativeWindowNative.GetFormat(IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Android.AndroidNativeWindowNative.SetBuffersGeometry(IntPtr, int, int, int)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.Open(string, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Input.LinuxNativeMethods.Open(string, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line MaiRat; Fingerprint=B96AC4
+- `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line MaiRat; Fingerprint=B87244
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlClockId(int, nuint, ref int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlAbsInfo(int, nuint, byte[])` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
