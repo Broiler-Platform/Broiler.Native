@@ -1,17 +1,17 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   5
 // Annotated:        5/5
 // Exempt:           6
-// Human-reviewed:   0/5
+// Human-reviewed:   5/5
 // IP risk:          Low
 // Security risk:    High
 // Criteria:         5/5
 // Resource impact:  2/10 max
-// Unverified:       5
+// Unverified:       0
 //
 // GENERATED - DO NOT EDIT MANUALLY
 
@@ -33,9 +33,9 @@ namespace Broiler.Native.Android;
 /// (Android's "GLESv2" library has carried ES 3 since API 18). A resolver with a candidate list
 /// keeps a working device from failing on a naming detail.
 /// </remarks>
-// Broiler-AI:           Origin=AI; Spec=ADR-0001; IP=Low; Security=High; Resources=2; Fingerprint=D71B08
-// Broiler-Falsified-If: on a device without libGLESv3.so but with libGLESv2.so, a GLES import fails with DllNotFoundException instead of binding to libGLESv2.so
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; Spec=ADR-0001; IP=Low; Security=High; Resources=2; Fingerprint=D71B08
+// Hairs-Falsified-If: on a device without libGLESv3.so but with libGLESv2.so, a GLES import fails with DllNotFoundException instead of binding to libGLESv2.so
+// Hairs-Human:        MaiRat; Fingerprint=D71B08
 public static class AndroidNativeLibraries
 {
     /// <summary>Import name for EGL. Resolved against <see cref="EglCandidates"/>.</summary>
@@ -52,17 +52,17 @@ public static class AndroidNativeLibraries
     public static IReadOnlyList<string> GlesCandidates { get; } = ["libGLESv3.so", "libGLESv2.so", "libGLESv2.so.2"];
 
     private static bool s_registered;
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E33051
-    // Broiler-Falsified-If: concurrent first calls to EnsureRegistered do not serialize on this gate, so two of them call SetDllImportResolver and the second throws InvalidOperationException
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=E33051
+    // Hairs-Falsified-If: concurrent first calls to EnsureRegistered do not serialize on this gate, so two of them call SetDllImportResolver and the second throws InvalidOperationException
+    // Hairs-Human:        MaiRat; Fingerprint=E33051
     private static readonly Lock s_gate = new();
 
     /// <summary>
     /// Registers the resolver. Safe to call repeatedly; only the first call installs it.
     /// </summary>
-    // Broiler-AI:           Origin=AI; Spec=ADR-0001; IP=Low; Security=High; Resources=0; Fingerprint=AFC9D0
-    // Broiler-Falsified-If: two threads making the first call at the same time both reach SetDllImportResolver, and the second throws InvalidOperationException
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; Spec=ADR-0001; IP=Low; Security=High; Resources=0; Fingerprint=AFC9D0
+    // Hairs-Falsified-If: two threads making the first call at the same time both reach SetDllImportResolver, and the second throws InvalidOperationException
+    // Hairs-Human:        MaiRat; Fingerprint=AFC9D0
     public static void EnsureRegistered()
     {
         if (s_registered)
@@ -78,9 +78,9 @@ public static class AndroidNativeLibraries
         }
     }
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=CE82F0
-    // Broiler-Falsified-If: an import name other than libEGL.so or libGLESv3.so, such as libandroid.so, is redirected to an EGL or GLES candidate instead of returning zero to the runtime's own probing
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=CE82F0
+    // Hairs-Falsified-If: an import name other than libEGL.so or libGLESv3.so, such as libandroid.so, is redirected to an EGL or GLES candidate instead of returning zero to the runtime's own probing
+    // Hairs-Human:        MaiRat; Fingerprint=CE82F0
     private static IntPtr Resolve(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
         IReadOnlyList<string>? candidates = libraryName switch
@@ -105,9 +105,9 @@ public static class AndroidNativeLibraries
     }
 
     /// <summary>Reports whether a library can be loaded, for the dependency probe.</summary>
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=C11A03
-    // Broiler-Falsified-If: a successful probe leaves the probed library loaded because the handle it opened is not freed before the name is reported
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=C11A03
+    // Hairs-Falsified-If: a successful probe leaves the probed library loaded because the handle it opened is not freed before the name is reported
+    // Hairs-Human:        MaiRat; Fingerprint=C11A03
     public static bool TryLoadAny(IReadOnlyList<string> candidates, out string resolvedName)
     {
         ArgumentNullException.ThrowIfNull(candidates);

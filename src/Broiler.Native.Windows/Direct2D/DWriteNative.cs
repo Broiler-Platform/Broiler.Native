@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   3
 // Annotated:        3/3
 // Exempt:           41
@@ -23,9 +23,9 @@ namespace Broiler.Native.Windows.Direct2D;
 /// <summary>
 /// DirectWrite interface IDs and enums needed to create a factory and text formats.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=564421
-// Broiler-Falsified-If: a structure here is not laid out as in dwrite.h, for example DWRITE_TEXT_METRICS not being the 36 bytes IDWriteTextLayout::GetMetrics writes, so the measured sizes and LineCount are read from the wrong bytes
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=564421
+// Hairs-Falsified-If: a structure here is not laid out as in dwrite.h, for example DWRITE_TEXT_METRICS not being the 36 bytes IDWriteTextLayout::GetMetrics writes, so the measured sizes and LineCount are read from the wrong bytes
+// Hairs-Human:        PENDING
 public static class DWriteNative
 {
     // ---- Interface IIDs --------------------------------------------------------------------------
@@ -103,9 +103,9 @@ public static class DWriteNative
         GDI_NATURAL = 2,
     }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=71E01C
-    // Broiler-Falsified-If: Marshal.SizeOf is not 36 or LineCount is not at offset 32, the layout of DWRITE_TEXT_METRICS in dwrite.h, seven FLOATs from left to layoutHeight then UINT32 maxBidiReorderingDepth and UINT32 lineCount
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=71E01C
+    // Hairs-Falsified-If: Marshal.SizeOf is not 36 or LineCount is not at offset 32, the layout of DWRITE_TEXT_METRICS in dwrite.h, seven FLOATs from left to layoutHeight then UINT32 maxBidiReorderingDepth and UINT32 lineCount
+    // Hairs-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct DWRITE_TEXT_METRICS
     {
@@ -120,9 +120,9 @@ public static class DWriteNative
         public uint LineCount;
     }
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=3000F3
-    // Broiler-Falsified-If: differs from slot 15 of IDWriteFactory, HRESULT CreateTextFormat(WCHAR const* fontFamilyName, IDWriteFontCollection* fontCollection, DWRITE_FONT_WEIGHT fontWeight, DWRITE_FONT_STYLE fontStyle, DWRITE_FONT_STRETCH fontStretch, FLOAT fontSize, WCHAR const* localeName, IDWriteTextFormat** textFormat) in dwrite.h, or fontFamilyName or localeName does not reach it as a NUL-terminated UTF-16 string
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=3000F3
+    // Hairs-Falsified-If: differs from slot 15 of IDWriteFactory, HRESULT CreateTextFormat(WCHAR const* fontFamilyName, IDWriteFontCollection* fontCollection, DWRITE_FONT_WEIGHT fontWeight, DWRITE_FONT_STYLE fontStyle, DWRITE_FONT_STRETCH fontStretch, FLOAT fontSize, WCHAR const* localeName, IDWriteTextFormat** textFormat) in dwrite.h, or fontFamilyName or localeName does not reach it as a NUL-terminated UTF-16 string
+    // Hairs-Human:        PENDING
     [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Unicode)]
     public delegate int CreateTextFormatProc(IntPtr self, [MarshalAs(UnmanagedType.LPWStr)] string fontFamilyName, IntPtr fontCollection,
         DWriteNative.DWRITE_FONT_WEIGHT fontWeight, DWriteNative.DWRITE_FONT_STYLE fontStyle, DWriteNative.DWRITE_FONT_STRETCH fontStretch,

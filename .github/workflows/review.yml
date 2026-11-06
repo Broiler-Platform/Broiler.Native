@@ -30,7 +30,7 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Restore pinned Broiler.SDK from NuGet.org
+      - name: Restore pinned Hairs.Cli from NuGet.org
         id: restore
         run: dotnet tool restore --configfile NuGet.config
 
@@ -38,14 +38,14 @@ jobs:
       # Pending human reviews are allowed while coverage is being built up.
       - name: Check review format, fingerprints, criteria and generated records
         run: >
-          dotnet tool run broiler-review -- assurance check --root .
+          dotnet tool run hairs -- assurance check --root .
           --json artifacts/review/assurance-check.json --annotation-limit 20
 
       - name: Report review coverage
         if: ${{ !cancelled() && steps.restore.outcome == 'success' }}
         run: |
           mkdir -p artifacts/review
-          dotnet tool run broiler-review -- assurance status --root . > artifacts/review/status.txt
+          dotnet tool run hairs -- assurance status --root . > artifacts/review/status.txt
           {
             echo '### Broiler.Native review assurance'
             echo

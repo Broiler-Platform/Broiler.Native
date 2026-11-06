@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   1
 // Annotated:        1/1
 // Exempt:           21
@@ -23,8 +23,8 @@ namespace Broiler.Native.Windows.Direct2D;
 /// Direct3D 11 enums and constants needed to create the backing device for Direct2D interop.
 /// We only need enough to call <see cref="NativeMethods.D3D11CreateDevice"/>.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=Low; Security=None; Resources=0; Fingerprint=BC2851
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=None; Resources=0; Fingerprint=BC2851
+// Hairs-Human:        PENDING
 public static class D3D11Native
 {
     public enum D3D_DRIVER_TYPE : uint

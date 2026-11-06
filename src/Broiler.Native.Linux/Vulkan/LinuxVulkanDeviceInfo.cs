@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   2
 // Annotated:        2/2
 // Exempt:           0
@@ -17,12 +17,12 @@
 
 namespace Broiler.Native.Linux.Vulkan;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=844002
-// Broiler-Human:        MaiRat; Fingerprint=844002
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=844002
+// Hairs-Human:        MaiRat; Fingerprint=844002
 public sealed record LinuxVulkanDeviceInfo(string Name, string DeviceType, string ApiVersion, string DriverVersion, uint VendorId, uint DeviceId)
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=7DD4B0
-    // Broiler-Human:        MaiRat; Fingerprint=7DD4B0
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=1; Fingerprint=7DD4B0
+    // Hairs-Human:        MaiRat; Fingerprint=7DD4B0
     public string ToDiagnosticString() =>
         $"Vulkan device={Name}; type={DeviceType}; api={ApiVersion}; driver={DriverVersion}; vendor=0x{VendorId:X4}; device=0x{DeviceId:X4}.";
 }

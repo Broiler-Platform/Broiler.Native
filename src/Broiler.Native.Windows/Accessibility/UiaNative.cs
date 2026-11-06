@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   118
 // Annotated:        118/118
 // Exempt:           171
@@ -22,8 +22,8 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace Broiler.Native.Windows.Accessibility;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8EEEA0
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8EEEA0
+// Hairs-Human:        PENDING
 [StructLayout(LayoutKind.Sequential)]
 public struct UiaRect
 {
@@ -41,8 +41,8 @@ public struct UiaRect
     }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4A8927
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4A8927
+// Hairs-Human:        PENDING
 [StructLayout(LayoutKind.Sequential)]
 public struct UiaPoint
 {
@@ -159,16 +159,16 @@ public enum SupportedTextSelection
 // Blittable ABI storage for VARIANT: 8-byte header followed by an 8-byte value or
 // two record pointers (16 bytes on 64-bit Windows). ComVariant supplies allocation
 // and disposal, while this boundary type needs no runtime struct marshaller.
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5C0948
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5C0948
+// Hairs-Human:        PENDING
 [StructLayout(LayoutKind.Sequential)]
 public struct AutomationVariant
 {
     public ulong Header;
     public VariantData Data;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=2F6795
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=2F6795
+    // Hairs-Human:        PENDING
     [StructLayout(LayoutKind.Explicit)]
     public struct VariantData
     {
@@ -176,423 +176,423 @@ public struct AutomationVariant
         [FieldOffset(0)] public RecordPointers Record;
     }
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=96DFD4
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=96DFD4
+    // Hairs-Human:        PENDING
     [StructLayout(LayoutKind.Sequential)]
     public struct RecordPointers { public IntPtr Record; public IntPtr RecordInfo; }
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=047E8E
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=047E8E
+    // Hairs-Human:        PENDING
     public static AutomationVariant From(ComVariant value) => Unsafe.BitCast<ComVariant, AutomationVariant>(value);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=11287A
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=11287A
+    // Hairs-Human:        PENDING
     public ComVariant ToVariant() => Unsafe.BitCast<AutomationVariant, ComVariant>(this);
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6A22EF
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6A22EF
+// Hairs-Human:        PENDING
 public interface IRawElementProviderSimple
 {
     ProviderOptions ProviderOptions { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D9F449
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D9F449
+    // Hairs-Human:        PENDING
     object? GetPatternProvider(int patternId);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E75AB1
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E75AB1
+    // Hairs-Human:        PENDING
     object? GetPropertyValue(int propertyId);
     IRawElementProviderSimple? HostRawElementProvider { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=471911
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=471911
+// Hairs-Human:        PENDING
 public interface IRawElementProviderFragment : IRawElementProviderSimple
 {
     new ProviderOptions ProviderOptions { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=99334F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=99334F
+    // Hairs-Human:        PENDING
     new object? GetPatternProvider(int patternId);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=19F652
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=19F652
+    // Hairs-Human:        PENDING
     new object? GetPropertyValue(int propertyId);
     new IRawElementProviderSimple? HostRawElementProvider { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FA151F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FA151F
+    // Hairs-Human:        PENDING
     IRawElementProviderFragment? Navigate(NavigateDirection direction);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=43D0C1
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=43D0C1
+    // Hairs-Human:        PENDING
     int[]? GetRuntimeId();
     UiaRect BoundingRectangle { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=90317C
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=90317C
+    // Hairs-Human:        PENDING
     IRawElementProviderSimple[]? GetEmbeddedFragmentRoots();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A71F75
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A71F75
+    // Hairs-Human:        PENDING
     void SetFocus();
     IRawElementProviderFragmentRoot? FragmentRoot { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CF4D08
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=CF4D08
+// Hairs-Human:        PENDING
 public interface IRawElementProviderFragmentRoot : IRawElementProviderFragment
 {
     new ProviderOptions ProviderOptions { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=99334F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=99334F
+    // Hairs-Human:        PENDING
     new object? GetPatternProvider(int patternId);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=19F652
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=19F652
+    // Hairs-Human:        PENDING
     new object? GetPropertyValue(int propertyId);
     new IRawElementProviderSimple? HostRawElementProvider { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D586AA
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D586AA
+    // Hairs-Human:        PENDING
     new IRawElementProviderFragment? Navigate(NavigateDirection direction);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=849995
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=849995
+    // Hairs-Human:        PENDING
     new int[]? GetRuntimeId();
     new UiaRect BoundingRectangle { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FD0437
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FD0437
+    // Hairs-Human:        PENDING
     new IRawElementProviderSimple[]? GetEmbeddedFragmentRoots();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=9EB2D0
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=9EB2D0
+    // Hairs-Human:        PENDING
     new void SetFocus();
     new IRawElementProviderFragmentRoot? FragmentRoot { get; }
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4DA22C
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4DA22C
+    // Hairs-Human:        PENDING
     IRawElementProviderFragment? ElementProviderFromPoint(double x, double y);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E19084
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E19084
+    // Hairs-Human:        PENDING
     IRawElementProviderFragment? GetFocus();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=899FF7
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=899FF7
+// Hairs-Human:        PENDING
 public interface IInvokeProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=331255
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=331255
+    // Hairs-Human:        PENDING
     void Invoke();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3A6B1D
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3A6B1D
+// Hairs-Human:        PENDING
 public interface IValueProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=795341
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=795341
+    // Hairs-Human:        PENDING
     void SetValue(string value);
     string Value { get; }
     bool IsReadOnly { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6C0341
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6C0341
+// Hairs-Human:        PENDING
 public interface ISelectionItemProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=04AB86
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=04AB86
+    // Hairs-Human:        PENDING
     void Select();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=478D2F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=478D2F
+    // Hairs-Human:        PENDING
     void AddToSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3C1E5A
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3C1E5A
+    // Hairs-Human:        PENDING
     void RemoveFromSelection();
     bool IsSelected { get; }
     IRawElementProviderSimple? SelectionContainer { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=38F0F0
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=38F0F0
+// Hairs-Human:        PENDING
 public interface ISelectionProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=488B54
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=488B54
+    // Hairs-Human:        PENDING
     IRawElementProviderSimple[]? GetSelection();
     bool CanSelectMultiple { get; }
     bool IsSelectionRequired { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=842DE8
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=842DE8
+// Hairs-Human:        PENDING
 public interface IToggleProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4E7622
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4E7622
+    // Hairs-Human:        PENDING
     void Toggle();
     ToggleState ToggleState { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3CB104
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3CB104
+// Hairs-Human:        PENDING
 public interface IExpandCollapseProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=94BF96
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=94BF96
+    // Hairs-Human:        PENDING
     void Expand();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=47F0C8
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=47F0C8
+    // Hairs-Human:        PENDING
     void Collapse();
     ExpandCollapseState ExpandCollapseState { get; }
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FB7B7E
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FB7B7E
+// Hairs-Human:        PENDING
 public interface IScrollItemProvider
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A594DF
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A594DF
+    // Hairs-Human:        PENDING
     void ScrollIntoView();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=35AAA8
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=35AAA8
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("d6dd68d1-86fd-4332-8666-9abedea2d24c")]
 public partial interface INativeSimple
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=287EEF
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=287EEF
+    // Hairs-Human:        PENDING
     ProviderOptions GetProviderOptions();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=70D92E
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=70D92E
+    // Hairs-Human:        PENDING
     IntPtr GetPatternProvider(int patternId);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=568A40
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=568A40
+    // Hairs-Human:        PENDING
     AutomationVariant GetPropertyValue(int propertyId);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D1B927
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D1B927
+    // Hairs-Human:        PENDING
     INativeSimple? GetHostRawElementProvider();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5B9152
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5B9152
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("f7063da8-8359-439c-9297-bbc5299a7d87")]
 public partial interface INativeFragment
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B82872
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B82872
+    // Hairs-Human:        PENDING
     INativeFragment? Navigate(NavigateDirection direction);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E26C70
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E26C70
+    // Hairs-Human:        PENDING
     IntPtr GetRuntimeId();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=AF28EB
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=AF28EB
+    // Hairs-Human:        PENDING
     UiaRect GetBoundingRectangle();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B8092B
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B8092B
+    // Hairs-Human:        PENDING
     IntPtr GetEmbeddedFragmentRoots();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A71F75
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A71F75
+    // Hairs-Human:        PENDING
     void SetFocus();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3573B5
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3573B5
+    // Hairs-Human:        PENDING
     INativeFragmentRoot? GetFragmentRoot();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=234BE4
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=234BE4
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("620ce2a5-ab8f-40a9-86cb-de3c75599b58")]
 public partial interface INativeFragmentRoot
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=746E5D
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=746E5D
+    // Hairs-Human:        PENDING
     INativeFragment? ElementProviderFromPoint(double x, double y);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=998927
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=998927
+    // Hairs-Human:        PENDING
     INativeFragment? GetFocus();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=DA27BA
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=DA27BA
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("54fcb24b-e18e-47a2-b4d3-eccbe77599a2")]
 public partial interface INativeInvoke
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=331255
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=331255
+    // Hairs-Human:        PENDING
     void Invoke();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=01DBDE
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=01DBDE
+// Hairs-Human:        PENDING
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16), Guid("c7935180-6fb3-4201-b174-7df73adbf64a")]
 public partial interface INativeValue
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=795341
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=795341
+    // Hairs-Human:        PENDING
     void SetValue(string value);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=12A91C
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=12A91C
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.BStr)] string GetValue();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=726788
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=726788
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.Bool)] bool GetIsReadOnly();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=75649E
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=75649E
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("2acad808-b2d4-452d-a407-91ff1ad167b2")]
 public partial interface INativeSelectionItem
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=04AB86
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=04AB86
+    // Hairs-Human:        PENDING
     void Select();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=478D2F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=478D2F
+    // Hairs-Human:        PENDING
     void AddToSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3C1E5A
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3C1E5A
+    // Hairs-Human:        PENDING
     void RemoveFromSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8548EA
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8548EA
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.Bool)] bool GetIsSelected();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=AFAC6B
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=AFAC6B
+    // Hairs-Human:        PENDING
     INativeSimple? GetSelectionContainer();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=2AD339
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=2AD339
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("fb8b03af-3bdf-48d4-bd36-1a65793be168")]
 public partial interface INativeSelection
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=274C84
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=274C84
+    // Hairs-Human:        PENDING
     IntPtr GetSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=1F00C6
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=1F00C6
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.Bool)] bool GetCanSelectMultiple();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=53E878
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=53E878
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.Bool)] bool GetIsSelectionRequired();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6DC829
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6DC829
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("56d00bd0-c4f4-433c-a836-1a52a57e0892")]
 public partial interface INativeToggle
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4E7622
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=4E7622
+    // Hairs-Human:        PENDING
     void Toggle();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=16EC2D
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=16EC2D
+    // Hairs-Human:        PENDING
     ToggleState GetToggleState();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=464F3D
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=464F3D
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("d847d3a5-cab0-4a98-8c32-ecb45c59ad24")]
 public partial interface INativeExpandCollapse
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=94BF96
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=94BF96
+    // Hairs-Human:        PENDING
     void Expand();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=47F0C8
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=47F0C8
+    // Hairs-Human:        PENDING
     void Collapse();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=1D4E54
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=1D4E54
+    // Hairs-Human:        PENDING
     ExpandCollapseState GetExpandCollapseState();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=7064A8
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=7064A8
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("2360c714-4bf1-4b26-ba65-9b21316127eb")]
 public partial interface INativeScrollItem
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A594DF
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A594DF
+    // Hairs-Human:        PENDING
     void ScrollIntoView();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B51CAE
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B51CAE
+// Hairs-Human:        PENDING
 [GeneratedComInterface, Guid("3589c92c-63f3-4367-99bb-ada653b77cf2")]
 public partial interface INativeText
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=274C84
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=274C84
+    // Hairs-Human:        PENDING
     IntPtr GetSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B8BBDA
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B8BBDA
+    // Hairs-Human:        PENDING
     IntPtr GetVisibleRanges();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B767DF
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B767DF
+    // Hairs-Human:        PENDING
     INativeTextRange? RangeFromChild(INativeSimple? childElement);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=F8E5B1
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=F8E5B1
+    // Hairs-Human:        PENDING
     INativeTextRange? RangeFromPoint(UiaPoint point);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A3398E
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A3398E
+    // Hairs-Human:        PENDING
     INativeTextRange? GetDocumentRange();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8BCAF6
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=8BCAF6
+    // Hairs-Human:        PENDING
     SupportedTextSelection GetSupportedTextSelection();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=DB519F
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=DB519F
+// Hairs-Human:        PENDING
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16), Guid("5347ad7b-c355-46f8-aff5-909033582f63")]
 public partial interface INativeTextRange
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=62D716
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=62D716
+    // Hairs-Human:        PENDING
     INativeTextRange Clone();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A5BEAD
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A5BEAD
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.Bool)] bool Compare(INativeTextRange range);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=C4F134
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=C4F134
+    // Hairs-Human:        PENDING
     int CompareEndpoints(TextPatternRangeEndpoint endpoint, INativeTextRange targetRange, TextPatternRangeEndpoint targetEndpoint);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=65AF04
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=65AF04
+    // Hairs-Human:        PENDING
     void ExpandToEnclosingUnit(TextUnit unit);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3A0E27
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3A0E27
+    // Hairs-Human:        PENDING
     INativeTextRange? FindAttribute(int attributeId, AutomationVariant value, [MarshalAs(UnmanagedType.Bool)] bool backward);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=9746B9
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=9746B9
+    // Hairs-Human:        PENDING
     INativeTextRange? FindText([MarshalAs(UnmanagedType.BStr)] string text, [MarshalAs(UnmanagedType.Bool)] bool backward, [MarshalAs(UnmanagedType.Bool)] bool ignoreCase);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6C05C0
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=6C05C0
+    // Hairs-Human:        PENDING
     AutomationVariant GetAttributeValue(int attributeId);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3D7A90
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3D7A90
+    // Hairs-Human:        PENDING
     IntPtr GetBoundingRectangles();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=830AD2
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=830AD2
+    // Hairs-Human:        PENDING
     INativeSimple? GetEnclosingElement();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=50D08F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=50D08F
+    // Hairs-Human:        PENDING
     [return: MarshalAs(UnmanagedType.BStr)] string GetText(int maxLength);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=30F83D
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=30F83D
+    // Hairs-Human:        PENDING
     int Move(TextUnit unit, int count);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FF7F14
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=FF7F14
+    // Hairs-Human:        PENDING
     int MoveEndpointByUnit(TextPatternRangeEndpoint endpoint, TextUnit unit, int count);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=58ED87
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=58ED87
+    // Hairs-Human:        PENDING
     void MoveEndpointByRange(TextPatternRangeEndpoint endpoint, INativeTextRange targetRange, TextPatternRangeEndpoint targetEndpoint);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=04AB86
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=04AB86
+    // Hairs-Human:        PENDING
     void Select();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=478D2F
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=478D2F
+    // Hairs-Human:        PENDING
     void AddToSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3C1E5A
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3C1E5A
+    // Hairs-Human:        PENDING
     void RemoveFromSelection();
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=870343
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=870343
+    // Hairs-Human:        PENDING
     void ScrollIntoView([MarshalAs(UnmanagedType.Bool)] bool alignToTop);
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5D364B
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5D364B
+    // Hairs-Human:        PENDING
     IntPtr GetChildren();
 }
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=82DAA4
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=82DAA4
+// Hairs-Human:        PENDING
 public static partial class UiaNative
 {
     public const int UiaRootObjectId = -25;
@@ -685,45 +685,45 @@ public static partial class UiaNative
     public const int UiaText_TextSelectionChangedEventId = 20014;
     public const int UiaText_TextChangedEventId = 20015;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E499A7
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=E499A7
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaReturnRawElementProvider")]
     public static partial IntPtr UiaReturnRawElementProvider(IntPtr hwnd, IntPtr wParam, IntPtr lParam, INativeSimple provider);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B1D4CE
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B1D4CE
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll")]
     public static partial int UiaHostProviderFromHwnd(IntPtr hwnd, out INativeSimple? provider);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A59524
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=A59524
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll")]
     public static partial int UiaGetReservedNotSupportedValue(out IntPtr notSupportedValue);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B218D1
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B218D1
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool UiaClientsAreListening();
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=86A3FD
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=86A3FD
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaRaiseAutomationEvent")]
     public static partial int UiaRaiseAutomationEvent(INativeSimple provider, int eventId);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=C1E16B
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=C1E16B
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaRaiseAutomationPropertyChangedEvent")]
     public static partial int UiaRaiseAutomationPropertyChangedEvent(INativeSimple provider, int propertyId, AutomationVariant oldValue, AutomationVariant newValue);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5BF310
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=5BF310
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaRaiseNotificationEvent")]
     public static partial int UiaRaiseNotificationEvent(INativeSimple provider, NotificationKind kind, NotificationProcessing processing,
         [MarshalAs(UnmanagedType.BStr)] string displayString, [MarshalAs(UnmanagedType.BStr)] string activityId);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=480DB2
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=480DB2
+    // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaRaiseStructureChangedEvent")]
     public static partial int UiaRaiseStructureChangedEvent(INativeSimple provider, StructureChangeType change,
         [MarshalUsing(CountElementName = nameof(length))] int[]? runtimeId, int length);

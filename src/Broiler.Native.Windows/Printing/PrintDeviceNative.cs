@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   13
 // Annotated:        13/13
 // Exempt:           58
@@ -29,9 +29,9 @@ namespace Broiler.Native.Windows.Printing;
 /// area starts on it - comes from <see cref="WindowNative.GetDeviceCaps"/> with the indexes
 /// declared here; that import is owned by <see cref="WindowNative"/> and not repeated.
 /// </remarks>
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=7D93A1
-// Broiler-Falsified-If: a binding below differs from its wingdi.h prototype, or a DC from CreateDCW reaches no DeleteDC
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=1; Fingerprint=7D93A1
+// Hairs-Falsified-If: a binding below differs from its wingdi.h prototype, or a DC from CreateDCW reaches no DeleteDC
+// Hairs-Human:        PENDING
 public static partial class PrintDeviceNative
 {
     public const int HORZRES = 8;
@@ -53,66 +53,66 @@ public static partial class PrintDeviceNative
     public const int HALFTONE = 4;
     public const int COLORONCOLOR = 3;
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=795966
-    // Broiler-Falsified-If: differs from HDC CreateDCW(LPCWSTR pwszDriver, LPCWSTR pwszDevice, LPCWSTR pszPort, const DEVMODEW *pdm) in wingdi.h, or pdm is not NULL and not a DEVMODEW the printer's driver produced at the size DocumentPropertiesW reported
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=795966
+    // Hairs-Falsified-If: differs from HDC CreateDCW(LPCWSTR pwszDriver, LPCWSTR pwszDevice, LPCWSTR pszPort, const DEVMODEW *pdm) in wingdi.h, or pdm is not NULL and not a DEVMODEW the printer's driver produced at the size DocumentPropertiesW reported
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", EntryPoint = "CreateDCW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
     public static partial IntPtr CreateDC(string? driver, string device, string? port, IntPtr devMode);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=767842
-    // Broiler-Falsified-If: differs from BOOL DeleteDC(HDC hdc) in wingdi.h, or a DC is deleted twice
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=767842
+    // Hairs-Falsified-If: differs from BOOL DeleteDC(HDC hdc) in wingdi.h, or a DC is deleted twice
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool DeleteDC(IntPtr hdc);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=CF9414
-    // Broiler-Falsified-If: differs from int StartDocW(HDC hdc, const DOCINFOW *lpdi) in wingdi.h, or the strings DOCINFOW points to are freed before the call returns
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Critical; Resources=1; Fingerprint=CF9414
+    // Hairs-Falsified-If: differs from int StartDocW(HDC hdc, const DOCINFOW *lpdi) in wingdi.h, or the strings DOCINFOW points to are freed before the call returns
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", EntryPoint = "StartDocW", SetLastError = true)]
     public static partial int StartDoc(IntPtr hdc, in DOCINFOW docInfo);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=9F565D
-    // Broiler-Falsified-If: differs from int EndDoc(HDC hdc) in wingdi.h
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=9F565D
+    // Hairs-Falsified-If: differs from int EndDoc(HDC hdc) in wingdi.h
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial int EndDoc(IntPtr hdc);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=F1ABA4
-    // Broiler-Falsified-If: differs from int AbortDoc(HDC hdc) in wingdi.h
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=F1ABA4
+    // Hairs-Falsified-If: differs from int AbortDoc(HDC hdc) in wingdi.h
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial int AbortDoc(IntPtr hdc);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=00D264
-    // Broiler-Falsified-If: differs from int StartPage(HDC hdc) in wingdi.h
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=00D264
+    // Hairs-Falsified-If: differs from int StartPage(HDC hdc) in wingdi.h
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial int StartPage(IntPtr hdc);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C69AB4
-    // Broiler-Falsified-If: differs from int EndPage(HDC hdc) in wingdi.h
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=C69AB4
+    // Hairs-Falsified-If: differs from int EndPage(HDC hdc) in wingdi.h
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial int EndPage(IntPtr hdc);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=3D9BA0
-    // Broiler-Falsified-If: differs from int StretchDIBits(HDC hdc, int xDest, int yDest, int DestWidth, int DestHeight, int xSrc, int ySrc, int SrcWidth, int SrcHeight, const VOID *lpBits, const BITMAPINFO *lpbmi, UINT iUsage, DWORD rop) in wingdi.h, where passing only the 40-byte BITMAPINFOHEADER holds only for 32 bits per pixel BI_RGB, or bits holds fewer than abs(biHeight) rows of biWidth * 4 bytes
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Critical; Resources=2; Fingerprint=3D9BA0
+    // Hairs-Falsified-If: differs from int StretchDIBits(HDC hdc, int xDest, int yDest, int DestWidth, int DestHeight, int xSrc, int ySrc, int SrcWidth, int SrcHeight, const VOID *lpBits, const BITMAPINFO *lpbmi, UINT iUsage, DWORD rop) in wingdi.h, where passing only the 40-byte BITMAPINFOHEADER holds only for 32 bits per pixel BI_RGB, or bits holds fewer than abs(biHeight) rows of biWidth * 4 bytes
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static unsafe partial int StretchDIBits(IntPtr hdc, int xDest, int yDest, int destWidth, int destHeight,
         int xSource, int ySource, int sourceWidth, int sourceHeight, byte* bits, in WindowNative.BITMAPINFOHEADER header,
         uint usage, uint rasterOperation);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=27CA80
-    // Broiler-Falsified-If: differs from int SetStretchBltMode(HDC hdc, int mode) in wingdi.h
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=27CA80
+    // Hairs-Falsified-If: differs from int SetStretchBltMode(HDC hdc, int mode) in wingdi.h
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     public static partial int SetStretchBltMode(IntPtr hdc, int mode);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=69DC6D
-    // Broiler-Falsified-If: differs from BOOL SetBrushOrgEx(HDC hdc, int x, int y, LPPOINT lppt) in wingdi.h with lppt passed NULL
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=69DC6D
+    // Hairs-Falsified-If: differs from BOOL SetBrushOrgEx(HDC hdc, int x, int y, LPPOINT lppt) in wingdi.h with lppt passed NULL
+    // Hairs-Human:        PENDING
     [LibraryImport("gdi32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool SetBrushOrgEx(IntPtr hdc, int x, int y, IntPtr previous);
@@ -123,9 +123,9 @@ public static partial class PrintDeviceNative
 /// port, and the data type. Strings are native UTF-16 pointers the caller keeps alive for
 /// the <see cref="PrintDeviceNative.StartDoc"/> call.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=001F3D
-// Broiler-Falsified-If: Marshal.SizeOf is not 40 on 64-bit and 20 on 32-bit, with lpszDocName at one pointer (after cbSize and its padding), lpszOutput at two, lpszDatatype at three and fwType after it, the layout of DOCINFOW in wingdi.h
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=None; Security=High; Resources=0; Fingerprint=001F3D
+// Hairs-Falsified-If: Marshal.SizeOf is not 40 on 64-bit and 20 on 32-bit, with lpszDocName at one pointer (after cbSize and its padding), lpszOutput at two, lpszDatatype at three and fwType after it, the layout of DOCINFOW in wingdi.h
+// Hairs-Human:        PENDING
 [StructLayout(LayoutKind.Sequential)]
 public struct DOCINFOW
 {
@@ -142,9 +142,9 @@ public struct DOCINFOW
 /// <see cref="Size"/> bytes in, so a device mode is always handled as the driver's buffer
 /// and never copied into this struct alone.
 /// </summary>
-// Broiler-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=2E053C
-// Broiler-Falsified-If: Marshal.SizeOf is not 220, or dmSize is not at 68, dmFields at 72, dmOrientation at 76, dmPaperSize at 78, dmCopies at 86, dmPrintQuality at 90, dmColor at 92, dmDuplex at 94, dmYResolution at 96 and dmCollate at 100, the printer layout of DEVMODEW in wingdi.h
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=None; Security=Critical; Resources=0; Fingerprint=2E053C
+// Hairs-Falsified-If: Marshal.SizeOf is not 220, or dmSize is not at 68, dmFields at 72, dmOrientation at 76, dmPaperSize at 78, dmCopies at 86, dmPrintQuality at 90, dmColor at 92, dmDuplex at 94, dmYResolution at 96 and dmCollate at 100, the printer layout of DEVMODEW in wingdi.h
+// Hairs-Human:        PENDING
 [StructLayout(LayoutKind.Explicit, Size = 220, CharSet = CharSet.Unicode)]
 public struct DEVMODEW
 {

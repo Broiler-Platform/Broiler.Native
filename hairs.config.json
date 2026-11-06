@@ -27,9 +27,9 @@
   "artefacts": {
     "report": "CODE-ASSURANCE.md",
     "humanReview": "HUMAN_REVIEW.md",
-    "manifest": "assurance.manifest.json"
+    "manifest": "hairs.manifest.json"
   },
   "forbidDirectives": false,
   "forgeryVocabulary": "narrow",
-  "regenerateCommand": "dotnet tool run broiler-review -- assurance generate --root ."
+  "regenerateCommand": "dotnet tool run hairs -- assurance generate --root ."
 }

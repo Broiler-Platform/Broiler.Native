@@ -73,7 +73,7 @@ node --test eng/resolve-preview-version.test.mjs
 
 # Validate review annotations, fingerprints and generated reports
 dotnet tool restore --configfile NuGet.config
-dotnet tool run broiler-review -- assurance check --root .
+dotnet tool run hairs -- assurance check --root .
 
 # Pack and verify shipping packages locally
 pwsh -File eng/pack.ps1 -Configuration Release

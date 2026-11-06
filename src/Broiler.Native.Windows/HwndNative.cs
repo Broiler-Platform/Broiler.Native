@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   2
 // Annotated:        2/2
 // Exempt:           0
@@ -19,14 +19,14 @@ using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Windows;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EDAB60
-// Broiler-Falsified-If: its IsWindow import differs from BOOL IsWindow(HWND hWnd) in winuser.h
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EDAB60
+// Hairs-Falsified-If: its IsWindow import differs from BOOL IsWindow(HWND hWnd) in winuser.h
+// Hairs-Human:        PENDING
 public static partial class HwndNative
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EF9423
-    // Broiler-Falsified-If: differs from BOOL IsWindow(HWND hWnd) in winuser.h, with the result marshalled as a 4-byte BOOL
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=0; Fingerprint=EF9423
+    // Hairs-Falsified-If: differs from BOOL IsWindow(HWND hWnd) in winuser.h, with the result marshalled as a 4-byte BOOL
+    // Hairs-Human:        PENDING
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool IsWindow(nint hwnd);

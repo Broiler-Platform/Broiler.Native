@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   3
 // Annotated:        3/3
 // Exempt:           0
@@ -19,15 +19,15 @@ using System;
 
 namespace Broiler.Native.Linux.Vulkan;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=69C964
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=69C964
+// Hairs-Human:        PENDING
 public sealed class LinuxVulkanException : InvalidOperationException
 {
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=8D9123
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=8D9123
+    // Hairs-Human:        PENDING
     public LinuxVulkanException(string message) : base(message) { }
 
-    // Broiler-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=08D2EB
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=None; Security=Low; Resources=0; Fingerprint=08D2EB
+    // Hairs-Human:        PENDING
     public LinuxVulkanException(string message, Exception innerException) : base(message, innerException) { }
 }

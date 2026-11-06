@@ -1,29 +1,29 @@
 # Human Review: Broiler.Native
 
 GENERATED - DO NOT EDIT MANUALLY. Regenerate with
-`dotnet tool run broiler-review -- assurance generate --root .`, which rewrites this file,
-`CODE-ASSURANCE.md`, `assurance.manifest.json` and every generated source header from the
+`dotnet tool run hairs -- assurance generate --root .`, which rewrites this file,
+`CODE-ASSURANCE.md`, `hairs.manifest.json` and every generated source header from the
 product tree.
 
-> **Status: PARTIAL.** Human-reviewed: 53 of 857 relevant units. `dotnet tool run broiler-review -- assurance check --root . --release`
+> **Status: PARTIAL.** Human-reviewed: 66 of 857 relevant units. `dotnet tool run hairs -- assurance check --root . --release`
 > fails while any relevant unit is without a decision bound to its current fingerprint.
 
 ## 1. How To Use This File
 
-Read it; do not edit it. A decision about a code unit is the `// Broiler-Human:` line on that
+Read it; do not edit it. A decision about a code unit is the `// Hairs-Human:` line on that
 unit's declaration, and every table below is read out of those lines. There is nothing here
 to fill in and nothing here to leave blank.
 
 ## 2. How A Review Is Recorded
 
-In one place: the `// Broiler-Human:` line of the assurance annotation that sits on the
+In one place: the `// Hairs-Human:` line of the assurance annotation that sits on the
 declaration being read. Nothing in this file is edited by hand, no second document carries a
 per-item checklist, and no list of permitted aliases exists to be added to.
 
 ```csharp
-// Broiler-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=4A3BFD
-// Broiler-Falsified-If: a negative value reaches the running total
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=High; Resources=2; Fingerprint=4A3BFD
+// Hairs-Falsified-If: a negative value reaches the running total
+// Hairs-Human:        PENDING
 ```
 
 The last line has four shapes. A human writes three of them; the generator writes the fourth
@@ -36,7 +36,7 @@ and may never invent an alias, which the check asserts in both directions.
 | `<alias>; Fingerprint=<six hex>` | A decision bound to one exact version of one declaration. |
 | `STALE; Previous=<alias>@<fingerprint>` | Written by the generator when the code moved after a decision. Only a human clears it, by stating their alias again. |
 
-A human may state their own `IP=`, `Security=` and `Resources=` assessment beside their alias,
+A human may state their own `IP=`, `Security=`, `Resources=`, `CS=` and `CL=` assessment beside their alias,
 which is how a reader disagrees with the machine assessment on the line above: an assessment is
 a comment and moves no fingerprint, so there is nowhere else to say it.
 
@@ -54,8 +54,8 @@ did, which is the narrower and the more useful of the two.
 | Relevant | 857 |
 | Exempt | 1120 |
 | Assessed | 857 of 857 (100%) |
-| Human reviewed | 53 of 857 (6%) |
-| Unverified | 804 |
+| Human reviewed | 66 of 857 (8%) |
+| Unverified | 791 |
 | Aliases naming a decision | 1 |
 
 ## 4. Review States
@@ -67,9 +67,9 @@ annotations and the current fingerprints; nothing stores them.
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 804 |
+| HUMAN_PENDING | 791 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
-| VERIFIED | 53 |
+| VERIFIED | 66 |
 | STALE | 0 |
 | EXEMPT | 1120 |
 
@@ -81,7 +81,7 @@ declaration has changed since.
 
 | Alias | Units | Files | Current | Outrun |
 |---|---:|---:|---:|---:|
-| MaiRat | 53 | 7 | 53 | 0 |
+| MaiRat | 66 | 10 | 66 | 0 |
 
 ## 6. Coverage By File
 
@@ -90,13 +90,13 @@ relevant units in a state that blocks a release.
 
 | File | Units | Relevant | Exempt | Unverified | IP risk | Security risk | Criteria |
 |---|---:|---:|---:|---:|---|---|---:|
-| `src/Broiler.Native.Android/AndroidEglNative.cs` | 46 | 17 | 29 | 1 | Low | Critical | 17/17 |
-| `src/Broiler.Native.Android/AndroidGlesNative.cs` | 52 | 27 | 25 | 1 | Low | Critical | 27/27 |
-| `src/Broiler.Native.Android/AndroidNativeLibraries.cs` | 11 | 5 | 6 | 5 | Low | High | 5/5 |
+| `src/Broiler.Native.Android/AndroidEglNative.cs` | 46 | 17 | 29 | 0 | Low | Critical | 17/17 |
+| `src/Broiler.Native.Android/AndroidGlesNative.cs` | 52 | 27 | 25 | 0 | Low | Critical | 27/27 |
+| `src/Broiler.Native.Android/AndroidNativeLibraries.cs` | 11 | 5 | 6 | 0 | Low | High | 5/5 |
 | `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` | 10 | 8 | 2 | 8 | Low | Critical | 8/8 |
-| `src/Broiler.Native.Android/AndroidOpenGlEsDriverInfo.cs` | 2 | 2 | 0 | 2 | Low | Low | 0/0 |
-| `src/Broiler.Native.Android/AndroidOpenGlEsException.cs` | 3 | 3 | 0 | 3 | Low | Low | 0/0 |
-| `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` | 30 | 10 | 20 | 8 | Low | Critical | 10/10 |
+| `src/Broiler.Native.Android/AndroidOpenGlEsDriverInfo.cs` | 2 | 2 | 0 | 0 | Low | Low | 0/0 |
+| `src/Broiler.Native.Android/AndroidOpenGlEsException.cs` | 3 | 3 | 0 | 0 | Low | Low | 0/0 |
+| `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` | 30 | 10 | 20 | 7 | Low | Critical | 10/10 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxEglNative.cs` | 36 | 15 | 21 | 15 | Low | Critical | 15/15 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlDriverInfo.cs` | 2 | 2 | 0 | 0 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlException.cs` | 3 | 3 | 0 | 0 | Low | Low | 0/0 |
@@ -146,6 +146,7 @@ relevant units in a state that blocks a release.
 One entry per unit whose human line names an alias, with the line exactly as the source
 states it.
 
+- `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=CCDC42
 - `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=885D32
 - `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=B5AA7C
 - `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=365B80
@@ -162,6 +163,7 @@ states it.
 - `Broiler.Native.Android.AndroidEglNative.SwapInterval(IntPtr, int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=2D465B
 - `Broiler.Native.Android.AndroidEglNative.QuerySurface(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=6B6DBC
 - `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - MaiRat; Fingerprint=B71C87
+- `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=1454CE
 - `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=AD9690
 - `Broiler.Native.Android.AndroidGlesNative.DeleteTextures(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=0A6CA2
 - `Broiler.Native.Android.AndroidGlesNative.BindTexture(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=38241C
@@ -188,8 +190,19 @@ states it.
 - `Broiler.Native.Android.AndroidGlesNative.GetStringValue(uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=46DE45
 - `Broiler.Native.Android.AndroidGlesNative.ThrowIfError(string)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=A25A60
 - `Broiler.Native.Android.AndroidGlesNative.GetDriverInfo()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - MaiRat; Fingerprint=10652C
+- `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - MaiRat; Fingerprint=D71B08
+- `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - MaiRat; Fingerprint=E33051
+- `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - MaiRat; Fingerprint=AFC9D0
+- `Broiler.Native.Android.AndroidNativeLibraries.Resolve(string, Assembly, DllImportSearchPath?)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - MaiRat; Fingerprint=CE82F0
+- `Broiler.Native.Android.AndroidNativeLibraries.TryLoadAny(IReadOnlyList<string>, out string)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - MaiRat; Fingerprint=C11A03
+- `Broiler.Native.Android.AndroidOpenGlEsDriverInfo` in `src/Broiler.Native.Android/AndroidOpenGlEsDriverInfo.cs` - MaiRat; Fingerprint=87D2FA
+- `Broiler.Native.Android.AndroidOpenGlEsDriverInfo.ToDiagnosticString()` in `src/Broiler.Native.Android/AndroidOpenGlEsDriverInfo.cs` - MaiRat; Fingerprint=345A91
+- `Broiler.Native.Android.AndroidOpenGlEsException` in `src/Broiler.Native.Android/AndroidOpenGlEsException.cs` - MaiRat; Fingerprint=3D13C8
+- `Broiler.Native.Android.AndroidOpenGlEsException.AndroidOpenGlEsException(string)` in `src/Broiler.Native.Android/AndroidOpenGlEsException.cs` - MaiRat; Fingerprint=AECDA5
+- `Broiler.Native.Android.AndroidOpenGlEsException.AndroidOpenGlEsException(string, Exception)` in `src/Broiler.Native.Android/AndroidOpenGlEsException.cs` - MaiRat; Fingerprint=3A5B77
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Open(string, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - MaiRat; Fingerprint=B96AC4
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - MaiRat; Fingerprint=B87244
+- `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - MaiRat; Fingerprint=D0C8DE
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlDriverInfo` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlDriverInfo.cs` - MaiRat; Fingerprint=1A8EF8
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlDriverInfo.ToDiagnosticString()` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlDriverInfo.cs` - MaiRat; Fingerprint=77BC4A
 - `Broiler.Native.Linux.OpenGL.LinuxOpenGlException` in `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlException.cs` - MaiRat; Fingerprint=3783A6
@@ -210,7 +223,7 @@ The units at the top of the security vocabulary, with the observation that would
 one wrong and the human line it carries. The set is read from the assessments rather than
 written out, so a unit that becomes `High` joins it at the next generation.
 
-- `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=ADR-0001, `CCDC42`, PENDING
+- `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, Spec=ADR-0001, `CCDC42`, MaiRat; Fingerprint=CCDC42
   - Falsified if: an import here differs from its prototype in EGL/egl.h, where EGLDisplay, EGLConfig, EGLSurface and EGLContext are void *, EGLBoolean and EGLenum are unsigned int, and Android's EGL/eglplatform.h makes EGLNativeWindowType struct ANativeWindow * and EGLint khronos_int32_t
 - `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `885D32`, MaiRat; Fingerprint=885D32
   - Falsified if: differs from EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id) in EGL/egl.h, EGLNativeDisplayType being void * on Android in EGL/eglplatform.h
@@ -244,7 +257,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: differs from EGLBoolean eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value) in EGL/egl.h
 - `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, Spec=none cited, `B71C87`, MaiRat; Fingerprint=B71C87
   - Falsified if: differs from EGLint eglGetError(void) in EGL/egl.h
-- `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `1454CE`, PENDING
+- `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `1454CE`, MaiRat; Fingerprint=1454CE
   - Falsified if: an import here differs from its prototype in GLES3/gl3.h, where GLenum, GLuint and GLbitfield are unsigned int, GLint and GLsizei are int, and GLfloat is khronos_float_t
 - `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `AD9690`, MaiRat; Fingerprint=AD9690
   - Falsified if: count is other than 1 although textures is one GLuint, through which void glGenTextures(GLsizei n, GLuint *textures) in GLES3/gl3.h writes n names
@@ -298,15 +311,15 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: a second error flag still queued after the single glGetError read survives and makes the next, successful operation's check throw
 - `Broiler.Native.Android.AndroidGlesNative.GetDriverInfo()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, Spec=none cited, `10652C`, MaiRat; Fingerprint=10652C
   - Falsified if: two of the GL_VENDOR, GL_RENDERER, GL_VERSION and GL_SHADING_LANGUAGE_VERSION queries are passed in swapped positions, so Renderer holds the version string
-- `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=ADR-0001, `D71B08`, PENDING
+- `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=ADR-0001, `D71B08`, MaiRat; Fingerprint=D71B08
   - Falsified if: on a device without libGLESv3.so but with libGLESv2.so, a GLES import fails with DllNotFoundException instead of binding to libGLESv2.so
-- `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `E33051`, PENDING
+- `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `E33051`, MaiRat; Fingerprint=E33051
   - Falsified if: concurrent first calls to EnsureRegistered do not serialize on this gate, so two of them call SetDllImportResolver and the second throws InvalidOperationException
-- `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=ADR-0001, `AFC9D0`, PENDING
+- `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=ADR-0001, `AFC9D0`, MaiRat; Fingerprint=AFC9D0
   - Falsified if: two threads making the first call at the same time both reach SetDllImportResolver, and the second throws InvalidOperationException
-- `Broiler.Native.Android.AndroidNativeLibraries.Resolve(string, Assembly, DllImportSearchPath?)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `CE82F0`, PENDING
+- `Broiler.Native.Android.AndroidNativeLibraries.Resolve(string, Assembly, DllImportSearchPath?)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `CE82F0`, MaiRat; Fingerprint=CE82F0
   - Falsified if: an import name other than libEGL.so or libGLESv3.so, such as libandroid.so, is redirected to an EGL or GLES candidate instead of returning zero to the runtime's own probing
-- `Broiler.Native.Android.AndroidNativeLibraries.TryLoadAny(IReadOnlyList<string>, out string)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `C11A03`, PENDING
+- `Broiler.Native.Android.AndroidNativeLibraries.TryLoadAny(IReadOnlyList<string>, out string)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, Spec=none cited, `C11A03`, MaiRat; Fingerprint=C11A03
   - Falsified if: a successful probe leaves the probed library loaded because the handle it opened is not freed before the name is reported
 - `Broiler.Native.Android.AndroidNativeWindowNative` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=Critical, Spec=none cited, `8121EE`, PENDING
   - Falsified if: an import here differs from its prototype in android/native_window.h or android/native_window_jni.h, where the window is ANativeWindow*, env and surface are JNIEnv* and jobject, and widths, heights, formats and results are int32_t
@@ -330,7 +343,7 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: pathname reaches int open(const char *path, int flags, ...) in fcntl.h, the open(2) prototype, as other than the NUL-terminated UTF-8 bytes of the managed string, for example cut short at an embedded NUL
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `B87244`, MaiRat; Fingerprint=B87244
   - Falsified if: differs from ssize_t read(size_t count; int fd, void buf[count], size_t count) in unistd.h as read(2) gives it, or count is larger than the length of buffer
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `D0C8DE`, PENDING
+- `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, Spec=none cited, `D0C8DE`, MaiRat; Fingerprint=D0C8DE
   - Falsified if: differs from int poll(struct pollfd *fds, nfds_t nfds, int timeout) in poll.h as poll(2) gives it, or nfds is larger than the length of fds
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlClockId(int, nuint, ref int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, Spec=none cited, `E09054`, PENDING
   - Falsified if: differs from int ioctl(int fd, unsigned long op, ...) in sys/ioctl.h as ioctl(2) gives it for glibc, or the third argument is not a pointer to the int that EVIOCSCLOCKID, _IOW('E', 0xa0, int) in linux/input.h, reads

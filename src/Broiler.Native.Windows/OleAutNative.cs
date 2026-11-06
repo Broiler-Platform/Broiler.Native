@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Broiler Platform contributors
 // SPDX-License-Identifier: Apache-2.0
 //
-// Broiler Code Assurance
-// ----------------------
+// HAIRS Code Assurance
+// --------------------
 // Relevant units:   6
 // Annotated:        6/6
 // Exempt:           0
@@ -20,32 +20,32 @@ using System.Runtime.InteropServices;
 
 namespace Broiler.Native.Windows;
 
-// Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3F95B2
-// Broiler-Human:        PENDING
+// Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=3F95B2
+// Hairs-Human:        PENDING
 public static partial class OleAutNative
 {
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=314C53
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=314C53
+    // Hairs-Human:        PENDING
     [LibraryImport("oleaut32.dll")]
     public static partial IntPtr SafeArrayCreateVector(ushort vt, int lLbound, uint cElements);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=73BEA7
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=73BEA7
+    // Hairs-Human:        PENDING
     [LibraryImport("oleaut32.dll")]
     public static partial int SafeArrayAccessData(IntPtr psa, out IntPtr ppvData);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=21E92A
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=21E92A
+    // Hairs-Human:        PENDING
     [LibraryImport("oleaut32.dll")]
     public static partial int SafeArrayUnaccessData(IntPtr psa);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=434B93
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=434B93
+    // Hairs-Human:        PENDING
     [LibraryImport("oleaut32.dll")]
     public static partial int SafeArrayDestroy(IntPtr psa);
 
-    // Broiler-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=310A2D
-    // Broiler-Human:        PENDING
+    // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=310A2D
+    // Hairs-Human:        PENDING
     [LibraryImport("oleaut32.dll")]
     public static partial int SafeArrayPutElement(IntPtr psa, in int rgIndices, IntPtr pv);
 }

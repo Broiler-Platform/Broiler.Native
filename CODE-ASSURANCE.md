@@ -1,11 +1,11 @@
 # Broiler.Native Code Assurance
 
 GENERATED - DO NOT EDIT MANUALLY. Regenerate with
-`dotnet tool run broiler-review -- assurance generate --root .`, which rewrites this file,
-`HUMAN_REVIEW.md`, `assurance.manifest.json` and every generated source header from the
+`dotnet tool run hairs -- assurance generate --root .`, which rewrites this file,
+`HUMAN_REVIEW.md`, `hairs.manifest.json` and every generated source header from the
 product tree.
 
-**Human-reviewed: 53 of 857 relevant units.** This report records what the
+**Human-reviewed: 66 of 857 relevant units.** This report records what the
 annotations state and no more. A decision recorded here is one person's, bound to one
 version of one declaration, and it is not a claim that the code is assured or safe.
 
@@ -20,8 +20,8 @@ version of one declaration, and it is not a claim that the code is assured or sa
 | Relevant | 857 |
 | Exempt by predicate | 1120 |
 | Annotated | 857 of 857 (100%) |
-| Human reviewed | 53 of 857 (6%) |
-| Unverified | 804 |
+| Human reviewed | 66 of 857 (8%) |
+| Unverified | 791 |
 
 ## Review states
 
@@ -29,9 +29,9 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 804 |
+| HUMAN_PENDING | 791 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
-| VERIFIED | 53 |
+| VERIFIED | 66 |
 | STALE | 0 |
 | EXEMPT | 1120 |
 
@@ -67,7 +67,7 @@ version of one declaration, and it is not a claim that the code is assured or sa
 
 ## High-security review areas
 
-- `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Android.AndroidEglNative` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=Critical, human line MaiRat; Fingerprint=CCDC42
 - `Broiler.Native.Android.AndroidEglNative.GetDisplay(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=885D32
 - `Broiler.Native.Android.AndroidEglNative.Initialize(IntPtr, out int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=B5AA7C
 - `Broiler.Native.Android.AndroidEglNative.Terminate(IntPtr)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=365B80
@@ -84,7 +84,7 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Android.AndroidEglNative.SwapInterval(IntPtr, int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=2D465B
 - `Broiler.Native.Android.AndroidEglNative.QuerySurface(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=6B6DBC
 - `Broiler.Native.Android.AndroidEglNative.GetError()` in `src/Broiler.Native.Android/AndroidEglNative.cs` - Security=High, human line MaiRat; Fingerprint=B71C87
-- `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Android.AndroidGlesNative` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=1454CE
 - `Broiler.Native.Android.AndroidGlesNative.GenTextures(int, out uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=AD9690
 - `Broiler.Native.Android.AndroidGlesNative.DeleteTextures(int, ref uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=0A6CA2
 - `Broiler.Native.Android.AndroidGlesNative.BindTexture(int, uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=38241C
@@ -111,11 +111,11 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Android.AndroidGlesNative.GetStringValue(uint)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=46DE45
 - `Broiler.Native.Android.AndroidGlesNative.ThrowIfError(string)` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=High, human line MaiRat; Fingerprint=A25A60
 - `Broiler.Native.Android.AndroidGlesNative.GetDriverInfo()` in `src/Broiler.Native.Android/AndroidGlesNative.cs` - Security=Critical, human line MaiRat; Fingerprint=10652C
-- `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.Resolve(string, Assembly, DllImportSearchPath?)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
-- `Broiler.Native.Android.AndroidNativeLibraries.TryLoadAny(IReadOnlyList<string>, out string)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line PENDING
+- `Broiler.Native.Android.AndroidNativeLibraries` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line MaiRat; Fingerprint=D71B08
+- `Broiler.Native.Android.AndroidNativeLibraries.s_gate` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line MaiRat; Fingerprint=E33051
+- `Broiler.Native.Android.AndroidNativeLibraries.EnsureRegistered()` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line MaiRat; Fingerprint=AFC9D0
+- `Broiler.Native.Android.AndroidNativeLibraries.Resolve(string, Assembly, DllImportSearchPath?)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line MaiRat; Fingerprint=CE82F0
+- `Broiler.Native.Android.AndroidNativeLibraries.TryLoadAny(IReadOnlyList<string>, out string)` in `src/Broiler.Native.Android/AndroidNativeLibraries.cs` - Security=High, human line MaiRat; Fingerprint=C11A03
 - `Broiler.Native.Android.AndroidNativeWindowNative` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidNativeWindowNative.FromSurface(IntPtr, IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Android.AndroidNativeWindowNative.Acquire(IntPtr)` in `src/Broiler.Native.Android/AndroidNativeWindowNative.cs` - Security=High, human line PENDING
@@ -127,7 +127,7 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Linux.Input.LinuxNativeMethods` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Open(string, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line MaiRat; Fingerprint=B96AC4
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.Read(int, byte[], nuint)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line MaiRat; Fingerprint=B87244
-- `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Input.LinuxNativeMethods.Poll(PollFd[], nuint, int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line MaiRat; Fingerprint=D0C8DE
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlClockId(int, nuint, ref int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.IoctlAbsInfo(int, nuint, byte[])` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Input.LinuxNativeMethods.TrySetMonotonicClock(int)` in `src/Broiler.Native.Linux/Input/LinuxNativeMethods.cs` - Security=High, human line PENDING
@@ -737,15 +737,15 @@ version of one declaration, and it is not a claim that the code is assured or sa
 | Units required to carry one | 661 |
 | Required and missing | 0 |
 
-A `Broiler-Falsified-If:` line states, at the declaration, the observation that would make
+A `// Hairs-Falsified-If:` line states, at the declaration, the observation that would make
 the unit wrong. `Security=High` says a unit is risky, which is a set and not a test; the
 criterion is the test. It is required where `Security` is `High` or `Critical` and written
-nowhere else: `dotnet tool run broiler-review -- assurance check --root .` names every unit that owes one and carries none, and
+nowhere else: `dotnet tool run hairs -- assurance check --root .` names every unit that owes one and carries none, and
 every unit below `High` that carries one.
 
 The line is a comment, so it is outside every fingerprint by construction: rewording a
 criterion moves no recorded value here, in a file header or in
-`assurance.manifest.json`, and invalidates nothing. That is the intended reading - a
+`hairs.manifest.json`, and invalidates nothing. That is the intended reading - a
 criterion is an instruction to whoever reads the unit, not part of what a review is bound to.
 
 ## Exemption
@@ -769,7 +769,7 @@ that the rule is reviewable in one place rather than in several hundred.
 `NamedValue` is this component's choice (`"namedValues": "watched"`): a `const`
 field, an enum declaration and a `static readonly` `Guid`, `IntPtr`, `UIntPtr`, `nint` or `nuint`
 stated by literals alone is a value with a name and carries no decision to assess, so it
-carries no annotation. It is still a unit with an entry in `assurance.manifest.json`, so a
+carries no annotation. It is still a unit with an entry in `hairs.manifest.json`, so a
 change to its value moves a fingerprint the check compares.
 
 ## Per-unit exemptions
@@ -792,13 +792,13 @@ through a `<Compile Include>` it states, is left out of the record.
 
 ## Change detection
 
-`assurance.manifest.json` lists **every** code unit in the 5 covered assemblies -
+`hairs.manifest.json` lists **every** code unit in the 5 covered assemblies -
 1977 of them, exempt and relevant alike - with the fingerprint of its declaration.
 This manifest is a change-detection record, not a review. A unit listed there is watched, not reviewed:
 the entry records what the declaration's tokens hashed to when the generator last ran, and
 nothing else. What the manifest adds is that a unit the exemption predicate treats as
 trivial is no longer invisible: a semantic change to one moves a value in a generated file
-the check compares byte for byte. `dotnet tool run broiler-review -- assurance check --root .` holds the manifest to the tree.
+the check compares byte for byte. `dotnet tool run hairs -- assurance check --root .` holds the manifest to the tree.
 
 Beside the units it lists **every covered file** - 50 of them - with a
 fingerprint over the complete token stream of its compilation unit. A unit entry exists only
@@ -810,15 +810,15 @@ no file fingerprint - which is what lets one generation be a fixed point.
 
 ## Verification
 
-The generator and the check are one computation: `dotnet tool run broiler-review -- assurance check --root .` works out what the
+The generator and the check are one computation: `dotnet tool run hairs -- assurance check --root .` works out what the
 generator would write and compares it with the tree byte for byte, so a record edited by
 hand, or left behind by code that moved, is reported rather than trusted.
 
 | Mode | Command | Effect |
 |---|---|---|
-| Generate | `dotnet tool run broiler-review -- assurance generate --root .` | Fills every `Fingerprint=TBF`, refreshes a decision the code has outrun into `STALE; Previous=...`, rewrites the generated headers, `HUMAN_REVIEW.md`, `assurance.manifest.json` and this file. |
-| Check | `dotnet tool run broiler-review -- assurance check --root .` | Reports every generated artefact that is not byte-identical to what the generator would produce, every relevant unit with no annotation, every annotation this system cannot read, every fingerprint out of date and every unit at the top of the security vocabulary without a criterion, or below it with one. |
-| Release | `dotnet tool run broiler-review -- assurance check --root . --release` | The check, and additionally every relevant unit left in a state that blocks a release. |
+| Generate | `dotnet tool run hairs -- assurance generate --root .` | Fills every `Fingerprint=TBF`, refreshes a decision the code has outrun into `STALE; Previous=...`, rewrites the generated headers, `HUMAN_REVIEW.md`, `hairs.manifest.json` and this file. |
+| Check | `dotnet tool run hairs -- assurance check --root .` | Reports every generated artefact that is not byte-identical to what the generator would produce, every relevant unit with no annotation, every annotation this system cannot read, every fingerprint out of date and every unit at the top of the security vocabulary without a criterion, or below it with one. |
+| Release | `dotnet tool run hairs -- assurance check --root . --release` | The check, and additionally every relevant unit left in a state that blocks a release. |
 
 The fingerprint is six hex characters - 24 bits - of SHA-256 over the declaration's token
 texts, joined by single spaces. Trivia is excluded because a token's text is its own
