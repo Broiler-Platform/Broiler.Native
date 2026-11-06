@@ -5,7 +5,7 @@ GENERATED - DO NOT EDIT MANUALLY. Regenerate with
 `CODE-ASSURANCE.md`, `hairs.manifest.json` and every generated source header from the
 product tree.
 
-> **Status: PARTIAL.** Human-reviewed: 66 of 857 relevant units. `dotnet tool run hairs -- assurance check --root . --release`
+> **Status: PARTIAL.** Human-reviewed: 66 of 912 relevant units. `dotnet tool run hairs -- assurance check --root . --release`
 > fails while any relevant unit is without a decision bound to its current fingerprint.
 
 ## 1. How To Use This File
@@ -49,13 +49,13 @@ did, which is the narrower and the more useful of the two.
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 50 |
-| Code units | 1977 |
-| Relevant | 857 |
-| Exempt | 1120 |
-| Assessed | 857 of 857 (100%) |
-| Human reviewed | 66 of 857 (8%) |
-| Unverified | 791 |
+| Files scanned | 52 |
+| Code units | 2211 |
+| Relevant | 912 |
+| Exempt | 1299 |
+| Assessed | 912 of 912 (100%) |
+| Human reviewed | 66 of 912 (7%) |
+| Unverified | 846 |
 | Aliases naming a decision | 1 |
 
 ## 4. Review States
@@ -67,11 +67,11 @@ annotations and the current fingerprints; nothing stores them.
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 791 |
+| HUMAN_PENDING | 846 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 66 |
 | STALE | 0 |
-| EXEMPT | 1120 |
+| EXEMPT | 1299 |
 
 ## 5. Aliases In The Tree
 
@@ -103,6 +103,7 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Linux/OpenGL/LinuxOpenGlFunctions.cs` | 96 | 29 | 67 | 29 | Low | Critical | 29/29 |
 | `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` | 91 | 38 | 53 | 38 | Low | Critical | 25/25 |
 | `src/Broiler.Native.Linux/Printing/CupsNative.cs` | 37 | 18 | 19 | 18 | Low | Critical | 17/17 |
+| `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` | 98 | 19 | 79 | 19 | Low | Critical | 19/19 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanDeviceInfo.cs` | 2 | 2 | 0 | 0 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanException.cs` | 3 | 3 | 0 | 3 | Low | Low | 0/0 |
 | `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` | 70 | 25 | 45 | 25 | Low | Critical | 21/21 |
@@ -137,6 +138,7 @@ relevant units in a state that blocks a release.
 | `src/Broiler.Native.Windows/Printing/PrintDeviceNative.cs` | 71 | 13 | 58 | 13 | Low | Critical | 13/13 |
 | `src/Broiler.Native.Windows/Printing/PrintSpoolerNative.cs` | 29 | 8 | 21 | 8 | Low | Critical | 8/8 |
 | `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` | 115 | 56 | 59 | 56 | Low | Critical | 56/56 |
+| `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` | 136 | 36 | 100 | 36 | Low | Critical | 34/34 |
 | `src/Broiler.Native.Windows/Wic/WicNative.cs` | 47 | 39 | 8 | 39 | Low | Critical | 39/39 |
 | `src/Broiler.Native.Windows/WindowNative.cs` | 269 | 86 | 183 | 86 | Low | Critical | 70/70 |
 | `src/Broiler.Native/NativeLibraryProbe.cs` | 2 | 2 | 0 | 0 | Low | High | 2/2 |
@@ -529,6 +531,44 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: Marshal.SizeOf is not 16 on 64-bit, with name at 0 and value at 8, the layout of cups_option_t in cups/cups.h
 - `Broiler.Native.Linux.Printing.CupsSize` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, Spec=none cited, `78193F`, PENDING
   - Falsified if: Marshal.SizeOf is not 152, with media a 128-byte char array at 0 and width, length, bottom, left, right and top ints from 128, the layout of cups_size_t in cups/cups.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `658764`, PENDING
+  - Falsified if: an import here differs from its prototype in sane/sane.h, where SANE_Handle is void*, SANE_Int and SANE_Word are 32-bit ints, and strings are NUL-terminated UTF-8/ASCII
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Init(out int, IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `2E4C7A`, PENDING
+  - Falsified if: differs from SANE_Status sane_init(SANE_Int *version_code, SANE_Auth_Callback authorize) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Exit()` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `5E3FAC`, PENDING
+  - Falsified if: differs from void sane_exit(void) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetDevices(out IntPtr, int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `5B8510`, PENDING
+  - Falsified if: differs from SANE_Status sane_get_devices(const SANE_Device ***device_list, SANE_Bool local_only) in sane/sane.h, or the returned pointer-to-NULL-terminated-array is freed by the caller instead of remaining owned by libsane until sane_exit or the next sane_get_devices
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Open(string, out IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `D60CA4`, PENDING
+  - Falsified if: differs from SANE_Status sane_open(SANE_String_Const devicename, SANE_Handle *handle) in sane/sane.h, or an opened handle is not closed with sane_close
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Close(IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `D0FD2E`, PENDING
+  - Falsified if: differs from void sane_close(SANE_Handle handle) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetOptionDescriptor(IntPtr, int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `8A7DF8`, PENDING
+  - Falsified if: differs from const SANE_Option_Descriptor *sane_get_option_descriptor(SANE_Handle handle, SANE_Int option) in sane/sane.h, or the returned descriptor pointer is freed by the caller
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.ControlOption(IntPtr, int, SaneAction, IntPtr, out int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `FBCA1B`, PENDING
+  - Falsified if: differs from SANE_Status sane_control_option(SANE_Handle handle, SANE_Int option, SANE_Action action, void *value, SANE_Int *info) in sane/sane.h, or value points to fewer bytes than the option descriptor's size
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetParameters(IntPtr, out SaneParameters)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `2CEE03`, PENDING
+  - Falsified if: differs from SANE_Status sane_get_parameters(SANE_Handle handle, SANE_Parameters *params) in sane/sane.h, or SaneParameters is not the 24-byte layout of SANE_Parameters
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Start(IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `829A58`, PENDING
+  - Falsified if: differs from SANE_Status sane_start(SANE_Handle handle) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Read(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `65EF3B`, PENDING
+  - Falsified if: differs from SANE_Status sane_read(SANE_Handle handle, SANE_Byte *data, SANE_Int max_length, SANE_Int *length) in sane/sane.h, which writes up to maxLength bytes at data
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Cancel(IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `277AF1`, PENDING
+  - Falsified if: differs from void sane_cancel(SANE_Handle handle) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.SetIoMode(IntPtr, int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `0F2862`, PENDING
+  - Falsified if: differs from SANE_Status sane_set_io_mode(SANE_Handle handle, SANE_Bool non_blocking) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetSelectFd(IntPtr, out int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `F1429F`, PENDING
+  - Falsified if: differs from SANE_Status sane_get_select_fd(SANE_Handle handle, SANE_Int *fd) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.StrStatus(SaneStatus)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `018DED`, PENDING
+  - Falsified if: differs from SANE_String_Const sane_strstatus(SANE_Status status) in sane/sane.h, or the returned static string pointer is freed
+- `Broiler.Native.Linux.Scanner.SaneDevice` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `F8B3E3`, PENDING
+  - Falsified if: Marshal.SizeOf of SaneDevice is not 32 on 64-bit and 16 on 32-bit, with Name, Vendor, Model and Type at pointer-sized offsets, the layout of SANE_Device in sane/sane.h
+- `Broiler.Native.Linux.Scanner.SaneOptionDescriptor` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, Spec=none cited, `620ED8`, PENDING
+  - Falsified if: Marshal.SizeOf of SaneOptionDescriptor is not 56 on 64-bit and 36 on 32-bit, or Marshal.OffsetOf Constraint is not 48 on 64-bit, the layout of SANE_Option_Descriptor in sane/sane.h
+- `Broiler.Native.Linux.Scanner.SaneRange` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `32D872`, PENDING
+  - Falsified if: Marshal.SizeOf of SaneRange is not 12, the layout of SANE_Range (SANE_Word min, SANE_Word max, SANE_Word quant) in sane/sane.h
+- `Broiler.Native.Linux.Scanner.SaneParameters` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, Spec=none cited, `38DAE8`, PENDING
+  - Falsified if: Marshal.SizeOf of SaneParameters is not 24, with Format at 0 through Depth at 20, the layout of SANE_Parameters in sane/sane.h
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, Spec=none cited, `E46435`, PENDING
   - Falsified if: an import here differs from its prototype in vulkan/vulkan_core.h, where VkInstance, VkPhysicalDevice, VkDevice and VkQueue are pointer handles, VkResult is an enum, and counts, versions and indices are uint32_t
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetSupportedInstanceVersion()` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, Spec=none cited, `06A932`, PENDING
@@ -1323,6 +1363,74 @@ written out, so a unit that becomes `High` joins it at the next generation.
   - Falsified if: the pointer IMMDevice.Activate returns with S_OK is wrapped by GetOrCreateComObject, which takes its own reference, and is never released, so every call leaks one reference to the activated object
 - `Broiler.Native.Windows.Wasapi.WasapiExtensions.GetService<TInterface>(this IAudioClient, out TInterface?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, Spec=none cited, `1D2EA0`, PENDING
   - Falsified if: the pointer IAudioClient.GetService returns with S_OK is wrapped by GetOrCreateComObject, which takes its own reference, and is never released, so every call leaks one reference to the service object
+- `Broiler.Native.Windows.Wia.PropSpec` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `34C8C1`, PENDING
+  - Falsified if: Marshal.SizeOf of PropSpec is not 16 on 64-bit and 8 on 32-bit, or Marshal.OffsetOf Value is not 8 on 64-bit, the layout of PROPSPEC (ULONG ulKind; union { PROPID propid; LPOLESTR lpwstr; }) in propidl.h
+- `Broiler.Native.Windows.Wia.WiaTransferParams` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `C30E29`, PENDING
+  - Falsified if: Marshal.SizeOf of WiaTransferParams is not 24, or Marshal.OffsetOf TransferredBytes and ErrorStatus are not 8 and 16, the layout of WiaTransferParams (LONG lMessage, LONG lPercentComplete, ULONGLONG ulTransferredBytes, HRESULT hrErrorStatus) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaDevMgr2` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `5CE227`, PENDING
+  - Falsified if: its vtable is not the IWiaDevMgr2 order of wia_lh.h, EnumDeviceInfo at slot 3 and CreateDevice at slot 4
+- `Broiler.Native.Windows.Wia.IWiaDevMgr2.EnumDeviceInfo(int, out IEnumWIA_DEV_INFO)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `4CDAE7`, PENDING
+  - Falsified if: is not slot 3 of IWiaDevMgr2, HRESULT EnumDeviceInfo(LONG lFlags, IEnumWIA_DEV_INFO **ppIEnum) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaDevMgr2.CreateDevice(int, string, out IWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `25B59C`, PENDING
+  - Falsified if: is not slot 4 of IWiaDevMgr2, HRESULT CreateDevice(LONG lFlags, BSTR bstrDeviceID, IWiaItem2 **ppWiaItem2Root) in wia_lh.h, or deviceId is not marshalled as a BSTR
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `F753D5`, PENDING
+  - Falsified if: its vtable is not the IEnumWIA_DEV_INFO order of wia_lh.h, Next at slot 3 through GetCount at slot 7
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Next(uint, out IntPtr, out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `0BA763`, PENDING
+  - Falsified if: is not slot 3 of IEnumWIA_DEV_INFO, HRESULT Next(ULONG celt, IWiaPropertyStorage **rgelt, ULONG *pceltFetched) in wia_lh.h, whose single-element call writes one IWiaPropertyStorage pointer that the caller must wrap and release
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Skip(uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `7524B9`, PENDING
+  - Falsified if: is not slot 4 of IEnumWIA_DEV_INFO, HRESULT Skip(ULONG celt) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Reset()` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `C17181`, PENDING
+  - Falsified if: is not slot 5 of IEnumWIA_DEV_INFO, HRESULT Reset(void) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Clone(out IEnumWIA_DEV_INFO)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `687FC7`, PENDING
+  - Falsified if: is not slot 6 of IEnumWIA_DEV_INFO, HRESULT Clone(IEnumWIA_DEV_INFO **ppIEnum) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.GetCount(out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `9DEF9C`, PENDING
+  - Falsified if: is not slot 7 of IEnumWIA_DEV_INFO, HRESULT GetCount(ULONG *celt) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaPropertyStorage` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `2F30E1`, PENDING
+  - Falsified if: its vtable is not the IWiaPropertyStorage order of wia_lh.h, ReadMultiple at slot 3 and WriteMultiple at slot 4
+- `Broiler.Native.Windows.Wia.IWiaPropertyStorage.ReadMultiple(uint, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `83E799`, PENDING
+  - Falsified if: is not slot 3 of IWiaPropertyStorage, HRESULT ReadMultiple(ULONG cpspec, const PROPSPEC rgpspec[], PROPVARIANT rgpropvar[]) in wia_lh.h, or specs and values do not address cpspec contiguous PropSpec and PropVariant elements
+- `Broiler.Native.Windows.Wia.IWiaPropertyStorage.WriteMultiple(uint, IntPtr, IntPtr, uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `7491FB`, PENDING
+  - Falsified if: is not slot 4 of IWiaPropertyStorage, HRESULT WriteMultiple(ULONG cpspec, const PROPSPEC rgpspec[], const PROPVARIANT rgpropvar[], PROPID propidNameFirst) in wia_lh.h, or specs and values do not address cpspec contiguous PropSpec and PropVariant elements
+- `Broiler.Native.Windows.Wia.IWiaItem2` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `C93097`, PENDING
+  - Falsified if: its vtable is not the IWiaItem2 order of wia_lh.h, CreateChildItem at slot 3 through GetItemType at slot 8
+- `Broiler.Native.Windows.Wia.IWiaItem2.CreateChildItem(int, int, string, out IWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `3F7F7E`, PENDING
+  - Falsified if: is not slot 3 of IWiaItem2, HRESULT CreateChildItem(LONG lItemFlags, LONG lCreationFlags, BSTR bstrItemName, IWiaItem2 **ppIWiaItem2) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaItem2.DeleteItem(int)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `D07BC3`, PENDING
+  - Falsified if: is not slot 4 of IWiaItem2, HRESULT DeleteItem(LONG lFlags) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaItem2.EnumChildItems(IntPtr, out IEnumWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `824F35`, PENDING
+  - Falsified if: is not slot 5 of IWiaItem2, HRESULT EnumChildItems(const GUID *pCategoryGUID, IEnumWiaItem2 **ppIEnumWiaItem2) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaItem2.FindItemByName(int, string, out IWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `AFA0B1`, PENDING
+  - Falsified if: is not slot 6 of IWiaItem2, HRESULT FindItemByName(LONG lFlags, BSTR bstrFullItemName, IWiaItem2 **ppIWiaItem2) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaItem2.GetItemCategory(out Guid)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `47BA62`, PENDING
+  - Falsified if: is not slot 7 of IWiaItem2, HRESULT GetItemCategory(GUID *pItemCategoryGUID) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaItem2.GetItemType(out int)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `9068E8`, PENDING
+  - Falsified if: is not slot 8 of IWiaItem2, HRESULT GetItemType(LONG *pItemType) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `7BA796`, PENDING
+  - Falsified if: its vtable is not the IEnumWiaItem2 order of wia_lh.h, Next at slot 3 through GetCount at slot 7
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Next(uint, out IntPtr, out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `2F61EC`, PENDING
+  - Falsified if: is not slot 3 of IEnumWiaItem2, HRESULT Next(ULONG cElt, IWiaItem2 **ppIWiaItem2, ULONG *pcEltFetched) in wia_lh.h, whose single-element call writes one IWiaItem2 pointer that the caller must wrap and release
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Skip(uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `7524B9`, PENDING
+  - Falsified if: is not slot 4 of IEnumWiaItem2, HRESULT Skip(ULONG cElt) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Reset()` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `C17181`, PENDING
+  - Falsified if: is not slot 5 of IEnumWiaItem2, HRESULT Reset(void) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Clone(out IEnumWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `55BC7F`, PENDING
+  - Falsified if: is not slot 6 of IEnumWiaItem2, HRESULT Clone(IEnumWiaItem2 **ppIEnum) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.GetCount(out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `9DEF9C`, PENDING
+  - Falsified if: is not slot 7 of IEnumWiaItem2, HRESULT GetCount(ULONG *cElt) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaTransfer` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `FD96DB`, PENDING
+  - Falsified if: its vtable is not the IWiaTransfer order of wia_lh.h, Download at slot 3 through Cancel at slot 5
+- `Broiler.Native.Windows.Wia.IWiaTransfer.Download(int, IWiaTransferCallback)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `6EE19C`, PENDING
+  - Falsified if: is not slot 3 of IWiaTransfer, HRESULT Download(LONG lFlags, IWiaTransferCallback *pIWiaTransferCallback) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaTransfer.Upload(int, IStream, IWiaTransferCallback)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `F5E17C`, PENDING
+  - Falsified if: is not slot 4 of IWiaTransfer, HRESULT Upload(LONG lFlags, IStream *pSource, IWiaTransferCallback *pIWiaTransferCallback) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaTransfer.Cancel()` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `27B666`, PENDING
+  - Falsified if: is not slot 5 of IWiaTransfer, HRESULT Cancel(void) in wia_lh.h
+- `Broiler.Native.Windows.Wia.IWiaTransferCallback` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `6F13B1`, PENDING
+  - Falsified if: its vtable is not the IWiaTransferCallback order of wia_lh.h, TransferCallback at slot 3 and GetNextStream at slot 4 under IID 27d4ea4f-5d06-4095-8e0f-ece2e6e2d24e
+- `Broiler.Native.Windows.Wia.IWiaTransferCallback.TransferCallback(int, ref WiaTransferParams)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, Spec=none cited, `EC25C3`, PENDING
+  - Falsified if: is not slot 3 of IWiaTransferCallback, HRESULT TransferCallback(LONG lFlags, WiaTransferParams *pWiaTransferParams) in wia_lh.h, or WiaTransferParams is not the 24-byte layout pWiaTransferParams points to
+- `Broiler.Native.Windows.Wia.IWiaTransferCallback.GetNextStream(int, string, string, out IStream)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, Spec=none cited, `9973BF`, PENDING
+  - Falsified if: is not slot 4 of IWiaTransferCallback, HRESULT GetNextStream(LONG lFlags, BSTR bstrItemName, BSTR bstrFullItemName, IStream **ppDestination) in wia_lh.h, or itemName and fullItemName are not marshalled as BSTRs
 - `Broiler.Native.Windows.Wic.WicNative` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `5EFA14`, PENDING
   - Falsified if: a nested interface differs from its wincodec.h declaration of IWICBitmapFrameDecode, IWICFormatConverter, IWICBitmapDecoder or IWICImagingFactory in slot order or in a member prototype
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, Spec=none cited, `1783FD`, PENDING
@@ -1561,5 +1669,5 @@ An assessment is a comment, so changing one moves no fingerprint anywhere, and n
 mechanical checks that it is right; the check holds its values to their vocabularies and no
 further.
 
-857 of the 857 assessed units declare `Origin=AI`. Reading a declaration is the only thing
+912 of the 912 assessed units declare `Origin=AI`. Reading a declaration is the only thing
 that makes it read.

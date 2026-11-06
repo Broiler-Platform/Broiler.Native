@@ -5,7 +5,7 @@ GENERATED - DO NOT EDIT MANUALLY. Regenerate with
 `HUMAN_REVIEW.md`, `hairs.manifest.json` and every generated source header from the
 product tree.
 
-**Human-reviewed: 66 of 857 relevant units.** This report records what the
+**Human-reviewed: 66 of 912 relevant units.** This report records what the
 annotations state and no more. A decision recorded here is one person's, bound to one
 version of one declaration, and it is not a claim that the code is assured or safe.
 
@@ -13,15 +13,15 @@ version of one declaration, and it is not a claim that the code is assured or sa
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 50 |
+| Files scanned | 52 |
 | Files not covered | 0 |
-| Files carrying an annotation | 50 |
-| Code units | 1977 |
-| Relevant | 857 |
-| Exempt by predicate | 1120 |
-| Annotated | 857 of 857 (100%) |
-| Human reviewed | 66 of 857 (8%) |
-| Unverified | 791 |
+| Files carrying an annotation | 52 |
+| Code units | 2211 |
+| Relevant | 912 |
+| Exempt by predicate | 1299 |
+| Annotated | 912 of 912 (100%) |
+| Human reviewed | 66 of 912 (7%) |
+| Unverified | 846 |
 
 ## Review states
 
@@ -29,18 +29,18 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | NEW | 0 |
 | AI_ASSESSED | 0 |
-| HUMAN_PENDING | 791 |
+| HUMAN_PENDING | 846 |
 | HUMAN_APPROVED_PENDING_FINGERPRINT | 0 |
 | VERIFIED | 66 |
 | STALE | 0 |
-| EXEMPT | 1120 |
+| EXEMPT | 1299 |
 
 ## IP risk
 
 | Value | Units |
 |---|---:|
-| None | 53 |
-| Low | 804 |
+| None | 60 |
+| Low | 852 |
 | Medium | 0 |
 | High | 0 |
 | Unknown | 0 |
@@ -50,11 +50,11 @@ version of one declaration, and it is not a claim that the code is assured or sa
 
 | Value | Units |
 |---|---:|
-| None | 2 |
-| Low | 193 |
+| None | 3 |
+| Low | 194 |
 | Medium | 1 |
-| High | 446 |
-| Critical | 215 |
+| High | 476 |
+| Critical | 238 |
 | *not annotated* | 0 |
 
 ## Resource impact
@@ -63,7 +63,7 @@ version of one declaration, and it is not a claim that the code is assured or sa
 |---|---:|
 | Maximum | 8 / 10 |
 | Average over annotated units | 1.1 / 10 |
-| Units scored | 857 |
+| Units scored | 912 |
 
 ## High-security review areas
 
@@ -220,6 +220,25 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Linux.Printing.CupsDest` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Printing.CupsOption` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Printing.CupsSize` in `src/Broiler.Native.Linux/Printing/CupsNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Init(out int, IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Exit()` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetDevices(out IntPtr, int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Open(string, out IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Close(IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetOptionDescriptor(IntPtr, int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.ControlOption(IntPtr, int, SaneAction, IntPtr, out int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetParameters(IntPtr, out SaneParameters)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Start(IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Read(IntPtr, IntPtr, int, out int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.Cancel(IntPtr)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.SetIoMode(IntPtr, int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.GetSelectFd(IntPtr, out int)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.LinuxSaneNative.StrStatus(SaneStatus)` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.SaneDevice` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.SaneOptionDescriptor` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Linux.Scanner.SaneRange` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Linux.Scanner.SaneParameters` in `src/Broiler.Native.Linux/Scanner/LinuxSaneNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.GetSupportedInstanceVersion()` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
 - `Broiler.Native.Linux.Vulkan.LinuxVulkanNative.ThrowIfFailed(int, string)` in `src/Broiler.Native.Linux/Vulkan/LinuxVulkanNative.cs` - Security=High, human line PENDING
@@ -617,6 +636,40 @@ version of one declaration, and it is not a claim that the code is assured or sa
 - `Broiler.Native.Windows.Wasapi.WasapiExtensions` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WasapiExtensions.Activate<TInterface>(this IMMDevice, uint, IntPtr, out TInterface?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wasapi.WasapiExtensions.GetService<TInterface>(this IAudioClient, out TInterface?)` in `src/Broiler.Native.Windows/Wasapi/WindowsWasapiNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.PropSpec` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.WiaTransferParams` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaDevMgr2` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaDevMgr2.EnumDeviceInfo(int, out IEnumWIA_DEV_INFO)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaDevMgr2.CreateDevice(int, string, out IWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Next(uint, out IntPtr, out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Skip(uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Reset()` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.Clone(out IEnumWIA_DEV_INFO)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWIA_DEV_INFO.GetCount(out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaPropertyStorage` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaPropertyStorage.ReadMultiple(uint, IntPtr, IntPtr)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaPropertyStorage.WriteMultiple(uint, IntPtr, IntPtr, uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2.CreateChildItem(int, int, string, out IWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2.DeleteItem(int)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2.EnumChildItems(IntPtr, out IEnumWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2.FindItemByName(int, string, out IWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2.GetItemCategory(out Guid)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaItem2.GetItemType(out int)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Next(uint, out IntPtr, out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Skip(uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Reset()` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.Clone(out IEnumWiaItem2)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IEnumWiaItem2.GetCount(out uint)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransfer` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransfer.Download(int, IWiaTransferCallback)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransfer.Upload(int, IStream, IWiaTransferCallback)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransfer.Cancel()` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransferCallback` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransferCallback.TransferCallback(int, ref WiaTransferParams)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=High, human line PENDING
+- `Broiler.Native.Windows.Wia.IWiaTransferCallback.GetNextStream(int, string, string, out IStream)` in `src/Broiler.Native.Windows/Wia/WindowsWiaNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wic.WicNative` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=Critical, human line PENDING
 - `Broiler.Native.Windows.Wic.WicNative.IWICBitmapFrameDecode.GetSize(out uint, out uint)` in `src/Broiler.Native.Windows/Wic/WicNative.cs` - Security=High, human line PENDING
@@ -733,8 +786,8 @@ version of one declaration, and it is not a claim that the code is assured or sa
 
 | Metric | Value |
 |---|---:|
-| Units carrying a criterion | 661 |
-| Units required to carry one | 661 |
+| Units carrying a criterion | 714 |
+| Units required to carry one | 714 |
 | Required and missing | 0 |
 
 A `// Hairs-Falsified-If:` line states, at the declaration, the observation that would make
@@ -761,9 +814,9 @@ that the rule is reviewable in one place rather than in several hundred.
 | CompilerSuppliedRecordOrEnumMember | 0 |
 | DelegatingOverrideOrOperator | 0 |
 | InsideAssemblyMarker | 0 |
-| FieldDeclaringStorage | 311 |
-| EnumMemberOfADeclaredVocabulary | 156 |
-| NamedValue | 609 |
+| FieldDeclaringStorage | 339 |
+| EnumMemberOfADeclaredVocabulary | 193 |
+| NamedValue | 723 |
 | DeclaredInSource | 0 |
 
 `NamedValue` is this component's choice (`"namedValues": "watched"`): a `const`
@@ -793,14 +846,14 @@ through a `<Compile Include>` it states, is left out of the record.
 ## Change detection
 
 `hairs.manifest.json` lists **every** code unit in the 5 covered assemblies -
-1977 of them, exempt and relevant alike - with the fingerprint of its declaration.
+2211 of them, exempt and relevant alike - with the fingerprint of its declaration.
 This manifest is a change-detection record, not a review. A unit listed there is watched, not reviewed:
 the entry records what the declaration's tokens hashed to when the generator last ran, and
 nothing else. What the manifest adds is that a unit the exemption predicate treats as
 trivial is no longer invisible: a semantic change to one moves a value in a generated file
 the check compares byte for byte. `dotnet tool run hairs -- assurance check --root .` holds the manifest to the tree.
 
-Beside the units it lists **every covered file** - 50 of them - with a
+Beside the units it lists **every covered file** - 52 of them - with a
 fingerprint over the complete token stream of its compilation unit. A unit entry exists only
 for a declaration kind the scanner enumerates, and an enumeration is a whitelist: an
 `[assembly: ...]` attribute is a member of nothing and can be in no unit at all.

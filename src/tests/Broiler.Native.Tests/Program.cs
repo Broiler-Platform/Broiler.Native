@@ -8,9 +8,11 @@ using Broiler.Native;
 using Broiler.Native.Android;
 using Broiler.Native.Linux.Input;
 using Broiler.Native.Linux.Printing;
+using Broiler.Native.Linux.Scanner;
 using Broiler.Native.Windows;
 using Broiler.Native.Windows.Direct2D;
 using Broiler.Native.Windows.Wasapi;
+using Broiler.Native.Windows.Wia;
 using Broiler.Native.Windows.Input;
 using Broiler.Native.Windows.Printing;
 using Broiler.Native.Windows.MediaFoundation.MediaEngine;
@@ -179,6 +181,27 @@ internal class Program
                 }
 
                 Size<CupsSize>(152);
+            }),
+
+            ("Scanner ABI layouts match wia_lh.h, propidl.h and sane.h", () =>
+            {
+                Size<PropSpec>(nint.Size == 8 ? 16 : 8);
+                Check(Marshal.OffsetOf<PropSpec>(nameof(PropSpec.Value)) == (nint.Size == 8 ? 8 : 4), "PropSpec.Value offset mismatch.");
+                Size<WiaTransferParams>(24);
+                Check(Marshal.OffsetOf<WiaTransferParams>(nameof(WiaTransferParams.TransferredBytes)) == 8, "WiaTransferParams.TransferredBytes is at 8.");
+                Check(Marshal.OffsetOf<WiaTransferParams>(nameof(WiaTransferParams.ErrorStatus)) == 16, "WiaTransferParams.ErrorStatus is at 16.");
+
+                Size<SaneDevice>(nint.Size == 8 ? 32 : 16);
+                Size<SaneOptionDescriptor>(nint.Size == 8 ? 56 : 36);
+                if (nint.Size == 8)
+                    Check(Marshal.OffsetOf<SaneOptionDescriptor>(nameof(SaneOptionDescriptor.Constraint)) == 48, "SaneOptionDescriptor.Constraint is at 48.");
+                Size<SaneRange>(12);
+                Size<SaneParameters>(24);
+
+                Type wiaCallback = typeof(IWiaTransferCallback);
+                Check(wiaCallback.IsPublic, "WIA transfer callback must be public for COM QueryInterface.");
+                Check(wiaCallback.GetCustomAttribute<GeneratedComInterfaceAttribute>() is not null, "GeneratedComInterface must remain enabled on IWiaTransferCallback.");
+                Check(wiaCallback.GUID == WindowsWiaNative.IidIWiaTransferCallback, "IWiaTransferCallback IID mismatch.");
             }),
 
             ("The spooler reports the size a device mode needs", () =>
