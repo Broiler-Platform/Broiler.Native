@@ -48,4 +48,10 @@ public static partial class OleAutNative
     // Hairs-Human:        PENDING
     [LibraryImport("oleaut32.dll")]
     public static partial int SafeArrayPutElement(IntPtr psa, in int rgIndices, IntPtr pv);
+
+    [LibraryImport("oleaut32.dll")]
+    public static partial int SafeArrayGetLBound(IntPtr psa, uint nDim, out int plLbound);
+
+    [LibraryImport("oleaut32.dll")]
+    public static partial int SafeArrayGetUBound(IntPtr psa, uint nDim, out int plUbound);
 }

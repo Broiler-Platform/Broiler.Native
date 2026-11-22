@@ -7,10 +7,16 @@ using System.Runtime.InteropServices.Marshalling;
 using Broiler.Native;
 using Broiler.Native.Android;
 using Broiler.Native.Linux.Input;
+using Broiler.Native.Linux.Memory;
 using Broiler.Native.Linux.Printing;
 using Broiler.Native.Linux.Scanner;
 using Broiler.Native.Windows;
+using Broiler.Native.Windows.Credentials;
+using Broiler.Native.Windows.Dialogs;
 using Broiler.Native.Windows.Direct2D;
+using Broiler.Native.Windows.HyperV;
+using Broiler.Native.Windows.Memory;
+using Broiler.Native.Windows.Network;
 using Broiler.Native.Windows.Wasapi;
 using Broiler.Native.Windows.Wia;
 using Broiler.Native.Windows.Input;
@@ -160,6 +166,21 @@ internal class Program
                 Size<DWriteNative.DWRITE_TEXT_METRICS>(36);
                 Size<LinuxNativeMethods.PollFd>(8);
                 Size<PropVariant>(nint.Size == 8 ? 24 : 16);
+                Size<ImmNative.COMPOSITIONFORM>(28);
+                Size<CredentialNative.CREDENTIAL>(nint.Size == 8 ? 80 : 52);
+                Size<FileDialogNative.OPENFILENAME>(nint.Size == 8 ? 152 : 88);
+                Size<FileDialogNative.BROWSEINFO>(nint.Size == 8 ? 64 : 32);
+                Size<WhvSegmentRegister>(16);
+                Size<WhvTableRegister>(16);
+                Size<WhvRegisterValue>(16);
+                Size<WhvVpExitContext>(40);
+                Size<WhvMemoryAccessContext>(40);
+                Size<WhvIoPortAccessContext>(96);
+                Size<WhvRunVpExitContext>(224);
+                Size<WhvEmulatorMemoryAccessInfo>(24);
+                Size<WhvEmulatorIoAccessInfo>(12);
+                Size<WhvEmulatorCallbacks>(nint.Size == 8 ? 48 : 28);
+                Size<WhvEmulatorStatus>(4);
             }),
 
             ("Print ABI layouts match winspool.h, wingdi.h and cups.h", () =>
@@ -297,6 +318,27 @@ internal class Program
                     Check(!HwndNative.IsWindow(nint.Zero), "NULL cannot be a window.");
                     Check(WindowNative.LoadIcon(nint.Zero, WindowNative.IdiApplication) != nint.Zero, "The stock application icon must load.");
                     Check(WindowNative.GetClassLongPtr(nint.Zero, WindowNative.GclpHIcon) == nint.Zero, "NULL cannot have a class icon.");
+                    Check(WindowNative.GetDpiForSystem() > 0, "GetDpiForSystem failed.");
+                    unsafe
+                    {
+                        Check(VirtualMemoryNative.GetCurrentProcess() != null, "GetCurrentProcess returned null.");
+                        void* page = VirtualMemoryNative.VirtualAlloc(null, 4096,
+                            VirtualMemoryNative.MemCommit | VirtualMemoryNative.MemReserve,
+                            VirtualMemoryNative.PageReadWrite);
+                        Check(page != null, "VirtualAlloc failed.");
+                        try
+                        {
+                            uint prev;
+                            Check(VirtualMemoryNative.VirtualProtect(page, 4096, VirtualMemoryNative.PageReadOnly, &prev), "VirtualProtect failed.");
+                        }
+                        finally
+                        {
+                            Check(VirtualMemoryNative.VirtualFree(page, 0, VirtualMemoryNative.MemRelease), "VirtualFree failed.");
+                        }
+                    }
+                    int tcpSize = 0;
+                    _ = IpHelperNative.GetExtendedTcpTable(nint.Zero, ref tcpSize, false, 2, 5, 0);
+                    Check(tcpSize > 0, "GetExtendedTcpTable returned non-positive size.");
                 }
                 else if (OperatingSystem.IsLinux())
                 {

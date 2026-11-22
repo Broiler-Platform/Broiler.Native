@@ -675,6 +675,29 @@ public static partial class WindowNative
     [return: MarshalAs(UnmanagedType.Bool)]
     public static partial bool SystemParametersInfo(uint uiAction, uint uiParam, [MarshalAs(UnmanagedType.Bool)] ref bool pvParam, uint fWinIni);
 
+    [LibraryImport("user32.dll", EntryPoint = "MessageBoxW", StringMarshalling = StringMarshalling.Utf16)]
+    public static partial int MessageBox(IntPtr hwnd, string? text, string? caption, uint type);
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool SetForegroundWindow(IntPtr hwnd);
+
+    [LibraryImport("user32.dll")]
+    public static partial IntPtr SetCursor(IntPtr cursor);
+
+    [LibraryImport("user32.dll", EntryPoint = "LoadImageW", SetLastError = true)]
+    public static partial IntPtr LoadImage(IntPtr instance, IntPtr name, uint type, int width, int height, uint flags);
+
+    [LibraryImport("user32.dll")]
+    public static partial int GetSystemMetricsForDpi(int index, uint dpi);
+
+    [LibraryImport("user32.dll")]
+    public static partial uint GetDpiForSystem();
+
+    [LibraryImport("user32.dll")]
+    public static unsafe partial int EnumDisplayMonitors(IntPtr hdc, IntPtr clip,
+        delegate* unmanaged<IntPtr, IntPtr, RECT*, IntPtr, int> callback, IntPtr state);
+
     public const int ErrorClassAlreadyExists = 1410;
     public const int CwUseDefault = unchecked((int)0x80000000);
     public const uint CsHRedraw = 0x0002;

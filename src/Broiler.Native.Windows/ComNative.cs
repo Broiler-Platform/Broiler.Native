@@ -129,6 +129,12 @@ public static partial class ComNative
     [LibraryImport("ole32.dll")]
     public static partial void CoUninitialize();
 
+    [LibraryImport("ole32.dll")]
+    public static partial int OleInitialize(IntPtr reserved);
+
+    [LibraryImport("ole32.dll")]
+    public static partial void OleUninitialize();
+
     // Hairs-AI:           Origin=AI; IP=Low; Security=Critical; Resources=0; Fingerprint=396F43
     // Hairs-Falsified-If: differs from void CoTaskMemFree(LPVOID pv) in combaseapi.h
     // Hairs-Human:        PENDING

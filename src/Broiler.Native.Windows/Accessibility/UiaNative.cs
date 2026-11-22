@@ -690,6 +690,12 @@ public static partial class UiaNative
     [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaReturnRawElementProvider")]
     public static partial IntPtr UiaReturnRawElementProvider(IntPtr hwnd, IntPtr wParam, IntPtr lParam, INativeSimple provider);
 
+    [LibraryImport("UIAutomationCore.dll", EntryPoint = "UiaReturnRawElementProvider")]
+    public static partial IntPtr UiaReturnRawElementProvider(IntPtr hwnd, IntPtr wParam, IntPtr lParam, IntPtr provider);
+
+    [LibraryImport("UIAutomationCore.dll")]
+    public static partial int UiaDisconnectProvider(INativeSimple provider);
+
     // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=B1D4CE
     // Hairs-Human:        PENDING
     [LibraryImport("UIAutomationCore.dll")]

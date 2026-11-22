@@ -33,6 +33,18 @@ public static partial class ImmNative
     public const uint GCS_RESULTSTR = 0x0800;
     public const uint GCS_CURSORPOS = 0x0080;
 
+    public const uint CFS_POINT = 0x0002;
+    public const uint CFS_FORCE_POSITION = 0x0020;
+    public const uint IACE_DEFAULT = 0x0010;
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct COMPOSITIONFORM
+    {
+        public uint DwStyle;
+        public WindowNative.POINT PtCurrentPos;
+        public WindowNative.RECT RcArea;
+    }
+
     // Hairs-AI:           Origin=AI; IP=Low; Security=Low; Resources=0; Fingerprint=D5F6DB
     // Hairs-Human:        PENDING
     [LibraryImport("imm32.dll")]
@@ -48,4 +60,29 @@ public static partial class ImmNative
     // Hairs-Human:        PENDING
     [LibraryImport("imm32.dll", EntryPoint = "ImmGetCompositionStringW")]
     public static partial int ImmGetCompositionString(IntPtr hImc, uint dwIndex, IntPtr lpBuf, uint dwBufLen);
+
+    [LibraryImport("imm32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool ImmSetCompositionWindow(IntPtr hImc, ref COMPOSITIONFORM lpCompForm);
+
+    [LibraryImport("imm32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool ImmGetCompositionWindow(IntPtr hImc, out COMPOSITIONFORM lpCompForm);
+
+    [LibraryImport("imm32.dll")]
+    public static partial IntPtr ImmCreateContext();
+
+    [LibraryImport("imm32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool ImmDestroyContext(IntPtr hImc);
+
+    [LibraryImport("imm32.dll")]
+    public static partial IntPtr ImmAssociateContext(IntPtr hWnd, IntPtr hImc);
+
+    [LibraryImport("imm32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool ImmAssociateContextEx(IntPtr hWnd, IntPtr hImc, uint dwFlags);
+
+    [LibraryImport("imm32.dll")]
+    public static partial IntPtr ImmGetDefaultIMEWnd(IntPtr hWnd);
 }

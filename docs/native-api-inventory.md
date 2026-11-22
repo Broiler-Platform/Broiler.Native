@@ -63,6 +63,14 @@ Graphics. Associated native driver descriptions and native exceptions move here.
 | `Broiler.Hosting/src/Broiler.Hosting.Windows/WindowsTheme.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
 | `Broiler.Hosting/src/Broiler.Hosting.Windows/WindowsWindowSizing.cs` | `src/Broiler.Native.Windows/WindowNative.cs` |
 | `Broiler.Hosting/src/Broiler.Hosting.Linux/LinuxX11Clipboard.cs` | `src/Broiler.Native.Linux/OpenGL/LinuxX11Native.cs` |
+| `Broiler.Browser`, `Broiler.Cells`, `Broiler.Fond`, `Broiler.Hosting`, `Broiler.HTML`, `Broiler.Launcher`, `Broiler.Mail`, `Broiler.Plate`, `Broiler.UI*`, `Broiler.Writer` (window/cursor/DPI/dialog/DWM/UIA/IMM/OLE/SafeArray) | `src/Broiler.Native.Windows/WindowNative.cs`, `DwmNative.cs`, `ComNative.cs`, `OleAutNative.cs`, `Input/ImmNative.cs`, `Accessibility/UiaNative.cs` |
+| `Broiler.Mail/src/Broiler.Mail.Windows/Services/WindowsCredentialStore.cs`, `Broiler.Launcher/.../OfficeWindowsCredentialStore.cs` | `src/Broiler.Native.Windows/Credentials/CredentialNative.cs` |
+| `Broiler.Fond/src/Broiler.Fond.Host.Desktop/Integration/Theme/DesktopThemeListener.cs` | `src/Broiler.Native.Windows/RegistryNative.cs` |
+| `Broiler.Code/src/Broiler.Code.Windows/WindowsFileDialogs.cs` | `src/Broiler.Native.Windows/Dialogs/FileDialogNative.cs` |
+| `Broiler.Browser/src/Broiler.Traffic/SocketOwners.cs` | `src/Broiler.Native.Windows/Network/IpHelperNative.cs` |
+| `Broiler.VM/src/Broiler.VM.HyperV/.../Interop/Kernel32.cs`, `Broiler.VM.Profile.MachineCode/VmNativePage.Windows.cs` | `src/Broiler.Native.Windows/Memory/VirtualMemoryNative.cs` |
+| `Broiler.VM/src/Broiler.VM.HyperV/.../Interop/WhvNative.cs`, `WhvTypes.cs` | `src/Broiler.Native.Windows/HyperV/WhvNative.cs`, `WhvTypes.cs` |
+| `Broiler.VM/src/Broiler.VM.Profile.MachineCode/VmNativePage.Unix.cs` | `src/Broiler.Native.Linux/Memory/UnixMemoryNative.cs` |
 
 Additional consolidation:
 
